@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.mimicus/
+*.sqlite*
+test-results/
+coverage/
+.env

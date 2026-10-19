@@ -1,0 +1,15 @@
+import {homedir} from 'node:os';
+import {resolve,join} from 'node:path';
+import {z} from 'zod';
+export const sourceOrigins=['https://api.github.com','https://raw.githubusercontent.com','https://www.awwwards.com','https://tympanus.net','https://astro.build','https://webflow.com','https://threejsresources.com','https://nuxt.com','https://mesh3d.gallery'];
+export const ConfigSchema=z.object({
+ allowedOrigins:z.array(z.string().url()).max(100).default([]),developmentOrigins:z.array(z.string().url()).max(10).default([]),
+ timeoutMs:z.number().int().min(1000).max(120000).default(30000),maxElements:z.number().int().min(1).max(200).default(60),sampleMs:z.number().int().min(100).max(3000).default(600),
+ maxRequests:z.number().int().min(10).max(1000).default(160),maxBytes:z.number().int().min(100000).max(100000000).default(20000000),settleMs:z.number().int().min(0).max(5000).default(250),assets:z.enum(['blocked','permitted']).default('permitted'),browserExecutable:z.string().optional(),
+ maxSessions:z.number().int().min(1).max(4).default(2),sessionTtlMs:z.number().int().min(1000).max(900000).default(300000),operationTtlMs:z.number().int().min(1000).max(900000).default(300000),maxOperations:z.number().int().min(1).max(20).default(8),
+ discoveryRequests:z.number().int().min(8).max(100).default(48),candidateLimit:z.number().int().min(10).max(200).default(80),
+ semanticEnabled:z.boolean().default(true),semanticDownload:z.boolean().default(false),semanticThreads:z.number().int().min(1).max(8).default(2),modelCacheDir:z.string().default(join(homedir(),'.cache','mimicus','models')),
+ sourceAuthorizations:z.record(z.string(),z.string().min(8).max(2000)).default({})
+});
+export type Config=z.infer<typeof ConfigSchema>;
+export function loadConfig(env=process.env):Config{const number=(k:string)=>env[k]===undefined?undefined:Number(env[k]),list=(s?:string)=>(s??'').split(',').map(x=>x.trim()).filter(Boolean);return ConfigSchema.parse({allowedOrigins:[...new Set([...sourceOrigins,...list(env.MIMICUS_ALLOWED_ORIGINS)])],developmentOrigins:env.MIMICUS_DEV_MODE==='1'?list(env.MIMICUS_DEV_ORIGINS):[],timeoutMs:number('MIMICUS_TIMEOUT_MS'),maxElements:number('MIMICUS_MAX_ELEMENTS'),sampleMs:number('MIMICUS_SAMPLE_MS'),maxRequests:number('MIMICUS_MAX_REQUESTS'),maxBytes:number('MIMICUS_MAX_BYTES'),settleMs:number('MIMICUS_SETTLE_MS'),assets:env.MIMICUS_ASSETS==='blocked'?'blocked':'permitted',browserExecutable:env.MIMICUS_BROWSER_EXECUTABLE,maxSessions:number('MIMICUS_MAX_SESSIONS'),sessionTtlMs:number('MIMICUS_SESSION_TTL_MS'),operationTtlMs:number('MIMICUS_OPERATION_TTL_MS'),discoveryRequests:number('MIMICUS_DISCOVERY_REQUESTS'),candidateLimit:number('MIMICUS_CANDIDATE_LIMIT'),semanticEnabled:env.MIMICUS_SEMANTIC!=='0',semanticDownload:env.MIMICUS_MODEL_DOWNLOAD==='1',semanticThreads:number('MIMICUS_SEMANTIC_THREADS'),modelCacheDir:env.MIMICUS_MODEL_CACHE_DIR?resolve(env.MIMICUS_MODEL_CACHE_DIR):undefined,sourceAuthorizations:env.MIMICUS_SOURCE_AUTHORIZATIONS?JSON.parse(env.MIMICUS_SOURCE_AUTHORIZATIONS):{}});}
