@@ -1,0 +1,82 @@
+name: Verify
+
+on: [push, pull_request]
+
+permissions:
+  contents: read
+
+env:
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+
+jobs:
+  core:
+    name: Linux static and browser-free core
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run lint
+      - run: npm run check
+      - run: npm run build
+      - name: Core regression tests
+        run: |
+          mkdir -p artifacts/ci
+          node --test --test-concurrency=1 --test-reporter=tap test/architecture.test.mjs test/design-brief.test.mjs test/federation.test.mjs test/security.test.mjs test/source-release.test.mjs > artifacts/ci/linux-core.tap 2>&1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: linux-core-results
+          path: artifacts/ci/*.tap
+          if-no-files-found: ignore
+          retention-days: 7
+
+  windows:
+    name: Windows installed Edge full integration
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Explicitly select the runner's installed Edge
+        shell: pwsh
+        run: |
+          $candidates = @(
+            (Join-Path ${env:ProgramFiles(x86)} 'Microsoft\Edge\Application\msedge.exe'),
+            (Join-Path $env:ProgramFiles 'Microsoft\Edge\Application\msedge.exe'),
+            (Join-Path $env:LOCALAPPDATA 'Microsoft\Edge\Application\msedge.exe')
+          )
+          $installed = $candidates | Where-Object { Test-Path -LiteralPath $_ -PathType Leaf } | Select-Object -First 1
+          if (-not $installed) { throw 'Preinstalled Edge was not found. CI does not download a fallback browser.' }
+          $binary = (Resolve-Path -LiteralPath $installed).Path
+          if ([IO.Path]::GetFileName($binary) -ne 'msedge.exe') { throw 'Unexpected browser executable.' }
+          Add-Content -LiteralPath $env:GITHUB_ENV -Value "MIMICUS_BROWSER_EXECUTABLE=$binary"
+          Write-Output "CI explicitly selects installed Edge: $binary"
+      - run: npm run lint
+      - run: npm run check
+      - run: npm run build
+      - name: Full real-browser and SDK regression tests
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts/ci -Force | Out-Null
+          node --test --test-concurrency=1 --test-reporter=tap test/*.test.mjs 2>&1 | Tee-Object -FilePath artifacts/ci/windows-full.tap
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: windows-full-results
+          path: artifacts/ci/*.tap
+          if-no-files-found: ignore
+          retention-days: 7

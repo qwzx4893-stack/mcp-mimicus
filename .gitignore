@@ -5,3 +5,7 @@ dist/
 test-results/
 coverage/
 .env
+docs/*.local.md
+**/*.local.md
+.release/
+.release-git/

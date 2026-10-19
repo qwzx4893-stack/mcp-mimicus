@@ -1,0 +1,12 @@
+# Browser and transport boundaries
+Selected source text, DOM metadata and images are untrusted evidence. They are never elevated to agent instructions. The server exposes no arbitrary page evaluate, shell, upload, authentication or generic form-submission tool.
+
+Every source fetch, redirect and browser resource is origin-scoped and DNS checked. All DNS answers must be public unicast outside explicitly opted-in loopback test origins. Connected destinations are pinned numerically, with original TLS hostname verification. Private, metadata, reserved, mixed-DNS and credential-bearing destinations are rejected. GET/HEAD only, except the exact official Three Resources MCP endpoint and allowlisted read-only protocol/tool methods. Cross-origin POST redirects are rejected.
+
+Chromium uses its sandbox, an isolated nonpersistent context and guarded proxy; service workers, WebSockets, popups, downloads and dialogs are blocked. The main-frame origin must remain the selected original site. Robots rules are checked per navigation path. Safe clicks include non-form, non-destructive controls, native details/summary and same-document fragment anchors without download/new-window targets; other anchors use explicit reviewed navigation. Obvious destructive URL paths/actions are rejected. This heuristic cannot prove that arbitrary public website JavaScript has no side effects; use references appropriate for read-only public browsing.
+
+Images are viewport/region bounded, JPEG, at most1.5MB each. Filmstrips contain2–6 actual timestamped image blocks. Target analyses are capped at6 per active session; time/element/request/byte/session bounds apply. No profile storage-state, screenshot file or website database is exported automatically. The MCP client itself may retain received messages under its own policies.
+
+Close/abort awaits pending Chromium/context/proxy disposal. Default TTL5min and absolute lifetime15min bound abandoned sessions. Discovery end aborts its fetches. Timers only release resources, not crawl or refresh. Graceful shutdown cleanup is tested, including isolated browser temporary directories. Hard process termination, OS crashes and adversarial browser vulnerabilities are outside graceful cleanup guarantees.
+
+`scripts/workflow-bridge.mjs` is a development-only authenticated loopback SDK test client, excluded from packaging. Its test configuration permits only the explicit local owned-example origin. Do not expose it as a hosted service.

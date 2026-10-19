@@ -1,0 +1,458 @@
+{
+  "at": "2026-10-19T14:48:13.774Z",
+  "node": "v24.19.0",
+  "sourceTransport": "Official @modelcontextprotocol/client 2.3.1 stdio -> production dist/cli.js serve; no adapter injection",
+  "sourceCases": [
+    {
+      "name": "awwwards-no-special-authorization",
+      "elapsedMs": 42.27980000000002,
+      "passed": true
+    },
+    {
+      "name": "codrops-creative-hub",
+      "elapsedMs": 1649.9918,
+      "passed": true
+    },
+    {
+      "name": "codrops-webzibition",
+      "elapsedMs": 819.2800000000002,
+      "passed": true
+    },
+    {
+      "name": "codrops-repositories",
+      "elapsedMs": 1575.9955,
+      "passed": true
+    },
+    {
+      "name": "astro-title-query-progressive",
+      "elapsedMs": 2175.9034999999994,
+      "passed": true
+    },
+    {
+      "name": "webflow-native-animation-recent-offsets",
+      "elapsedMs": 12137.6871,
+      "passed": true
+    },
+    {
+      "name": "webflow-native-coffee-fulltext-pages",
+      "elapsedMs": 8354.686000000002,
+      "passed": true
+    },
+    {
+      "name": "three-official-mcp-native-offsets",
+      "elapsedMs": 2842.5194999999985,
+      "passed": true
+    },
+    {
+      "name": "nuxt-complete-current-yaml",
+      "elapsedMs": 467.79299999999785,
+      "passed": true
+    },
+    {
+      "name": "nuxt-native-industry",
+      "elapsedMs": 173.65819999999803,
+      "passed": true
+    },
+    {
+      "name": "mesh-public-progressive-details",
+      "elapsedMs": 2106.9617999999973,
+      "passed": true
+    },
+    {
+      "name": "mesh-native-technology",
+      "elapsedMs": 1368.4775000000009,
+      "passed": true
+    },
+    {
+      "name": "independent-fresh-nuxt-1",
+      "elapsedMs": 142.97829999999522,
+      "passed": true
+    },
+    {
+      "name": "independent-fresh-nuxt-2",
+      "elapsedMs": 112.20230000000447,
+      "passed": true
+    },
+    {
+      "name": "cross-source-coffee-discovery",
+      "elapsedMs": 7944.1656,
+      "passed": true
+    }
+  ],
+  "sourceElapsed": {
+    "samples": 14,
+    "p50Ms": 1575.9955,
+    "p95Ms": 12137.6871
+  },
+  "semantic": {
+    "candidates": 58,
+    "cases": [
+      {
+        "query": "commerce retail brand",
+        "requested": "lexical",
+        "actual": "lexical",
+        "elapsedMs": 0.41819999999995616,
+        "candidates": 58,
+        "embedded": 0,
+        "topScores": [
+          {
+            "lexical": 0.3333333333333333,
+            "combined": 0.3333333333333333
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "combined": 0.3333333333333333
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "combined": 0.3333333333333333
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "commerce retail brand",
+        "requested": "hybrid",
+        "actual": "hybrid",
+        "elapsedMs": 1055.375,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.43637037288675284,
+            "combined": 0.400307409043056
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.4122804619969813,
+            "combined": 0.3846489669647045
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.4062908514956285,
+            "combined": 0.3807557201388252
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "commerce retail brand",
+        "requested": "semantic",
+        "actual": "semantic",
+        "elapsedMs": 84.06700000000023,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.43637037288675284,
+            "combined": 0.43637037288675284
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.4122804619969813,
+            "combined": 0.4122804619969813
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.4062908514956285,
+            "combined": 0.4062908514956285
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "software developer documentation",
+        "requested": "lexical",
+        "actual": "lexical",
+        "elapsedMs": 0.3267000000000735,
+        "candidates": 58,
+        "embedded": 0,
+        "topScores": [
+          {
+            "lexical": 0.6666666666666666,
+            "combined": 0.6666666666666666
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "combined": 0.3333333333333333
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "combined": 0.3333333333333333
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "software developer documentation",
+        "requested": "hybrid",
+        "actual": "hybrid",
+        "elapsedMs": 77.3393000000001,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0.6666666666666666,
+            "semantic": 0.2744256830695553,
+            "combined": 0.4117100273285442
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.27563511484026587,
+            "combined": 0.2958294913128395
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.25624457843695386,
+            "combined": 0.28322564265068667
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "software developer documentation",
+        "requested": "semantic",
+        "actual": "semantic",
+        "elapsedMs": 75.26029999999992,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.27563511484026587,
+            "combined": 0.27563511484026587
+          },
+          {
+            "lexical": 0.6666666666666666,
+            "semantic": 0.2744256830695553,
+            "combined": 0.2744256830695553
+          },
+          {
+            "lexical": 0.3333333333333333,
+            "semantic": 0.25624457843695386,
+            "combined": 0.25624457843695386
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "creative agency portfolio",
+        "requested": "lexical",
+        "actual": "lexical",
+        "elapsedMs": 0.2717000000002372,
+        "candidates": 58,
+        "embedded": 0,
+        "topScores": [
+          {
+            "lexical": 0,
+            "combined": 0
+          },
+          {
+            "lexical": 0,
+            "combined": 0
+          },
+          {
+            "lexical": 0,
+            "combined": 0
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "creative agency portfolio",
+        "requested": "hybrid",
+        "actual": "hybrid",
+        "elapsedMs": 77.45380000000023,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0,
+            "semantic": 0.24141712770684343,
+            "combined": 0.15692113300944824
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.23015909974291995,
+            "combined": 0.14960341483289796
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.2207128082794988,
+            "combined": 0.14346332538167422
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "creative agency portfolio",
+        "requested": "semantic",
+        "actual": "semantic",
+        "elapsedMs": 75.30150000000003,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0,
+            "semantic": 0.24141712770684343,
+            "combined": 0.24141712770684343
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.23015909974291995,
+            "combined": 0.23015909974291995
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.2207128082794988,
+            "combined": 0.2207128082794988
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "nonprofit education",
+        "requested": "lexical",
+        "actual": "lexical",
+        "elapsedMs": 0.22229999999990468,
+        "candidates": 58,
+        "embedded": 0,
+        "topScores": [
+          {
+            "lexical": 0,
+            "combined": 0
+          },
+          {
+            "lexical": 0,
+            "combined": 0
+          },
+          {
+            "lexical": 0,
+            "combined": 0
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "nonprofit education",
+        "requested": "hybrid",
+        "actual": "hybrid",
+        "elapsedMs": 79.96939999999995,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0,
+            "semantic": 0.1961306164218029,
+            "combined": 0.1274849006741719
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.1912887392373747,
+            "combined": 0.12433768050429356
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.18656910642553154,
+            "combined": 0.1212699191765955
+          }
+        ],
+        "temporaryVectorsReleased": true
+      },
+      {
+        "query": "nonprofit education",
+        "requested": "semantic",
+        "actual": "semantic",
+        "elapsedMs": 75.69570000000022,
+        "candidates": 58,
+        "embedded": 58,
+        "topScores": [
+          {
+            "lexical": 0,
+            "semantic": 0.1961306164218029,
+            "combined": 0.1961306164218029
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.1912887392373747,
+            "combined": 0.1912887392373747
+          },
+          {
+            "lexical": 0,
+            "semantic": 0.18656910642553154,
+            "combined": 0.18656910642553154
+          }
+        ],
+        "temporaryVectorsReleased": true
+      }
+    ],
+    "rssDeltaBytes": 204578816
+  },
+  "browser": {
+    "meaning": "Actual installed default browser, owned animated HTTP fixture; not third-party load-time evidence",
+    "samples": [
+      {
+        "launchAndNavigationMs": 2343.186,
+        "captureMs": 50.620800000000145,
+        "filmstripMs": 321.6570999999999,
+        "cleanupMs": 181.00049999999965,
+        "jpegBytes": 41240,
+        "filmstripImages": 3,
+        "browserVersion": "155.0.8059.85"
+      },
+      {
+        "launchAndNavigationMs": 1708.6230000000005,
+        "captureMs": 44.76879999999983,
+        "filmstripMs": 314.3806999999997,
+        "cleanupMs": 194.77340000000004,
+        "jpegBytes": 41240,
+        "filmstripImages": 3,
+        "browserVersion": "155.0.8059.85"
+      },
+      {
+        "launchAndNavigationMs": 1949.7582999999995,
+        "captureMs": 59.589200000000346,
+        "filmstripMs": 332.0700999999999,
+        "cleanupMs": 345.1984000000002,
+        "jpegBytes": 41240,
+        "filmstripImages": 3,
+        "browserVersion": "155.0.8059.85"
+      }
+    ],
+    "launchAndNavigation": {
+      "samples": 3,
+      "p50Ms": 1949.7582999999995,
+      "p95Ms": 2343.186
+    },
+    "capture": {
+      "samples": 3,
+      "p50Ms": 50.620800000000145,
+      "p95Ms": 59.589200000000346
+    },
+    "filmstrip": {
+      "samples": 3,
+      "p50Ms": 321.6570999999999,
+      "p95Ms": 332.0700999999999
+    },
+    "cleanup": {
+      "samples": 3,
+      "p50Ms": 194.77340000000004,
+      "p95Ms": 345.1984000000002
+    },
+    "finalStatus": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "persistentContent": false
+    }
+  },
+  "limitations": [
+    "Empirical nearest-rank p95 with 3 browser samples is the maximum, not a production SLO.",
+    "Source cases mix different providers, pagination and queries; aggregate is descriptive, not a controlled provider comparison.",
+    "Four semantic queries x three modes on 58 live candidates measure execution, not relevance or aesthetic quality.",
+    "RSS includes model/runtime allocations and is not peak aggregate browser-process memory."
+  ]
+}

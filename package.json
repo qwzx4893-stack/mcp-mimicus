@@ -1,6 +1,6 @@
 {
   "name": "mcp-mimicus",
-  "version": "0.2.0",
+  "version": "0.3.0-beta.1",
   "description": "Mimicus — live federated visual design browser for agents",
   "type": "module",
   "private": true,
@@ -13,17 +13,32 @@
   },
   "files": [
     "dist",
-    "docs",
+    "assets/mimicus-banner.svg",
+    "docs/DEFAULT_BROWSER_BACKEND.md",
+    "docs/SOURCE_INTEGRATION_MATRIX.md",
+    "docs/FINAL_ENGINEERING_AUDIT.md",
+    "docs/VISUAL_WORKFLOW_EVALUATION.md",
+    "docs/QUALITY_AND_SECURITY_TEST_RESULTS.md",
+    "docs/FINAL_LIMITATIONS.md",
+    "docs/CONFIGURATION.md",
+    "docs/SECURITY.md",
+    "docs/MIGRATION.md",
     "README.md",
     "LICENSE",
-    "THIRD_PARTY_NOTICES.md"
+    "THIRD_PARTY_NOTICES.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md"
   ],
   "scripts": {
     "build": "node scripts/clean-build.mjs && tsc",
     "start": "node dist/cli.js",
     "test": "npm run build && node --test --test-concurrency=1 test/*.test.mjs",
     "benchmark": "node scripts/benchmark.mjs",
-    "check": "tsc --noEmit"
+    "check": "tsc --noEmit",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "test:sources": "node scripts/source-release-acceptance.mjs",
+    "banner": "node scripts/render-banner.mjs"
   },
   "dependencies": {
     "@huggingface/transformers": "4.3.1",
@@ -36,6 +51,7 @@
     "zod": "4.6.7"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.15",
     "@types/node": "24.10.1",
     "typescript": "7.0.2"
   }
