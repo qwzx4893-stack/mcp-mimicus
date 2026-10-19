@@ -1,37 +1,351 @@
-import type {Page} from 'playwright';
-import {randomUUID} from 'node:crypto';
-import type {Config} from '../config.js';
-import type {Observation,Sequence,Sample} from '../types.js';
-import {hash} from '../util.js';
-import {captureDocument,sampleElement,probeCanvas} from './probe.js';
-import {captureCssMotion} from './css-motion.js';
-import {safeClick,safeHover} from './interactions.js';
-import {scrollToVerified} from './scroll.js';
-export type ObserveOptions={selector:string;trigger?:Sequence['trigger'];scrollContainer?:string;probeReset?:boolean;viewports?:{width:number;height:number}[];reducedMotion?:boolean;signal?:AbortSignal;};
+import { randomUUID } from 'node:crypto';
+import type { Page } from 'playwright';
+import type { Config } from '../config.js';
+import type { Observation, Sample, Sequence } from '../types.js';
+import { hash } from '../util.js';
+import { captureCssMotion } from './css-motion.js';
+import { safeClick, safeHover } from './interactions.js';
+import { captureDocument, probeCanvas, sampleElement } from './probe.js';
+import { scrollToVerified } from './scroll.js';
+export type ObserveOptions = {
+  selector: string;
+  trigger?: Sequence['trigger'];
+  scrollContainer?: string;
+  probeReset?: boolean;
+  viewports?: { width: number; height: number }[];
+  reducedMotion?: boolean;
+  signal?: AbortSignal;
+};
 /** Preserved controlled sampling from the previous observer, now on an active
  * temporary page rather than opening/storing an observation for a website DB. */
-export async function sampleInteraction(page:Page,config:Config,selector:string,trigger:Sequence['trigger'],probeReset=false):Promise<Sequence>{
- const target=page.locator(selector).first();await target.waitFor({state:'attached'});const stroke=trigger==='time'&&await target.evaluate(el=>el instanceof SVGGeometryElement&&getComputedStyle(el).display!=='none'&&getComputedStyle(el).visibility!=='hidden'&&el.getTotalLength()>0);if(!stroke)await target.waitFor({state:'visible'});
- // A stateful visual session may already be hovering this component. A
- // controlled hover/pointer measurement must establish an exit baseline first.
- if(trigger==='hover'||trigger==='pointer'){await page.mouse.move(-1,-1);await page.waitForTimeout(Math.min(config.sampleMs,600));}
- if(trigger==='focus')await target.evaluate(el=>(el as HTMLElement).blur());
- await target.evaluate(el=>el.scrollIntoView({behavior:'instant',block:'center'}));const epochMs=await page.evaluate(()=>performance.now()),before=await page.evaluate(sampleElement,{selector,durationMs:0,epochMs}),phases:NonNullable<Sequence['phases']>=[{name:'initial',startMs:0,endMs:before.samples.at(-1)?.t??0}],activeStart=before.samples.at(-1)?.t??0;let limitation:string|undefined;
- if(trigger==='pointer'){const b=await target.boundingBox();if(!b)throw new Error('Pointer target unavailable');const samples=[...before.samples],inputs:NonNullable<Sequence['inputs']>=[];for(const fraction of [.2,.5,.8]){const x=b.x+b.width*fraction,y=b.y+b.height*.5;await page.mouse.move(x,y);inputs.push({x,y,t:await page.evaluate(()=>performance.now())-epochMs});samples.push(...(await page.evaluate(sampleElement,{selector,durationMs:config.sampleMs,epochMs,adaptive:true})).samples);}phases.push({name:'active',startMs:activeStart,endMs:samples.at(-1)?.t??0});await page.mouse.move(0,0);const reset=await page.evaluate(sampleElement,{selector,durationMs:config.sampleMs,epochMs,adaptive:true});phases.push({name:'reset',startMs:reset.samples[0]?.t??0,endMs:reset.samples.at(-1)?.t??0});samples.push(...reset.samples);return {selector,trigger,samples,inputs,phases,settled:false,limitation:'Three controlled pointer inputs; sampled response is not recovered physics'};}
- if(trigger==='hover')await safeHover(page,selector);if(trigger==='focus')await target.focus();if(trigger==='click')await safeClick(page,selector);
- if(trigger==='touch'){const safe=await target.evaluate(el=>el.matches('button[type=button],details > summary,[role=tab],[aria-expanded]')&&!el.closest('form')&&!/delete|remove|buy|pay|submit/i.test(el.textContent??''));if(!safe)throw new Error('Unsafe touch target');const b=await target.boundingBox();if(b)await page.touchscreen.tap(b.x+b.width/2,b.y+b.height/2);}
- if(trigger==='drag'&&!await target.evaluate(el=>el.matches('[role=slider],[data-mimicus-draggable],[draggable=true]')&&!el.closest('form')))throw new Error('Drag requires safe slider/draggable');
- const sampling=page.evaluate(sampleElement,{selector,durationMs:config.sampleMs,epochMs,adaptive:true});if(trigger==='drag'){const b=await target.boundingBox();if(b){await page.mouse.move(b.x+b.width*.25,b.y+b.height/2);await page.mouse.down();try{for(let i=1;i<=10;i++){await page.mouse.move(b.x+b.width*(.25+.05*i),b.y+b.height/2);await page.waitForTimeout(16);}}finally{await page.mouse.up();}}}
- const capture=await sampling,samples=[...before.samples,...capture.samples],intervals=[...capture.intervals];phases.push({name:'active',startMs:activeStart,endMs:samples.at(-1)?.t??activeStart});
- const reset=async()=>{const start=await page.evaluate(()=>performance.now())-epochMs,r=await page.evaluate(sampleElement,{selector,durationMs:config.sampleMs,epochMs,adaptive:true});samples.push(...r.samples);intervals.push(...r.intervals);phases.push({name:'reset',startMs:start,endMs:samples.at(-1)?.t??start});};
- if(trigger==='hover'){await page.mouse.move(0,0);await reset();}if(probeReset&&(trigger==='focus'||trigger==='click')){if(trigger==='focus')await target.evaluate(el=>(el as HTMLElement).blur());else if(typeof before.samples[0]?.state?.expanded==='string'&&await target.evaluate(el=>el.getAttribute('aria-expanded')??(el.matches('summary')&&el.parentElement instanceof HTMLDetailsElement?String(el.parentElement.open):null))!==before.samples[0]?.state?.expanded)await safeClick(page,selector);else limitation='No exposed reversible expanded state; automatic second click not attempted';if(!limitation)await reset();}
- const tail=samples.filter(s=>s.t>=(samples.at(-1)?.t??0)-220),settled=tail.length>=2&&tail.every(s=>Math.abs(s.opacity-tail[0]!.opacity)<.01&&Math.abs(s.box.x-tail[0]!.box.x)<.5&&Math.abs(s.box.y-tail[0]!.box.y)<.5);return {selector,trigger,samples,settled,phases,frameIntervals:intervals,...(limitation?{limitation}:{})};
+export async function sampleInteraction(
+  page: Page,
+  config: Config,
+  selector: string,
+  trigger: Sequence['trigger'],
+  probeReset = false,
+): Promise<Sequence> {
+  const target = page.locator(selector).first();
+  await target.waitFor({ state: 'attached' });
+  const stroke =
+    trigger === 'time' &&
+    (await target.evaluate(
+      (el) =>
+        el instanceof SVGGeometryElement &&
+        getComputedStyle(el).display !== 'none' &&
+        getComputedStyle(el).visibility !== 'hidden' &&
+        el.getTotalLength() > 0,
+    ));
+  if (!stroke) await target.waitFor({ state: 'visible' });
+  // A stateful visual session may already be hovering this component. A
+  // controlled hover/pointer measurement must establish an exit baseline first.
+  if (trigger === 'hover' || trigger === 'pointer') {
+    await page.mouse.move(-1, -1);
+    await page.waitForTimeout(Math.min(config.sampleMs, 600));
+  }
+  if (trigger === 'focus') await target.evaluate((el) => (el as HTMLElement).blur());
+  await target.evaluate((el) => el.scrollIntoView({ behavior: 'instant', block: 'center' }));
+  const epochMs = await page.evaluate(() => performance.now()),
+    before = await page.evaluate(sampleElement, { selector, durationMs: 0, epochMs }),
+    phases: NonNullable<Sequence['phases']> = [
+      { name: 'initial', startMs: 0, endMs: before.samples.at(-1)?.t ?? 0 },
+    ],
+    activeStart = before.samples.at(-1)?.t ?? 0;
+  let limitation: string | undefined;
+  if (trigger === 'pointer') {
+    const b = await target.boundingBox();
+    if (!b) throw new Error('Pointer target unavailable');
+    const samples = [...before.samples],
+      inputs: NonNullable<Sequence['inputs']> = [];
+    for (const fraction of [0.2, 0.5, 0.8]) {
+      const x = b.x + b.width * fraction,
+        y = b.y + b.height * 0.5;
+      await page.mouse.move(x, y);
+      inputs.push({ x, y, t: (await page.evaluate(() => performance.now())) - epochMs });
+      samples.push(
+        ...(
+          await page.evaluate(sampleElement, {
+            selector,
+            durationMs: config.sampleMs,
+            epochMs,
+            adaptive: true,
+          })
+        ).samples,
+      );
+    }
+    phases.push({ name: 'active', startMs: activeStart, endMs: samples.at(-1)?.t ?? 0 });
+    await page.mouse.move(0, 0);
+    const reset = await page.evaluate(sampleElement, {
+      selector,
+      durationMs: config.sampleMs,
+      epochMs,
+      adaptive: true,
+    });
+    phases.push({
+      name: 'reset',
+      startMs: reset.samples[0]?.t ?? 0,
+      endMs: reset.samples.at(-1)?.t ?? 0,
+    });
+    samples.push(...reset.samples);
+    return {
+      selector,
+      trigger,
+      samples,
+      inputs,
+      phases,
+      settled: false,
+      limitation: 'Three controlled pointer inputs; sampled response is not recovered physics',
+    };
+  }
+  if (trigger === 'hover') await safeHover(page, selector);
+  if (trigger === 'focus') await target.focus();
+  if (trigger === 'click') await safeClick(page, selector);
+  if (trigger === 'touch') {
+    const safe = await target.evaluate(
+      (el) =>
+        el.matches('button[type=button],details > summary,[role=tab],[aria-expanded]') &&
+        !el.closest('form') &&
+        !/delete|remove|buy|pay|submit/i.test(el.textContent ?? ''),
+    );
+    if (!safe) throw new Error('Unsafe touch target');
+    const b = await target.boundingBox();
+    if (b) await page.touchscreen.tap(b.x + b.width / 2, b.y + b.height / 2);
+  }
+  if (
+    trigger === 'drag' &&
+    !(await target.evaluate(
+      (el) =>
+        el.matches('[role=slider],[data-mimicus-draggable],[draggable=true]') &&
+        !el.closest('form'),
+    ))
+  )
+    throw new Error('Drag requires safe slider/draggable');
+  const sampling = page.evaluate(sampleElement, {
+    selector,
+    durationMs: config.sampleMs,
+    epochMs,
+    adaptive: true,
+  });
+  if (trigger === 'drag') {
+    const b = await target.boundingBox();
+    if (b) {
+      await page.mouse.move(b.x + b.width * 0.25, b.y + b.height / 2);
+      await page.mouse.down();
+      try {
+        for (let i = 1; i <= 10; i++) {
+          await page.mouse.move(b.x + b.width * (0.25 + 0.05 * i), b.y + b.height / 2);
+          await page.waitForTimeout(16);
+        }
+      } finally {
+        await page.mouse.up();
+      }
+    }
+  }
+  const capture = await sampling,
+    samples = [...before.samples, ...capture.samples],
+    intervals = [...capture.intervals];
+  phases.push({ name: 'active', startMs: activeStart, endMs: samples.at(-1)?.t ?? activeStart });
+  const reset = async () => {
+    const start = (await page.evaluate(() => performance.now())) - epochMs,
+      r = await page.evaluate(sampleElement, {
+        selector,
+        durationMs: config.sampleMs,
+        epochMs,
+        adaptive: true,
+      });
+    samples.push(...r.samples);
+    intervals.push(...r.intervals);
+    phases.push({ name: 'reset', startMs: start, endMs: samples.at(-1)?.t ?? start });
+  };
+  if (trigger === 'hover') {
+    await page.mouse.move(0, 0);
+    await reset();
+  }
+  if (probeReset && (trigger === 'focus' || trigger === 'click')) {
+    if (trigger === 'focus') await target.evaluate((el) => (el as HTMLElement).blur());
+    else if (
+      typeof before.samples[0]?.state?.expanded === 'string' &&
+      (await target.evaluate(
+        (el) =>
+          el.getAttribute('aria-expanded') ??
+          (el.matches('summary') && el.parentElement instanceof HTMLDetailsElement
+            ? String(el.parentElement.open)
+            : null),
+      )) !== before.samples[0]?.state?.expanded
+    )
+      await safeClick(page, selector);
+    else limitation = 'No exposed reversible expanded state; automatic second click not attempted';
+    if (!limitation) await reset();
+  }
+  const tail = samples.filter((s) => s.t >= (samples.at(-1)?.t ?? 0) - 220),
+    settled =
+      tail.length >= 2 &&
+      tail.every(
+        (s) =>
+          Math.abs(s.opacity - tail[0]!.opacity) < 0.01 &&
+          Math.abs(s.box.x - tail[0]!.box.x) < 0.5 &&
+          Math.abs(s.box.y - tail[0]!.box.y) < 0.5,
+      );
+  return {
+    selector,
+    trigger,
+    samples,
+    settled,
+    phases,
+    frameIntervals: intervals,
+    ...(limitation ? { limitation } : {}),
+  };
 }
-export async function measurePage(page:Page,config:Config,sourceId:string,options:ObserveOptions):Promise<Observation>{
- const started=performance.now(),originalViewport=page.viewportSize(),views:Observation['views']=[];
- try{for(const viewport of options.viewports??[originalViewport??{width:1280,height:800}]){options.signal?.throwIfAborted();await page.setViewportSize(viewport);await page.emulateMedia({reducedMotion:options.reducedMotion?'reduce':'no-preference'});await page.waitForTimeout(config.settleMs);const captured=await page.evaluate(captureDocument,{maxElements:config.maxElements,targetSelector:options.selector}),cssMotion=await page.evaluate(captureCssMotion,{selectors:captured.elements.map(e=>e.selector)}),sequences:Sequence[]=[];
- const trigger=options.trigger??'time';if(trigger==='scroll'){const epochMs=await page.evaluate(()=>performance.now()),samples:Sample[]=[];if(options.scrollContainer){const container=page.locator(options.scrollContainer).first();await container.evaluate(el=>el.scrollIntoView({behavior:'instant',block:'center'}));const context=await container.evaluate(el=>({x:el.scrollWidth-el.clientWidth,y:el.scrollHeight-el.clientHeight})),axis=context.x>context.y?'x':'y',maximum=axis==='x'?context.x:context.y,traversed=Math.min(20000,maximum);if(maximum<=0)throw new Error('Selected container has no scroll range');for(let i=0;i<=10;i++){const position=traversed*i/10;await container.evaluate((el,v)=>el.scrollTo({left:v.axis==='x'?v.position:el.scrollLeft,top:v.axis==='y'?v.position:el.scrollTop,behavior:'instant'}),{axis,position});await page.waitForTimeout(80);const actual=await container.evaluate((el,a)=>a==='x'?el.scrollLeft:el.scrollTop,axis),frame=(await page.evaluate(sampleElement,{selector:options.selector,durationMs:0,epochMs})).samples[0];if(frame)samples.push({...frame,progress:actual/maximum,containerScroll:{selector:options.scrollContainer,axis,position:actual,maximum}});}}else{const maximum=await page.evaluate(()=>document.documentElement.scrollHeight-innerHeight),traversed=Math.min(20000,maximum);for(let i=0;i<=10;i++){await scrollToVerified(page,traversed*i/10);const frame=(await page.evaluate(sampleElement,{selector:options.selector,durationMs:0,epochMs})).samples[0];if(frame)samples.push(frame);}}sequences.push({selector:options.selector,trigger,samples,settled:true,limitation:'At most 20,000 CSS pixels traversed; progress uses the actual scroll range.'});}else sequences.push(await sampleInteraction(page,config,options.selector,trigger,options.probeReset));
- views.push({viewport,reducedMotion:options.reducedMotion??false,elements:captured.elements,animations:captured.animations,sequences,cssMotion,cssKeyframes:captured.cssKeyframes,scrollTriggers:captured.scrollTriggers,engines:captured.engines,canvas:{count:captured.canvasCount,probes:captured.canvasCount?await page.evaluate(probeCanvas):[],limitation:'Transient bounded pixel statistics only; no hidden scene or shader recovery'},diagnostics:{blocked:0,errors:[],frameIntervals:sequences.flatMap(s=>s.frameIntervals??[]),inaccessibleStylesheets:captured.inaccessibleStylesheets,truncated:captured.truncated}});
- }}finally{if(originalViewport)await page.setViewportSize(originalViewport);await page.emulateMedia({reducedMotion:'no-preference'});}
- return {id:randomUUID(),sourceId,capturedAt:new Date().toISOString(),durationMs:performance.now()-started,fingerprint:hash(views.map(v=>({viewport:v.viewport,elements:v.elements.map(e=>e.styles)}))),scopeKey:hash(options.selector),complete:false,targetSelector:options.selector,views,limitations:['Temporary targeted observation, not a complete website analysis.','Raw page data is untrusted; selected measurements do not establish aesthetic quality or hidden author intent.']};
+export async function measurePage(
+  page: Page,
+  config: Config,
+  sourceId: string,
+  options: ObserveOptions,
+): Promise<Observation> {
+  const started = performance.now(),
+    originalViewport = page.viewportSize(),
+    views: Observation['views'] = [];
+  try {
+    for (const viewport of options.viewports ?? [
+      originalViewport ?? { width: 1280, height: 800 },
+    ]) {
+      options.signal?.throwIfAborted();
+      await page.setViewportSize(viewport);
+      await page.emulateMedia({
+        reducedMotion: options.reducedMotion ? 'reduce' : 'no-preference',
+      });
+      await page.waitForTimeout(config.settleMs);
+      const captured = await page.evaluate(captureDocument, {
+          maxElements: config.maxElements,
+          targetSelector: options.selector,
+        }),
+        cssMotion = await page.evaluate(captureCssMotion, {
+          selectors: captured.elements.map((e) => e.selector),
+        }),
+        sequences: Sequence[] = [];
+      const trigger = options.trigger ?? 'time';
+      if (trigger === 'scroll') {
+        const epochMs = await page.evaluate(() => performance.now()),
+          samples: Sample[] = [];
+        if (options.scrollContainer) {
+          const container = page.locator(options.scrollContainer).first();
+          await container.evaluate((el) =>
+            el.scrollIntoView({ behavior: 'instant', block: 'center' }),
+          );
+          const context = await container.evaluate((el) => ({
+              x: el.scrollWidth - el.clientWidth,
+              y: el.scrollHeight - el.clientHeight,
+            })),
+            axis = context.x > context.y ? 'x' : 'y',
+            maximum = axis === 'x' ? context.x : context.y,
+            traversed = Math.min(20000, maximum);
+          if (maximum <= 0) throw new Error('Selected container has no scroll range');
+          for (let i = 0; i <= 10; i++) {
+            const position = (traversed * i) / 10;
+            await container.evaluate(
+              (el, v) =>
+                el.scrollTo({
+                  left: v.axis === 'x' ? v.position : el.scrollLeft,
+                  top: v.axis === 'y' ? v.position : el.scrollTop,
+                  behavior: 'instant',
+                }),
+              { axis, position },
+            );
+            await page.waitForTimeout(80);
+            const actual = await container.evaluate(
+                (el, a) => (a === 'x' ? el.scrollLeft : el.scrollTop),
+                axis,
+              ),
+              frame = (
+                await page.evaluate(sampleElement, {
+                  selector: options.selector,
+                  durationMs: 0,
+                  epochMs,
+                })
+              ).samples[0];
+            if (frame)
+              samples.push({
+                ...frame,
+                progress: actual / maximum,
+                containerScroll: {
+                  selector: options.scrollContainer,
+                  axis,
+                  position: actual,
+                  maximum,
+                },
+              });
+          }
+        } else {
+          const maximum = await page.evaluate(
+              () => document.documentElement.scrollHeight - innerHeight,
+            ),
+            traversed = Math.min(20000, maximum);
+          for (let i = 0; i <= 10; i++) {
+            await scrollToVerified(page, (traversed * i) / 10);
+            const frame = (
+              await page.evaluate(sampleElement, {
+                selector: options.selector,
+                durationMs: 0,
+                epochMs,
+              })
+            ).samples[0];
+            if (frame) samples.push(frame);
+          }
+        }
+        sequences.push({
+          selector: options.selector,
+          trigger,
+          samples,
+          settled: true,
+          limitation: 'At most 20,000 CSS pixels traversed; progress uses the actual scroll range.',
+        });
+      } else
+        sequences.push(
+          await sampleInteraction(page, config, options.selector, trigger, options.probeReset),
+        );
+      views.push({
+        viewport,
+        reducedMotion: options.reducedMotion ?? false,
+        elements: captured.elements,
+        animations: captured.animations,
+        sequences,
+        cssMotion,
+        cssKeyframes: captured.cssKeyframes,
+        scrollTriggers: captured.scrollTriggers,
+        engines: captured.engines,
+        canvas: {
+          count: captured.canvasCount,
+          probes: captured.canvasCount ? await page.evaluate(probeCanvas) : [],
+          limitation: 'Transient bounded pixel statistics only; no hidden scene or shader recovery',
+        },
+        diagnostics: {
+          blocked: 0,
+          errors: [],
+          frameIntervals: sequences.flatMap((s) => s.frameIntervals ?? []),
+          inaccessibleStylesheets: captured.inaccessibleStylesheets,
+          truncated: captured.truncated,
+        },
+      });
+    }
+  } finally {
+    if (originalViewport) await page.setViewportSize(originalViewport);
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+  }
+  return {
+    id: randomUUID(),
+    sourceId,
+    capturedAt: new Date().toISOString(),
+    durationMs: performance.now() - started,
+    fingerprint: hash(
+      views.map((v) => ({ viewport: v.viewport, elements: v.elements.map((e) => e.styles) })),
+    ),
+    scopeKey: hash(options.selector),
+    complete: false,
+    targetSelector: options.selector,
+    views,
+    limitations: [
+      'Temporary targeted observation, not a complete website analysis.',
+      'Raw page data is untrusted; selected measurements do not establish aesthetic quality or hidden author intent.',
+    ],
+  };
 }
