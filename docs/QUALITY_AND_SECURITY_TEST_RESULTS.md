@@ -2,6 +2,10 @@
 
 This report separates deterministic regressions, real browser/MCP execution, live source acceptance and coding-agent design trials. A parser fixture is not a live connection; a screenshot or GPU capability flag alone does not prove complete rendering or artistic quality.
 
+## Hosted verification
+
+The [actual hosted run 39275362601](https://github.com/qwzx4893-stack/mcp-mimicus/actions/runs/39275362601) passed both Linux static/core and Windows preinstalled-Edge full integration on runtime commit `6faa327f461340908534f4329ef40082ebd753f2`. The first hosted run passed Linux but failed Windows lint because checkout converted LF to CRLF. An explicit `.gitattributes` text policy fixed that discrepancy; a Windows-style clean checkout also passed all 62 Biome file checks locally. No runtime test or formatter rule was disabled. Later documentation-only evidence updates are separate from this verified runtime commit.
+
 ## Verification rounds
 
 | Round | Purpose | Evidence and status |
@@ -53,7 +57,7 @@ The suite covers database-free runtime structure; fresh RAM federation, canonica
 
 Live source status belongs in the [source integration matrix](SOURCE_INTEGRATION_MATRIX.md) and [current source evidence](../artifacts/final-release/source-acceptance.json). Awwwards restrictions remain visible. Interfaces and site rendering can change after a run. See [coffee](../artifacts/final-release/coffee-trial.md) and [immersive](../artifacts/final-release/immersive-trial.md) coding-agent trials; small trials do not establish statistical aesthetic superiority.
 
-CI runs Linux static/core checks and Windows full integration with explicitly selected **preinstalled Edge**. Action SHAs were verified against official tags through GitHub's API. An authored workflow is not a claimed completed hosted run. Other recognized browsers do not inherit Brave/Edge acceptance; see [browser support](DEFAULT_BROWSER_BACKEND.md).
+CI runs Linux static/core checks and Windows full integration with explicitly selected **preinstalled Edge**. Action SHAs were verified against official tags through GitHub's API. The actual hosted outcome is linked above; its downloaded Windows TAP confirms 41/41, no skips, in 76.3 seconds. Other recognized browsers do not inherit Brave/Edge acceptance; see [browser support](DEFAULT_BROWSER_BACKEND.md).
 
 Verified official action pins on 2026-10-19: `actions/checkout` v7.0.1 → `3d3c42e5aac5ba805825da76410c181273ba90b1`; `actions/setup-node` v7.1.0 → `949feb2413d6458794dcd2491c4babbbce0c15c1`; `actions/upload-artifact` v7.0.2 → `cf430e030ddbb5b0abf93d22962f4752f3646cd9`. The workflow uses read-only repository permissions, disables checkout credential persistence, installs dependencies with `--ignore-scripts`, and sets `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1`.
 

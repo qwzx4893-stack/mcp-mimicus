@@ -1,0 +1,21 @@
+{
+  "repository": "qwzx4893-stack/mcp-mimicus",
+  "runtimeCommit": "6faa327f461340908534f4329ef40082ebd753f2",
+  "runId": 39275362601,
+  "url": "https://github.com/qwzx4893-stack/mcp-mimicus/actions/runs/39275362601",
+  "status": "completed",
+  "conclusion": "success",
+  "downloadedWindowsTap": { "tests": 41, "pass": 41, "fail": 0, "skipped": 0, "durationMs": 76306.0275 },
+  "jobs": [
+    { "name": "Linux static and browser-free core", "conclusion": "success" },
+    { "name": "Windows installed Edge full integration", "conclusion": "success" }
+  ],
+  "initialHostedFailure": {
+    "runId": 39275018928,
+    "failedStep": "Windows npm run lint",
+    "cause": "Windows checkout converted LF source to CRLF",
+    "fix": "Explicit .gitattributes text=auto eol=lf; no formatter rule disabled",
+    "linuxWasSuccessful": true
+  },
+  "finalReleaseCommit": "Resolve the v0.3.0-beta.1 tag; this report records the independently verified runtime commit without a self-referential commit hash."
+}

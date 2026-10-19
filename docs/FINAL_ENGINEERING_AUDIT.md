@@ -45,10 +45,14 @@ PASS means the scoped observed behavior passed. PARTIAL means a material externa
 | 16 | Multiple real implementation/design QA tasks | PASS | Two new independent agent workflows; no superiority claim |
 | 17 | Security, cleanup and failure isolation | PASS | Four independently found defects fixed; complete 41/41 suites on Brave and Edge |
 | 18 | Representative measured performance | PASS | Live metadata + actual default browser metrics, sample limits stated |
-| 19 | Reproducible CI and documentation | PARTIAL | Local commands tested; hosted workflow must be checked after push |
+| 19 | Reproducible CI and documentation | PASS | Linux core and Windows installed-Edge jobs passed in hosted run 39275362601 |
 | 20 | Original banner and truthful README badges | PASS | Editable original SVG, rendered review; no fake publication badge |
-| 21 | Correct public repository, scoped commits and staged pushes | PARTIAL | Public repository created; final sanitized commits/push verification pending |
-| 22 | Link, SHA, evidence, limitations and release status | PARTIAL | Final remote SHA and release verification pending |
+| 21 | Correct public repository, scoped commits and staged pushes | PASS | Correct public owner; parentless sanitized history, substantive scoped commits and ordered pushes verified |
+| 22 | Link, SHA, evidence, limitations and release status | PASS | Public repository and source-beta tag identify the exact release commit; runtime CI, tests and limitations linked below |
+
+## Public verification
+
+[Repository](https://github.com/qwzx4893-stack/mcp-mimicus), [source-beta release](https://github.com/qwzx4893-stack/mcp-mimicus/releases/tag/v0.3.0-beta.1), and [successful hosted runtime verification](https://github.com/qwzx4893-stack/mcp-mimicus/actions/runs/39275362601). Both Linux and Windows jobs passed on runtime commit `6faa327f461340908534f4329ef40082ebd753f2`. The subsequent release evidence commit changes documentation and audit metadata; the release tag resolves its exact SHA. This is **21 PASS, 1 PARTIAL** across the scoped gates. Gate 6 retains the actual Awwwards restriction; automated catalog access itself is BLOCKED without authorization.
 
 ## Publication hygiene
 

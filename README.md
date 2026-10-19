@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js: 24 or newer](https://img.shields.io/badge/Node.js-%3E%3D24-43853d.svg)](package.json)
+[![Verify](https://github.com/qwzx4893-stack/mcp-mimicus/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qwzx4893-stack/mcp-mimicus/actions/workflows/ci.yml)
 
 # Mimicus
 
@@ -9,7 +10,7 @@
 
 Find current references across curated sources, inspect selected original websites as actual images, and measure the layout or behavior needed for an original implementation. Mimicus helps an agent look, compare and verify; it does not generate a website, judge aesthetic quality, or recover another site's source code.
 
-The release target is **0.3.0-beta.1**, distributed as source from [qwzx4893-stack/mcp-mimicus](https://github.com/qwzx4893-stack/mcp-mimicus). npm publication is not part of this release. Browser compatibility and upstream source interfaces remain beta limitations.
+**0.3.0-beta.1** is a [source beta](https://github.com/qwzx4893-stack/mcp-mimicus/releases/tag/v0.3.0-beta.1) from [qwzx4893-stack/mcp-mimicus](https://github.com/qwzx4893-stack/mcp-mimicus). npm publication is not part of this release. Browser compatibility and upstream source interfaces remain beta limitations.
 
 ## Start locally
 
