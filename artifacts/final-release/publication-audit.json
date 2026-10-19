@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-19",
+  "repository": "qwzx4893-stack/mcp-mimicus",
+  "release": "0.3.0-beta.1",
+  "dependencyAudit": {
+    "method": "npm audit --json, all dependencies",
+    "totalVulnerabilities": 0,
+    "lockfileDependencyEntries": 140,
+    "entriesWithDeclaredLicense": 140,
+    "nativeImageLgplComponentsRecorded": true
+  },
+  "cleanInstall": {
+    "command": "npm ci --ignore-scripts --no-fund --no-audit in an isolated release-check directory",
+    "passed": true,
+    "installedPackages": 87,
+    "onnxRuntimeNativeImportPassed": true,
+    "onnxRuntimeVersion": "1.30.0",
+    "bundledNativeExecutionProviders": ["cpu", "dml", "webgpu"],
+    "browserDownloaded": false
+  },
+  "finalCliSelfTest": {
+    "passed": true,
+    "browser": "Brave",
+    "version": "155.0.8059.85",
+    "selection": "windows-default",
+    "headless": true,
+    "control": "private-pipe",
+    "personalProfileAccess": false,
+    "bundledBrowserFallback": false
+  },
+  "packageDryRun": {
+    "files": 118,
+    "compressedBytesAtCheck": 158611,
+    "rawDirectivesIncluded": false,
+    "websiteExportsIncluded": false,
+    "modelWeightsIncluded": false,
+    "nodeModulesBundled": false,
+    "actualPackagePublished": false
+  },
+  "publicHistory": {
+    "method": "Explicit source allowlist and independently scanned parentless foundation plus actual scoped changes; private ancestry preserved locally",
+    "rawAttachmentsIncluded": false,
+    "historicalWebsiteExportsIncluded": false,
+    "sourceScreenshotFilesIncluded": false,
+    "tokenPrivateKeyPersonalHomePatternMatches": 0,
+    "credentialTransport": "Existing authenticated GitHub credential helper; no credentials embedded in remote URLs or source"
+  },
+  "limitations": [
+    "Dependency advisory databases change; zero reported advisories is not a security certification.",
+    "Pattern scanning and explicit file allowlisting are complementary checks, not a proof that all secrets are detectable.",
+    "Package byte size is a dry-run observation before the final documentation update."
+  ]
+}

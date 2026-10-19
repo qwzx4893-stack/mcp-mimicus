@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: Shipped runtime has no SQLite, persistent catalog, vector store or retired command implementation
+ok 1 - Shipped runtime has no SQLite, persistent catalog, vector store or retired command implementation
+  ---
+  duration_ms: 8.03
+  type: 'test'
+  ...
+# Subtest: A real browser page-setup failure before session registration releases browser, proxy, profile and home
+ok 2 - A real browser page-setup failure before session registration releases browser, proxy, profile and home
+  ---
+  duration_ms: 935.9723
+  type: 'test'
+  ...
+# Subtest: Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+ok 3 - Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+  ---
+  duration_ms: 1.1359
+  type: 'test'
+  ...
+# Subtest: Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+ok 4 - Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+  ---
+  duration_ms: 2541.5823
+  type: 'test'
+  ...
+# Subtest: Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+ok 5 - Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+  ---
+  duration_ms: 7.3131
+  type: 'test'
+  ...
+# Subtest: Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+ok 6 - Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+  ---
+  duration_ms: 1815.9418
+  type: 'test'
+  ...
+# Subtest: Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+ok 7 - Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+  ---
+  duration_ms: 6750.9996
+  type: 'test'
+  ...
+# Subtest: A design brief keeps source observations separate from original advice and respects the chosen anchor
+ok 8 - A design brief keeps source observations separate from original advice and respects the chosen anchor
+  ---
+  duration_ms: 1.2151
+  type: 'test'
+  ...
+# Subtest: Unsupported design anchors fail rather than silently synthesizing from the wrong page
+ok 9 - Unsupported design anchors fail rather than silently synthesizing from the wrong page
+  ---
+  duration_ms: 0.4224
+  type: 'test'
+  ...
+# Subtest: Discovery deadline bounds semantic waiting and reports late non-preemptible work honestly
+ok 10 - Discovery deadline bounds semantic waiting and reports late non-preemptible work honestly
+  ---
+  duration_ms: 1016.894
+  type: 'test'
+  ...
+# Subtest: Cancelling semantic work during continuation closes the advanced operation instead of silently skipping a source page
+ok 11 - Cancelling semantic work during continuation closes the advanced operation instead of silently skipping a source page
+  ---
+  duration_ms: 6.7052
+  type: 'test'
+  ...
+# Subtest: A genuinely missing offline model reports lexical fallback without creating a cache
+ok 12 - A genuinely missing offline model reports lexical fallback without creating a cache
+  ---
+  duration_ms: 155.7822
+  type: 'test'
+  ...
+# Subtest: Fresh requests normalize/dedup native provenance in RAM, isolate a failed source, and never create a local catalog
+ok 13 - Fresh requests normalize/dedup native provenance in RAM, isolate a failed source, and never create a local catalog
+  ---
+  duration_ms: 26.7193
+  type: 'test'
+  ...
+# Subtest: Canonical dedup keeps independent native categories and makers without inventing labels
+ok 14 - Canonical dedup keeps independent native categories and makers without inventing labels
+  ---
+  duration_ms: 0.494
+  type: 'test'
+  ...
+# Subtest: No-license Awwwards mode retains source integration but performs zero catalog fetches
+ok 15 - No-license Awwwards mode retains source integration but performs zero catalog fetches
+  ---
+  duration_ms: 0.5642
+  type: 'test'
+  ...
+# Subtest: Temporary semantic batches use the same model interface without retaining a text/vector cache
+ok 16 - Temporary semantic batches use the same model interface without retaining a text/vector cache
+  ---
+  duration_ms: 108.1129
+  type: 'test'
+  ...
+# Subtest: Same-document fragment links work while external and download anchors stay restricted
+ok 17 - Same-document fragment links work while external and download anchors stay restricted
+  ---
+  duration_ms: 1391.2889
+  type: 'test'
+  ...
+# Subtest: Native details navigation is clickable, measurable and resets after a controlled probe
+ok 18 - Native details navigation is clickable, measurable and resets after a controlled probe
+  ---
+  duration_ms: 2970.676
+  type: 'test'
+  ...
+# Subtest: Session expiry, aborted page interaction and shutdown release real Chromium contexts
+ok 19 - Session expiry, aborted page interaction and shutdown release real Chromium contexts
+  ---
+  duration_ms: 4137.4142
+  type: 'test'
+  ...
+# Subtest: Selected alias selectors produce usable specs; guarded navigation never executes destructive URLs
+ok 20 - Selected alias selectors produce usable specs; guarded navigation never executes destructive URLs
+  ---
+  duration_ms: 2047.5935
+  type: 'test'
+  ...
+# Subtest: Discovery rejects unsupported streams and expires RAM operations without worker activity
+ok 21 - Discovery rejects unsupported streams and expires RAM operations without worker activity
+  ---
+  duration_ms: 1274.4098
+  type: 'test'
+  ...
+# Subtest: A source deadline retains completed source results and closing an operation aborts its active fetch
+ok 22 - A source deadline retains completed source results and closing an operation aborts its active fetch
+  ---
+  duration_ms: 1035.6117
+  type: 'test'
+  ...
+# Subtest: Real stdio SDK client discovers live owned references, receives MCP images, explores, analyzes and shuts down without catalog files
+ok 23 - Real stdio SDK client discovers live owned references, receives MCP images, explores, analyzes and shuts down without catalog files
+  ---
+  duration_ms: 8752.1634
+  type: 'test'
+  ...
+# Subtest: Failed first capture closes the session whose identifier cannot reach the caller
+ok 24 - Failed first capture closes the session whose identifier cannot reach the caller
+  ---
+  duration_ms: 6.669
+  type: 'test'
+  ...
+# Subtest: Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no website store or restart cache
+ok 25 - Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no website store or restart cache
+  ---
+  duration_ms: 8713.9774
+  type: 'test'
+  ...
+# Subtest: I: rejects unsafe schemes, credentials, IPv4/IPv6 private and mixed DNS answers
+ok 26 - I: rejects unsafe schemes, credentials, IPv4/IPv6 private and mixed DNS answers
+  ---
+  duration_ms: 13.1847
+  type: 'test'
+  ...
+# Subtest: I: proxy pins validated DNS answer and rejects changed resolution, POST and unapproved redirect target
+ok 27 - I: proxy pins validated DNS answer and rejects changed resolution, POST and unapproved redirect target
+  ---
+  duration_ms: 42.788
+  type: 'test'
+  ...
+# Subtest: robots policy honors specific group, longest rule, wildcard and allow exceptions
+ok 28 - robots policy honors specific group, longest rule, wildcard and allow exceptions
+  ---
+  duration_ms: 0.9818
+  type: 'test'
+  ...
+# Subtest: MCP discovery input preserves omitted continuation fields while internal query applies first-search defaults
+ok 29 - MCP discovery input preserves omitted continuation fields while internal query applies first-search defaults
+  ---
+  duration_ms: 7.2505
+  type: 'test'
+  ...
+# Subtest: Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction
+ok 30 - Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction
+  ---
+  duration_ms: 14.491
+  type: 'test'
+  ...
+# Subtest: Astro searches current actual titles across the full official index, preserves progressive continuation and pins selected YAML
+ok 31 - Astro searches current actual titles across the full official index, preserves progressive continuation and pins selected YAML
+  ---
+  duration_ms: 18.4008
+  type: 'test'
+  ...
+# Subtest: Webflow uses exact public native feed offsets and current tag IDs, verifies original live links, and retains classification
+ok 32 - Webflow uses exact public native feed offsets and current tag IDs, verifies original live links, and retains classification
+  ---
+  duration_ms: 22.562
+  type: 'test'
+  ...
+# Subtest: Webflow native public full-text search preserves real IDs and page counts without substituting popular sites or inventing tag membership
+ok 33 - Webflow native public full-text search preserves real IDs and page counts without substituting popular sites or inventing tag membership
+  ---
+  duration_ms: 12.137
+  type: 'test'
+  ...
+# Subtest: Unsupported source URLs fail inside adapter normalization before merging can poison other providers
+ok 34 - Unsupported source URLs fail inside adapter normalization before merging can poison other providers
+  ---
+  duration_ms: 1.4597
+  type: 'test'
+  ...
+# Subtest: Empty legacy native metadata is omitted without losing valid source records or inventing labels
+ok 35 - Empty legacy native metadata is omitted without losing valid source records or inventing labels
+  ---
+  duration_ms: 1.3806
+  type: 'test'
+  ...
+# Subtest: mesh3d native filter links are followed, maker identity remains distinct, and disallowed API is never called
+ok 36 - mesh3d native filter links are followed, maker identity remains distinct, and disallowed API is never called
+  ---
+  duration_ms: 13.9496
+  type: 'test'
+  ...
+# Subtest: Progressive search exposes new references instead of repeating the old top results, and finished continuation is empty
+ok 37 - Progressive search exposes new references instead of repeating the old top results, and finished continuation is empty
+  ---
+  duration_ms: 10.3763
+  type: 'test'
+  ...
+# Subtest: Visual reset controls work while account resets remain blocked
+ok 38 - Visual reset controls work while account resets remain blocked
+  ---
+  duration_ms: 2043.9241
+  type: 'test'
+  ...
+# Subtest: Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+ok 39 - Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+  ---
+  duration_ms: 3322.9914
+  type: 'test'
+  ...
+# Subtest: An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+ok 40 - An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+  ---
+  duration_ms: 2555.4353
+  type: 'test'
+  ...
+# Subtest: Actual temporary visual browsing, navigation/reset, responsive viewing, filmstrip, targeted analysis/spec and cleanup
+ok 41 - Actual temporary visual browsing, navigation/reset, responsive viewing, filmstrip, targeted analysis/spec and cleanup
+  ---
+  duration_ms: 11868.6118
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 70754.3329

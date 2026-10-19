@@ -25,6 +25,8 @@ test('Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no websit
               ...process.env,
               HOME: dir,
               USERPROFILE: dir,
+              APPDATA: dir,
+              LOCALAPPDATA: dir,
               TEMP: dir,
               TMP: dir,
               TMPDIR: dir,

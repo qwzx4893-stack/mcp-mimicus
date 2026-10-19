@@ -25,7 +25,7 @@ For an explicitly chosen alternative installed Chromium browser, set `MIMICUS_BR
 The full suite uses actual browser processes and the official MCP SDK over stdio. Run it for browser, interaction, lifecycle, server, security and integration changes. Browser-free core checks can also run independently after building:
 
 ```sh
-node --test --test-concurrency=1 test/architecture.test.mjs test/design-brief.test.mjs test/federation.test.mjs test/security.test.mjs test/source-release.test.mjs
+node --test --test-concurrency=1 test/architecture.test.mjs test/design-brief.test.mjs test/federation.test.mjs test/federation-lifecycle.test.mjs test/open-failure.test.mjs test/security.test.mjs test/source-release.test.mjs
 ```
 
 CI runs that core set on Linux and the full suite with a preinstalled Edge executable explicitly selected on Windows. The Edge CI configuration tests an **override**, while locally verified Brave tests Windows **default association discovery**. A workflow definition alone does not prove a hosted run passed.

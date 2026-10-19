@@ -3,6 +3,7 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
 import { setTimeout as delay } from 'node:timers/promises';
+import { chromium } from 'playwright';
 import {
   classifyBrowser,
   commandExecutable,
@@ -11,6 +12,56 @@ import {
 } from '../dist/browser/backend.js';
 import { BrowserSessions } from '../dist/browser/sessions.js';
 import { config, fixture } from './helpers.mjs';
+
+test('A real browser page-setup failure before session registration releases browser, proxy, profile and home', {
+  timeout: 45000,
+}, async () => {
+  const f = await fixture(),
+    runtime = new BrowserSessions(config(null, f.origin)),
+    originalLaunch = chromium.launch;
+  let launched, home, profile, proxy;
+  chromium.launch = async function (options) {
+    const browser = await originalLaunch.call(this, options);
+    launched = browser;
+    home = options.env.USERPROFILE;
+    proxy = options.proxy.server;
+    const connection = await browser.newBrowserCDPSession();
+    try {
+      const command = await connection.send('Browser.getBrowserCommandLine');
+      profile = command.arguments
+        .find((a) => a.startsWith('--user-data-dir='))
+        .slice('--user-data-dir='.length);
+    } finally {
+      await connection.detach();
+    }
+    const originalContext = browser.newContext.bind(browser);
+    browser.newContext = async (options) => {
+      const context = await originalContext(options);
+      context.newPage = async () => {
+        throw new Error('Owned injected page-setup failure');
+      };
+      return context;
+    };
+    return browser;
+  };
+  try {
+    await assert.rejects(
+      runtime.open({ url: f.url, authorized: true }),
+      /Owned injected page-setup failure/,
+    );
+    assert.ok(launched);
+    assert.equal(launched.isConnected(), false);
+    assert.equal(existsSync(home), false);
+    assert.equal(existsSync(profile), false);
+    assert.equal(runtime.status().activeSessions, 0);
+    assert.equal(runtime.status().opening, 0);
+    await assert.rejects(fetch(proxy));
+  } finally {
+    chromium.launch = originalLaunch;
+    await runtime.closeAll();
+    await f.close();
+  }
+});
 
 test('Default browser command parsing never runs registry arguments and unsupported engines fail explicitly', async () => {
   assert.equal(
@@ -58,12 +109,18 @@ test('Actual OS-selected binary renders with GPU diagnostics in isolated ephemer
     assert.notEqual(one.diagnostics.browser.profile.path, two.diagnostics.browser.profile.path);
     const first = runtime.sessions.get(one.sessionId),
       second = runtime.sessions.get(two.sessionId);
+    assert.notEqual(first.browserEnvironment.home, second.browserEnvironment.home);
+    assert.ok(first.browserEnvironment.env.LOCALAPPDATA.startsWith(first.browserEnvironment.home));
     await first.context.addCookies([
       { name: 'mimicus-isolation-test', value: 'owned-first-context', url: f.origin },
     ]);
     assert.equal((await second.context.cookies()).length, 0);
     assert.equal(typeof one.diagnostics.readinessAtOpen.webgl.available, 'boolean');
-    const paths = [one, two].map((s) => s.diagnostics.browser.profile.path),
+    const paths = [
+        ...[one, two].map((s) => s.diagnostics.browser.profile.path),
+        first.browserEnvironment.home,
+        second.browserEnvironment.home,
+      ],
       pids = [one, two].map((s) => s.diagnostics.browser.processId);
     await runtime.closeAll();
     assert.equal(runtime.status().activeSessions, 0);

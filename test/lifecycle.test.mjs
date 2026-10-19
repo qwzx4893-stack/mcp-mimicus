@@ -71,8 +71,14 @@ test('Session expiry, aborted page interaction and shutdown release real Chromiu
     await new Promise((ok) => setTimeout(ok, 1250));
     await assert.rejects(() => sessions.capture(first.sessionId), /expired|closed|unknown/);
     assert.equal(sessions.status().activeSessions, 0);
-    await new Promise((ok) => setTimeout(ok, 100));
+    const cleanupDeadline = Date.now() + 5000;
+    while (
+      (native.isConnected() || sessions.status().closingSessions > 0) &&
+      Date.now() < cleanupDeadline
+    )
+      await new Promise((ok) => setTimeout(ok, 25));
     assert.equal(native.isConnected(), false);
+    assert.equal(sessions.status().closingSessions, 0);
     const second = await sessions.open({ url: f.url, authorized: true });
     const browser = sessions.sessions.get(second.sessionId).browser,
       controller = new AbortController(),

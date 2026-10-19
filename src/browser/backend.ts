@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { mkdtemp, open, realpath, rm, stat } from 'node:fs/promises';
+import { mkdir, mkdtemp, open, realpath, rm, stat } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { basename, isAbsolute, join, resolve, sep } from 'node:path';
 import { promisify } from 'node:util';
@@ -7,6 +7,48 @@ import type { Browser, Page } from 'playwright';
 import type { Config } from '../config.js';
 
 const execute = promisify(execFile);
+/** Native Windows known-folder APIs verify AppData directories before allowing
+ * a non-default DevTools profile. Give the owned browser a complete temporary
+ * home rather than the personal home or a nonexistent test HOME. */
+export async function createBrowserEnvironment() {
+  const root = resolve(tmpdir()),
+    home = await mkdtemp(join(root, 'mimicus-browser-home-'));
+  if (!resolve(home).startsWith(root + sep + 'mimicus-browser-home-'))
+    throw new Error('Unsafe owned browser home');
+  const roaming = join(home, 'AppData', 'Roaming'),
+    local = join(home, 'AppData', 'Local'),
+    temporary = join(home, 'Temp');
+  const close = () => rm(home, { recursive: true, force: true, maxRetries: 3, retryDelay: 100 });
+  try {
+    await Promise.all([
+      mkdir(roaming, { recursive: true }),
+      mkdir(local, { recursive: true }),
+      mkdir(temporary, { recursive: true }),
+    ]);
+    const env = Object.fromEntries(
+      Object.entries(process.env).filter(
+        (entry): entry is [string, string] => typeof entry[1] === 'string',
+      ),
+    );
+    return {
+      home,
+      env: {
+        ...env,
+        HOME: home,
+        USERPROFILE: home,
+        APPDATA: roaming,
+        LOCALAPPDATA: local,
+        TEMP: temporary,
+        TMP: temporary,
+        TMPDIR: temporary,
+      },
+      close,
+    };
+  } catch (e) {
+    await close();
+    throw e;
+  }
+}
 /** Fixed source only. Registry data is returned as JSON, never evaluated as PowerShell. */
 const windowsInspection = String.raw`
 $ErrorActionPreference='Stop'

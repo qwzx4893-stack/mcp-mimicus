@@ -10,7 +10,12 @@ import { robotsAllowed } from '../security/robots.js';
 import type { ComponentEvidence, Observation } from '../types.js';
 import { canonicalUrl, safeLabel } from '../util.js';
 import { inspectAccessGate } from './access-gate.js';
-import { renderingReadiness, resolveBrowserBackend, verifyBrowserLaunch } from './backend.js';
+import {
+  createBrowserEnvironment,
+  renderingReadiness,
+  resolveBrowserBackend,
+  verifyBrowserLaunch,
+} from './backend.js';
 import { reviewNavigation, safeClick, safeDrag, safeHover } from './interactions.js';
 import { measurePage, type ObserveOptions } from './observe.js';
 import { captureDocument } from './probe.js';
@@ -24,6 +29,7 @@ type Analysis = {
 type Session = {
   id: string;
   browser: Browser;
+  browserEnvironment: Awaited<ReturnType<typeof createBrowserEnvironment>>;
   browserInfo: Awaited<ReturnType<typeof verifyBrowserLaunch>>;
   readiness: Awaited<ReturnType<typeof renderingReadiness>> | null;
   context: BrowserContext;
@@ -162,7 +168,10 @@ export class BrowserSessions {
         'Awwwards gallery automation is restricted without reviewed authorization. Use the public reference link and open a separately selected original website.',
       );
     this.opening++;
-    let browser: Browser | undefined, proxy: GuardedProxy | undefined, s: Session | undefined;
+    let browser: Browser | undefined,
+      proxy: GuardedProxy | undefined,
+      s: Session | undefined,
+      browserEnvironment: Awaited<ReturnType<typeof createBrowserEnvironment>> | undefined;
     try {
       const backend = await resolveBrowserBackend(this.config);
       signal.throwIfAborted();
@@ -182,11 +191,13 @@ export class BrowserSessions {
       signal.throwIfAborted();
       proxy = new GuardedProxy(policy);
       const server = await proxy.start();
+      browserEnvironment = await createBrowserEnvironment();
       browser = await chromium.launch({
         headless: true,
         chromiumSandbox: true,
         timeout: config.timeoutMs,
         executablePath: backend.executablePath,
+        env: browserEnvironment.env,
         proxy: { server, bypass: '<-loopback>' },
         args: [
           '--enable-automation',
@@ -209,6 +220,7 @@ export class BrowserSessions {
       s = {
         id: randomUUID(),
         browser,
+        browserEnvironment,
         browserInfo,
         readiness: null,
         context,
@@ -296,10 +308,14 @@ export class BrowserSessions {
         };
       });
     } catch (e) {
-      if (s) await this.close(s.id);
+      if (s && this.sessions.has(s.id)) await this.close(s.id);
       else {
         await browser?.close().catch(() => {});
-        await proxy?.close();
+        try {
+          await proxy?.close();
+        } finally {
+          await browserEnvironment?.close();
+        }
       }
       throw e;
     } finally {
@@ -787,7 +803,11 @@ export class BrowserSessions {
     s.robots.clear();
     await s.context.close().catch(() => {});
     await s.browser.close().catch(() => {});
-    await s.proxy.close();
+    try {
+      await s.proxy.close();
+    } finally {
+      await s.browserEnvironment.close();
+    }
     return {
       sessionId: id,
       closed: true,

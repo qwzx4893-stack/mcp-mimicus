@@ -8,7 +8,7 @@ The inspected baseline was reproduced before changing the release implementation
 
 The retained 16-tool MCP surface provides live search, native categories, source diagnostics, selected reference details, operation disposal, owned browser sessions, actual images, progressive page regions, safe interactions, filmstrips, selected analysis/specification/verification and multi-reference comparison. Comparison can accept a project brief; observed facts and independently authored advice remain separate. It does not assign aesthetic quality scores.
 
-Independent focused review found three concrete lifecycle defects: first-capture failure could orphan a session; semantic ranking could exceed the metadata deadline; cancellation during ranking could advance a continuation cursor without delivering its page. All were fixed with regression tests. Native ONNX inference already executing cannot be preempted: the response falls back at its deadline, signals cancellation and discards late results, while the bounded native queue finishes during shutdown. Output explicitly reports this limitation.
+Independent focused review found four concrete lifecycle defects: first-capture failure could orphan a session; semantic ranking could exceed the metadata deadline; cancellation during ranking could advance a continuation cursor without delivering its page; setup failure before session registration could bypass resource cleanup. All four have focused regressions, and the final complete suite passed 41/41 on Windows-default Brave and 41/41 on explicitly selected installed Edge. Native ONNX inference already executing cannot be preempted: the response falls back at its deadline, signals cancellation and discards late results, while the bounded native queue finishes during shutdown. Output explicitly reports this limitation.
 
 Additional observed fixes include genuine Webflow query routing, progressive results showing newly retrieved candidates, preserving omitted continuation parameters over MCP, normalizing empty provider tags, separating ordinary artistic prose from real access challenges, classifying empty GPU readback as inconclusive, and permitting narrowly named non-form visual reset controls.
 
@@ -43,7 +43,7 @@ PASS means the scoped observed behavior passed. PARTIAL means a material externa
 | 14 | Transient MiniLM semantic ranking | PASS | Four verified model files, 58 live candidates; no website vectors on disk |
 | 15 | Coherent evidence-backed comparison and project brief | PASS | Structured comparison regression and both trials |
 | 16 | Multiple real implementation/design QA tasks | PASS | Two new independent agent workflows; no superiority claim |
-| 17 | Security, cleanup and failure isolation | PASS | Final regression suite and three independently found defects fixed |
+| 17 | Security, cleanup and failure isolation | PASS | Four independently found defects fixed; complete 41/41 suites on Brave and Edge |
 | 18 | Representative measured performance | PASS | Live metadata + actual default browser metrics, sample limits stated |
 | 19 | Reproducible CI and documentation | PARTIAL | Local commands tested; hosted workflow must be checked after push |
 | 20 | Original banner and truthful README badges | PASS | Editable original SVG, rendered review; no fake publication badge |
