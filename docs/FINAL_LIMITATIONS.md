@@ -1,6 +1,6 @@
 # Final release limitations
 
-Mimicus `0.3.0-beta.1` is a source beta for live reference discovery and selected visual analysis. The following boundaries are part of the product's actual behavior, not deferred claims of completion.
+Mimicus `0.3.0-beta.2` is a source beta for live reference discovery and selected visual analysis. The following boundaries are part of the product's actual behavior, not deferred claims of completion.
 
 ## Source coverage and permissions
 

@@ -1,6 +1,6 @@
 # Final engineering audit
 
-Release candidate: **0.3.0-beta.1**, 2026-10-19. This is a source beta, not an npm publication or a claim of universal website access.
+Release: **0.3.0-beta.2**, 2026-10-19. This source beta adds the supplementary expiry-defect log missing from the first beta's archive and updates version reporting. Runtime behavior is unchanged. This is not an npm publication or a claim of universal website access.
 
 ## Architecture and review
 
@@ -52,7 +52,7 @@ PASS means the scoped observed behavior passed. PARTIAL means a material externa
 
 ## Public verification
 
-[Repository](https://github.com/qwzx4893-stack/mcp-mimicus), [source-beta release](https://github.com/qwzx4893-stack/mcp-mimicus/releases/tag/v0.3.0-beta.1), and [successful hosted runtime verification](https://github.com/qwzx4893-stack/mcp-mimicus/actions/runs/39275362601). Both Linux and Windows jobs passed on runtime commit `6faa327f461340908534f4329ef40082ebd753f2`. The subsequent release evidence commit changes documentation and audit metadata; the release tag resolves its exact SHA. This is **21 PASS, 1 PARTIAL** across the scoped gates. Gate 6 retains the actual Awwwards restriction; automated catalog access itself is BLOCKED without authorization.
+[Repository](https://github.com/qwzx4893-stack/mcp-mimicus), [source-beta release](https://github.com/qwzx4893-stack/mcp-mimicus/releases/tag/v0.3.0-beta.2), and [successful hosted runtime verification](https://github.com/qwzx4893-stack/mcp-mimicus/actions/runs/39275362601). Both Linux and Windows jobs passed on runtime commit `6faa327f461340908534f4329ef40082ebd753f2`. Subsequent release commits change version reporting, documentation and audit metadata; the release tag resolves its exact SHA. All relative Markdown targets are checked against the published file manifest. This is **21 PASS, 1 PARTIAL** across the scoped gates. Gate 6 retains the actual Awwwards restriction; automated catalog access itself is BLOCKED without authorization.
 
 ## Publication hygiene
 

@@ -1,6 +1,6 @@
 {
   "name": "mcp-mimicus",
-  "version": "0.3.0-beta.1",
+  "version": "0.3.0-beta.2",
   "description": "Mimicus — live federated visual design browser for agents",
   "type": "module",
   "private": true,

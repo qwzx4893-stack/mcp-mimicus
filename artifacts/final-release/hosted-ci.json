@@ -17,5 +17,5 @@
     "fix": "Explicit .gitattributes text=auto eol=lf; no formatter rule disabled",
     "linuxWasSuccessful": true
   },
-  "finalReleaseCommit": "Resolve the v0.3.0-beta.1 tag; this report records the independently verified runtime commit without a self-referential commit hash."
+  "finalReleaseCommit": "Resolve the v0.3.0-beta.2 tag; this report records the independently verified runtime commit without a self-referential commit hash."
 }
