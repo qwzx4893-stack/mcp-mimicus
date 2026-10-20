@@ -3,7 +3,7 @@ import type { Config } from '../config.js';
 import { LocalSemantic } from '../semantic.js';
 import { canonicalUrl, hash, mapBounded, safeLabel } from '../util.js';
 import { adapters, discoveryContext, type SourceAdapter } from './providers/index.js';
-import { conceptsFor, rankReferences, referenceText } from './ranking.js';
+import { candidatePool, conceptsFor, rankReferences } from './ranking.js';
 import {
   DiscoveryQuery,
   Provider,
@@ -18,12 +18,17 @@ type Operation = {
   input: DiscoveryQuery;
   cursors: Map<string, string>;
   references: Map<string, Reference>;
+  delivered: Set<string>;
+  pendingRanking: Set<string>;
+  pendingDelivery: Map<string, Awaited<ReturnType<typeof rankReferences>>['results'][number]>;
+  rankingMode: string;
   pages: SourcePage[];
   created: number;
   expires: number;
   busy: boolean;
   controller: AbortController;
 };
+const DELIVERY_LEDGER_LIMIT = 2400;
 export function mergeReferences(records: SourceRecord[]) {
   const merged = new Map<string, Reference>();
   for (const item of records) {
@@ -60,42 +65,6 @@ export function mergeReferences(records: SourceRecord[]) {
     );
   }
   return [...merged.values()];
-}
-function selectCandidates(all: Reference[], input: DiscoveryQuery, limit: number) {
-  const tokens =
-      [
-        input.query,
-        input.category,
-        input.industry,
-        input.technology,
-        input.purpose,
-        input.style,
-        input.interaction,
-        input.mood,
-        input.navigation,
-      ]
-        .filter(Boolean)
-        .join(' ')
-        .toLowerCase()
-        .match(/[\p{L}\p{N}]+/gu) ?? [],
-    score = (r: Reference) =>
-      tokens.filter((t) => referenceText(r).toLowerCase().includes(t)).length,
-    ordered = [...all].sort((a, b) => score(b) - score(a)),
-    buckets = Provider.options
-      .map((p) => ordered.filter((r) => r.relationships.some((i) => i.provider === p)))
-      .filter((b) => b.length),
-    chosen = new Map<string, Reference>();
-  for (const b of buckets) if (chosen.size < limit) chosen.set(b[0]!.id, b[0]!);
-  for (const r of ordered.filter((r) => score(r) > 0)) {
-    if (chosen.size >= limit) break;
-    chosen.set(r.id, r);
-  }
-  for (let i = 0; chosen.size < limit && i < ordered.length; i++)
-    for (const b of buckets) {
-      const r = b[i];
-      if (r && chosen.size < limit) chosen.set(r.id, r);
-    }
-  return [...chosen.values()];
 }
 export class Federation {
   private operations = new Map<string, Operation>();
@@ -144,6 +113,14 @@ export class Federation {
   }
   private async searchInternal(raw: unknown, signal?: AbortSignal) {
     const input = DiscoveryQuery.parse(raw);
+    if (
+      !input.operationId &&
+      input.retentionLimit !== undefined &&
+      input.retentionLimit < input.limit
+    )
+      throw new Error(
+        'retentionLimit must be at least the result limit so every returned reference remains addressable',
+      );
     if (input.stream && !input.operationId) {
       const ids = input.providers ?? Provider.options;
       if (!ids.every((id) => SOURCE_INFO[id].streams.includes(input.stream!)))
@@ -156,6 +133,12 @@ export class Federation {
     if (input.operationId) {
       op = this.operation(input.operationId);
       if (op.busy) throw new Error('This discovery operation is already running');
+      if (op.delivered.size >= DELIVERY_LEDGER_LIMIT) {
+        this.end(op.id);
+        throw new Error(
+          'Discovery delivery history reached its 2400-ID RAM limit; operation closed. Start a fresh search to continue.',
+        );
+      }
       for (const key of Object.keys(raw as Record<string, unknown>))
         if (
           key !== 'operationId' &&
@@ -172,6 +155,10 @@ export class Federation {
         input,
         cursors: new Map(),
         references: new Map(),
+        delivered: new Set(),
+        pendingRanking: new Set(),
+        pendingDelivery: new Map(),
+        rankingMode: 'lexical',
         pages: [],
         created: Date.now(),
         expires: Date.now() + this.config.operationTtlMs,
@@ -188,13 +175,17 @@ export class Federation {
       ]),
       combined = AbortSignal.any([cancel, AbortSignal.timeout(this.config.timeoutMs)]),
       transport = discoveryContext(this.config, op.input, op.cursors, combined),
-      selected = this.sources.filter(
-        (a) =>
-          (!op.input.providers || op.input.providers.includes(a.id)) &&
-          SOURCE_INFO[a.id].streams
-            .filter((s) => s !== 'operator-reference')
-            .some((s) => op.cursors.get(a.id + ':' + s) !== '$done'),
-      );
+      selected =
+        op.pendingRanking.size || op.pendingDelivery.size
+          ? []
+          : this.sources.filter(
+              (a) =>
+                (!op.input.providers || op.input.providers.includes(a.id)) &&
+                SOURCE_INFO[a.id].streams
+                  .filter((s) => s !== 'operator-reference')
+                  .filter((s) => !op.input.stream || s === op.input.stream)
+                  .some((s) => op.cursors.get(a.id + ':' + s) !== '$done'),
+            );
     let pages: SourcePage[] = [];
     try {
       const batches = await mapBounded(
@@ -205,12 +196,16 @@ export class Federation {
             return await adapter.search(transport.context);
           } catch (e) {
             cancel.throwIfAborted();
+            const restricted =
+              /\bHTTP\s*(?:401|403)\b|robots(?:\.txt)?[^\n]{0,100}(?:disallow|denied|blocked)/i.test(
+                String(e),
+              );
             return [
               {
                 provider: adapter.id,
                 stream: input.stream ?? 'source',
                 records: [],
-                status: 'unavailable' as const,
+                status: restricted ? ('blocked' as const) : ('unavailable' as const),
                 coverage: 'Source request failed; no disk or stale fallback',
                 retrievedAt: new Date().toISOString(),
                 diagnostics: [String(e).slice(0, 500)],
@@ -228,12 +223,10 @@ export class Federation {
       if (!this.operations.has(op.id))
         throw new Error('Discovery operation was closed while running');
       const all = mergeReferences(
-          pages
-            .flatMap((p) => p.records)
-            .concat([...op.references.values()].flatMap((r) => r.relationships)),
-        ),
-        chosen = selectCandidates(all, op.input, this.config.candidateLimit);
-      op.references = new Map(chosen.map((r) => [r.id, r]));
+        pages
+          .flatMap((p) => p.records)
+          .concat([...op.references.values()].flatMap((r) => r.relationships)),
+      );
       const streamPages = new Map(op.pages.map((p) => [p.provider + ':' + p.stream, p]));
       for (const p of pages)
         streamPages.set(p.provider + ':' + p.stream, {
@@ -244,16 +237,93 @@ export class Federation {
       op.expires = Math.min(op.created + 900000, Date.now() + this.config.operationTtlMs);
       cancel.throwIfAborted();
       const currentIds = new Set(mergeReferences(pages.flatMap((p) => p.records)).map((r) => r.id)),
-        currentCandidates = [...op.references.values()].filter(
-          (r) => !input.operationId || currentIds.has(r.id),
+        currentCandidates = all.filter(
+          (r) => !op.delivered.has(r.id) && (currentIds.has(r.id) || op.pendingRanking.has(r.id)),
         ),
-        ranked = await rankReferences(
-          currentCandidates,
-          combined.aborted ? { ...op.input, retrieval: 'lexical' } : op.input,
-          this.semantic,
-          combined,
-        );
+        reusedRanking = op.pendingDelivery.size > 0 && op.pendingRanking.size === 0,
+        previousRankingMode = op.rankingMode,
+        cachedRows = [...op.pendingDelivery.values()],
+        scoredPass = reusedRanking
+          ? {
+              ...(await rankReferences(
+                [],
+                { ...op.input, retrieval: 'lexical' },
+                this.semantic,
+                cancel,
+              )),
+              results: cachedRows.slice(0, op.input.limit),
+              rankedCandidates: cachedRows,
+              unscoredReferenceIds: [...op.pendingRanking],
+              retrieval: op.rankingMode + '-retained-ranking',
+            }
+          : await rankReferences(
+              currentCandidates,
+              combined.aborted ? { ...op.input, retrieval: 'lexical' } : op.input,
+              this.semantic,
+              combined,
+            ),
+        modeChanged =
+          !reusedRanking && cachedRows.length > 0 && op.rankingMode !== scoredPass.retrieval,
+        combinedRows = reusedRanking ? cachedRows : [...scoredPass.rankedCandidates, ...cachedRows],
+        orderedRows = modeChanged ? combinedRows : combinedRows.sort((a, b) => b.score - a.score),
+        pass = {
+          ...scoredPass,
+          rankedCandidates: orderedRows,
+          results: orderedRows.slice(0, op.input.limit),
+          retrieval: modeChanged
+            ? op.rankingMode + '+' + scoredPass.retrieval
+            : scoredPass.retrieval,
+        },
+        {
+          scoredReferenceIds: _scoredIds,
+          unscoredReferenceIds,
+          rankedCandidates,
+          ...ranked
+        } = pass;
       cancel.throwIfAborted();
+      if (
+        op.delivered.size + ranked.results.filter((r) => !op.delivered.has(r.id)).length >
+        DELIVERY_LEDGER_LIMIT
+      ) {
+        this.end(op.id);
+        throw new Error(
+          'This result window would exceed the 2400-ID RAM delivery history limit; operation closed. Start a fresh search.',
+        );
+      }
+      // Rank fetched metadata before retention. Previously an irreversible
+      // lexical cutoff discarded references before MiniLM could see them.
+      const retentionLimit =
+        op.input.retentionLimit ??
+        Math.min(600, Math.max(320, (op.input.candidateWindow ?? this.config.candidateLimit) * 2));
+      const chosen = new Map<string, Reference>(),
+        byId = new Map(all.map((r) => [r.id, r]));
+      const add = (id: string) => {
+        const r = byId.get(id);
+        if (r && chosen.size < retentionLimit) chosen.set(id, r);
+      };
+      // Keep current results and pending work, then recently delivered addresses.
+      // Otherwise old deliveries can crowd new ranked rows out before delivery.
+      // Any old address evicted by the declared cap is reported explicitly.
+      for (const r of ranked.results) add(r.id);
+      for (const r of rankedCandidates) add(r.id);
+      for (const id of unscoredReferenceIds) add(id);
+      for (const id of [...op.delivered].reverse()) add(id);
+      for (const row of candidatePool(
+        all.map((reference) => ({ reference, lexicalScore: 0 })),
+        all,
+        retentionLimit,
+      ))
+        add(row.reference.id);
+      const evictedReferenceIds = all.filter((r) => !chosen.has(r.id)).map((r) => r.id);
+      op.references = chosen;
+      op.delivered = new Set([...op.delivered, ...ranked.results.map((r) => r.id)]);
+      op.pendingRanking = new Set(unscoredReferenceIds.filter((id) => chosen.has(id)));
+      op.pendingDelivery = new Map(
+        rankedCandidates
+          .filter((r) => chosen.has(r.id) && !op.delivered.has(r.id))
+          .map((r) => [r.id, r]),
+      );
+      if (!reusedRanking) op.rankingMode = ranked.retrieval;
       if (combined.aborted && op.input.retrieval !== 'lexical') {
         ranked.retrieval = 'lexical-fallback';
         ranked.semanticDeadlineExceeded = true;
@@ -267,18 +337,60 @@ export class Federation {
         metadataHttpRequests: transport.requestCount(),
         requestCountScope: 'Guarded source HTTP; official MCP protocol/tool calls are separate',
         ...ranked,
-        resultScope: input.operationId ? 'new-source-pages' : 'initial-source-pages',
+        pipeline: {
+          ...ranked.pipeline,
+          reusedRankedCandidates: cachedRows.length,
+        },
+        rankingModeTransition: modeChanged
+          ? {
+              previous: previousRankingMode,
+              current: scoredPass.retrieval,
+              mergedByScore: false,
+              meaning:
+                'Different ranking modes are grouped, not compared as interchangeable numeric scores.',
+            }
+          : undefined,
+        resultScope: !input.operationId
+          ? 'initial-source-pages'
+          : pages.length
+            ? 'new-source-pages'
+            : reusedRanking
+              ? 'retained-ranked-candidates'
+              : 'deferred-semantic-candidates',
+        includesDeferredCandidates: op.pendingRanking.size > 0,
         currentPageCandidates: currentCandidates.length,
+        retrievalStages: {
+          fetchedSourceRecords: pages.reduce((sum, p) => sum + p.records.length, 0),
+          currentPageDistinctReferences: currentIds.size,
+          mergedDistinctReferences: all.length,
+          candidatesBeforeRanking: currentCandidates.length,
+          pendingSemanticCandidates: op.pendingRanking.size,
+          pendingRankedCandidates: op.pendingDelivery.size,
+          retentionLimit,
+          retainedDeliveredReferences: [...op.delivered].filter((id) => chosen.has(id)).length,
+          deliveredIdsTracked: op.delivered.size,
+          deliveryLedgerLimit: DELIVERY_LEDGER_LIMIT,
+        },
         sources: op.pages.map(({ records, ...p }) => ({ ...p, returnedRecords: records.length })),
         partialCoverage: op.pages.some((p) => p.status !== 'available'),
-        retainedCandidates: chosen.length,
-        evictedCandidates: Math.max(0, all.length - chosen.length),
-        hasMore: [...op.cursors.values()].some((v) => v !== '$done'),
+        retainedCandidates: chosen.size,
+        evictedCandidates: evictedReferenceIds.length,
+        evictedReferenceIds,
+        continuationBlocked:
+          op.delivered.size >= DELIVERY_LEDGER_LIMIT
+            ? 'The 2400-ID RAM delivery ledger is full. Start a fresh search for further discovery.'
+            : undefined,
+        hasMore:
+          op.pendingRanking.size > 0 ||
+          op.pendingDelivery.size > 0 ||
+          [...op.cursors.values()].some((v) => v !== '$done'),
         continuation: [...op.cursors.entries()]
           .filter(([, v]) => v !== '$done')
-          .map(([stream]) => stream),
+          .map(([stream]) => stream)
+          .concat(op.pendingDelivery.size ? ['retained-ranked-candidates'] : [])
+          .concat(op.pendingRanking.size ? ['retained-semantic-candidates'] : []),
         meaning:
-          'Only live source candidates or explicitly operator-supplied unverified references from this bounded operation. Continuation ranks current pages; previous retained references remain addressable by ID. No catalog, response payloads or site embeddings are written to disk.',
+          'Live source candidates or explicitly operator-supplied unverified references in bounded RAM. Continuation ranks new pages and retained not-yet-embedded candidates without repeating delivered references. Returned addresses remain valid until reported eviction or operation expiry. No catalog or site embeddings are written to disk.',
         untrustedEvidence: true,
       };
     } catch (e) {
@@ -333,6 +445,9 @@ export class Federation {
     if (op) {
       op.controller.abort();
       op.references.clear();
+      op.delivered.clear();
+      op.pendingRanking.clear();
+      op.pendingDelivery.clear();
       op.cursors.clear();
       op.pages = [];
       this.operations.delete(id);
@@ -345,6 +460,14 @@ export class Federation {
       activeOperations: this.operations.size,
       retainedReferences: [...this.operations.values()].reduce(
         (sum, op) => sum + op.references.size,
+        0,
+      ),
+      pendingRankedCandidates: [...this.operations.values()].reduce(
+        (sum, op) => sum + op.pendingDelivery.size,
+        0,
+      ),
+      pendingSemanticCandidates: [...this.operations.values()].reduce(
+        (sum, op) => sum + op.pendingRanking.size,
         0,
       ),
       persistentCatalog: false,

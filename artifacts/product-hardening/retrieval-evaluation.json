@@ -1,0 +1,1908 @@
+{
+  "schema": 1,
+  "measuredAt": "2026-10-19T19:46:50.824Z",
+  "node": "v24.19.0",
+  "fixtureSha256": "e4d0a2406fecc2b96610f825cd0f15e67bc46a20724b7af45f86028c29104cb5",
+  "provenance": "Agent-authored synthetic relevance labels independently adjudicated by the root agent before final measurement, including cross-intent coffee/Arabic grades. Not human judgments, visual-quality labels, or live-source connectivity.",
+  "scope": {
+    "intents": 10,
+    "references": 180,
+    "providers": 6,
+    "gradedPositivesPerIntent": "3, or 6 in the overlapping coffee/multilingual cases"
+  },
+  "model": "Xenova/all-MiniLM-L6-v2@751bff37182d3f1213fa05d7196b954e230abad9:q8:mean:l2",
+  "cases": [
+    {
+      "id": "coffee",
+      "query": "premium coffee subscriptions",
+      "grades": {
+        "coffee-positive-0": 3,
+        "coffee-positive-1": 2,
+        "coffee-positive-2": 1,
+        "multilingual-positive-0": 1,
+        "multilingual-positive-1": 2,
+        "multilingual-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6982557647956457,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 433,
+          "resultItemIds": [
+            "coffee-positive-0",
+            "coffee-negative-1",
+            "coffee-negative-0",
+            "coffee-negative-2",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "multilingual-positive-0",
+            "multilingual-negative-2",
+            "multilingual-negative-1",
+            "multilingual-negative-0"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "multilingual-positive-1",
+            "coffee-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6982557647956457,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 422,
+          "resultItemIds": [
+            "coffee-positive-0",
+            "coffee-negative-1",
+            "coffee-negative-0",
+            "coffee-negative-2",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "multilingual-positive-0",
+            "multilingual-negative-1",
+            "multilingual-negative-2",
+            "multilingual-negative-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 70,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.92,
+            "semanticMs": 418.97,
+            "totalMs": 420.9,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "coffee-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6982557647956457,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2020,
+          "resultItemIds": [
+            "coffee-positive-0",
+            "coffee-negative-1",
+            "coffee-negative-0",
+            "coffee-negative-2",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "multilingual-positive-0",
+            "multilingual-negative-1",
+            "multilingual-negative-2",
+            "multilingual-negative-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 0.94,
+            "semanticMs": 2018.67,
+            "totalMs": 2019.62,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.3333333333333333,
+          "ndcg10": 0.39183112491009,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 3,
+          "resultItemIds": [
+            "coffee-negative-1",
+            "coffee-negative-2",
+            "coffee-positive-0",
+            "coffee-negative-0",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "multilingual-negative-1",
+            "multilingual-negative-2",
+            "multilingual-negative-0",
+            "multilingual-positive-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 2.22,
+            "semanticMs": 0.28,
+            "totalMs": 2.5,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "agency",
+      "query": "creative agency portfolio",
+      "grades": {
+        "agency-positive-0": 3,
+        "agency-positive-1": 2,
+        "agency-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 1083,
+          "resultItemIds": [
+            "agency-positive-0",
+            "agency-negative-0",
+            "agency-negative-1",
+            "agency-negative-2",
+            "agency-positive-2",
+            "architecture-negative-2",
+            "editorial-negative-2",
+            "architecture-negative-0",
+            "editorial-negative-0",
+            "architecture-negative-1"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "agency-positive-1",
+            "agency-positive-2",
+            "agency-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 1297,
+          "resultItemIds": [
+            "agency-positive-0",
+            "agency-negative-0",
+            "agency-negative-1",
+            "agency-negative-2",
+            "agency-positive-2",
+            "architecture-negative-2",
+            "editorial-negative-2",
+            "architecture-negative-0",
+            "editorial-negative-0",
+            "architecture-negative-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 32,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 48,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.73,
+            "semanticMs": 1295.44,
+            "totalMs": 1297.17,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "agency-positive-2",
+            "agency-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "agency-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 2064,
+          "resultItemIds": [
+            "agency-positive-0",
+            "agency-negative-0",
+            "agency-negative-1",
+            "agency-negative-2",
+            "agency-positive-2",
+            "architecture-negative-2",
+            "editorial-negative-2",
+            "architecture-negative-0",
+            "editorial-negative-0",
+            "architecture-negative-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 32,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 128,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.68,
+            "semanticMs": 2062.49,
+            "totalMs": 2064.17,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "agency-positive-1",
+            "agency-positive-2",
+            "agency-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.25,
+          "ndcg10": 0.36214894418802107,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "agency-negative-2",
+            "agency-negative-1",
+            "agency-negative-0",
+            "agency-positive-0",
+            "agency-positive-2",
+            "interaction-negative-0",
+            "navigation-negative-1",
+            "editorial-negative-1",
+            "webgl-negative-2",
+            "interaction-negative-2"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 32,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 128,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.42,
+            "semanticMs": 0.14,
+            "totalMs": 1.56,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "agency-positive-1",
+            "agency-positive-2",
+            "agency-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "webgl",
+      "query": "immersive WebGL 3D",
+      "grades": {
+        "webgl-positive-0": 3,
+        "webgl-positive-1": 2,
+        "webgl-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.8124242481930318,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1452,
+          "resultItemIds": [
+            "webgl-positive-0",
+            "webgl-positive-2",
+            "webgl-negative-0",
+            "webgl-negative-1",
+            "webgl-negative-2",
+            "interaction-positive-2",
+            "architecture-positive-2",
+            "interaction-positive-1",
+            "agency-positive-1",
+            "navigation-positive-0"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "webgl-positive-2",
+            "webgl-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "webgl-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.8124242481930318,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1576,
+          "resultItemIds": [
+            "webgl-positive-0",
+            "webgl-positive-2",
+            "webgl-negative-0",
+            "webgl-negative-2",
+            "webgl-negative-1",
+            "product-positive-1",
+            "interaction-positive-1",
+            "agency-positive-1",
+            "navigation-positive-0",
+            "neutral-4"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 75,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.83,
+            "semanticMs": 1573.85,
+            "totalMs": 1575.68,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "webgl-positive-2",
+            "webgl-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "webgl-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9261946662938199,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2685,
+          "resultItemIds": [
+            "webgl-positive-0",
+            "webgl-positive-2",
+            "webgl-negative-0",
+            "webgl-negative-2",
+            "webgl-negative-1",
+            "webgl-positive-1",
+            "product-positive-1",
+            "architecture-positive-2",
+            "interaction-positive-1",
+            "interaction-positive-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.75,
+            "semanticMs": 2683.01,
+            "totalMs": 2684.77,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "webgl-positive-2",
+            "webgl-positive-0",
+            "webgl-positive-1"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "webgl-positive-0",
+            "webgl-negative-2",
+            "webgl-negative-0",
+            "webgl-negative-1",
+            "webgl-positive-2",
+            "neutral-96",
+            "neutral-55",
+            "neutral-35",
+            "neutral-58",
+            "neutral-11"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.39,
+            "semanticMs": 0.13,
+            "totalMs": 1.52,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "webgl-positive-2",
+            "webgl-positive-0",
+            "webgl-positive-1"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "product",
+      "query": "product storytelling scroll",
+      "grades": {
+        "product-positive-0": 3,
+        "product-positive-1": 2,
+        "product-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1615,
+          "resultItemIds": [
+            "product-positive-0",
+            "product-negative-0",
+            "product-negative-1",
+            "product-negative-2",
+            "product-positive-2",
+            "saas-negative-2",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-positive-0",
+            "interaction-negative-1"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "product-positive-2",
+            "product-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "product-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1619,
+          "resultItemIds": [
+            "product-positive-0",
+            "product-negative-2",
+            "product-negative-1",
+            "product-negative-0",
+            "product-positive-2",
+            "saas-negative-2",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-positive-0",
+            "interaction-negative-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 9,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 71,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.82,
+            "semanticMs": 1617.25,
+            "totalMs": 1619.08,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "product-positive-1",
+            "product-positive-2",
+            "product-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 3379,
+          "resultItemIds": [
+            "product-positive-0",
+            "product-negative-2",
+            "product-negative-1",
+            "product-negative-0",
+            "product-positive-2",
+            "saas-negative-2",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-positive-0",
+            "interaction-negative-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 9,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 151,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 2.17,
+            "semanticMs": 3377.06,
+            "totalMs": 3379.24,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "product-positive-1",
+            "product-positive-2",
+            "product-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.25,
+          "ndcg10": 0.36214894418802107,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "product-negative-1",
+            "product-negative-2",
+            "product-negative-0",
+            "product-positive-0",
+            "product-positive-2",
+            "saas-negative-2",
+            "saas-positive-0",
+            "saas-negative-1",
+            "saas-negative-0",
+            "neutral-96"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 9,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 151,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.66,
+            "semanticMs": 0.08,
+            "totalMs": 1.74,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "product-positive-1",
+            "product-positive-2",
+            "product-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "editorial",
+      "query": "typography magazine editorial",
+      "grades": {
+        "editorial-positive-0": 3,
+        "editorial-positive-1": 2,
+        "editorial-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 1562,
+          "resultItemIds": [
+            "editorial-positive-0",
+            "editorial-negative-1",
+            "editorial-negative-2",
+            "editorial-negative-0",
+            "editorial-positive-2",
+            "agency-positive-1",
+            "agency-negative-2",
+            "neutral-52",
+            "multilingual-negative-1",
+            "multilingual-negative-2"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "editorial-positive-2",
+            "editorial-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "editorial-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1640,
+          "resultItemIds": [
+            "editorial-positive-0",
+            "editorial-negative-0",
+            "editorial-negative-2",
+            "editorial-negative-1",
+            "editorial-positive-2",
+            "agency-positive-0",
+            "agency-positive-1",
+            "agency-positive-2",
+            "agency-negative-1",
+            "coffee-negative-2"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 75,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.42,
+            "semanticMs": 1638.35,
+            "totalMs": 1639.77,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "editorial-positive-2",
+            "editorial-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "editorial-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2983,
+          "resultItemIds": [
+            "editorial-positive-0",
+            "editorial-negative-0",
+            "editorial-negative-2",
+            "editorial-negative-1",
+            "editorial-positive-2",
+            "editorial-positive-1",
+            "agency-positive-0",
+            "agency-positive-1",
+            "architecture-positive-0",
+            "agency-negative-2"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.39,
+            "semanticMs": 2981.43,
+            "totalMs": 2982.82,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "editorial-positive-2",
+            "editorial-positive-1",
+            "editorial-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.25,
+          "ndcg10": 0.36214894418802107,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "editorial-negative-1",
+            "editorial-negative-0",
+            "editorial-negative-2",
+            "editorial-positive-0",
+            "editorial-positive-2",
+            "neutral-96",
+            "neutral-55",
+            "neutral-35",
+            "neutral-58",
+            "neutral-11"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.79,
+            "semanticMs": 0.07,
+            "totalMs": 1.86,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "editorial-positive-2",
+            "editorial-positive-1",
+            "editorial-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "saas",
+      "query": "SaaS product landing pricing",
+      "grades": {
+        "saas-positive-0": 3,
+        "saas-positive-1": 2,
+        "saas-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1578,
+          "resultItemIds": [
+            "saas-positive-0",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-negative-2",
+            "saas-positive-2",
+            "product-positive-2",
+            "product-positive-0",
+            "product-negative-1",
+            "product-negative-0",
+            "product-negative-2"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "saas-positive-0",
+            "saas-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "saas-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1569,
+          "resultItemIds": [
+            "saas-positive-0",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-negative-2",
+            "saas-positive-2",
+            "product-positive-2",
+            "product-positive-0",
+            "product-negative-1",
+            "product-negative-2",
+            "product-negative-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 70,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.41,
+            "semanticMs": 1567.08,
+            "totalMs": 1568.5,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "saas-positive-0",
+            "saas-positive-1",
+            "saas-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 3464,
+          "resultItemIds": [
+            "saas-positive-0",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-negative-2",
+            "saas-positive-2",
+            "product-positive-2",
+            "product-positive-0",
+            "product-negative-1",
+            "product-negative-2",
+            "coffee-positive-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.44,
+            "semanticMs": 3461.96,
+            "totalMs": 3463.4,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "saas-positive-0",
+            "saas-positive-1",
+            "saas-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.5,
+          "ndcg10": 0.5113881456198478,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "saas-negative-2",
+            "saas-positive-0",
+            "saas-negative-1",
+            "saas-negative-0",
+            "saas-positive-2",
+            "product-positive-2",
+            "product-negative-1",
+            "product-negative-2",
+            "product-negative-0",
+            "product-positive-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.36,
+            "semanticMs": 0.08,
+            "totalMs": 1.43,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "saas-positive-0",
+            "saas-positive-1",
+            "saas-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "architecture",
+      "query": "architecture studio projects",
+      "grades": {
+        "architecture-positive-0": 3,
+        "architecture-positive-1": 2,
+        "architecture-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7807407501417308,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1617,
+          "resultItemIds": [
+            "architecture-positive-0",
+            "architecture-negative-1",
+            "architecture-negative-0",
+            "architecture-negative-2",
+            "agency-positive-0",
+            "agency-positive-1",
+            "architecture-positive-2",
+            "interaction-positive-1",
+            "navigation-positive-0",
+            "agency-negative-2"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "architecture-positive-2",
+            "architecture-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "architecture-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.881498321091982,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1574,
+          "resultItemIds": [
+            "architecture-positive-0",
+            "architecture-negative-1",
+            "architecture-negative-0",
+            "architecture-negative-2",
+            "agency-positive-0",
+            "agency-positive-1",
+            "architecture-positive-2",
+            "architecture-positive-1",
+            "navigation-positive-0",
+            "interaction-positive-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 7,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 73,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 2.13,
+            "semanticMs": 1571.76,
+            "totalMs": 1573.9,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "architecture-positive-2",
+            "architecture-positive-1",
+            "architecture-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.3333333333333333,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.881498321091982,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 3243,
+          "resultItemIds": [
+            "architecture-positive-0",
+            "architecture-negative-1",
+            "architecture-negative-0",
+            "architecture-negative-2",
+            "agency-positive-0",
+            "agency-positive-1",
+            "architecture-positive-2",
+            "architecture-positive-1",
+            "navigation-positive-0",
+            "interaction-positive-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 7,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 153,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.82,
+            "semanticMs": 3240.89,
+            "totalMs": 3242.71,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "architecture-positive-2",
+            "architecture-positive-1",
+            "architecture-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.3333333333333333,
+          "ndcg10": 0.4105497398133615,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "architecture-negative-1",
+            "architecture-negative-2",
+            "architecture-positive-0",
+            "architecture-negative-0",
+            "agency-positive-0",
+            "architecture-positive-2",
+            "agency-positive-1",
+            "neutral-96",
+            "neutral-55",
+            "neutral-35"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 7,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 153,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.7,
+            "semanticMs": 0.08,
+            "totalMs": 1.78,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "architecture-positive-2",
+            "architecture-positive-1",
+            "architecture-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "navigation",
+      "query": "fullscreen menu navigation",
+      "grades": {
+        "navigation-positive-0": 3,
+        "navigation-positive-1": 2,
+        "navigation-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1681,
+          "resultItemIds": [
+            "navigation-positive-0",
+            "navigation-negative-2",
+            "navigation-negative-0",
+            "navigation-negative-1",
+            "navigation-positive-2",
+            "navigation-positive-1",
+            "webgl-positive-0",
+            "interaction-negative-2",
+            "interaction-negative-0",
+            "interaction-negative-1"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "navigation-positive-0",
+            "navigation-positive-2",
+            "navigation-positive-1"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.7864386820782063,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1715,
+          "resultItemIds": [
+            "navigation-positive-0",
+            "navigation-negative-0",
+            "navigation-negative-2",
+            "navigation-negative-1",
+            "navigation-positive-2",
+            "webgl-positive-0",
+            "interaction-negative-0",
+            "webgl-negative-0",
+            "product-positive-1",
+            "interaction-positive-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 6,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 74,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 2.04,
+            "semanticMs": 1713.22,
+            "totalMs": 1715.26,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "navigation-positive-0",
+            "navigation-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "navigation-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 3102,
+          "resultItemIds": [
+            "navigation-positive-0",
+            "navigation-negative-0",
+            "navigation-negative-2",
+            "navigation-negative-1",
+            "navigation-positive-2",
+            "navigation-positive-1",
+            "webgl-positive-0",
+            "interaction-negative-0",
+            "interaction-positive-0",
+            "interaction-negative-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 6,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 154,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.5,
+            "semanticMs": 3100.28,
+            "totalMs": 3101.78,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "navigation-positive-0",
+            "navigation-positive-2",
+            "navigation-positive-1"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.5,
+          "ndcg10": 0.5113881456198478,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "navigation-negative-1",
+            "navigation-positive-0",
+            "navigation-negative-2",
+            "navigation-negative-0",
+            "navigation-positive-2",
+            "webgl-positive-0",
+            "neutral-96",
+            "neutral-55",
+            "neutral-35",
+            "neutral-58"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 6,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 154,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.45,
+            "semanticMs": 0.06,
+            "totalMs": 1.51,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "navigation-positive-0",
+            "navigation-positive-2",
+            "navigation-positive-1"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "interaction",
+      "query": "hover cards cursor animation",
+      "grades": {
+        "interaction-positive-0": 3,
+        "interaction-positive-1": 2,
+        "interaction-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1728,
+          "resultItemIds": [
+            "interaction-positive-0",
+            "interaction-negative-0",
+            "interaction-negative-2",
+            "interaction-negative-1",
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "webgl-negative-2",
+            "webgl-positive-2",
+            "webgl-positive-0",
+            "product-negative-2"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "interaction-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1726,
+          "resultItemIds": [
+            "interaction-positive-0",
+            "interaction-negative-2",
+            "interaction-negative-0",
+            "interaction-negative-1",
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "webgl-positive-0",
+            "webgl-negative-0",
+            "webgl-positive-2",
+            "product-negative-2"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 75,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.41,
+            "semanticMs": 1724.12,
+            "totalMs": 1725.53,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "interaction-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.6666666666666666,
+          "recall10": 1,
+          "mrr10": 1,
+          "ndcg10": 0.9002091001789945,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 3639,
+          "resultItemIds": [
+            "interaction-positive-0",
+            "interaction-negative-2",
+            "interaction-negative-0",
+            "interaction-negative-1",
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "webgl-positive-0",
+            "webgl-negative-2",
+            "webgl-negative-0",
+            "webgl-positive-2"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.45,
+            "semanticMs": 3637.55,
+            "totalMs": 3639.01,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "interaction-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.6666666666666666,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.25,
+          "ndcg10": 0.36214894418802107,
+          "sourceDiversity10": 5,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "interaction-negative-0",
+            "interaction-negative-2",
+            "interaction-negative-1",
+            "interaction-positive-0",
+            "interaction-positive-2",
+            "neutral-96",
+            "neutral-55",
+            "neutral-35",
+            "neutral-58",
+            "neutral-11"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 5,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 155,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.66,
+            "semanticMs": 0.08,
+            "totalMs": 1.74,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "interaction-positive-2",
+            "interaction-positive-1",
+            "interaction-positive-0"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    },
+    {
+      "id": "multilingual",
+      "query": "مقهى coffee roastery",
+      "grades": {
+        "multilingual-positive-0": 3,
+        "multilingual-positive-1": 2,
+        "multilingual-positive-2": 1,
+        "coffee-positive-0": 2,
+        "coffee-positive-1": 2,
+        "coffee-positive-2": 1
+      },
+      "variants": {
+        "baseline80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6928176982004968,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1604,
+          "resultItemIds": [
+            "multilingual-positive-0",
+            "multilingual-negative-2",
+            "multilingual-negative-1",
+            "multilingual-negative-0",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "coffee-negative-1",
+            "coffee-negative-0",
+            "coffee-negative-2",
+            "coffee-positive-0"
+          ],
+          "pipeline": {
+            "mergedReferences": 180,
+            "retainedBeforeRanking": 80,
+            "eligibleAfterNativeFilters": 80,
+            "semanticPoolCandidates": 80,
+            "discardedBeforeInference": 100
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "multilingual-positive-1",
+            "coffee-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised80": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6928176982004968,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 1555,
+          "resultItemIds": [
+            "multilingual-positive-0",
+            "multilingual-negative-2",
+            "multilingual-negative-0",
+            "multilingual-negative-1",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "coffee-negative-0",
+            "coffee-negative-1",
+            "coffee-negative-2",
+            "coffee-positive-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 80,
+            "semanticPoolCandidates": 80,
+            "admittedWithoutLexicalMatch": 70,
+            "deferredSemanticCandidates": 100,
+            "lexicalMs": 1.99,
+            "semanticMs": 1553.3,
+            "totalMs": 1555.3,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [
+            "coffee-positive-1"
+          ],
+          "returned": 10
+        },
+        "revised160": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 1,
+          "ndcg10": 0.6928176982004968,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2984,
+          "resultItemIds": [
+            "multilingual-positive-0",
+            "multilingual-negative-2",
+            "multilingual-negative-0",
+            "multilingual-negative-1",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "coffee-negative-0",
+            "coffee-negative-1",
+            "coffee-negative-2",
+            "coffee-positive-1"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 20,
+            "lexicalMs": 1.41,
+            "semanticMs": 2982.59,
+            "totalMs": 2984.01,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        },
+        "revisedLexical": {
+          "recall5": 0.3333333333333333,
+          "recall10": 0.6666666666666666,
+          "mrr10": 0.25,
+          "ndcg10": 0.3750347033771245,
+          "sourceDiversity10": 6,
+          "empty": 0,
+          "durationMs": 2,
+          "resultItemIds": [
+            "multilingual-negative-1",
+            "multilingual-negative-2",
+            "multilingual-negative-0",
+            "multilingual-positive-0",
+            "multilingual-positive-2",
+            "coffee-positive-2",
+            "coffee-negative-1",
+            "coffee-negative-2",
+            "coffee-positive-0",
+            "coffee-negative-0"
+          ],
+          "pipeline": {
+            "fetchedReferences": 180,
+            "eligibleAfterNativeFilters": 180,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 10,
+            "lexicalScoredCandidates": 180,
+            "semanticWindowBudget": 160,
+            "semanticPoolCandidates": 160,
+            "admittedWithoutLexicalMatch": 150,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 1.75,
+            "semanticMs": 0.07,
+            "totalMs": 1.83,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality."
+          },
+          "relevantAdmittedToScoring": [
+            "multilingual-positive-2",
+            "multilingual-positive-0",
+            "coffee-positive-0",
+            "multilingual-positive-1",
+            "coffee-positive-1",
+            "coffee-positive-2"
+          ],
+          "relevantDiscardedBeforeScoring": [],
+          "returned": 10
+        }
+      }
+    }
+  ],
+  "aggregates": {
+    "baseline80": {
+      "recall5": 0.5666666666666667,
+      "recall10": 0.7333333333333333,
+      "mrr10": 1,
+      "ndcg10": 0.7930411390001719,
+      "sourceDiversity10": 5.8,
+      "empty": 0,
+      "durationMs": 1435.3,
+      "p50Ms": 1578,
+      "p95Ms": 1728
+    },
+    "revised80": {
+      "recall5": 0.5666666666666667,
+      "recall10": 0.7333333333333334,
+      "mrr10": 1,
+      "ndcg10": 0.7917398542851182,
+      "sourceDiversity10": 5.9,
+      "empty": 0,
+      "durationMs": 1469.3,
+      "p50Ms": 1574,
+      "p95Ms": 1726
+    },
+    "revised160": {
+      "recall5": 0.5666666666666667,
+      "recall10": 0.8333333333333333,
+      "mrr10": 1,
+      "ndcg10": 0.8258709797153546,
+      "sourceDiversity10": 5.8,
+      "empty": 0,
+      "durationMs": 2956.3,
+      "p50Ms": 2984,
+      "p95Ms": 3639
+    },
+    "revisedLexical": {
+      "recall5": 0.5666666666666667,
+      "recall10": 0.6666666666666667,
+      "mrr10": 0.39166666666666666,
+      "ndcg10": 0.4435226318170563,
+      "sourceDiversity10": 5.8,
+      "empty": 0,
+      "durationMs": 2.1,
+      "p50Ms": 2,
+      "p95Ms": 3
+    }
+  },
+  "memory": {
+    "before": {
+      "rss": 212164608,
+      "heapTotal": 67702784,
+      "heapUsed": 32309200,
+      "external": 51305482,
+      "arrayBuffers": 44439835
+    },
+    "after": {
+      "rss": 347025408,
+      "heapTotal": 120274944,
+      "heapUsed": 58432816,
+      "external": 61764596,
+      "arrayBuffers": 54898909
+    },
+    "meaning": "Process RSS includes loaded ONNX model/runtime and allocator high-water marks; no per-variant peak attribution."
+  },
+  "failures": [],
+  "modelLoadMs": 1121,
+  "modelIntegrity": {
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "verifiedFiles": 4
+  }
+}

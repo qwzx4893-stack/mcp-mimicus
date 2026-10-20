@@ -42,7 +42,7 @@ export const SourceRecordSchema = z.object({
 });
 export type SourceRecord = z.infer<typeof SourceRecordSchema>;
 const operatorReference = z.object({
-  title: z.string().min(1).max(300),
+  title: z.string().min(1).max(300).optional(),
   url: z
     .string()
     .url()
@@ -78,7 +78,8 @@ const operatorReference = z.object({
       } catch {
         return false;
       }
-    }, 'Provide an exact public Awwwards /sites/ reference link'),
+    }, 'Provide an exact public Awwwards /sites/ reference link')
+    .optional(),
 });
 export const DiscoveryQuery = z.object({
   query: z.string().max(500).default(''),
@@ -96,6 +97,8 @@ export const DiscoveryQuery = z.object({
   originalReferences: z.array(operatorReference).max(8).optional(),
   retrieval: z.enum(['lexical', 'hybrid', 'semantic']).default('hybrid'),
   limit: z.number().int().min(1).max(30).default(10),
+  candidateWindow: z.number().int().min(10).max(200).optional(),
+  retentionLimit: z.number().int().min(10).max(600).optional(),
   operationId: z.string().max(100).optional(),
 });
 export type DiscoveryQuery = z.infer<typeof DiscoveryQuery>;

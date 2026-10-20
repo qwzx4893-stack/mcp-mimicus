@@ -1,0 +1,434 @@
+{
+  "measuredAt": "2026-10-19T19:56:47.062Z",
+  "transport": "Official SDK stdio, production CLI, no adapter injection",
+  "scope": "Live metadata retrieval and local MiniLM only. No original website/browser visit, screenshot export, catalog or vector export.",
+  "cases": [
+    {
+      "name": "nuxt-coffee-semantic-progressive",
+      "input": {
+        "providers": [
+          "nuxt"
+        ],
+        "query": "premium coffee retail",
+        "retrieval": "hybrid",
+        "candidateWindow": 20,
+        "retentionLimit": 120,
+        "limit": 5
+      },
+      "pages": [
+        {
+          "durationMs": 1258,
+          "returned": 5,
+          "retrieval": "hybrid",
+          "embeddedCandidates": 20,
+          "metadataHttpRequests": 1,
+          "resultScope": "initial-source-pages",
+          "hasMore": true,
+          "pipeline": {
+            "fetchedReferences": 58,
+            "eligibleAfterNativeFilters": 58,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 9,
+            "lexicalScoredCandidates": 58,
+            "semanticWindowBudget": 20,
+            "semanticPoolCandidates": 20,
+            "admittedWithoutLexicalMatch": 11,
+            "deferredSemanticCandidates": 38,
+            "lexicalMs": 2.86,
+            "semanticMs": 975.5,
+            "totalMs": 978.37,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
+            "reusedRankedCandidates": 0
+          },
+          "stages": {
+            "fetchedSourceRecords": 58,
+            "currentPageDistinctReferences": 58,
+            "mergedDistinctReferences": 58,
+            "candidatesBeforeRanking": 58,
+            "pendingSemanticCandidates": 38,
+            "pendingRankedCandidates": 15,
+            "retentionLimit": 120,
+            "retainedDeliveredReferences": 5
+          },
+          "repeatedDeliveredIds": 0,
+          "partialCoverage": false,
+          "sources": [
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "returnedRecords": 58,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+            }
+          ],
+          "resultIdentityHash": "af2c8d03271a978d1b28e5ae69aca591d0e4fd6b1a7ff28b1abbd7ddbb53a609"
+        },
+        {
+          "durationMs": 31,
+          "returned": 5,
+          "retrieval": "hybrid",
+          "embeddedCandidates": 20,
+          "metadataHttpRequests": 0,
+          "resultScope": "deferred-semantic-candidates",
+          "hasMore": true,
+          "pipeline": {
+            "fetchedReferences": 38,
+            "eligibleAfterNativeFilters": 38,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 0,
+            "lexicalScoredCandidates": 38,
+            "semanticWindowBudget": 20,
+            "semanticPoolCandidates": 20,
+            "admittedWithoutLexicalMatch": 20,
+            "deferredSemanticCandidates": 18,
+            "lexicalMs": 0.23,
+            "semanticMs": 27.96,
+            "totalMs": 28.19,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
+            "reusedRankedCandidates": 15
+          },
+          "stages": {
+            "fetchedSourceRecords": 0,
+            "currentPageDistinctReferences": 0,
+            "mergedDistinctReferences": 58,
+            "candidatesBeforeRanking": 38,
+            "pendingSemanticCandidates": 18,
+            "pendingRankedCandidates": 30,
+            "retentionLimit": 120,
+            "retainedDeliveredReferences": 10
+          },
+          "repeatedDeliveredIds": 0,
+          "partialCoverage": false,
+          "sources": [
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "returnedRecords": 58,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+            }
+          ],
+          "resultIdentityHash": "247f3c5dc461d659ae9c08eea85983bc2b3d042939fdce41147c48f33a810eb5"
+        }
+      ],
+      "errors": [],
+      "addressesVerified": 10,
+      "passed": true
+    },
+    {
+      "name": "six-source-webgl-semantic-progressive",
+      "input": {
+        "providers": [
+          "codrops",
+          "astro",
+          "webflow",
+          "threejs-resources",
+          "nuxt",
+          "mesh3d"
+        ],
+        "query": "immersive WebGL",
+        "retrieval": "hybrid",
+        "candidateWindow": 20,
+        "retentionLimit": 200,
+        "limit": 8
+      },
+      "pages": [
+        {
+          "durationMs": 6339,
+          "returned": 8,
+          "retrieval": "hybrid",
+          "embeddedCandidates": 20,
+          "metadataHttpRequests": 25,
+          "resultScope": "initial-source-pages",
+          "hasMore": true,
+          "pipeline": {
+            "fetchedReferences": 189,
+            "eligibleAfterNativeFilters": 189,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 43,
+            "lexicalScoredCandidates": 189,
+            "semanticWindowBudget": 20,
+            "semanticPoolCandidates": 20,
+            "admittedWithoutLexicalMatch": 6,
+            "deferredSemanticCandidates": 169,
+            "lexicalMs": 5.21,
+            "semanticMs": 1010.95,
+            "totalMs": 1016.18,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
+            "reusedRankedCandidates": 0
+          },
+          "stages": {
+            "fetchedSourceRecords": 192,
+            "currentPageDistinctReferences": 189,
+            "mergedDistinctReferences": 189,
+            "candidatesBeforeRanking": 189,
+            "pendingSemanticCandidates": 169,
+            "pendingRankedCandidates": 12,
+            "retentionLimit": 200,
+            "retainedDeliveredReferences": 8
+          },
+          "repeatedDeliveredIds": 0,
+          "partialCoverage": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "creative-hub",
+              "status": "partial",
+              "returnedRecords": 44,
+              "coverage": "Current source page /codrops/hub/all/; streams remain distinct"
+            },
+            {
+              "provider": "codrops",
+              "stream": "webzibition",
+              "status": "partial",
+              "returnedRecords": 61,
+              "coverage": "Current source page /codrops/webzibition/; streams remain distinct"
+            },
+            {
+              "provider": "codrops",
+              "stream": "repositories",
+              "status": "partial",
+              "returnedRecords": 15,
+              "coverage": "Page 1 of public organization repositories with published homepages; tutorial/article homepages are explicitly identified and not mislabeled as interactive demos; source topics and licenses remain independent"
+            },
+            {
+              "provider": "astro",
+              "stream": "showcase",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Current complete title/URL index 3221; enriched candidates 0–4; not full-source semantic or style search"
+            },
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "returnedRecords": 2,
+              "coverage": "Live source-provided full-text query, native search page 1 of 265; selected IDs resolved through current Webflow feed and detail pages; original URLs checked on detail pages, not proof the original site remains reachable"
+            },
+            {
+              "provider": "threejs-resources",
+              "stream": "showcase",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Official native text search and pagination; directory taxonomy is separate from showcase tag IDs"
+            },
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "returnedRecords": 58,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+            },
+            {
+              "provider": "mesh3d",
+              "stream": "websites",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Current public listing, details 0–4 of 12; not the full gallery"
+            }
+          ],
+          "resultIdentityHash": "6fdf024d3d8faadb63116ca7a4c3940c36e723d9b1e58f0a212fc906e872e458"
+        },
+        {
+          "durationMs": 975,
+          "returned": 8,
+          "retrieval": "hybrid",
+          "embeddedCandidates": 20,
+          "metadataHttpRequests": 0,
+          "resultScope": "deferred-semantic-candidates",
+          "hasMore": true,
+          "pipeline": {
+            "fetchedReferences": 169,
+            "eligibleAfterNativeFilters": 169,
+            "nativeHardFilters": [],
+            "lexicallyMatchedCandidates": 29,
+            "lexicalScoredCandidates": 169,
+            "semanticWindowBudget": 20,
+            "semanticPoolCandidates": 20,
+            "admittedWithoutLexicalMatch": 6,
+            "deferredSemanticCandidates": 149,
+            "lexicalMs": 2.95,
+            "semanticMs": 949.48,
+            "totalMs": 952.43,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
+            "reusedRankedCandidates": 12
+          },
+          "stages": {
+            "fetchedSourceRecords": 0,
+            "currentPageDistinctReferences": 0,
+            "mergedDistinctReferences": 189,
+            "candidatesBeforeRanking": 169,
+            "pendingSemanticCandidates": 149,
+            "pendingRankedCandidates": 24,
+            "retentionLimit": 200,
+            "retainedDeliveredReferences": 16
+          },
+          "repeatedDeliveredIds": 0,
+          "partialCoverage": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "creative-hub",
+              "status": "partial",
+              "returnedRecords": 44,
+              "coverage": "Current source page /codrops/hub/all/; streams remain distinct"
+            },
+            {
+              "provider": "codrops",
+              "stream": "webzibition",
+              "status": "partial",
+              "returnedRecords": 61,
+              "coverage": "Current source page /codrops/webzibition/; streams remain distinct"
+            },
+            {
+              "provider": "codrops",
+              "stream": "repositories",
+              "status": "partial",
+              "returnedRecords": 15,
+              "coverage": "Page 1 of public organization repositories with published homepages; tutorial/article homepages are explicitly identified and not mislabeled as interactive demos; source topics and licenses remain independent"
+            },
+            {
+              "provider": "astro",
+              "stream": "showcase",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Current complete title/URL index 3221; enriched candidates 0–4; not full-source semantic or style search"
+            },
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "returnedRecords": 2,
+              "coverage": "Live source-provided full-text query, native search page 1 of 265; selected IDs resolved through current Webflow feed and detail pages; original URLs checked on detail pages, not proof the original site remains reachable"
+            },
+            {
+              "provider": "threejs-resources",
+              "stream": "showcase",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Official native text search and pagination; directory taxonomy is separate from showcase tag IDs"
+            },
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "returnedRecords": 58,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+            },
+            {
+              "provider": "mesh3d",
+              "stream": "websites",
+              "status": "partial",
+              "returnedRecords": 4,
+              "coverage": "Current public listing, details 0–4 of 12; not the full gallery"
+            }
+          ],
+          "resultIdentityHash": "7638cdc7699af23554b15bd59b513fb540b1f63237950d31b1d5f4fa17864b44"
+        }
+      ],
+      "errors": [],
+      "addressesVerified": 16,
+      "passed": true
+    },
+    {
+      "name": "native-industry-lexical-fallback",
+      "input": {
+        "providers": [
+          "nuxt"
+        ],
+        "industry": "Retail & Food",
+        "retrieval": "lexical",
+        "candidateWindow": 20,
+        "retentionLimit": 120,
+        "limit": 5
+      },
+      "pages": [
+        {
+          "durationMs": 454,
+          "returned": 5,
+          "retrieval": "lexical",
+          "embeddedCandidates": 0,
+          "metadataHttpRequests": 1,
+          "resultScope": "initial-source-pages",
+          "hasMore": true,
+          "pipeline": {
+            "fetchedReferences": 58,
+            "eligibleAfterNativeFilters": 8,
+            "nativeHardFilters": [
+              "Retail & Food"
+            ],
+            "lexicallyMatchedCandidates": 8,
+            "lexicalScoredCandidates": 8,
+            "semanticWindowBudget": 20,
+            "semanticPoolCandidates": 8,
+            "admittedWithoutLexicalMatch": 0,
+            "deferredSemanticCandidates": 0,
+            "lexicalMs": 0.74,
+            "semanticMs": 0.1,
+            "totalMs": 0.84,
+            "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
+            "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
+            "reusedRankedCandidates": 0
+          },
+          "stages": {
+            "fetchedSourceRecords": 58,
+            "currentPageDistinctReferences": 58,
+            "mergedDistinctReferences": 58,
+            "candidatesBeforeRanking": 58,
+            "pendingSemanticCandidates": 0,
+            "pendingRankedCandidates": 3,
+            "retentionLimit": 120,
+            "retainedDeliveredReferences": 5
+          },
+          "repeatedDeliveredIds": 0,
+          "partialCoverage": false,
+          "sources": [
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "returnedRecords": 58,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+            }
+          ],
+          "resultIdentityHash": "7d8fc13781948d6ebaf64af4a6d33266bfceeec35330a4de6e53ad441d912a42"
+        }
+      ],
+      "errors": [],
+      "addressesVerified": 5,
+      "passed": true
+    }
+  ],
+  "budgetControlsOnWire": true,
+  "stderrBytes": 0,
+  "finalStatus": {
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    },
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "semantic": {
+      "model": "Xenova/all-MiniLM-L6-v2@751bff37182d3f1213fa05d7196b954e230abad9:q8:mean:l2",
+      "state": "ready",
+      "pending": 0,
+      "siteVectorsPersisted": false
+    }
+  },
+  "cwdFileCountAfterExit": 0,
+  "passed": true
+}

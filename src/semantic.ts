@@ -41,6 +41,7 @@ export class LocalSemantic {
       error: this.error ?? null,
       cpuThreads: this.config.semanticThreads,
       pending: this.pending,
+      inferenceBatchSize: 16,
       siteVectorsPersisted: false,
       modelCacheDir: this.config.modelCacheDir,
     };
@@ -108,9 +109,21 @@ export class LocalSemantic {
       if (!(await this.init())) throw new Error(this.error ?? 'Semantic retrieval disabled');
       signal?.throwIfAborted();
       const unique = [...new Set(texts.map((t) => t.slice(0, 1800)))],
-        output = unique.length
-          ? (await this.extractor!(unique, { pooling: 'mean', normalize: true })).tolist()
-          : [];
+        output: number[][] = [];
+      // Bound padded attention tensors independently from the search window.
+      // Cancellation can stop between microbatches; a currently running native
+      // microbatch remains non-preemptible and is observed by the runtime queue.
+      for (let start = 0; start < unique.length; start += 16) {
+        signal?.throwIfAborted();
+        const batch = (
+          await this.extractor!(unique.slice(start, start + 16), {
+            pooling: 'mean',
+            normalize: true,
+          })
+        ).tolist();
+        signal?.throwIfAborted();
+        output.push(...batch);
+      }
       signal?.throwIfAborted();
       return texts.map((t) => {
         const vector = new Float32Array(output[unique.indexOf(t.slice(0, 1800))]!);
