@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-20T09:49:09.776Z",
+  "kind": "Acceptance harness defect, not an application failure",
+  "actualPassedChecks": 7,
+  "applicationVersion": "0.4.0-beta.1",
+  "observations": [
+    "Actual archive installed with empty npm configuration and fresh consumer home",
+    "CLI version/help/doctor, real default-browser self-test, unsupported-binary refusal, official SDK 17-tool handshake, live Nuxt fallback query and selected Tchibo original JPEG passed",
+    "Final application resource counters were activeSessions=0, closingSessions=0, opening=0, activeOperations=0, retainedReferences=0"
+  ],
+  "failure": "Harness asserted nonexistent browser.active and browser.closing fields instead of activeSessions and closingSessions",
+  "correction": "Use the actual public status keys; strengthen path redaction for serialized error messages; rerun the full actual install acceptance",
+  "excluded": "No screenshot data, credentials, local profile paths or private cache files included"
+}

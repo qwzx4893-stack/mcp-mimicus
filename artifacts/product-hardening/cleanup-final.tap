@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: A real browser page-setup failure before session registration releases browser, proxy, profile and home
+ok 1 - A real browser page-setup failure before session registration releases browser, proxy, profile and home
+  ---
+  duration_ms: 3468.2381
+  type: 'test'
+  ...
+# Subtest: Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+ok 2 - Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+  ---
+  duration_ms: 5.0678
+  type: 'test'
+  ...
+# Subtest: Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+ok 3 - Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+  ---
+  duration_ms: 10615.6667
+  type: 'test'
+  ...
+# Subtest: Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+ok 4 - Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+  ---
+  duration_ms: 10.2825
+  type: 'test'
+  ...
+# Subtest: Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+ok 5 - Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+  ---
+  duration_ms: 5184.0217
+  type: 'test'
+  ...
+# Subtest: Owned browser teardown does not wait on an unresponsive context-close RPC
+ok 6 - Owned browser teardown does not wait on an unresponsive context-close RPC
+  ---
+  duration_ms: 4823.2937
+  type: 'test'
+  ...
+# Subtest: Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+ok 7 - Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+  ---
+  duration_ms: 11399.546
+  type: 'test'
+  ...
+# Subtest: Default capacity supports three observed references and idle renewal preserves absolute and cumulative budgets
+ok 8 - Default capacity supports three observed references and idle renewal preserves absolute and cumulative budgets
+  ---
+  duration_ms: 5033.8391
+  type: 'test'
+  ...
+# Subtest: Image budgets cannot be reset by renewal; absolute expiry closes an in-flight wait
+ok 9 - Image budgets cannot be reset by renewal; absolute expiry closes an in-flight wait
+  ---
+  duration_ms: 7882.2547
+  type: 'test'
+  ...
+# Subtest: Exhausted operation budget closes its owned session instead of being reset by renewal
+ok 10 - Exhausted operation budget closes its owned session instead of being reset by renewal
+  ---
+  duration_ms: 4214.5147
+  type: 'test'
+  ...
+# Subtest: A bare source authorization string never enables Awwwards gallery browser automation
+ok 11 - A bare source authorization string never enables Awwwards gallery browser automation
+  ---
+  duration_ms: 3.0387
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54995.7915

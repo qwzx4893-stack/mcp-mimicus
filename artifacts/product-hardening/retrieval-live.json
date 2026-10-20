@@ -1,5 +1,5 @@
 {
-  "measuredAt": "2026-10-19T19:56:47.062Z",
+  "measuredAt": "2026-10-20T09:55:56.238Z",
   "transport": "Official SDK stdio, production CLI, no adapter injection",
   "scope": "Live metadata retrieval and local MiniLM only. No original website/browser visit, screenshot export, catalog or vector export.",
   "cases": [
@@ -17,7 +17,7 @@
       },
       "pages": [
         {
-          "durationMs": 1258,
+          "durationMs": 1505,
           "returned": 5,
           "retrieval": "hybrid",
           "embeddedCandidates": 20,
@@ -34,9 +34,9 @@
             "semanticPoolCandidates": 20,
             "admittedWithoutLexicalMatch": 11,
             "deferredSemanticCandidates": 38,
-            "lexicalMs": 2.86,
-            "semanticMs": 975.5,
-            "totalMs": 978.37,
+            "lexicalMs": 1.41,
+            "semanticMs": 1188.15,
+            "totalMs": 1189.57,
             "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
             "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
             "reusedRankedCandidates": 0
@@ -49,7 +49,9 @@
             "pendingSemanticCandidates": 38,
             "pendingRankedCandidates": 15,
             "retentionLimit": 120,
-            "retainedDeliveredReferences": 5
+            "retainedDeliveredReferences": 5,
+            "deliveredIdsTracked": 5,
+            "deliveryLedgerLimit": 2400
           },
           "repeatedDeliveredIds": 0,
           "partialCoverage": false,
@@ -65,7 +67,7 @@
           "resultIdentityHash": "af2c8d03271a978d1b28e5ae69aca591d0e4fd6b1a7ff28b1abbd7ddbb53a609"
         },
         {
-          "durationMs": 31,
+          "durationMs": 126,
           "returned": 5,
           "retrieval": "hybrid",
           "embeddedCandidates": 20,
@@ -82,9 +84,9 @@
             "semanticPoolCandidates": 20,
             "admittedWithoutLexicalMatch": 20,
             "deferredSemanticCandidates": 18,
-            "lexicalMs": 0.23,
-            "semanticMs": 27.96,
-            "totalMs": 28.19,
+            "lexicalMs": 0.58,
+            "semanticMs": 116.16,
+            "totalMs": 116.74,
             "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
             "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
             "reusedRankedCandidates": 15
@@ -97,7 +99,9 @@
             "pendingSemanticCandidates": 18,
             "pendingRankedCandidates": 30,
             "retentionLimit": 120,
-            "retainedDeliveredReferences": 10
+            "retainedDeliveredReferences": 10,
+            "deliveredIdsTracked": 10,
+            "deliveryLedgerLimit": 2400
           },
           "repeatedDeliveredIds": 0,
           "partialCoverage": false,
@@ -136,7 +140,7 @@
       },
       "pages": [
         {
-          "durationMs": 6339,
+          "durationMs": 5960,
           "returned": 8,
           "retrieval": "hybrid",
           "embeddedCandidates": 20,
@@ -144,31 +148,33 @@
           "resultScope": "initial-source-pages",
           "hasMore": true,
           "pipeline": {
-            "fetchedReferences": 189,
-            "eligibleAfterNativeFilters": 189,
+            "fetchedReferences": 190,
+            "eligibleAfterNativeFilters": 190,
             "nativeHardFilters": [],
-            "lexicallyMatchedCandidates": 43,
-            "lexicalScoredCandidates": 189,
+            "lexicallyMatchedCandidates": 44,
+            "lexicalScoredCandidates": 190,
             "semanticWindowBudget": 20,
             "semanticPoolCandidates": 20,
             "admittedWithoutLexicalMatch": 6,
-            "deferredSemanticCandidates": 169,
-            "lexicalMs": 5.21,
-            "semanticMs": 1010.95,
-            "totalMs": 1016.18,
+            "deferredSemanticCandidates": 170,
+            "lexicalMs": 3.42,
+            "semanticMs": 1776.62,
+            "totalMs": 1780.06,
             "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
             "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
             "reusedRankedCandidates": 0
           },
           "stages": {
-            "fetchedSourceRecords": 192,
-            "currentPageDistinctReferences": 189,
-            "mergedDistinctReferences": 189,
-            "candidatesBeforeRanking": 189,
-            "pendingSemanticCandidates": 169,
+            "fetchedSourceRecords": 193,
+            "currentPageDistinctReferences": 190,
+            "mergedDistinctReferences": 190,
+            "candidatesBeforeRanking": 190,
+            "pendingSemanticCandidates": 170,
             "pendingRankedCandidates": 12,
             "retentionLimit": 200,
-            "retainedDeliveredReferences": 8
+            "retainedDeliveredReferences": 8,
+            "deliveredIdsTracked": 8,
+            "deliveryLedgerLimit": 2400
           },
           "repeatedDeliveredIds": 0,
           "partialCoverage": true,
@@ -184,7 +190,7 @@
               "provider": "codrops",
               "stream": "webzibition",
               "status": "partial",
-              "returnedRecords": 61,
+              "returnedRecords": 62,
               "coverage": "Current source page /codrops/webzibition/; streams remain distinct"
             },
             {
@@ -230,10 +236,10 @@
               "coverage": "Current public listing, details 0–4 of 12; not the full gallery"
             }
           ],
-          "resultIdentityHash": "6fdf024d3d8faadb63116ca7a4c3940c36e723d9b1e58f0a212fc906e872e458"
+          "resultIdentityHash": "752987ea93215f6b460607d1d13afce78cc221704ae08d30ccb526f43c4676ce"
         },
         {
-          "durationMs": 975,
+          "durationMs": 1273,
           "returned": 8,
           "retrieval": "hybrid",
           "embeddedCandidates": 20,
@@ -241,18 +247,18 @@
           "resultScope": "deferred-semantic-candidates",
           "hasMore": true,
           "pipeline": {
-            "fetchedReferences": 169,
-            "eligibleAfterNativeFilters": 169,
+            "fetchedReferences": 170,
+            "eligibleAfterNativeFilters": 170,
             "nativeHardFilters": [],
-            "lexicallyMatchedCandidates": 29,
-            "lexicalScoredCandidates": 169,
+            "lexicallyMatchedCandidates": 30,
+            "lexicalScoredCandidates": 170,
             "semanticWindowBudget": 20,
             "semanticPoolCandidates": 20,
-            "admittedWithoutLexicalMatch": 6,
-            "deferredSemanticCandidates": 149,
-            "lexicalMs": 2.95,
-            "semanticMs": 949.48,
-            "totalMs": 952.43,
+            "admittedWithoutLexicalMatch": 5,
+            "deferredSemanticCandidates": 150,
+            "lexicalMs": 3.89,
+            "semanticMs": 1257.24,
+            "totalMs": 1261.13,
             "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
             "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
             "reusedRankedCandidates": 12
@@ -260,12 +266,14 @@
           "stages": {
             "fetchedSourceRecords": 0,
             "currentPageDistinctReferences": 0,
-            "mergedDistinctReferences": 189,
-            "candidatesBeforeRanking": 169,
-            "pendingSemanticCandidates": 149,
+            "mergedDistinctReferences": 190,
+            "candidatesBeforeRanking": 170,
+            "pendingSemanticCandidates": 150,
             "pendingRankedCandidates": 24,
             "retentionLimit": 200,
-            "retainedDeliveredReferences": 16
+            "retainedDeliveredReferences": 16,
+            "deliveredIdsTracked": 16,
+            "deliveryLedgerLimit": 2400
           },
           "repeatedDeliveredIds": 0,
           "partialCoverage": true,
@@ -281,7 +289,7 @@
               "provider": "codrops",
               "stream": "webzibition",
               "status": "partial",
-              "returnedRecords": 61,
+              "returnedRecords": 62,
               "coverage": "Current source page /codrops/webzibition/; streams remain distinct"
             },
             {
@@ -327,7 +335,7 @@
               "coverage": "Current public listing, details 0–4 of 12; not the full gallery"
             }
           ],
-          "resultIdentityHash": "7638cdc7699af23554b15bd59b513fb540b1f63237950d31b1d5f4fa17864b44"
+          "resultIdentityHash": "77f452ede7a0209015323801149b0b6f6d4453a4f8b881b51c9387de483cf1d2"
         }
       ],
       "errors": [],
@@ -348,7 +356,7 @@
       },
       "pages": [
         {
-          "durationMs": 454,
+          "durationMs": 255,
           "returned": 5,
           "retrieval": "lexical",
           "embeddedCandidates": 0,
@@ -367,9 +375,9 @@
             "semanticPoolCandidates": 8,
             "admittedWithoutLexicalMatch": 0,
             "deferredSemanticCandidates": 0,
-            "lexicalMs": 0.74,
-            "semanticMs": 0.1,
-            "totalMs": 0.84,
+            "lexicalMs": 20.88,
+            "semanticMs": 0.23,
+            "totalMs": 21.11,
             "filterMeaning": "category, technology and industry require exact case-insensitive native labels; style, mood, purpose, interaction and navigation are soft search concepts, never invented labels.",
             "selectionMeaning": "The semantic window unions lexical metadata relevance with provider/source-order exploration; unscored retained candidates can be considered on explicit continuation. Neither admission nor similarity proves visual quality.",
             "reusedRankedCandidates": 0
@@ -382,7 +390,9 @@
             "pendingSemanticCandidates": 0,
             "pendingRankedCandidates": 3,
             "retentionLimit": 120,
-            "retainedDeliveredReferences": 5
+            "retainedDeliveredReferences": 5,
+            "deliveredIdsTracked": 5,
+            "deliveryLedgerLimit": 2400
           },
           "repeatedDeliveredIds": 0,
           "partialCoverage": false,

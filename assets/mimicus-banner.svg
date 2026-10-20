@@ -1,50 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="560" viewBox="0 0 1600 560" role="img" aria-labelledby="title desc">
-  <title id="title">Mimicus — Live references. Original work.</title>
-  <desc id="desc">Original vector illustration of three different website compositions seen through a framing aperture. This is conceptual artwork, not a screenshot of the product or any external gallery.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="720" viewBox="0 0 1800 720" role="img" aria-labelledby="title desc">
+  <title id="title">Mimicus — Visual intelligence for coding agents</title>
+  <desc id="desc">An original drawn wordmark and a sculptural study of a grid, selected visual geometry and a measured motion path. Conceptual artwork, not a product screenshot or third-party website.</desc>
   <defs>
-    <clipPath id="frame-a"><rect x="888" y="80" width="276" height="340" rx="12"/></clipPath>
-    <clipPath id="frame-b"><rect x="1186" y="130" width="280" height="330" rx="12"/></clipPath>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4f5ff"/><stop offset="1" stop-color="#d8dfff"/></linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#5369e9"/><stop offset="1" stop-color="#273ca9"/></linearGradient>
+    <clipPath id="surface"><path d="M1100 120 1640 188 1574 614 1034 546Z"/></clipPath>
   </defs>
-  <rect width="1600" height="560" fill="#eff6f4"/>
-  <path d="M812 0v560" stroke="#d4e4e0"/>
-  <g fill="none" stroke="#174b4d" stroke-width="7" stroke-linecap="round">
-    <path d="M88 98V76h22M148 76h22v22M88 132v22h22M148 154h22v-22"/>
-    <path d="M113 92h32v46h-32z" fill="#267d84" stroke="none"/>
-    <path d="M113 92l32 23-32 23z" fill="#174b4d" stroke="none"/>
+  <rect width="1800" height="720" fill="url(#paper)"/>
+  <path d="M1800 0v720H0" fill="none" stroke="#bbc5f4" stroke-width="2"/>
+  <!-- Original editable monoline wordmark; no font or external image dependency. -->
+  <g transform="translate(104 119)" fill="none" stroke="#243674" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" aria-label="Mimicus">
+    <path d="M0 110V0L48 67 96 0v110M136 45v65M178 110V45m0 21c0-42 55-42 55 0v44m0-44c0-42 55-42 55 0v44M328 45v65M438 53c-49-37-81 42-36 58 14 5 26 0 36-9M477 45v38c0 39 58 39 58 0V45m0 40v25M625 51c-34-25-67 6-36 24l24 11c26 17-3 43-39 19"/>
+    <path d="M136 10h.01M328 10h.01" stroke-width="20"/>
   </g>
-  <text x="82" y="279" fill="#153f42" font-family="Arial, Helvetica, sans-serif" font-size="100" font-weight="700" letter-spacing="-5">Mimicus</text>
-  <text x="88" y="343" fill="#174b4d" font-family="Arial, Helvetica, sans-serif" font-size="35" letter-spacing="-0.6">Live references. Original work.</text>
-  <text x="88" y="420" fill="#41686a" font-family="Arial, Helvetica, sans-serif" font-size="24">Visual design discovery for coding agents.</text>
-  <g font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#174b4d">
-    <text x="88" y="490">Discover</text><path d="M180 484h35m-7-5 7 5-7 5" fill="none" stroke="#729491" stroke-width="1.5"/>
-    <text x="235" y="490">Explore</text><path d="M323 484h35m-7-5 7 5-7 5" fill="none" stroke="#729491" stroke-width="1.5"/>
-    <text x="378" y="490">Understand</text><path d="M501 484h35m-7-5 7 5-7 5" fill="none" stroke="#729491" stroke-width="1.5"/>
-    <text x="556" y="490">Create</text>
+  <g fill="#243674" font-family="Arial, Helvetica, sans-serif" font-weight="500" font-size="76" letter-spacing="-2.8">
+    <text x="100" y="396">Visual intelligence</text>
+    <text x="100" y="480">for coding agents.</text>
   </g>
-  <rect x="878" y="90" width="276" height="340" rx="12" fill="#d9e8e4"/>
-  <rect x="888" y="80" width="276" height="340" rx="12" fill="#fff" stroke="#adc8c1"/>
-  <g clip-path="url(#frame-a)">
-    <path d="M888 112h276" stroke="#d4e4e0"/>
-    <circle cx="905" cy="97" r="3" fill="#7c9b97"/><circle cx="918" cy="97" r="3" fill="#adc8c1"/>
-    <path d="M910 140h115m-115 10h80" stroke="#174b4d" stroke-width="4"/>
-    <rect x="910" y="172" width="232" height="154" fill="#a8d2cc"/>
-    <path d="m910 282 72-75 49 45 45-32 66 68v38H910z" fill="#458f8f"/>
-    <path d="M910 346h104m-104 12h87m40-12h105m-105 12h88" stroke="#adc8c1" stroke-width="4"/>
-    <path d="M910 384h64" stroke="#174b4d" stroke-width="5"/>
+  <!-- A visual selection surface: a grid becomes a shape, then a temporal trace. -->
+  <path d="M1190 57 1702 139 1634 639 1122 558Z" fill="#bcc8f7"/>
+  <path d="M1145 87 1672 162 1603 624 1075 550Z" fill="#8295e4"/>
+  <path d="M1100 120 1640 188 1574 614 1034 546Z" fill="#fff"/>
+  <g clip-path="url(#surface)">
+    <path d="M1036 329 1612 404 1574 614 1034 546Z" fill="#e8edff"/>
+    <g fill="none" stroke="#ced7f6" stroke-width="2">
+      <path d="m1126 114-67 444m194-428-67 445m195-428-67 445m195-428-67 445"/>
+      <path d="m1057 244 571 73m-584 7 571 73m-584 7 571 73m-584 7 571 73"/>
+    </g>
+    <path d="m1164 211 340 44-32 209-340-44Z" fill="url(#blue)"/>
+    <path d="M1226 376c-35-39-9-101 41-94 38 5 30 53 65 58 37 5 28-67 77-61 48 6 56 74 13 91-39 15-52-24-89-14-39 11-67 64-107 20Z" fill="#e2e8ff"/>
+    <path d="m1126 482 170 22m-176 17 124 16" stroke="#667ac0" stroke-width="10"/>
+    <path d="M1331 522c50 63 72-27 127-2 25 12 35 20 67-1" fill="none" stroke="#546bd0" stroke-width="3" stroke-dasharray="5 8"/>
+    <path d="m1330 509 19 2-3 20-19-3Z" fill="#8d9fe9"/>
+    <path d="m1416 494 24 3-3 25-25-4Z" fill="#536bd0"/>
+    <path d="m1507 501 29 4-4 29-29-4Z" fill="#243d9f"/>
   </g>
-  <rect x="1176" y="140" width="280" height="330" rx="12" fill="#d9e8e4"/>
-  <rect x="1186" y="130" width="280" height="330" rx="12" fill="#153f42"/>
-  <g clip-path="url(#frame-b)">
-    <path d="M1208 157h36m144 0h56" stroke="#b9d8d1" stroke-width="3"/>
-    <path d="M1208 195h121m-121 16h164m-164 16h95" stroke="#eff6f4" stroke-width="7"/>
-    <circle cx="1372" cy="314" r="66" fill="#ff8969"/>
-    <path d="m1372 248-33 66 33 66 33-66z" fill="#ffc6ac"/>
-    <path d="M1208 387h116m-116 13h160m-160 13h84" stroke="#7ca9a2" stroke-width="3"/>
-    <path d="M1208 436h62" stroke="#eff6f4" stroke-width="4"/>
+  <!-- Brackets describe the sampled region without mimicking a product UI. -->
+  <g fill="none" stroke="#243d9f" stroke-width="5" stroke-linecap="square">
+    <path d="m1154 234 4-34 35 5m276 35 46 6-7 44m-48 140-5 45-42-6m-245-31-48-6 7-44"/>
   </g>
-  <path d="M868 66V50h24m590 64h20v24M868 444v22h24m590 16h20v-22" fill="none" stroke="#267d84" stroke-width="3"/>
-  <rect x="1046" y="362" width="166" height="112" rx="8" fill="#fff" stroke="#adc8c1" stroke-width="2"/>
-  <path d="M1060 378h41m-41 12h102" stroke="#174b4d" stroke-width="3"/>
-  <rect x="1060" y="406" width="28" height="49" fill="#c7dfd9"/><rect x="1097" y="406" width="28" height="49" fill="#86b7b1"/><rect x="1134" y="406" width="28" height="49" fill="#267d84"/>
-  <path d="M1174 435h20m-6-5 6 5-6 5" fill="none" stroke="#174b4d" stroke-width="2"/>
+  <path d="m1549 418 22 56-29-8-16 24-22-56Z" fill="#243d9f" stroke="#fff" stroke-width="4"/>
 </svg>

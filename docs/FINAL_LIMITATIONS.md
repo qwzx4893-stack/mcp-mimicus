@@ -1,6 +1,6 @@
 # Final release limitations
 
-Mimicus `0.3.0-beta.2` is a source beta for live reference discovery and selected visual analysis. The following boundaries are part of the product's actual behavior, not deferred claims of completion.
+Mimicus `0.4.0-beta.1` is a beta for live reference discovery and selected visual analysis. The following boundaries are actual behavior, not deferred completion claims. Earlier0.3 evidence remains historical.
 
 ## Source coverage and permissions
 
@@ -18,7 +18,7 @@ Mimicus `0.3.0-beta.2` is a source beta for live reference discovery and selecte
 - Browser sessions are headless and isolated. They do not use personal cookies or login state. Sites can render differently, require authentication, show loaders, or refuse automation. Challenges and access restrictions are not bypassed.
 - Browser readiness is a bounded observation. Fonts, lazy images, remote assets, scroll-triggered scenes and site-specific initialization may still be incomplete. Additional public resource origins require explicit approval; analytics are not automatically approved merely to remove a diagnostic.
 - Safe interactions intentionally exclude forms, destructive controls, arbitrary script evaluation, downloads and unreviewed cross-origin navigation. Conservative heuristics can reject benign controls. The “Reset view” trial rejection led to a narrow final fix for exact non-form visual reset labels; account/form resets remain blocked by regression tests. Public page JavaScript is still untrusted and may have effects beyond its visible semantic label.
-- Default sessions and discovery operations expire after five minutes, with a fifteen-minute hard ceiling. Long workflows must close/reopen or create fresh operations as appropriate; expired reference analyses cannot be fetched as persistent patterns.
+- Default browser sessions have a ten-minute idle lease, thirty-minute absolute lifetime and cumulative budgets. Explicit renewal refreshes idle time only; deliberate reopen is required after expiry. Discovery remains separate with a five-minute default. Expired analyses are not persistent patterns.
 
 ## Measurement and verification
 
@@ -30,10 +30,11 @@ Mimicus `0.3.0-beta.2` is a source beta for live reference discovery and selecte
 
 ## Model, persistence and evaluation scope
 
-- Optional MiniLM reranks text from the current bounded candidate set, not screenshots. It cannot supply aesthetic judgment or recall a reference excluded before reranking. Missing model software produces explicit lexical fallback; installation/download is opt-in.
+- Optional MiniLM reranks current text, not screenshots. Diversified windows and progressive queues reduce early lexical exclusion, but bounded upstream admission/retention still cannot provide complete source recall. The default160 window improves the reported synthetic Recall@10 at material latency/RAM cost. Missing model software produces explicit lexical fallback; download is opt-in.
 - The pinned q8 CPU model has a software cache and a reusable runtime. Site texts and vectors are not persisted. Releasing application references is not cryptographic erasure of process memory; the runtime can retain allocated memory until shutdown. Model loading had a material memory cost in the measured environment, not a portable memory guarantee.
 - No website database, persistent catalog, disk fallback corpus or background indexing worker exists. Browser software may create isolated OS temporary files during a session. Graceful cleanup is exercised, but abrupt process/OS termination can leave temporary files; they are not reused as a site catalog.
-- Release evidence includes actual SDK stdio transport, owned-page browser checks, live-source requests and two agent design workflows. It does not establish every named MCP client's compatibility, all operating systems, all browsers, real handheld behavior, assistive-technology acceptance or continuous upstream availability.
-- Synthetic fixtures and benchmark queries are labeled as such. Two qualitative workflow trials and a small query sample do not establish statistical relevance, lower task cost or aesthetic superiority. The immersive trial did not obtain two fully accessible 3D scenes; it documented the gated alternative honestly.
+- Current evidence includes actual SDK transport, live sources, four real previews, five varied original agent exercises and a descriptive SaaS control pair. It does not establish every MCP host, operating system/browser, real handheld or assistive-technology acceptance, or continuous upstream availability.
+- Synthetic relevance labels are agent-authored and independently adjudicated by another agent, not human/visual ground truth. The masked AI SaaS review tied20/24; interrupted assisted timing prevents a cost comparison. No aesthetic superiority is established. The new immersive exercise viewed two usable live GPU scenes; the older trial's gated alternatives remain historical failures.
+- Preview per-item/batch deadlines are soft admission/abort budgets; installed-browser launch and cleanup can add time up to their own timeout. Partial previews, missing resources and safe-interaction refusals remain engineering limits. Main-origin redirects are not silently approved.
 
 See [workflow evaluation](VISUAL_WORKFLOW_EVALUATION.md), [browser diagnostics](DEFAULT_BROWSER_BACKEND.md), [source integration matrix](SOURCE_INTEGRATION_MATRIX.md), [configuration](CONFIGURATION.md), and [security](SECURITY.md) for evidence and operational detail. Historical evidence describes earlier runs; it is excluded from runtime retrieval and must not be mistaken for current acceptance.

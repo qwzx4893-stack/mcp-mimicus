@@ -13,7 +13,35 @@ const response = await fetch(
   },
 );
 const result = await response.json();
-if (input.output === 'image') {
+if (input.output === 'images') {
+  const { default: sharp } = await import('sharp');
+  const { createHash } = await import('node:crypto');
+  const originalImages = (result.content?.filter((c) => c.type === 'image') ?? []).slice(0, 8);
+  const imageSummaries = originalImages.map((img, imageIndex) => ({
+    imageIndex,
+    byteLength: Buffer.byteLength(img.data, 'base64'),
+    sha256: createHash('sha256').update(Buffer.from(img.data, 'base64')).digest('hex'),
+  }));
+  const images = await Promise.all(
+    originalImages.map(async (img) => ({
+      ...img,
+      data: (
+        await sharp(Buffer.from(img.data, 'base64'))
+          .resize({ width: 800, withoutEnlargement: true })
+          .jpeg({ quality: 40 })
+          .toBuffer()
+      ).toString('base64'),
+    })),
+  );
+  console.log(
+    JSON.stringify({
+      images,
+      imageSummaries,
+      data: result.structuredContent?.data,
+      error: result.isError ? result.content : result.error,
+    }),
+  );
+} else if (input.output === 'image') {
   const images = result.content?.filter((c) => c.type === 'image') ?? [];
   const chosen = images[input.imageIndex ?? 0];
   if (chosen) {

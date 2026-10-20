@@ -1,0 +1,11 @@
+✔ Default capacity supports three observed references and idle renewal preserves absolute and cumulative budgets (5202.8934ms)
+✔ Image and operation budgets cannot be reset by renewal; absolute expiry closes an in-flight wait (6701.003ms)
+✔ A bare source authorization string never enables Awwwards gallery browser automation (2.0424ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 13949.4951

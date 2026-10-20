@@ -1,0 +1,445 @@
+{
+  "at": "2026-10-20T09:56:41.025Z",
+  "tool": "mimicus_preview_references",
+  "client": "official MCP SDK stdio through local development bridge",
+  "references": [
+    {
+      "inputIndex": 0,
+      "key": "54233912802c7454aa5535ea",
+      "url": "https://ibrewmyown.coffee/",
+      "title": "I Brew My Own Coffee",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "8eede955-704f-45e2-9048-c410f79c69ba",
+        "referenceId": "54233912802c7454aa5535ea",
+        "relationships": [
+          {
+            "provider": "astro",
+            "stream": "showcase",
+            "itemId": "src/content/showcase/ibrewmyown.coffee.yml",
+            "title": "I Brew My Own Coffee",
+            "url": "https://ibrewmyown.coffee/",
+            "listingUrl": "https://astro.build/showcase/",
+            "native": {
+              "categories": [],
+              "tags": [],
+              "technologies": [
+                "Astro"
+              ],
+              "awards": []
+            },
+            "makers": [],
+            "publishedAt": "2025-12-15T12:12:35.651Z",
+            "kind": "website",
+            "revision": "5af4edadf1cba89439a1b7341e74b374977e04c6",
+            "provenance": "Current official Astro published title/URL API plus bounded revision-pinned repository YAML; images excluded; no blanket content license inferred",
+            "retrievedAt": "2026-10-20T09:55:40.291Z",
+            "sourceMetadata": {
+              "highlight": true,
+              "featured": 0
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "46b643716579a2944d94276d",
+          "url": "https://www.tchibo.de/",
+          "title": "Tchibo"
+        },
+        {
+          "id": "f854f6eea0df3db7ae29bcc6",
+          "url": "https://www.pulseahead.com/",
+          "title": "Product Feedback Platform for SaaS Teams | PulseAhead"
+        }
+      ],
+      "imageIndex": 0,
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T09:55:54.812Z",
+      "viewport": {
+        "width": 1024,
+        "height": 640
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": false,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 1437,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 20,
+          "loaded": 2,
+          "incomplete": 18,
+          "visible": 8,
+          "visibleLoaded": 2
+        },
+        "canvasCount": 0,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "One or more visible images are incomplete or failed"
+      ],
+      "diagnostics": {
+        "requests": 18,
+        "blocked": [],
+        "errors": []
+      },
+      "byteLength": 30317,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    },
+    {
+      "inputIndex": 1,
+      "key": "46b643716579a2944d94276d",
+      "url": "https://www.tchibo.de/",
+      "title": "Tchibo",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "8eede955-704f-45e2-9048-c410f79c69ba",
+        "referenceId": "46b643716579a2944d94276d",
+        "relationships": [
+          {
+            "provider": "nuxt",
+            "stream": "showcase",
+            "itemId": "46b643716579a2944d94276d",
+            "title": "Tchibo",
+            "url": "https://www.tchibo.de/",
+            "listingUrl": "https://nuxt.com/showcase",
+            "native": {
+              "categories": [
+                "Retail & Food"
+              ],
+              "tags": [],
+              "technologies": [
+                "Nuxt"
+              ],
+              "awards": []
+            },
+            "makers": [],
+            "kind": "website",
+            "revision": "5e1566bde4c11aa0d8edd034b93d140ea066fc5a900a0603a5ba68276fdd885d",
+            "license": "MIT",
+            "provenance": "Current official Nuxt MIT showcase YAML; industry labels preserved; screenshots and executable options excluded",
+            "retrievedAt": "2026-10-20T09:55:39.322Z",
+            "sourceMetadata": {
+              "industry": "Retail & Food"
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "54233912802c7454aa5535ea",
+          "url": "https://ibrewmyown.coffee/",
+          "title": "I Brew My Own Coffee"
+        },
+        {
+          "id": "f854f6eea0df3db7ae29bcc6",
+          "url": "https://www.pulseahead.com/",
+          "title": "Product Feedback Platform for SaaS Teams | PulseAhead"
+        }
+      ],
+      "imageIndex": 1,
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T09:55:59.855Z",
+      "viewport": {
+        "width": 1024,
+        "height": 640
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": false,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 6254,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 75,
+          "loaded": 14,
+          "incomplete": 61,
+          "visible": 3,
+          "visibleLoaded": 3
+        },
+        "canvasCount": 0,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Some resource requests were blocked; inspect diagnostics before assuming visual completeness"
+      ],
+      "diagnostics": {
+        "requests": 136,
+        "blocked": [
+          "https://www.tchibo.de [xhr]: Error: Session request/resource budget"
+        ],
+        "errors": []
+      },
+      "byteLength": 58658,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    },
+    {
+      "inputIndex": 2,
+      "key": "f854f6eea0df3db7ae29bcc6",
+      "url": "https://www.pulseahead.com/",
+      "title": "Product Feedback Platform for SaaS Teams | PulseAhead",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "aa1425f9-57da-4b81-812d-85ae967dd0ff",
+        "referenceId": "f854f6eea0df3db7ae29bcc6",
+        "relationships": [
+          {
+            "provider": "astro",
+            "stream": "showcase",
+            "itemId": "src/content/showcase/www.pulseahead.com.yml",
+            "title": "Product Feedback Platform for SaaS Teams | PulseAhead",
+            "url": "https://www.pulseahead.com/",
+            "listingUrl": "https://astro.build/showcase/",
+            "native": {
+              "categories": [],
+              "tags": [],
+              "technologies": [
+                "Astro"
+              ],
+              "awards": []
+            },
+            "makers": [],
+            "publishedAt": "2026-04-13T12:31:02.720Z",
+            "kind": "website",
+            "revision": "5af4edadf1cba89439a1b7341e74b374977e04c6",
+            "provenance": "Current official Astro published title/URL API plus bounded revision-pinned repository YAML; images excluded; no blanket content license inferred",
+            "retrievedAt": "2026-10-20T09:55:46.240Z",
+            "sourceMetadata": {
+              "highlight": false,
+              "featured": 0
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "54233912802c7454aa5535ea",
+          "url": "https://ibrewmyown.coffee/",
+          "title": "I Brew My Own Coffee"
+        },
+        {
+          "id": "46b643716579a2944d94276d",
+          "url": "https://www.tchibo.de/",
+          "title": "Tchibo"
+        }
+      ],
+      "imageIndex": 2,
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T09:56:05.219Z",
+      "viewport": {
+        "width": 1024,
+        "height": 640
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": false,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 6965,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 10,
+          "loaded": 2,
+          "incomplete": 8,
+          "visible": 1,
+          "visibleLoaded": 1
+        },
+        "canvasCount": 0,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Some resource requests were blocked; inspect diagnostics before assuming visual completeness"
+      ],
+      "diagnostics": {
+        "requests": 38,
+        "blocked": [
+          "https://cloud.umami.is [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://static.hotjar.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://www.googletagmanager.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://connect.facebook.net [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://www.pulseahead.com [fetch]: Error: Session request/resource budget",
+          "https://fonts.googleapis.com [stylesheet]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://snap.licdn.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://app.cal.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://o13092.ingest.us.sentry.io [fetch]: Error: Session request/resource budget",
+          "https://widget.intercom.io [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS"
+        ],
+        "errors": []
+      },
+      "byteLength": 47859,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    },
+    {
+      "inputIndex": 3,
+      "key": "91bb1cd831be83e3a114eb69",
+      "url": "https://userjot.com/",
+      "title": "UserJot | Complete Feedback Platform for SaaS Teams",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "aa1425f9-57da-4b81-812d-85ae967dd0ff",
+        "referenceId": "91bb1cd831be83e3a114eb69",
+        "relationships": [
+          {
+            "provider": "astro",
+            "stream": "showcase",
+            "itemId": "src/content/showcase/userjot.com.yml",
+            "title": "UserJot | Complete Feedback Platform for SaaS Teams",
+            "url": "https://userjot.com/",
+            "listingUrl": "https://astro.build/showcase/",
+            "native": {
+              "categories": [],
+              "tags": [],
+              "technologies": [
+                "Astro"
+              ],
+              "awards": []
+            },
+            "makers": [],
+            "publishedAt": "2025-11-27T19:59:00.288Z",
+            "kind": "website",
+            "revision": "5af4edadf1cba89439a1b7341e74b374977e04c6",
+            "provenance": "Current official Astro published title/URL API plus bounded revision-pinned repository YAML; images excluded; no blanket content license inferred",
+            "retrievedAt": "2026-10-20T09:55:46.240Z",
+            "sourceMetadata": {
+              "highlight": false,
+              "featured": 0
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "54233912802c7454aa5535ea",
+          "url": "https://ibrewmyown.coffee/",
+          "title": "I Brew My Own Coffee"
+        },
+        {
+          "id": "46b643716579a2944d94276d",
+          "url": "https://www.tchibo.de/",
+          "title": "Tchibo"
+        }
+      ],
+      "imageIndex": 3,
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T09:56:10.553Z",
+      "viewport": {
+        "width": 1024,
+        "height": 640
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": false,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 17472,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 36,
+          "loaded": 14,
+          "incomplete": 22,
+          "visible": 0,
+          "visibleLoaded": 0
+        },
+        "canvasCount": 2,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Some resource requests were blocked; inspect diagnostics before assuming visual completeness"
+      ],
+      "diagnostics": {
+        "requests": 84,
+        "blocked": [
+          "https://cdn.userjot.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://fonts.googleapis.com [stylesheet]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://fonts.googleapis.com [stylesheet]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://static.cloudflareinsights.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://collect.jotlens.com [script]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://rsms.me [font]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://rsms.me [font]: Error: Origin is not operator-approved; configure MIMICUS_ALLOWED_ORIGINS",
+          "https://userjot.com [xhr]: Error: Session request/resource budget"
+        ],
+        "errors": []
+      },
+      "byteLength": 42363,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    }
+  ],
+  "capturedImages": 4,
+  "bytes": 179197,
+  "elapsedMs": 19689.9375,
+  "retention": "Images exist only in this MCP response. Every preview session is closed; no preview cache or site/media file is created.",
+  "interpretation": "An image proves a captured frame, not complete rendering, source licensing, aesthetic suitability or inspection of content behind a gate.",
+  "next": "View images in imageIndex order. Select an authorized original URL to open an interactive session; partial/blocked references need diagnosis or another explicitly selected candidate.",
+  "untrustedEvidence": true,
+  "imageHashes": [
+    {
+      "imageIndex": 0,
+      "byteLength": 30317,
+      "sha256": "a68cd3d4e40bffcf39ff7b0bfa312c4829969f5e9a378e57e35a974bc5426330"
+    },
+    {
+      "imageIndex": 1,
+      "byteLength": 58658,
+      "sha256": "b754b7ca7e263956db7eb50c8d7124d123ab9afcf2ef0c54379cc92403dcb965"
+    },
+    {
+      "imageIndex": 2,
+      "byteLength": 47859,
+      "sha256": "ab21aaf813eebc958d0e5a61a8d04a2f3a108fac5aba1ac80eb5862c0662c813"
+    },
+    {
+      "imageIndex": 3,
+      "byteLength": 42363,
+      "sha256": "bb43faf097e7d8a0fda9caedf9bbca27c8bc53fff1197eeba874275986b5b021"
+    }
+  ],
+  "imagesViewed": 4,
+  "displayOnly": "Images viewed in response; no third-party frames written to files. Hashes refer to original MCP JPEGs, not the resized display copies."
+}

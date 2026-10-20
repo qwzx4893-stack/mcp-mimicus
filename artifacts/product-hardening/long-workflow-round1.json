@@ -1,0 +1,193 @@
+{
+  "start": "2026-10-20T09:48:08.099Z",
+  "end": "2026-10-20T10:13:06.456Z",
+  "elapsedMs": 1498357,
+  "events": [
+    {
+      "at": "2026-10-20T09:48:32.741Z",
+      "action": "open",
+      "url": "https://ibrewmyown.coffee/",
+      "sessionId": "a9618445-3ec4-4bf3-b402-42aa4935478a",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T09:58:28.733Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:28.488Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T09:48:46.656Z",
+      "action": "open",
+      "url": "https://www.tchibo.de/",
+      "sessionId": "ed0fd482-0457-42d0-9b43-7ce8b8e00f41",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T09:58:39.578Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:39.332Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T09:53:35.152Z",
+      "action": "analyze",
+      "analysisId": "aa98f6cb-3c33-4321-957f-8c1b5c5de53c",
+      "widths": [
+        1280,
+        390
+      ]
+    },
+    {
+      "at": "2026-10-20T09:54:50.436Z",
+      "action": "renew",
+      "id": "a9618445-3ec4-4bf3-b402-42aa4935478a",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:04:49.530Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:28.488Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 6,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T09:54:54.678Z",
+      "action": "renew",
+      "id": "ed0fd482-0457-42d0-9b43-7ce8b8e00f41",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:04:53.788Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:39.332Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 5,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T09:56:55.023Z",
+      "action": "verify-original-navigation",
+      "keys": [
+        "content",
+        "isError"
+      ]
+    },
+    {
+      "at": "2026-10-20T09:59:17.104Z",
+      "action": "owned-mobile-review",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:09:15.834Z",
+        "absoluteExpiresAt": "2026-10-20T10:26:22.139Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 6,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T10:02:27.274Z",
+      "action": "renew",
+      "id": "a9618445-3ec4-4bf3-b402-42aa4935478a",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:12:26.451Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:28.488Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 7,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T10:02:32.551Z",
+      "action": "renew",
+      "id": "ed0fd482-0457-42d0-9b43-7ce8b8e00f41",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:12:31.785Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:39.332Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 6,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T10:03:05.839Z",
+      "action": "return-reference-desktop-analysis-and-verify",
+      "analysisId": "dcba9bf7-e099-4067-9506-a7ecf6e103fe"
+    },
+    {
+      "at": "2026-10-20T10:08:36.213Z",
+      "action": "return-to-reference-capture",
+      "id": "a9618445-3ec4-4bf3-b402-42aa4935478a",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:18:28.488Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:28.488Z",
+        "idleWindowMs": 600000,
+        "images": 3,
+        "imageLimit": 80,
+        "operations": 9,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T10:08:40.933Z",
+      "action": "return-to-reference-capture",
+      "id": "ed0fd482-0457-42d0-9b43-7ce8b8e00f41",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T10:18:39.332Z",
+        "absoluteExpiresAt": "2026-10-20T10:18:39.332Z",
+        "idleWindowMs": 600000,
+        "images": 3,
+        "imageLimit": 80,
+        "operations": 7,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T10:13:06.456Z",
+      "action": "close-original-workflow",
+      "status": {
+        "activeSessions": 0,
+        "closingSessions": 0,
+        "opening": 0,
+        "temporaryAnalyses": 0,
+        "sessionLimit": 3,
+        "sessions": [],
+        "persistentContent": false
+      }
+    }
+  ],
+  "finalBrowser": {
+    "activeSessions": 0,
+    "closingSessions": 0,
+    "opening": 0,
+    "temporaryAnalyses": 0,
+    "sessionLimit": 3,
+    "sessions": [],
+    "persistentContent": false
+  },
+  "limitations": [
+    "Wall-clock includes implementation review, targeted QA, code fixes and release work interleaved; no artificial wait added.",
+    "Source rendering remained partial; first long-session close was delayed while a closing counter stayed nonzero, then resolved after other owned sessions closed.",
+    "A subsequent final-code long workflow is being run after changing teardown to close the owned browser directly; this record is the first run, not proof of that correction.",
+    "The reference discovery operation expired independently; selected browser analyses remained available. No site frames saved."
+  ]
+}

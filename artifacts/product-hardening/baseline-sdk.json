@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-19T16:03:27.528Z",
+  "kind": "Actual production stdio baseline, no adapter injection",
+  "cases": [
+    {
+      "provider": "nuxt",
+      "elapsedMs": 246.0924,
+      "results": 3,
+      "requests": 1,
+      "coverage": [
+        {
+          "provider": "nuxt",
+          "stream": "showcase",
+          "status": "available",
+          "returned": 58,
+          "coverage": "Complete current source-maintained YAML collection, read anew; count may change"
+        }
+      ]
+    },
+    {
+      "provider": "awwwards",
+      "elapsedMs": 1.446100000000115,
+      "results": 0,
+      "requests": 0,
+      "coverage": [
+        {
+          "provider": "awwwards",
+          "stream": "websites",
+          "status": "blocked",
+          "returned": 0,
+          "coverage": "Automated Awwwards catalog unavailable without authorization; operator-supplied original references are a separate usable handoff, never gallery search results"
+        }
+      ]
+    }
+  ],
+  "tools": [
+    "mimicus_search",
+    "mimicus_browse_categories",
+    "mimicus_list_sources",
+    "mimicus_get_reference",
+    "mimicus_end_discovery",
+    "mimicus_open_reference",
+    "mimicus_capture_view",
+    "mimicus_explore_page",
+    "mimicus_interact",
+    "mimicus_capture_motion",
+    "mimicus_close_session",
+    "mimicus_analyze_element",
+    "mimicus_get_design_insights",
+    "mimicus_get_implementation_spec",
+    "mimicus_compare_references",
+    "mimicus_verify_implementation"
+  ],
+  "finalResources": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "persistentCatalog": false
+    }
+  }
+}

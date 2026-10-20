@@ -1,0 +1,34 @@
+TAP version 13
+# Subtest: Accessible visual canvas sliders accept touch while forms, malformed ranges and purchase controls remain blocked
+ok 1 - Accessible visual canvas sliders accept touch while forms, malformed ranges and purchase controls remain blocked
+  ---
+  duration_ms: 2718.6237
+  type: 'test'
+  ...
+# Subtest: Visual reset controls work while account resets remain blocked
+ok 2 - Visual reset controls work while account resets remain blocked
+  ---
+  duration_ms: 2089.8528
+  type: 'test'
+  ...
+# Subtest: Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+ok 3 - Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+  ---
+  duration_ms: 3674.7947
+  type: 'test'
+  ...
+# Subtest: An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+ok 4 - An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+  ---
+  duration_ms: 3106.4995
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 12175.0914

@@ -1,20 +1,23 @@
-![Mimicus — Live references. Original work.](assets/mimicus-banner.svg)
+![Mimicus — Visual intelligence for coding agents. Original vector artwork of a selected visual composition and motion path.](assets/mimicus-banner.svg)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Node.js: 24 or newer](https://img.shields.io/badge/Node.js-%3E%3D24-43853d.svg)](package.json)
 [![Verify](https://github.com/qwzx4893-stack/mcp-mimicus/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/qwzx4893-stack/mcp-mimicus/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-4054ad.svg)](LICENSE)
+[![Node.js: 24 or newer](https://img.shields.io/badge/Node.js-%E2%89%A524-4054ad.svg)](package.json)
+[![Latest GitHub release](https://img.shields.io/github/v/release/qwzx4893-stack/mcp-mimicus?include_prereleases&color=4054ad)](https://github.com/qwzx4893-stack/mcp-mimicus/releases)
 
-# Mimicus
+# See the reference. Understand the behavior. Build original work.
 
-**A live visual design reference browser for coding agents, exposed through MCP.**
+**Mimicus gives coding agents a visual design browser through MCP:** discover current websites, compare actual images, inspect selected interactions, and carry measured constraints into an original implementation.
 
-Find current references across curated sources, inspect selected original websites as actual images, and measure the layout or behavior needed for an original implementation. Mimicus helps an agent look, compare and verify; it does not generate a website, judge aesthetic quality, or recover another site's source code.
+Search stays lightweight. The agent chooses which original sites to preview, open and investigate. Layout measurements, typography, responsive observations and interaction samples support its creative judgment; Mimicus does not assign an aesthetic winner or recover a site's hidden source code.
 
-**0.3.0-beta.2** is a [source beta](https://github.com/qwzx4893-stack/mcp-mimicus/releases/tag/v0.3.0-beta.2) from [qwzx4893-stack/mcp-mimicus](https://github.com/qwzx4893-stack/mcp-mimicus). npm publication is not part of this release. Browser compatibility and upstream source interfaces remain beta limitations.
+**Release status: beta.** The [latest published release](https://github.com/qwzx4893-stack/mcp-mimicus/releases) and its evidence are versioned separately from changes on `main`. Current hardening adds multi-reference previews, longer bounded sessions and more specific design guidance. **Awwwards's automated catalog remains blocked without a valid reviewed grant.** Its adapter and permitted original-site handoff remain available. There is no npm publication.
 
-## Start locally
+[Get started](#get-started) · [Agent workflow](#a-design-workflow-with-evidence) · [Source coverage](#seven-sources-with-visible-boundaries) · [Evidence and limits](#verification-and-current-limits)
 
-Requires **Node.js 24+**, npm, and an installed compatible Chromium browser. Discovery also needs access to the selected public sources.
+## Get started
+
+You need **Node.js 24+**, npm, network access to the chosen sources, and a compatible Chromium browser already installed.
 
 ```sh
 git clone https://github.com/qwzx4893-stack/mcp-mimicus.git
@@ -25,15 +28,15 @@ node dist/cli.js doctor
 node dist/cli.js self-test
 ```
 
-On Windows, Mimicus resolves the actual installed HTTPS default browser, including Brave when it is the default. It launches that executable headlessly with a separate temporary profile and private control pipe. It does not open your personal profile, download a browser, or silently fall back to a bundled browser. An unsupported default produces an actionable error.
+On Windows, Mimicus resolves the current HTTPS default browser when starting a session. It launches an owned headless process with an ephemeral profile and private control pipe. Your personal tabs, profile and cookies are not used. Brave has been tested as the Windows default; Edge has been tested as an explicit override. An unsupported default fails with a diagnostic. No browser is downloaded or silently substituted.
 
-On other operating systems, or to explicitly select a different installed compatible browser, set `MIMICUS_BROWSER_EXECUTABLE` to its absolute executable path. Custom Chromium builds are checked by actual launch; universal compatibility is not promised. See [browser setup and diagnostics](docs/DEFAULT_BROWSER_BACKEND.md).
+For a different installed compatible executable, or on another operating system, set `MIMICUS_BROWSER_EXECUTABLE` to its absolute path. Linux CI checks core behavior; it does not establish every Linux browser setup as supported. See [browser setup](docs/DEFAULT_BROWSER_BACKEND.md) and [installation and release](docs/INSTALLATION_AND_RELEASE.md).
 
-`doctor` checks configuration, executable resolution and available model integrity; it does **not** claim the browser launched or that sources connected. `self-test` launches the selected browser against an owned local page and checks rendering, interaction, responsive capture and cleanup. It is separate from live-source acceptance.
+`doctor` checks configuration, browser resolution and installed model integrity. It does not launch a browser or certify source connectivity. `self-test` actually launches the selected browser against an owned local page, checks rendering and interaction, captures desktop/mobile images, and verifies cleanup.
 
-## Connect an MCP client
+### Connect your MCP client
 
-Start the stdio server with `node dist/cli.js serve`, or let your MCP client launch it. A generic configuration is:
+Have your client launch the stdio server. A generic configuration is:
 
 ```json
 {
@@ -46,88 +49,149 @@ Start the stdio server with `node dist/cli.js serve`, or let your MCP client lau
 }
 ```
 
-Replace the path with your built checkout; on Windows, for example, use `C:/path/to/mcp-mimicus/dist/cli.js`. If the client cannot resolve Node through `PATH`, provide its absolute executable path too. The surrounding configuration format depends on your client. The release trials used the official MCP SDK stdio client; they do not establish acceptance in every named desktop client. Protocol stdout is reserved for MCP; diagnostics use stderr.
+Replace the path with your built checkout. A Windows example is `C:/tools/mcp-mimicus/dist/cli.js`. Use the absolute Node executable path if your client's environment cannot resolve `node`. Client-specific configuration locations and wrappers vary; the integration tests use the official MCP SDK stdio transport. Protocol stdout is reserved for MCP and diagnostics go to stderr.
 
-## Use it in a design workflow
+## A design workflow with evidence
 
-1. Search by project intent. Inspect source coverage, provenance, native labels and any computed relevance separately.
-2. Select a reference and open its original URL with explicit authorization. **View the returned MCP image**, then explore the relevant sections, responsive states and controls.
-3. Compare selected open references with a concrete project brief: audience, primary action, sections and motion preference. The result combines measurements with independently written guidance; the agent chooses the direction.
-4. Analyze a specific element or behavior, obtain its temporary implementation specification, and build original code, content and authorized assets.
-5. Inspect the implementation at desktop and mobile widths, exercise keyboard/touch and reduced motion, and verify the chosen measured constraints. A deliberate difference can be correct for the brief.
-6. Close sessions and discovery operations when finished.
-
-Example search and project-aware comparison arguments:
-
-```json
-{"name":"mimicus_search","arguments":{"query":"editorial portfolio motion","providers":["codrops"],"stream":"webzibition","retrieval":"hybrid","limit":6}}
+```mermaid
+flowchart LR
+  A[Search] --> B[Preview selected sites]
+  B --> C[Open and inspect]
+  C --> D[Compare for a brief]
+  D --> E[Measure chosen behavior]
+  E --> F[Build original work]
+  F --> G[Verify and close]
 ```
+
+1. **Discover.** Search current source indexes. Read native labels, provenance, coverage and computed relevance as separate information.
+2. **Look before analyzing.** Select a small authorized batch with `mimicus_preview_references`. It returns ordered real MCP images and per-reference status. Preview sessions close immediately; a challenge, preloader or missing resource is reported rather than treated as a viewed design.
+3. **Open the useful references.** Explore sections and controls, scroll, change viewport, and view the actual returned images. Authorize additional resource origins only when you intend to load them.
+4. **Choose a direction for the project.** Compare references with an audience, primary action and required content. The result exposes competing adaptations, evidence links, tradeoffs and a mixed specification. Explicit priorities can favor conversion, reading, product selection or exploration.
+5. **Inspect one behavior.** Select a menu, transition, scroll region or scene. Measure activation, interruption and reset before choosing implementation timing. Declared animations and detected engines are not proof of observed interaction behavior.
+6. **Build and verify.** Use original markup, code, content and authorized assets. Review desktop/mobile images, keyboard/touch and reduced motion. Verify selected relationships and intended differences separately from visual judgment.
+7. **Release resources.** Close sessions and end discovery operations when done.
+
+The owned [coffee storefront](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/coffee.html) and [interactive sculpture](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/immersive.html) are inspectable original implementations from earlier SDK-driven trials. They are examples, not a bundled site library or mirrored gallery content. New hardening trials and negative cases are recorded in the [agent quality evaluation](docs/AGENT_QUALITY_EVALUATION.md).
+
+### Search, preview, compare
+
+Search arguments:
 
 ```json
 {
-  "name": "mimicus_compare_references",
-  "arguments": {
-    "sessionIds": ["FIRST_OPEN_SESSION", "SECOND_OPEN_SESSION"],
-    "brief": {
-      "project": "Independent design studio portfolio",
-      "audience": "Prospective clients reviewing recent work",
-      "primaryAction": "Open a relevant case study",
-      "sections": ["Selected work", "Studio approach", "Contact"],
-      "motion": "subtle",
-      "anchorSessionId": "FIRST_OPEN_SESSION"
-    }
+  "query": "editorial portfolio motion",
+  "providers": ["codrops"],
+  "stream": "webzibition",
+  "retrieval": "hybrid",
+  "limit": 6
+}
+```
+
+Pass returned IDs to `mimicus_preview_references`; each selected original must be authorized:
+
+```json
+{
+  "references": [
+    { "operationId": "SEARCH_OPERATION", "referenceId": "FIRST_REFERENCE", "authorized": true },
+    { "operationId": "SEARCH_OPERATION", "referenceId": "SECOND_REFERENCE", "authorized": true }
+  ]
+}
+```
+
+After opening chosen references, call `mimicus_compare_references`:
+
+```json
+{
+  "sessionIds": ["FIRST_OPEN_SESSION", "SECOND_OPEN_SESSION"],
+  "brief": {
+    "project": "Independent architecture publication",
+    "audience": "Readers exploring long-form architectural criticism",
+    "primaryAction": "Read the current issue",
+    "sections": ["Current issue", "Essays", "Archive", "About"],
+    "priorities": ["reading"],
+    "motion": "subtle",
+    "anchorSessionId": "FIRST_OPEN_SESSION"
   }
 }
 ```
 
-A new search without `operationId` fetches current source data. Passing an active `operationId` explicitly continues the same query and filters in RAM; changed filters require a new operation. Use the source's diagnostics rather than interpreting a bounded result set as complete coverage.
+Guidance distinguishes measurements, brief needs, inferred intent and designer judgment. Selectors refer to the observed source session. Missing trigger/reset or multi-width evidence produces an inspection request, not invented behavior. The coding agent supplies creative synthesis and evaluates the actual images.
 
-## The 16 tools
+## The 17 tools
 
-| Task | Tools |
+| Workflow | Tools |
 | --- | --- |
 | Discover and inspect provenance | `mimicus_search`, `mimicus_browse_categories`, `mimicus_list_sources`, `mimicus_get_reference` |
-| View and explore original sites | `mimicus_open_reference`, `mimicus_capture_view`, `mimicus_explore_page`, `mimicus_interact`, `mimicus_capture_motion` |
-| Analyze and guide original work | `mimicus_analyze_element`, `mimicus_get_design_insights`, `mimicus_get_implementation_spec`, `mimicus_compare_references`, `mimicus_verify_implementation` |
-| Release temporary state | `mimicus_close_session`, `mimicus_end_discovery` |
+| Preview selected originals | `mimicus_preview_references` |
+| View and interact | `mimicus_open_reference`, `mimicus_capture_view`, `mimicus_explore_page`, `mimicus_interact`, `mimicus_capture_motion` |
+| Measure, compare and specify | `mimicus_analyze_element`, `mimicus_get_design_insights`, `mimicus_get_implementation_spec`, `mimicus_compare_references`, `mimicus_verify_implementation` |
+| Clean up | `mimicus_close_session`, `mimicus_end_discovery` |
 
-Visual tools return actual MCP image blocks, not screenshot file paths. Interaction is constrained to reviewed navigation and bounded, non-destructive actions; there is no generic JavaScript evaluation tool. Additional public resource origins require explicit per-session approval. Robots restrictions, access challenges and authentication are not bypassed.
+Visual tools return actual MCP image blocks rather than screenshot filenames. Safe interaction covers reviewed navigation and bounded non-destructive actions, including keyboard, touch, drag and viewport/reduced-motion changes. There is no generic JavaScript evaluation tool. Targeted motion capture supplies temporal evidence; it cannot expose proprietary GSAP or WebGL programs.
 
-## Seven source adapters, explicit coverage
+### Keep a longer workflow alive
 
-| Source | Live interface and practical scope |
+The browser defaults to **three sessions**, a **10-minute idle lease**, a **30-minute absolute lifetime**, and per-session budgets of **80 returned images / 200 operations**. Resource state exposes remaining time and budgets. `mimicus_interact` with `{"sessionId":"OPEN_SESSION","interaction":{"action":"renew"}}` refreshes the idle lease without taking an image. Renewal cannot extend absolute lifetime or reset budgets. When limits are near, close and reopen a selected original with a fresh session.
+
+Discovery operations have a separate five-minute default lifetime. Start a search without `operationId` to consult current sources. Supply an active `operationId` to continue the same query/filter set in RAM; changed filters require a new operation. The default candidate ranking window is 160, with bounded retention and explicit pending-candidate diagnostics. A bounded operation is not complete coverage of every source.
+
+## Seven sources, with visible boundaries
+
+| Source | Available interface and limits |
 | --- | --- |
-| Awwwards | MIT adapter code and operator-supplied original-reference handoff are retained. Automated gallery extraction, details and source-owned media remain restricted without reviewed authorization; no special license is assumed. |
-| Codrops | Separate Creative Hub, Webzibition and official organization repository streams, with progressive pages and source-native provenance. Repository homepages can lead to articles rather than demos. |
-| Astro | Current official title/URL index participates in lexical selection; bounded selected YAML records are enriched. This is not complete semantic/style search across every entry. |
-| Made in Webflow | Source-provided full-text search, native tags/sorts and progressive public feed/detail resolution. Coverage and original-site reachability remain separate. |
-| Three.js Resources | Official read-only MCP native search and pagination. Tool-directory taxonomy stays separate from opaque showcase tag IDs. |
-| Nuxt | The current official source-maintained showcase YAML, fetched anew. It covers that collection, not all Nuxt websites. |
-| mesh3d.gallery | Public listing/detail links and exposed native filters. The robots-disallowed infinite-scroll API is not used, so gallery coverage is partial. |
+| **Awwwards** | **Automated catalog access is blocked without reviewed authorization.** The MIT adapter, public navigation and operator-supplied original-site handoff remain. A configuration note is not a rights grant; source-owned images, details and catalog reuse are not assumed permitted. |
+| **Codrops** | Separate Creative Hub, Webzibition and official organization-repository streams, progressive pages and native provenance. A repository homepage may be an article rather than a runnable demo. |
+| **Astro Showcase** | Current official title/URL index, bounded lexical/semantic candidate selection and revision-pinned selected YAML enrichment. Missing native style labels are not invented. |
+| **Made in Webflow** | Public native full-text discovery, source tags/sorts and progressive feed/detail resolution. Catalog results and successful original-site rendering are measured separately. |
+| **Three.js Resources** | Official read-only MCP search, pagination and native taxonomy. Tool-directory categories remain separate from showcase identifiers. |
+| **Nuxt** | Fresh source-maintained showcase YAML and its native industry labels. The collection does not cover every site built with Nuxt. |
+| **mesh3d.gallery** | Public listing/detail navigation and exposed native filters. The robots-disallowed infinite-scroll API is not used; coverage remains partial. |
 
-Six adapters returned current candidates in release acceptance; Awwwards restriction was verified with zero automated gallery requests. Using a gallery to identify an original site, visiting that original site, and reusing gallery metadata or media are distinct permissions. MIT software licensing does not license third-party website content. See [source integration matrix](docs/SOURCE_INTEGRATION_MATRIX.md).
+Consult the [source integration matrix](docs/SOURCE_INTEGRATION_MATRIX.md) for actual endpoints, acceptance runs and pagination limits. “An adapter returned metadata,” “an original site opened,” and “its visual resources rendered” are different outcomes. Discovery and original-site analysis do not imply permission to redistribute gallery content. Software licenses do not license third-party artwork.
 
-## Temporary data and optional local ranking
+## Live discovery, temporary evidence
 
-There is **no website database, persistent catalog, crawler, background worker, stored pattern repository or disk fallback corpus**. Candidates, site vectors, browser images and analyses belong to bounded active operations or sessions. Default session/operation lifetime is five minutes, with a fifteen-minute hard ceiling. Explicit close, cancellation and expiry release application state.
+Mimicus federates source indexes on demand. Candidates, cursors, site vectors, images and selected analyses remain in bounded RAM state. **There is no persistent website catalog, SQLite database, background crawler, stored pattern warehouse or disk fallback corpus.** Closing, expiry and cancellation release Mimicus's owned temporary state; the MCP client may independently retain outputs it receives.
 
-MiniLM ranking is optional. To opt into downloading the pinned model software:
+Optional CPU MiniLM ranking uses pinned `Xenova/all-MiniLM-L6-v2` q8 software, mean pooling, L2 normalization and 384-dimensional vectors. It ranks current text candidates, not screenshots or aesthetic quality. Install and verify the model explicitly:
 
 ```sh
 node dist/cli.js model-fetch
 node dist/cli.js model-check
 ```
 
-The pinned `Xenova/all-MiniLM-L6-v2` q8 model runs on CPU, using mean pooling, L2 normalization and 384 dimensions. Integrity checks cover the pinned artifacts. It reranks bounded current text candidates; it does not inspect screenshots or grade design quality. Without an installed usable model, the tool reports lexical fallback. Only model software is cached, by default under `~/.cache/mimicus/models`; site texts and vectors are not persisted there. No generative model, training or paid model API is required.
+Only model software is cached, normally under `~/.cache/mimicus/models`; retrieved website text and vectors are not persisted there. If a usable local model is absent, results identify lexical fallback. No second generative model, training pipeline or paid model API is required. See [retrieval evaluation](docs/RETRIEVAL_EVALUATION.md) for judged relevance and candidate-recall limits.
 
-## Validation and further reading
+## Verification and current limits
 
 ```sh
+npm run lint
+npm run check
 npm test
-npm run benchmark
-node scripts/live-acceptance.mjs
 ```
 
-Tests include controlled fixtures and real SDK transport; live acceptance additionally contacts actual upstream sources and can change with their availability. The default benchmark uses owned synthetic data and is not evidence of live relevance or aesthetic superiority. See the [actual coding-agent workflow evaluation](docs/VISUAL_WORKFLOW_EVALUATION.md), [final limitations](docs/FINAL_LIMITATIONS.md), [configuration](docs/CONFIGURATION.md), [security boundaries](docs/SECURITY.md), and [migration from the previous persistent architecture](docs/MIGRATION.md).
+Tests cover controlled fixtures, real SDK transport and installed-browser cases. Live-source acceptance is separate and depends on current upstream availability. A test pass does not establish aesthetic superiority or complete catalog coverage. The [hardening audit](docs/FINAL_PRODUCT_HARDENING_AUDIT.md) records versioned outcomes, remaining partial/blocked gates and exact-commit evidence.
 
-Original release artwork is in `assets/`. Source licensing and adapted code attribution are documented in [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Historical evidence, where retained, is not a runtime catalog or an input to live discovery.
+| Evidence | What it establishes |
+| --- | --- |
+| [Visual discovery evaluation](docs/VISUAL_DISCOVERY_EVALUATION.md) | Multi-image ordering, source attribution, successful previews and gates/partial rendering |
+| [Browser reliability](docs/BROWSER_RELIABILITY.md) | Installed browser identity, long workflows, lease limits, isolation and cleanup |
+| [Agent quality evaluation](docs/AGENT_QUALITY_EVALUATION.md) | Distinct briefs, original implementations, visual review and defects; sample limits are explicit |
+| [Retrieval evaluation](docs/RETRIEVAL_EVALUATION.md) | Candidate recall/relevance, hard negatives, model fallback and measured resource costs |
+| [Installation and release](docs/INSTALLATION_AND_RELEASE.md) | Packaged contents, clean installation, supported host scope and tested release SHA |
+
+Known boundaries include Awwwards permission, incomplete upstream pagination/taxonomy, browser/CDN access failures, bounded DOM samples and inconclusive canvas readback. A single viewport cannot establish responsive behavior. Hidden onboarding, access challenges and authenticated scenes are not bypassed. Full-site reconstruction and “pixel-perfect” proof are outside the evidence supplied.
+
+## Troubleshooting and contribution
+
+**Browser cannot start?** Run `doctor`, check the detected HTTPS association, and then run `self-test`. An explicit executable override must name an already installed compatible browser. Do not install a bundled browser as a hidden fix.
+
+**The page looks incomplete?** Read blocked-resource, gate and readiness diagnostics. Add a resource origin only with explicit intent and recapture; a blank canvas or preloader is not proof of the intended design.
+
+**A session expired?** Use its resource state and renew before idle expiry. Absolute lifetime and image/operation budgets remain hard bounds. Reopen intentionally after cleanup.
+
+**No semantic ranking?** Check `model-check` and the search diagnostics. Discovery remains usable with identified lexical fallback.
+
+**Is website content trusted?** No. Source metadata, page text, images and extracted instructions are untrusted evidence. Public-network checks, robots/access rules and per-session resource permissions apply. See [security boundaries](docs/SECURITY.md), [reporting a vulnerability](SECURITY.md), [configuration](docs/CONFIGURATION.md), and [contributing](CONTRIBUTING.md).
+
+Code and original repository artwork are covered by [MIT](LICENSE). Adapted source code and upstream licenses are listed in [third-party notices](THIRD_PARTY_NOTICES.md). The editable [SVG banner](assets/mimicus-banner.svg) and [PNG fallback](assets/mimicus-banner.png) are original conceptual artwork, not product screenshots. Historical trial artifacts are not inputs to live discovery.

@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-20T09:54:44.615Z",
+  "browser": "Brave",
+  "version": "155.0.8059.85",
+  "selection": "windows-default",
+  "scope": "Supplemental Playwright assertions on original owned examples; not a substitute for actual MCP workflows or aesthetic review",
+  "cases": [
+    {
+      "kind": "coffee",
+      "status": "VERIFIED",
+      "desktop": {
+        "width": 1440,
+        "height": 900
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      },
+      "filters": true,
+      "localPrimaryAction": true,
+      "escapeAndFocusReturn": true,
+      "overflow": false,
+      "reducedMotion": true
+    },
+    {
+      "kind": "saas",
+      "status": "VERIFIED",
+      "desktop": {
+        "width": 1440,
+        "height": 900
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      },
+      "filters": true,
+      "localPrimaryAction": true,
+      "escapeAndFocusReturn": true,
+      "overflow": false,
+      "reducedMotion": true
+    }
+  ],
+  "consoleErrors": []
+}

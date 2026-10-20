@@ -1,0 +1,9 @@
+✔ Actual stdio multi-preview preserves distinct image/source order, diagnoses gates and closes every owned browser (18515.3404ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18842.3043

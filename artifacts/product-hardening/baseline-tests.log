@@ -1,0 +1,57 @@
+
+> mcp-mimicus@0.3.0-beta.2 test
+> npm run build && node --test --test-concurrency=1 test/*.test.mjs
+
+
+> mcp-mimicus@0.3.0-beta.2 build
+> node scripts/clean-build.mjs && tsc
+
+✔ Shipped runtime has no SQLite, persistent catalog, vector store or retired command implementation (7.783ms)
+✔ A real browser page-setup failure before session registration releases browser, proxy, profile and home (2895.6641ms)
+✔ Default browser command parsing never runs registry arguments and unsupported engines fail explicitly (1.2506ms)
+✔ Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles (5580.9536ms)
+✔ Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML (3.8169ms)
+✔ Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions (2444.6621ms)
+✔ Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles (7516.4131ms)
+✔ A design brief keeps source observations separate from original advice and respects the chosen anchor (1.1843ms)
+✔ Unsupported design anchors fail rather than silently synthesizing from the wrong page (0.5005ms)
+✔ Discovery deadline bounds semantic waiting and reports late non-preemptible work honestly (1007.1534ms)
+✔ Cancelling semantic work during continuation closes the advanced operation instead of silently skipping a source page (3.5673ms)
+✔ A genuinely missing offline model reports lexical fallback without creating a cache (2455.3807ms)
+✔ Fresh requests normalize/dedup native provenance in RAM, isolate a failed source, and never create a local catalog (26.2573ms)
+✔ Canonical dedup keeps independent native categories and makers without inventing labels (0.5277ms)
+✔ No-license Awwwards mode retains source integration but performs zero catalog fetches (0.5409ms)
+✔ Temporary semantic batches use the same model interface without retaining a text/vector cache (81.7283ms)
+✔ Same-document fragment links work while external and download anchors stay restricted (2126.6809ms)
+✔ Native details navigation is clickable, measurable and resets after a controlled probe (3207.8589ms)
+✔ Session expiry, aborted page interaction and shutdown release real Chromium contexts (4982.5536ms)
+✔ Selected alias selectors produce usable specs; guarded navigation never executes destructive URLs (2529.883ms)
+✔ Discovery rejects unsupported streams and expires RAM operations without worker activity (1260.6819ms)
+✔ A source deadline retains completed source results and closing an operation aborts its active fetch (1040.1259ms)
+✔ Real stdio SDK client discovers live owned references, receives MCP images, explores, analyzes and shuts down without catalog files (9569.6744ms)
+✔ Failed first capture closes the session whose identifier cannot reach the caller (9.0414ms)
+✔ Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no website store or restart cache (9338.7196ms)
+✔ I: rejects unsafe schemes, credentials, IPv4/IPv6 private and mixed DNS answers (14.4767ms)
+✔ I: proxy pins validated DNS answer and rejects changed resolution, POST and unapproved redirect target (34.2556ms)
+✔ robots policy honors specific group, longest rule, wildcard and allow exceptions (0.8361ms)
+✔ MCP discovery input preserves omitted continuation fields while internal query applies first-search defaults (4.707ms)
+✔ Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction (7.1846ms)
+✔ Astro searches current actual titles across the full official index, preserves progressive continuation and pins selected YAML (9.6738ms)
+✔ Webflow uses exact public native feed offsets and current tag IDs, verifies original live links, and retains classification (12.2414ms)
+✔ Webflow native public full-text search preserves real IDs and page counts without substituting popular sites or inventing tag membership (2.3332ms)
+✔ Unsupported source URLs fail inside adapter normalization before merging can poison other providers (0.4899ms)
+✔ Empty legacy native metadata is omitted without losing valid source records or inventing labels (0.3108ms)
+✔ mesh3d native filter links are followed, maker identity remains distinct, and disallowed API is never called (3.9902ms)
+✔ Progressive search exposes new references instead of repeating the old top results, and finished continuation is empty (4.8593ms)
+✔ Visual reset controls work while account resets remain blocked (2304.3288ms)
+✔ Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked (3904.7751ms)
+✔ An empty transient canvas readback is inconclusive rather than evidence of a static composited scene (2835.9402ms)
+✔ Actual temporary visual browsing, navigation/reset, responsive viewing, filmstrip, targeted analysis/spec and cleanup (11408.432ms)
+ℹ tests 41
+ℹ suites 0
+ℹ pass 41
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 96827.1729

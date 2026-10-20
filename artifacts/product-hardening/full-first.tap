@@ -1,0 +1,406 @@
+TAP version 13
+# Subtest: Shipped runtime has no SQLite, persistent catalog, vector store or retired command implementation
+ok 1 - Shipped runtime has no SQLite, persistent catalog, vector store or retired command implementation
+  ---
+  duration_ms: 16.4237
+  type: 'test'
+  ...
+# Subtest: A real browser page-setup failure before session registration releases browser, proxy, profile and home
+ok 2 - A real browser page-setup failure before session registration releases browser, proxy, profile and home
+  ---
+  duration_ms: 2166.1453
+  type: 'test'
+  ...
+# Subtest: Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+ok 3 - Default browser command parsing never runs registry arguments and unsupported engines fail explicitly
+  ---
+  duration_ms: 1.2932
+  type: 'test'
+  ...
+# Subtest: Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+ok 4 - Actual OS-selected binary renders with GPU diagnostics in isolated ephemeral processes and releases profiles
+  ---
+  duration_ms: 4619.5527
+  type: 'test'
+  ...
+# Subtest: Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+ok 5 - Windows helper failure returns a bounded diagnostic without encoded commands or CLIXML
+  ---
+  duration_ms: 5.0645
+  type: 'test'
+  ...
+# Subtest: Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+ok 6 - Real default browser supports progressive sections, safe touch/drag and rejects unsafe interaction regions
+  ---
+  duration_ms: 2452.2052
+  type: 'test'
+  ...
+# Subtest: Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+ok 7 - Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles
+  ---
+  duration_ms: 7605.619
+  type: 'test'
+  ...
+# Subtest: A design brief keeps source observations separate from original advice and respects the chosen anchor
+ok 8 - A design brief keeps source observations separate from original advice and respects the chosen anchor
+  ---
+  duration_ms: 3.3381
+  type: 'test'
+  ...
+# Subtest: Unsupported design anchors fail rather than silently synthesizing from the wrong page
+ok 9 - Unsupported design anchors fail rather than silently synthesizing from the wrong page
+  ---
+  duration_ms: 0.4225
+  type: 'test'
+  ...
+# Subtest: Discovery deadline bounds semantic waiting and reports late non-preemptible work honestly
+ok 10 - Discovery deadline bounds semantic waiting and reports late non-preemptible work honestly
+  ---
+  duration_ms: 1011.0145
+  type: 'test'
+  ...
+# Subtest: Cancelling semantic work during continuation closes the advanced operation instead of silently skipping a source page
+ok 11 - Cancelling semantic work during continuation closes the advanced operation instead of silently skipping a source page
+  ---
+  duration_ms: 4.6541
+  type: 'test'
+  ...
+# Subtest: A genuinely missing offline model reports lexical fallback without creating a cache
+ok 12 - A genuinely missing offline model reports lexical fallback without creating a cache
+  ---
+  duration_ms: 147.811
+  type: 'test'
+  ...
+# Subtest: Fresh requests normalize/dedup native provenance in RAM, isolate a failed source, and never create a local catalog
+ok 13 - Fresh requests normalize/dedup native provenance in RAM, isolate a failed source, and never create a local catalog
+  ---
+  duration_ms: 25.1898
+  type: 'test'
+  ...
+# Subtest: Canonical dedup keeps independent native categories and makers without inventing labels
+ok 14 - Canonical dedup keeps independent native categories and makers without inventing labels
+  ---
+  duration_ms: 0.501
+  type: 'test'
+  ...
+# Subtest: No-license Awwwards mode retains source integration but performs zero catalog fetches
+ok 15 - No-license Awwwards mode retains source integration but performs zero catalog fetches
+  ---
+  duration_ms: 0.4898
+  type: 'test'
+  ...
+# Subtest: Temporary semantic batches use the same model interface without retaining a text/vector cache
+ok 16 - Temporary semantic batches use the same model interface without retaining a text/vector cache
+  ---
+  duration_ms: 118.9077
+  type: 'test'
+  ...
+# Subtest: Three project priorities generate distinct actionable plans from the same measured references
+ok 17 - Three project priorities generate distinct actionable plans from the same measured references
+  ---
+  duration_ms: 4.096
+  type: 'test'
+  ...
+# Subtest: Every major mixed decision is traceable to actual evidence or explicit project needs
+ok 18 - Every major mixed decision is traceable to actual evidence or explicit project needs
+  ---
+  duration_ms: 0.5491
+  type: 'test'
+  ...
+# Subtest: Missing behavior and ambiguous brief are unknown rather than fabricated trigger or suitability claims
+ok 19 - Missing behavior and ambiguous brief are unknown rather than fabricated trigger or suitability claims
+  ---
+  duration_ms: 1.1947
+  type: 'test'
+  ...
+# Subtest: Named grid lines and zero-size text do not inflate track or type-scale evidence
+ok 20 - Named grid lines and zero-size text do not inflate track or type-scale evidence
+  ---
+  duration_ms: 0.4405
+  type: 'test'
+  ...
+# Subtest: Actual stdio multi-preview preserves distinct image/source order, diagnoses gates and closes every owned browser
+ok 21 - Actual stdio multi-preview preserves distinct image/source order, diagnoses gates and closes every owned browser
+  ---
+  duration_ms: 16517.0092
+  type: 'test'
+  ...
+# Subtest: Scored lexical leftovers paginate without re-fetching or re-embedding and every address is delivered once
+ok 22 - Scored lexical leftovers paginate without re-fetching or re-embedding and every address is delivered once
+  ---
+  duration_ms: 16.0364
+  type: 'test'
+  ...
+# Subtest: Scored hybrid leftovers paginate without re-fetching or re-embedding and every address is delivered once
+ok 23 - Scored hybrid leftovers paginate without re-fetching or re-embedding and every address is delivered once
+  ---
+  duration_ms: 2.6543
+  type: 'test'
+  ...
+# Subtest: Large semantic windows use bounded native microbatches and cancellation prevents later batches
+ok 24 - Large semantic windows use bounded native microbatches and cancellation prevents later batches
+  ---
+  duration_ms: 2.5664
+  type: 'test'
+  ...
+# Subtest: Progressive semantic windows eventually consider a sparse late reference without a lexical-only permanent cutoff
+ok 25 - Progressive semantic windows eventually consider a sparse late reference without a lexical-only permanent cutoff
+  ---
+  duration_ms: 32.6249
+  type: 'test'
+  ...
+# Subtest: RAM retention grows progressively beyond eighty while preserving delivered addresses and declaring evictions
+ok 26 - RAM retention grows progressively beyond eighty while preserving delivered addresses and declaring evictions
+  ---
+  duration_ms: 14.5169
+  type: 'test'
+  ...
+# Subtest: Native filters require real exact labels; free-form concepts are soft and offline lexical ranking considers the whole fetched set
+ok 27 - Native filters require real exact labels; free-form concepts are soft and offline lexical ranking considers the whole fetched set
+  ---
+  duration_ms: 3.4771
+  type: 'test'
+  ...
+# Subtest: A deliberately small retention cap reports invalidated prior addresses rather than silently promising them
+ok 28 - A deliberately small retention cap reports invalidated prior addresses rather than silently promising them
+  ---
+  duration_ms: 1.6316
+  type: 'test'
+  ...
+# Subtest: An access-restricted provider is reported blocked while independent completed sources remain usable
+ok 29 - An access-restricted provider is reported blocked while independent completed sources remain usable
+  ---
+  duration_ms: 0.7546
+  type: 'test'
+  ...
+# Subtest: Default capacity supports three observed references and idle renewal preserves absolute and cumulative budgets
+ok 30 - Default capacity supports three observed references and idle renewal preserves absolute and cumulative budgets
+  ---
+  duration_ms: 3356.1473
+  type: 'test'
+  ...
+# Subtest: Image budgets cannot be reset by renewal; absolute expiry closes an in-flight wait
+ok 31 - Image budgets cannot be reset by renewal; absolute expiry closes an in-flight wait
+  ---
+  duration_ms: 6598.219
+  type: 'test'
+  ...
+# Subtest: Exhausted operation budget closes its owned session instead of being reset by renewal
+ok 32 - Exhausted operation budget closes its owned session instead of being reset by renewal
+  ---
+  duration_ms: 1938.6602
+  type: 'test'
+  ...
+# Subtest: A bare source authorization string never enables Awwwards gallery browser automation
+ok 33 - A bare source authorization string never enables Awwwards gallery browser automation
+  ---
+  duration_ms: 1.7531
+  type: 'test'
+  ...
+# Subtest: unverified Awwwards authorization notes cannot enable automated catalog access; URL-only handoff stays attributed
+ok 34 - unverified Awwwards authorization notes cannot enable automated catalog access; URL-only handoff stays attributed
+  ---
+  duration_ms: 9.2274
+  type: 'test'
+  ...
+# Subtest: Astro niche brief facets influence candidates while progressive exploration eventually includes every unlabeled original
+ok 35 - Astro niche brief facets influence candidates while progressive exploration eventually includes every unlabeled original
+  ---
+  duration_ms: 1.2656
+  type: 'test'
+  ...
+# Subtest: Astro actual YAML description enriches only selected records, without assigning invented style metadata
+ok 36 - Astro actual YAML description enriches only selected records, without assigning invented style metadata
+  ---
+  duration_ms: 7.3145
+  type: 'test'
+  ...
+# Subtest: plain Webflow text search omits landing HTML but validates every actual original detail link with bounded parallel work
+ok 37 - plain Webflow text search omits landing HTML but validates every actual original detail link with bounded parallel work
+  ---
+  duration_ms: 34.7779
+  type: 'test'
+  ...
+# Subtest: Webflow retains successful siblings when one detail times out and propagates explicit cancellation
+ok 38 - Webflow retains successful siblings when one detail times out and propagates explicit cancellation
+  ---
+  duration_ms: 2.9846
+  type: 'test'
+  ...
+# Subtest: Codrops resolves actual relative demo links, rejects credential links, and keeps tutorial repository homes distinct from demos
+ok 39 - Codrops resolves actual relative demo links, rejects credential links, and keeps tutorial repository homes distinct from demos
+  ---
+  duration_ms: 3.4014
+  type: 'test'
+  ...
+# Subtest: Nuxt preserves the source-declared complete industry vocabulary even if one category currently has no site
+ok 40 - Nuxt preserves the source-declared complete industry vocabulary even if one category currently has no site
+  ---
+  duration_ms: 5.3719
+  type: 'test'
+  ...
+# Subtest: mesh native listing filters avoid a redundant first detail lookup and never allow API/substitute origins
+ok 41 - mesh native listing filters avoid a redundant first detail lookup and never allow API/substitute origins
+  ---
+  duration_ms: 3.7825
+  type: 'test'
+  ...
+# Subtest: Same-document fragment links work while external and download anchors stay restricted
+ok 42 - Same-document fragment links work while external and download anchors stay restricted
+  ---
+  duration_ms: 2131.7356
+  type: 'test'
+  ...
+# Subtest: Native details navigation is clickable, measurable and resets after a controlled probe
+ok 43 - Native details navigation is clickable, measurable and resets after a controlled probe
+  ---
+  duration_ms: 3396.0328
+  type: 'test'
+  ...
+# Subtest: Session expiry, aborted page interaction and shutdown release real Chromium contexts
+ok 44 - Session expiry, aborted page interaction and shutdown release real Chromium contexts
+  ---
+  duration_ms: 5253.0455
+  type: 'test'
+  ...
+# Subtest: Selected alias selectors produce usable specs; guarded navigation never executes destructive URLs
+ok 45 - Selected alias selectors produce usable specs; guarded navigation never executes destructive URLs
+  ---
+  duration_ms: 2525.4115
+  type: 'test'
+  ...
+# Subtest: Discovery rejects unsupported streams and expires RAM operations without worker activity
+ok 46 - Discovery rejects unsupported streams and expires RAM operations without worker activity
+  ---
+  duration_ms: 1261.9092
+  type: 'test'
+  ...
+# Subtest: A source deadline retains completed source results and closing an operation aborts its active fetch
+ok 47 - A source deadline retains completed source results and closing an operation aborts its active fetch
+  ---
+  duration_ms: 1039.1408
+  type: 'test'
+  ...
+# Subtest: Real stdio SDK client discovers live owned references, receives MCP images, explores, analyzes and shuts down without catalog files
+ok 48 - Real stdio SDK client discovers live owned references, receives MCP images, explores, analyzes and shuts down without catalog files
+  ---
+  duration_ms: 9686.7663
+  type: 'test'
+  ...
+# Subtest: Failed first capture closes the session whose identifier cannot reach the caller
+ok 49 - Failed first capture closes the session whose identifier cannot reach the caller
+  ---
+  duration_ms: 7.3308
+  type: 'test'
+  ...
+# Subtest: Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no website store or restart cache
+ok 50 - Two real SDK process lifetimes with isolated HOME/CWD/TEMP leave no website store or restart cache
+  ---
+  duration_ms: 9331.4833
+  type: 'test'
+  ...
+# Subtest: I: rejects unsafe schemes, credentials, IPv4/IPv6 private and mixed DNS answers
+ok 51 - I: rejects unsafe schemes, credentials, IPv4/IPv6 private and mixed DNS answers
+  ---
+  duration_ms: 16.2867
+  type: 'test'
+  ...
+# Subtest: I: proxy pins validated DNS answer and rejects changed resolution, POST and unapproved redirect target
+ok 52 - I: proxy pins validated DNS answer and rejects changed resolution, POST and unapproved redirect target
+  ---
+  duration_ms: 27.5843
+  type: 'test'
+  ...
+# Subtest: robots policy honors specific group, longest rule, wildcard and allow exceptions
+ok 53 - robots policy honors specific group, longest rule, wildcard and allow exceptions
+  ---
+  duration_ms: 0.7746
+  type: 'test'
+  ...
+# Subtest: MCP discovery input preserves omitted continuation fields while internal query applies first-search defaults
+ok 54 - MCP discovery input preserves omitted continuation fields while internal query applies first-search defaults
+  ---
+  duration_ms: 5.2928
+  type: 'test'
+  ...
+# Subtest: Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction
+ok 55 - Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction
+  ---
+  duration_ms: 7.6197
+  type: 'test'
+  ...
+# Subtest: Astro searches current actual titles across the full official index, preserves progressive continuation and pins selected YAML
+ok 56 - Astro searches current actual titles across the full official index, preserves progressive continuation and pins selected YAML
+  ---
+  duration_ms: 9.8532
+  type: 'test'
+  ...
+# Subtest: Webflow uses exact public native feed offsets and current tag IDs, verifies original live links, and retains classification
+ok 57 - Webflow uses exact public native feed offsets and current tag IDs, verifies original live links, and retains classification
+  ---
+  duration_ms: 12.2817
+  type: 'test'
+  ...
+# Subtest: Webflow native public full-text search preserves real IDs and page counts without substituting popular sites or inventing tag membership
+ok 58 - Webflow native public full-text search preserves real IDs and page counts without substituting popular sites or inventing tag membership
+  ---
+  duration_ms: 2.7683
+  type: 'test'
+  ...
+# Subtest: Unsupported source URLs fail inside adapter normalization before merging can poison other providers
+ok 59 - Unsupported source URLs fail inside adapter normalization before merging can poison other providers
+  ---
+  duration_ms: 0.5234
+  type: 'test'
+  ...
+# Subtest: Empty legacy native metadata is omitted without losing valid source records or inventing labels
+ok 60 - Empty legacy native metadata is omitted without losing valid source records or inventing labels
+  ---
+  duration_ms: 0.403
+  type: 'test'
+  ...
+# Subtest: mesh3d native filter links are followed, maker identity remains distinct, and disallowed API is never called
+ok 61 - mesh3d native filter links are followed, maker identity remains distinct, and disallowed API is never called
+  ---
+  duration_ms: 4.4762
+  type: 'test'
+  ...
+# Subtest: Progressive search exposes new references instead of repeating the old top results, and finished continuation is empty
+ok 62 - Progressive search exposes new references instead of repeating the old top results, and finished continuation is empty
+  ---
+  duration_ms: 5.5578
+  type: 'test'
+  ...
+# Subtest: Visual reset controls work while account resets remain blocked
+ok 63 - Visual reset controls work while account resets remain blocked
+  ---
+  duration_ms: 2200.5861
+  type: 'test'
+  ...
+# Subtest: Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+ok 64 - Ordinary waiting prose stays browseable while actual access-layer challenge pages stay blocked
+  ---
+  duration_ms: 3945.531
+  type: 'test'
+  ...
+# Subtest: An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+ok 65 - An empty transient canvas readback is inconclusive rather than evidence of a static composited scene
+  ---
+  duration_ms: 3028.916
+  type: 'test'
+  ...
+# Subtest: Actual temporary visual browsing, navigation/reset, responsive viewing, filmstrip, targeted analysis/spec and cleanup
+ok 66 - Actual temporary visual browsing, navigation/reset, responsive viewing, filmstrip, targeted analysis/spec and cleanup
+  ---
+  duration_ms: 15255.1416
+  type: 'test'
+  ...
+1..66
+# tests 66
+# suites 0
+# pass 66
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 113763.4447
