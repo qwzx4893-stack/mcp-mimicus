@@ -49,8 +49,21 @@ export async function safeClick(
       }
       const label = (el.getAttribute('aria-label') ?? el.textContent ?? '').trim().slice(0, 180);
       const visualReset = /^reset (view|camera|zoom|orientation)$/i.test(label);
+      const sliderValues = ['aria-valuemin', 'aria-valuemax', 'aria-valuenow'].map((key) =>
+        el.hasAttribute(key) ? Number(el.getAttribute(key)) : Number.NaN,
+      );
+      const visualSlider =
+        el instanceof HTMLCanvasElement &&
+        el.getAttribute('role') === 'slider' &&
+        el.hasAttribute('tabindex') &&
+        sliderValues.every(Number.isFinite) &&
+        sliderValues[0]! < sliderValues[1]! &&
+        sliderValues[2]! >= sliderValues[0]! &&
+        sliderValues[2]! <= sliderValues[1]! &&
+        !el.closest('a,button,input,select,textarea,[contenteditable=true]');
       return (
         (fragment ||
+          visualSlider ||
           el.matches(
             'button:not([type=submit]),details > summary,[role=button],[role=tab],[aria-expanded]',
           )) &&

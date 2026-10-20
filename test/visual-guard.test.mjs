@@ -3,6 +3,32 @@ import { test } from 'node:test';
 import { BrowserSessions } from '../dist/browser/sessions.js';
 import { config, fixture } from './helpers.mjs';
 
+test('Accessible visual canvas sliders accept touch while forms, malformed ranges and purchase controls remain blocked', {
+  timeout: 60000,
+}, async () => {
+  const f = await fixture(),
+    browser = new BrowserSessions(config('.', f.origin));
+  try {
+    f.setHtml(`<!doctype html><title>Owned visual sliders</title>
+      <canvas id="safe" role="slider" tabindex="0" aria-label="View bearing" aria-valuemin="0" aria-valuemax="360" aria-valuenow="10" width="160" height="90" style="background:navy" onpointerdown="document.querySelector('h1').textContent='Touch received'"></canvas>
+      <canvas id="bad" role="slider" tabindex="0" aria-label="View bearing" aria-valuemin="0" aria-valuemax="no" aria-valuenow="10"></canvas>
+      <canvas id="purchase" role="slider" tabindex="0" aria-label="Purchase view" aria-valuemin="0" aria-valuemax="360" aria-valuenow="10"></canvas>
+      <form><canvas id="form-slider" role="slider" tabindex="0" aria-label="View bearing" aria-valuemin="0" aria-valuemax="360" aria-valuenow="10"></canvas></form><h1>Waiting</h1>`);
+    const s = await browser.open({ url: f.url, authorized: true });
+    await browser.interact(s.sessionId, { action: 'touch', selector: '#safe' });
+    const regions = await browser.explore(s.sessionId, undefined, { limit: 50 });
+    assert.ok(regions.regions.some((x) => x.label === 'Touch received'));
+    for (const selector of ['#bad', '#purchase', '#form-slider'])
+      await assert.rejects(
+        () => browser.interact(s.sessionId, { action: 'touch', selector }),
+        /restricted/,
+      );
+  } finally {
+    await browser.closeAll();
+    await f.close();
+  }
+});
+
 test('Visual reset controls work while account resets remain blocked', {
   timeout: 60000,
 }, async () => {
