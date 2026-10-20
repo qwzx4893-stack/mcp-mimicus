@@ -1,6 +1,6 @@
 # Installation and release verification
 
-Mimicus `0.4.0-beta.1` is a GitHub-distributed beta. The package deliberately retains `private: true`; it has **not been published to npm**. An actual `.tgz` has been installed and exercised from a fresh isolated consumer directory. Clean public-checkout and final release verification remain separate gates.
+Mimicus `0.4.0-beta.1` is a GitHub-distributed beta. The package deliberately retains `private: true`; it has **not been published to npm**. An actual `.tgz` has been installed and exercised from a fresh isolated consumer directory, and the same workflow passed from a fresh public HTTPS checkout. Final release verification remains a separate gate.
 
 ## Requirements
 
@@ -51,12 +51,12 @@ For an explicit browser override, set `MIMICUS_BROWSER_EXECUTABLE` to the instal
 
 `scripts/hardening-install.mjs` is a repository-only acceptance orchestrator. It creates a fresh consumer directory, empty home/model directory and empty user/global npm configuration, copies only required platform variables, uses the public registry, and excludes inherited credentials and Mimicus configuration. It runs installed application code and imports the official MCP client from installed production dependencies. The application does not import this test script, bridge helpers, source fixtures or development dependencies.
 
-The actual packed-install result is recorded in [`install-acceptance.json`](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/artifacts/product-hardening/install-acceptance.json). Source screenshots stay in RAM; this report stores hashes and byte counts rather than image data or personal profile paths.
+The actual packed-install result is recorded in [`install-acceptance.json`](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/product-hardening/install-acceptance.json). Source screenshots stay in RAM; this report stores hashes and byte counts rather than image data or personal profile paths.
 
 | Check | Actual observation on 20 October 2026 |
 | --- | --- |
 | Runtime and installation | Windows x64, Node `24.19.0`; real archive installed with `--ignore-scripts`, empty npm configuration and fresh consumer home |
-| CLI | Installed `0.4.0-beta.1` version, help and doctor succeeded; `private: true` and the `mimicus` bin declaration were retained |
+| CLI | Installed `0.4.0-beta.1` version, help and doctor succeeded; the npm-generated `mimicus` bin shim also returned the version through offline npm exec. `private: true`, MIT license and Node ≥24 requirement were retained |
 | Missing model software | Doctor explicitly reported missing model integrity; a fresh Nuxt hybrid request used `lexical-fallback`, made one metadata HTTP request and returned five results from the actual 58-record response |
 | Actual installed browser | Windows default Brave `155.0.8059.85` rendered the self-test, navigation and 390×844 mobile capture, then closed its owned isolated process |
 | Unsupported explicit binary | A nonexistent executable returned exit code 1; no fallback or browser download occurred |
@@ -66,6 +66,16 @@ The actual packed-install result is recorded in [`install-acceptance.json`](http
 
 The successful first install took approximately 72 seconds. This is one machine and one permitted source/original path, not a cross-platform or complete external-catalog guarantee. A captured Tchibo viewport does not imply fully loaded content, visual quality or permission to redistribute its content.
 
-The first acceptance attempt passed the same seven application checks, then failed because the test harness used nonexistent resource-counter field names. The [preserved defect record](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/artifacts/product-hardening/install-round1-defect.json) identifies the assertion correction; the entire fresh installation was rerun successfully. This was a harness error rather than a browser cleanup failure.
+The first acceptance attempt passed the same seven application checks, then failed because the test harness used nonexistent resource-counter field names. The [preserved defect record](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/product-hardening/install-round1-defect.json) identifies the assertion correction; the entire fresh installation was rerun successfully. This was a harness error rather than a browser cleanup failure.
 
-Final archive contents after documentation changes, a clean public checkout and exact-release hosted CI are still pending. The eventual GitHub prerelease must name the verified commit and archive checksum. The final archive digest belongs outside the archive to avoid a self-referential checksum report. Runtime tests on an earlier build or hosted CI on an earlier commit do not verify the final release. No npm publication is part of this work.
+## Earlier clean checkout evidence
+
+The earlier candidate checkout at [`db04abc52a979ca162c01d35f4cfca43601da2e8`](https://github.com/qwzx4893-stack/mcp-mimicus/commit/db04abc52a979ca162c01d35f4cfca43601da2e8), independently cloned over public HTTPS, passed the documented `npm ci --ignore-scripts`, build, lint and typecheck commands using an empty home/npm configuration and no inherited credential variables. Its own CLI version, doctor and actual default Brave self-test passed before packing. The checkout was clean both before and after those commands. This earlier snapshot does not verify a later release archive.
+
+The resulting real `.tgz` was then installed into another fresh consumer directory and passed all seven installed CLI/SDK/source/browser checks. The full clone-build-pack-install acceptance took approximately 109 seconds. The [preserved clean-checkout report](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/product-hardening/install-clean-checkout.json) records command durations, source commit, archive checksum and the installed 35-file JavaScript tree digest `89f14537130def249d4f20a3533520c202699e7285f880725b4f0c061f27afff`. Reports and examples stay in the public repository rather than being bundled into the software archive.
+
+## Release acceptance rule
+
+Accept a particular prerelease archive as verified only when its external release assets agree: `installation-final.json` must report successful acceptance from the exact released source commit, `SHA256SUMS` must match the downloaded `.tgz`, and the attached hosted CI evidence must identify that same commit with successful Linux and Windows jobs. These files are assembled in `release-assets/` and attached to the corresponding [GitHub prerelease](https://github.com/qwzx4893-stack/mcp-mimicus/releases); they are the authoritative final distribution evidence. An earlier report in the source repository, a package dry-run, or CI on another commit does not substitute for them.
+
+Keep the final archive digest and acceptance report outside the archive to avoid a self-referential checksum. This rule does not assert a final acceptance run before it occurs; consult the matching published release assets for its measured result, runtime digest and limitations. No npm publication is part of this work.

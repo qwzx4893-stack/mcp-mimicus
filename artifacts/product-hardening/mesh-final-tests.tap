@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: unverified Awwwards authorization notes cannot enable automated catalog access; URL-only handoff stays attributed
+ok 1 - unverified Awwwards authorization notes cannot enable automated catalog access; URL-only handoff stays attributed
+  ---
+  duration_ms: 10.0391
+  type: 'test'
+  ...
+# Subtest: Astro niche brief facets influence candidates while progressive exploration eventually includes every unlabeled original
+ok 2 - Astro niche brief facets influence candidates while progressive exploration eventually includes every unlabeled original
+  ---
+  duration_ms: 1.2502
+  type: 'test'
+  ...
+# Subtest: Astro actual YAML description enriches only selected records, without assigning invented style metadata
+ok 3 - Astro actual YAML description enriches only selected records, without assigning invented style metadata
+  ---
+  duration_ms: 7.5076
+  type: 'test'
+  ...
+# Subtest: plain Webflow text search omits landing HTML but validates every actual original detail link with bounded parallel work
+ok 4 - plain Webflow text search omits landing HTML but validates every actual original detail link with bounded parallel work
+  ---
+  duration_ms: 32.9999
+  type: 'test'
+  ...
+# Subtest: Webflow retains successful siblings when one detail times out and propagates explicit cancellation
+ok 5 - Webflow retains successful siblings when one detail times out and propagates explicit cancellation
+  ---
+  duration_ms: 2.5677
+  type: 'test'
+  ...
+# Subtest: Codrops resolves actual relative demo links, rejects credential links, and keeps tutorial repository homes distinct from demos
+ok 6 - Codrops resolves actual relative demo links, rejects credential links, and keeps tutorial repository homes distinct from demos
+  ---
+  duration_ms: 3.0632
+  type: 'test'
+  ...
+# Subtest: Nuxt preserves the source-declared complete industry vocabulary even if one category currently has no site
+ok 7 - Nuxt preserves the source-declared complete industry vocabulary even if one category currently has no site
+  ---
+  duration_ms: 4.8095
+  type: 'test'
+  ...
+# Subtest: mesh native listing filters avoid a redundant first detail lookup and never allow API/substitute origins
+ok 8 - mesh native listing filters avoid a redundant first detail lookup and never allow API/substitute origins
+  ---
+  duration_ms: 3.7336
+  type: 'test'
+  ...
+# Subtest: mesh follows the current public technology parameter and preserves its exact native URL
+ok 9 - mesh follows the current public technology parameter and preserves its exact native URL
+  ---
+  duration_ms: 3.7767
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 604.8782

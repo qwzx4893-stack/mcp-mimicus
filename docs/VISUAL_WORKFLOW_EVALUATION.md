@@ -14,7 +14,7 @@ Actual desktop/mobile images and independent owned-page QA confirmed no horizont
 
 The trial also exposed source and rendering friction: an initial Webflow query supplied a popular feed rather than established coffee search coverage; the agent reported it, and later source acceptance separately exercised the repaired native query. Tchibo's first viewport was usable while many images remained incomplete. Neither fact was silently counted as full rendering or complete source coverage.
 
-Deliverable: [original coffee page](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/coffee.html). Detailed evidence: [coffee trial](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/artifacts/final-release/coffee-trial.md).
+Deliverable: [original coffee page](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/examples/workflow/coffee.html). Detailed evidence: [coffee trial](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/final-release/coffee-trial.md).
 
 ## Immersive brief: Tidal Instrument
 
@@ -26,7 +26,7 @@ Reference-to-target verification returned **false** for the intentional `fixed` 
 
 This workflow exposed a genuine limitation in the old canvas probe: near-empty WebGL readback looked constant even though the actual screenshot showed a rendered scene. The runtime was corrected to report that case as inconclusive, rather than imply static content. Benign copy also triggered an overly broad challenge phrase matcher, which was hardened separately. The original `Reset view` label was rejected by the conservative interaction guard; the final truthful `Center view` label was tested successfully. Stale sessions correctly rejected requests and required reopening.
 
-Deliverable: [original immersive page](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/immersive.html). Detailed evidence: [immersive trial](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/artifacts/final-release/immersive-trial.md).
+Deliverable: [original immersive page](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/examples/workflow/immersive.html). Detailed evidence: [immersive trial](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/final-release/immersive-trial.md).
 
 ## What the evidence supports
 

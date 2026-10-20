@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-20T15:10:37.906Z",
+  "method": "Current production Mesh adapter and robots-aware public fetch; two native pages; metrics only",
+  "pages": [
+    {
+      "page": 1,
+      "sourceRetrievedRecords": 3,
+      "nativeTechnologyMatches": 3,
+      "taxonomyLabels": 3,
+      "nativeTechnologyParameterSelected": true,
+      "hasMore": true,
+      "metadataHttpRequests": 7,
+      "identityHash": "9a9bbc97db133fd918cb161ea9777d746f3b96e80d220a8a15b6c8ca3c888031",
+      "diagnostics": [
+        "The public client infinite-scroll endpoint /api/websites is disallowed by current robots /api/. It is not called; continuation covers exposed public listing/detail links only, not the full gallery."
+      ]
+    },
+    {
+      "page": 2,
+      "sourceRetrievedRecords": 3,
+      "nativeTechnologyMatches": 3,
+      "taxonomyLabels": 4,
+      "nativeTechnologyParameterSelected": true,
+      "hasMore": true,
+      "metadataHttpRequests": 5,
+      "identityHash": "589c5c82cf62b80ba4d73d1638a48a1fb150b377e83be5eb21bef81caf9694c5",
+      "diagnostics": [
+        "The public client infinite-scroll endpoint /api/websites is disallowed by current robots /api/. It is not called; continuation covers exposed public listing/detail links only, not the full gallery."
+      ]
+    }
+  ],
+  "passed": true
+}

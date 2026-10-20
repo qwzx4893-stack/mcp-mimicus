@@ -1,0 +1,890 @@
+{
+  "at": "2026-10-20T15:04:48.198Z",
+  "method": "Live production adapter metrics and official MCP stdio SDK acceptance; no injected providers",
+  "samples": [],
+  "cases": [
+    {
+      "name": "awwwards-bare-note-remains-blocked",
+      "input": {
+        "providers": [
+          "awwwards"
+        ]
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 14,
+          "returned": 0,
+          "newlyVisible": 0,
+          "identityHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 0,
+          "hasMore": false,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "awwwards",
+              "stream": "websites",
+              "status": "blocked",
+              "sourceRetrievedRecords": 0,
+              "manualReferenceCount": 0,
+              "returnedRecords": 0,
+              "hasMore": false,
+              "coverage": "Automated Awwwards catalog unavailable without authorization; operator-supplied original references are a separate usable handoff, never gallery search results",
+              "diagnostics": [
+                "No automated Awwwards catalog/search/detail/media requests were issued. Public navigation links are for the operator; they do not imply a live gallery connection.",
+                "Current upstream software reviewed at 1bc9c13557c8e8f6ea90e174d88eb1708696fca3; retained MIT parser and adapted the candidate-to-original-site visual study workflow without its catalog/media/preferences persistence.",
+                "The configured authorization note is not verified proof of a scoped rights grant and does not enable gallery requests."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": true,
+      "automatedCatalogStatus": "BLOCKED",
+      "taxonomy": [
+        {
+          "provider": "awwwards",
+          "stream": "websites",
+          "labels": 0,
+          "nativeLabels": 0,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "awwwards-url-only-actual-original",
+      "input": {
+        "providers": [
+          "awwwards"
+        ],
+        "originalReferences": [
+          {
+            "url": "https://threejs.org/"
+          }
+        ]
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 6,
+          "returned": 1,
+          "newlyVisible": 1,
+          "identityHash": "7496e64c284c6b75a00c1db1477be3b82e0540fd49c151a12c326f279201c121",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 0,
+          "hasMore": false,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "awwwards",
+              "stream": "websites",
+              "status": "blocked",
+              "sourceRetrievedRecords": 0,
+              "manualReferenceCount": 1,
+              "returnedRecords": 1,
+              "hasMore": false,
+              "coverage": "Automated Awwwards catalog unavailable without authorization; operator-supplied original references are a separate usable handoff, never gallery search results",
+              "diagnostics": [
+                "No automated Awwwards catalog/search/detail/media requests were issued. Public navigation links are for the operator; they do not imply a live gallery connection.",
+                "Current upstream software reviewed at 1bc9c13557c8e8f6ea90e174d88eb1708696fca3; retained MIT parser and adapted the candidate-to-original-site visual study workflow without its catalog/media/preferences persistence.",
+                "The configured authorization note is not verified proof of a scoped rights grant and does not enable gallery requests."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": true,
+      "automatedCatalogStatus": "BLOCKED",
+      "taxonomy": [
+        {
+          "provider": "awwwards",
+          "stream": "websites",
+          "labels": 0,
+          "nativeLabels": 0,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "handoff": {
+        "originalUrlOnlyAccepted": true,
+        "discoveredGalleryRelationship": false,
+        "noSourceListingSupplied": true,
+        "imageBlocks": 1,
+        "imageHashes": [
+          "124eb24d2f7d89f0baf9920be55069ecff15af44ecabf30a9671e0b0c41c5183"
+        ],
+        "actualSession": true,
+        "authorizedOriginal": "threejs.org"
+      },
+      "passed": true
+    },
+    {
+      "name": "codrops-creative-hub",
+      "input": {
+        "providers": [
+          "codrops"
+        ],
+        "stream": "creative-hub"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 1782,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "67dc6422935b2b632c1bd75cf3e21cd38eba1e691e9459977be9c729e0d88ec8",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 2,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "creative-hub",
+              "status": "partial",
+              "sourceRetrievedRecords": 44,
+              "returnedRecords": 44,
+              "next": "https://tympanus.net/codrops/hub/all/page/2/",
+              "hasMore": true,
+              "coverage": "Current source page /codrops/hub/all/; streams remain distinct",
+              "diagnostics": []
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 16,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 640,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "2d7a8edfb4207ae7a96a8ee3a967fbc63e4b695fdf279ea440c914c3216bc34b",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 2,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "creative-hub",
+              "status": "partial",
+              "sourceRetrievedRecords": 44,
+              "returnedRecords": 44,
+              "next": "https://tympanus.net/codrops/hub/all/page/3/",
+              "hasMore": true,
+              "coverage": "Current source page /codrops/hub/all/page/2/; streams remain distinct",
+              "diagnostics": []
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 14,
+      "cachedDrainReturned": 41,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "codrops",
+          "stream": "creative-hub",
+          "labels": 0,
+          "nativeLabels": 45,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "codrops-webzibition",
+      "input": {
+        "providers": [
+          "codrops"
+        ],
+        "stream": "webzibition"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 627,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "5f2e3d5f1793117e884dab350fbac5e451594015745046da9b8dc46f041367c9",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 2,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "webzibition",
+              "status": "partial",
+              "sourceRetrievedRecords": 63,
+              "returnedRecords": 63,
+              "next": "https://tympanus.net/codrops/webzibition/page/2/",
+              "hasMore": true,
+              "coverage": "Current source page /codrops/webzibition/; streams remain distinct",
+              "diagnostics": []
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 22,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 852,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "37545b9438bea7706c46b739df8d31d87ce3cd611e744c0b60a3059342067198",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 2,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "webzibition",
+              "status": "partial",
+              "sourceRetrievedRecords": 56,
+              "returnedRecords": 56,
+              "next": "https://tympanus.net/codrops/webzibition/page/3/",
+              "hasMore": true,
+              "coverage": "Current source page /codrops/webzibition/page/2/; streams remain distinct",
+              "diagnostics": []
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 20,
+      "cachedDrainReturned": 60,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "codrops",
+          "stream": "webzibition",
+          "labels": 0,
+          "nativeLabels": 0,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "codrops-repositories",
+      "input": {
+        "providers": [
+          "codrops"
+        ],
+        "stream": "repositories"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 1348,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "6cc3df248ca59aa099d59dbd20b95c5139567172dd17e34664c7c49d75208e6b",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 1,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "repositories",
+              "status": "partial",
+              "sourceRetrievedRecords": 14,
+              "returnedRecords": 14,
+              "next": "2",
+              "hasMore": true,
+              "coverage": "Page 1 of public organization repositories with published homepages; tutorial/article homepages are explicitly identified and not mislabeled as interactive demos; source topics and licenses remain independent",
+              "diagnostics": []
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 6,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 807,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "c13d061416e132a3cec9088fcabd912f1a22d054494c8aca44ec3768c7a8a85c",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 1,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "codrops",
+              "stream": "repositories",
+              "status": "partial",
+              "sourceRetrievedRecords": 13,
+              "returnedRecords": 13,
+              "next": "3",
+              "hasMore": true,
+              "coverage": "Page 2 of public organization repositories with published homepages; tutorial/article homepages are explicitly identified and not mislabeled as interactive demos; source topics and licenses remain independent",
+              "diagnostics": []
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 4,
+      "cachedDrainReturned": 11,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "codrops",
+          "stream": "repositories",
+          "labels": 0,
+          "nativeLabels": 13,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "astro-coffee-progressive",
+      "input": {
+        "providers": [
+          "astro"
+        ],
+        "query": "coffee"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 2289,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "33ab599f04ae92ef5ffece0ca52bea8cf1014cc4e4d1c1fde4017dc43c5439d2",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 6,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "astro",
+              "stream": "showcase",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "3",
+              "hasMore": true,
+              "coverage": "Current complete title/URL index 3221; enriched candidates 0–3; not full-source semantic or style search",
+              "revision": "5d04a68eb9ba0d57962e458e373b802e4abb4c34",
+              "diagnostics": [
+                "All current official index titles and original URLs participate in lexical selection using query and brief facets. Each page reserves half its bounded candidates for source-order exploration; only selected revision-pinned YAML is enriched. Sparse native labels cannot permanently exclude a site, but this is not full-index semantic search.",
+                "The official index has no style, industry or mood taxonomy; absent labels are not invented. Independent explicit continuation progressively covers the index.",
+                "Published index and repository revision are independently current; deployment lag may produce a reported metadata mismatch."
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 2,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 884,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "de9245e178da98e41556421a08a242f659f0bada6b4aaf8183688c5f33d45224",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 6,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "astro",
+              "stream": "showcase",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "6",
+              "hasMore": true,
+              "coverage": "Current complete title/URL index 3221; enriched candidates 3–6; not full-source semantic or style search",
+              "revision": "5d04a68eb9ba0d57962e458e373b802e4abb4c34",
+              "diagnostics": [
+                "All current official index titles and original URLs participate in lexical selection using query and brief facets. Each page reserves half its bounded candidates for source-order exploration; only selected revision-pinned YAML is enriched. Sparse native labels cannot permanently exclude a site, but this is not full-index semantic search.",
+                "The official index has no style, industry or mood taxonomy; absent labels are not invented. Independent explicit continuation progressively covers the index.",
+                "Published index and repository revision are independently current; deployment lag may produce a reported metadata mismatch."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "astro",
+          "stream": "showcase",
+          "labels": 1,
+          "nativeLabels": 1,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "webflow-coffee-native-search",
+      "input": {
+        "providers": [
+          "webflow"
+        ],
+        "query": "coffee"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 4288,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "bfcdddad9b55137959ead4c84935a16b37c7c5bc18cbd5e3b96895b2ac3b6b5d",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 7,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "2",
+              "hasMore": true,
+              "coverage": "Live source-provided full-text query, native search page 1 of 155; selected IDs resolved through current Webflow feed and detail pages; original URLs checked on detail pages, not proof the original site remains reachable",
+              "diagnostics": [
+                "Native tag taxonomy was not requested; the redundant landing-page fetch was omitted. Detail pages still validate every original URL."
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 2,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 3696,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "684d7de0e59b63035ee828f9b85edb5217ebb9de773cff4f8b62e9ed87fefd07",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 7,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "3",
+              "hasMore": true,
+              "coverage": "Live source-provided full-text query, native search page 2 of 155; selected IDs resolved through current Webflow feed and detail pages; original URLs checked on detail pages, not proof the original site remains reachable",
+              "diagnostics": [
+                "Native tag taxonomy was not requested; the redundant landing-page fetch was omitted. Detail pages still validate every original URL."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "webflow",
+          "stream": "made-in-webflow",
+          "labels": 0,
+          "nativeLabels": 15,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "webflow-native-animation-recent",
+      "input": {
+        "providers": [
+          "webflow"
+        ],
+        "category": "Animation",
+        "sourceSort": "recent"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 4213,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "1751da7e5858153131fb1093b429e5616c5b60e1e4139eee539cb5b328f97e37",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 6,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "3",
+              "hasMore": true,
+              "coverage": "Live native recent feed filtered Animation, offsets 0–3; not platform-wide coverage; original URLs checked on detail pages, not proof the original site remains reachable",
+              "diagnostics": [
+                "A full native feed page suggests more results, not a known total; continuation stops on a short/empty page or bounded offset 10000."
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 2,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 3548,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "d6ae2884da0de9f9885ddfc3f2be0146b2f76a7a17b9b8ddb71e954349bdf82d",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 6,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "webflow",
+              "stream": "made-in-webflow",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "6",
+              "hasMore": true,
+              "coverage": "Live native recent feed filtered Animation, offsets 3–6; not platform-wide coverage; original URLs checked on detail pages, not proof the original site remains reachable",
+              "diagnostics": [
+                "A full native feed page suggests more results, not a known total; continuation stops on a short/empty page or bounded offset 10000."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "webflow",
+          "stream": "made-in-webflow",
+          "labels": 5,
+          "nativeLabels": 35,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "threejs-official-mcp",
+      "input": {
+        "providers": [
+          "threejs-resources"
+        ]
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 3911,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "71e7d02ef26ff7e0262babaadcb77481ee1805c345051b84933795dc124acfc9",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 0,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "threejs-resources",
+              "stream": "showcase",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "3",
+              "hasMore": true,
+              "coverage": "Official native text search and pagination; directory taxonomy is separate from showcase tag IDs",
+              "diagnostics": [
+                "Tool-directory taxonomy returned separately; opaque showcase tag IDs are preserved without invented names.",
+                "Official MCP tools/list reviewed 2026-10-19: no showcase-specific taxonomy resolver or tag filter exists in the published interface. Native showcase text search/offsets remain usable; no unrelated tool tag is substituted."
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 2,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 1040,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "4249d31dc2d53622fecce37ba4d823e59ca3819d95566657ee903382dbcc28dc",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 0,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "threejs-resources",
+              "stream": "showcase",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "6",
+              "hasMore": true,
+              "coverage": "Official native text search and pagination; directory taxonomy is separate from showcase tag IDs",
+              "diagnostics": [
+                "Tool-directory taxonomy returned separately; opaque showcase tag IDs are preserved without invented names.",
+                "Official MCP tools/list reviewed 2026-10-19: no showcase-specific taxonomy resolver or tag filter exists in the published interface. Native showcase text search/offsets remain usable; no unrelated tool tag is substituted."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "threejs-resources",
+          "stream": "showcase",
+          "labels": 0,
+          "nativeLabels": 1,
+          "separateDirectoryTaxonomy": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "nuxt-complete-native-industry-first",
+      "input": {
+        "providers": [
+          "nuxt"
+        ],
+        "industry": "Retail & Food"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 471,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "416470bb249ad5db6290dea62a8b9e3f2c898b8c2ccc787122a231774de6a036",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 1,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "sourceRetrievedRecords": 58,
+              "returnedRecords": 58,
+              "hasMore": false,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change",
+              "revision": "\"6521b222e9a612325fb73305a508e79ac63449f468bc077f1aafbf4224ef2526\"",
+              "diagnostics": []
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "nuxt",
+          "stream": "showcase",
+          "labels": 6,
+          "nativeLabels": 7,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "nuxt-independent-fresh-second",
+      "input": {
+        "providers": [
+          "nuxt"
+        ],
+        "industry": "Retail & Food"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 120,
+          "returned": 3,
+          "newlyVisible": 3,
+          "identityHash": "416470bb249ad5db6290dea62a8b9e3f2c898b8c2ccc787122a231774de6a036",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 1,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "nuxt",
+              "stream": "showcase",
+              "status": "available",
+              "sourceRetrievedRecords": 58,
+              "returnedRecords": 58,
+              "hasMore": false,
+              "coverage": "Complete current source-maintained YAML collection, read anew; count may change",
+              "revision": "\"6521b222e9a612325fb73305a508e79ac63449f468bc077f1aafbf4224ef2526\"",
+              "diagnostics": []
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "nuxt",
+          "stream": "showcase",
+          "labels": 6,
+          "nativeLabels": 7,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "mesh3d-public-native-threejs",
+      "input": {
+        "providers": [
+          "mesh3d"
+        ],
+        "technology": "Three.js"
+      },
+      "pages": [
+        {
+          "page": 1,
+          "call": 1,
+          "resultScope": "initial-source-pages",
+          "elapsedMs": 2411,
+          "returned": 0,
+          "newlyVisible": 0,
+          "identityHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "freshIndependentOperation": true,
+          "metadataHttpRequests": 5,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "mesh3d",
+              "stream": "websites",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "{\"url\":\"https://mesh3d.gallery/websites\",\"offset\":3}",
+              "hasMore": true,
+              "coverage": "Current public listing, details 0–3 of 12; not the full gallery",
+              "diagnostics": [
+                "Requested native filter was not exposed by inspected source links; strict label filtering applies only to this bounded retrieval.",
+                "The public client infinite-scroll endpoint /api/websites is disallowed by current robots /api/. It is not called; continuation covers exposed public listing/detail links only, not the full gallery."
+              ]
+            }
+          ]
+        },
+        {
+          "page": 2,
+          "call": 2,
+          "resultScope": "new-source-pages",
+          "elapsedMs": 1248,
+          "returned": 0,
+          "newlyVisible": 0,
+          "identityHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "freshIndependentOperation": false,
+          "metadataHttpRequests": 5,
+          "hasMore": true,
+          "nativeAndProvenanceValid": true,
+          "sources": [
+            {
+              "provider": "mesh3d",
+              "stream": "websites",
+              "status": "partial",
+              "sourceRetrievedRecords": 3,
+              "returnedRecords": 3,
+              "next": "{\"url\":\"https://mesh3d.gallery/websites\",\"offset\":6}",
+              "hasMore": true,
+              "coverage": "Current public listing, details 3–6 of 12; not the full gallery",
+              "diagnostics": [
+                "The public client infinite-scroll endpoint /api/websites is disallowed by current robots /api/. It is not called; continuation covers exposed public listing/detail links only, not the full gallery."
+              ]
+            }
+          ]
+        }
+      ],
+      "cachedDrainCalls": 0,
+      "cachedDrainReturned": 0,
+      "cachedDrainAllNew": true,
+      "expectedRestriction": false,
+      "taxonomy": [
+        {
+          "provider": "mesh3d",
+          "stream": "websites",
+          "labels": 0,
+          "nativeLabels": 1,
+          "separateDirectoryTaxonomy": false
+        }
+      ],
+      "passed": false
+    }
+  ],
+  "isolatedCwdFilesAfterExit": [],
+  "acceptance": {
+    "permittedCasesPassed": false,
+    "restrictionTestsPassed": true,
+    "awwwardsCatalog": "BLOCKED: no verified scoped grant; passing restriction test is not gallery integration success",
+    "failedCases": [
+      "mesh3d-public-native-threejs"
+    ],
+    "noWebsiteCatalogFiles": true
+  }
+}

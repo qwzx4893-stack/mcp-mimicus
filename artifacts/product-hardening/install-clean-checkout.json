@@ -1,0 +1,392 @@
+{
+  "at": "2026-10-20T10:22:18.037Z",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "status": "VERIFIED",
+  "isolation": {
+    "freshConsumerDirectory": true,
+    "freshHomeAndModelDirectory": true,
+    "inheritedCredentialVariables": false,
+    "inheritedMimicusConfiguration": false,
+    "npmUserAndGlobalConfiguration": "Empty files; explicit public npm registry",
+    "browserDownload": false,
+    "npmPublication": false,
+    "harness": "Test orchestrator only; all application and SDK imports resolve from installed package"
+  },
+  "checks": [
+    {
+      "name": "Actual archive installed into fresh consumer directory",
+      "passed": true,
+      "installedVersion": "0.4.0-beta.1",
+      "bin": {
+        "mimicus": "dist/cli.js"
+      },
+      "license": "MIT",
+      "engines": {
+        "node": ">=24.0.0"
+      },
+      "private": true,
+      "developerScriptsPresent": false
+    },
+    {
+      "name": "Installed CLI version, help and doctor",
+      "passed": true,
+      "version": "0.4.0-beta.1",
+      "npmGeneratedBinShimVersion": "0.4.0-beta.1",
+      "helpMentionsNoDownload": true,
+      "browser": {
+        "selection": "windows-default",
+        "browser": "Brave",
+        "engine": "chromium",
+        "productName": "Brave Browser"
+      },
+      "model": {
+        "state": "not-loaded",
+        "integrityVerified": false,
+        "fallback": "Lexical discovery remains available; install the pinned model software explicitly with model-fetch."
+      }
+    },
+    {
+      "name": "Installed actual default-browser self-test",
+      "passed": true,
+      "browser": {
+        "selection": "windows-default",
+        "browser": "Brave",
+        "engine": "chromium",
+        "productName": "Brave Browser",
+        "version": "155.0.8059.85",
+        "headless": true
+      },
+      "checks": {
+        "actualDefaultBinary": true,
+        "explicitOverride": false,
+        "jpeg": true,
+        "regions": 5,
+        "navigation": true,
+        "mobileViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "cleanup": {
+          "activeSessions": 0,
+          "closingSessions": 0,
+          "opening": 0,
+          "temporaryAnalyses": 0,
+          "sessionLimit": 3,
+          "sessions": [],
+          "persistentContent": false
+        }
+      }
+    },
+    {
+      "name": "Explicit unavailable browser refuses without fallback",
+      "passed": true,
+      "exitCode": 1,
+      "diagnosis": "{\"level\":\"error\",\"message\":\"ENOENT: no such file or directory, realpath '<local-user-path>'\"}\n"
+    },
+    {
+      "name": "Installed official SDK stdio handshake and tool discovery",
+      "passed": true,
+      "tools": [
+        "mimicus_search",
+        "mimicus_browse_categories",
+        "mimicus_list_sources",
+        "mimicus_get_reference",
+        "mimicus_end_discovery",
+        "mimicus_open_reference",
+        "mimicus_preview_references",
+        "mimicus_capture_view",
+        "mimicus_explore_page",
+        "mimicus_interact",
+        "mimicus_capture_motion",
+        "mimicus_close_session",
+        "mimicus_analyze_element",
+        "mimicus_get_design_insights",
+        "mimicus_get_implementation_spec",
+        "mimicus_compare_references",
+        "mimicus_verify_implementation"
+      ]
+    },
+    {
+      "name": "Fresh permitted actual Nuxt source query without model software",
+      "passed": true,
+      "results": 5,
+      "metadataHttpRequests": 1,
+      "retrieval": "lexical-fallback",
+      "sources": [
+        {
+          "provider": "nuxt",
+          "status": "available",
+          "returnedRecords": 58
+        }
+      ]
+    },
+    {
+      "name": "Installed selected original browsing and actual MCP JPEG",
+      "passed": true,
+      "attempts": [
+        {
+          "referenceId": "326bbbd43798fb1232b7f5e9",
+          "passed": false,
+          "error": "[{\"type\":\"text\",\"text\":\"{\\\"error\\\":\\\"robots access HTTP 403\\\"}\"}]"
+        },
+        {
+          "referenceId": "915f68951d6d254e2dd8d88b",
+          "passed": false,
+          "error": "[{\"type\":\"text\",\"text\":\"{\\\"error\\\":\\\"Metadata response exceeds byte bound\\\"}\"}]"
+        },
+        {
+          "url": "https://www.tchibo.de/",
+          "passed": true,
+          "imageBlocks": 1,
+          "jpegBytes": 79026,
+          "jpegSha256": "b113ea19522c145d3c55d3c22aa085f75d7f825f015f74a2e903d98f693fddf9",
+          "browser": {
+            "selection": "windows-default",
+            "browser": "Brave",
+            "engine": "chromium",
+            "productName": "Brave Browser",
+            "version": "155.0.8059.85",
+            "headless": true
+          },
+          "interpretation": "Actual selected original viewport captured; first-frame availability does not establish complete rendering or design quality"
+        }
+      ]
+    }
+  ],
+  "sourceVerification": {
+    "commit": "db04abc52a979ca162c01d35f4cfca43601da2e8",
+    "origin": "https://github.com/qwzx4893-stack/mcp-mimicus.git",
+    "cleanBefore": true,
+    "commands": [
+      {
+        "command": "npm ci --ignore-scripts --no-fund --no-audit",
+        "passed": true,
+        "durationMs": 38325,
+        "stdoutSha256": "52cf01fd5f9ba7ffd450fae0d5f86f4295c39a0ab1b882f97a0b68059d802726"
+      },
+      {
+        "command": "npm run build",
+        "passed": true,
+        "durationMs": 2573,
+        "stdoutSha256": "68609ae6f561d6c738940df2e81cef7df0854dae2d67ee13041d8ff8c2f5ce70"
+      },
+      {
+        "command": "npm run lint",
+        "passed": true,
+        "durationMs": 2574,
+        "stdoutSha256": "0dd7556ef4ebdb99e7f88c4526a08ddb8be15b7a4220f2444d4155cab6bec2e0"
+      },
+      {
+        "command": "npm run check",
+        "passed": true,
+        "durationMs": 1044,
+        "stdoutSha256": "30695170dd88a419e0ce4396214eb58de5fb453d22e57c0e649b7c4f8a67edf9"
+      }
+    ],
+    "cli": {
+      "version": "0.4.0-beta.1",
+      "doctorBrowserResolved": true,
+      "doctorModelState": "not-loaded",
+      "selfTestPassed": true,
+      "browser": {
+        "selection": "windows-default",
+        "browser": "Brave",
+        "engine": "chromium",
+        "productName": "Brave Browser",
+        "version": "155.0.8059.85",
+        "headless": true
+      },
+      "checks": {
+        "actualDefaultBinary": true,
+        "explicitOverride": false,
+        "jpeg": true,
+        "regions": 5,
+        "navigation": true,
+        "mobileViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "cleanup": {
+          "activeSessions": 0,
+          "closingSessions": 0,
+          "opening": 0,
+          "temporaryAnalyses": 0,
+          "sessionLimit": 3,
+          "sessions": [],
+          "persistentContent": false
+        }
+      }
+    },
+    "cleanAfter": true
+  },
+  "package": {
+    "name": "mcp-mimicus",
+    "version": "0.4.0-beta.1",
+    "fileCount": 129,
+    "compressedBytes": 258144,
+    "unpackedBytes": 910260,
+    "integrity": "sha512-279fFbpYQnvVBED7twXpdlzcowR9sI0Z+jqndRqfvla3p4olD3MURlr4MJJlh6ANWEjmNucIC8Km7FKpA3D7UQ==",
+    "files": [
+      "CHANGELOG.md",
+      "CONTRIBUTING.md",
+      "LICENSE",
+      "README.md",
+      "SECURITY.md",
+      "THIRD_PARTY_NOTICES.md",
+      "assets/mimicus-banner.png",
+      "assets/mimicus-banner.svg",
+      "dist/analysis/design-brief.d.ts",
+      "dist/analysis/design-brief.js",
+      "dist/analysis/design-brief.js.map",
+      "dist/analysis/extract.d.ts",
+      "dist/analysis/extract.js",
+      "dist/analysis/extract.js.map",
+      "dist/analysis/spec.d.ts",
+      "dist/analysis/spec.js",
+      "dist/analysis/spec.js.map",
+      "dist/analysis/style-profile.d.ts",
+      "dist/analysis/style-profile.js",
+      "dist/analysis/style-profile.js.map",
+      "dist/analysis/verify.d.ts",
+      "dist/analysis/verify.js",
+      "dist/analysis/verify.js.map",
+      "dist/browser/access-gate.d.ts",
+      "dist/browser/access-gate.js",
+      "dist/browser/access-gate.js.map",
+      "dist/browser/backend.d.ts",
+      "dist/browser/backend.js",
+      "dist/browser/backend.js.map",
+      "dist/browser/behavior.d.ts",
+      "dist/browser/behavior.js",
+      "dist/browser/behavior.js.map",
+      "dist/browser/css-motion.d.ts",
+      "dist/browser/css-motion.js",
+      "dist/browser/css-motion.js.map",
+      "dist/browser/interactions.d.ts",
+      "dist/browser/interactions.js",
+      "dist/browser/interactions.js.map",
+      "dist/browser/observe.d.ts",
+      "dist/browser/observe.js",
+      "dist/browser/observe.js.map",
+      "dist/browser/previews.d.ts",
+      "dist/browser/previews.js",
+      "dist/browser/previews.js.map",
+      "dist/browser/probe.d.ts",
+      "dist/browser/probe.js",
+      "dist/browser/probe.js.map",
+      "dist/browser/scroll.d.ts",
+      "dist/browser/scroll.js",
+      "dist/browser/scroll.js.map",
+      "dist/browser/self-test.d.ts",
+      "dist/browser/self-test.js",
+      "dist/browser/self-test.js.map",
+      "dist/browser/sessions.d.ts",
+      "dist/browser/sessions.js",
+      "dist/browser/sessions.js.map",
+      "dist/browser/temporal.d.ts",
+      "dist/browser/temporal.js",
+      "dist/browser/temporal.js.map",
+      "dist/cli.d.ts",
+      "dist/cli.js",
+      "dist/cli.js.map",
+      "dist/config.d.ts",
+      "dist/config.js",
+      "dist/config.js.map",
+      "dist/discovery/federation.d.ts",
+      "dist/discovery/federation.js",
+      "dist/discovery/federation.js.map",
+      "dist/discovery/providers/awwwards-parser.d.ts",
+      "dist/discovery/providers/awwwards-parser.js",
+      "dist/discovery/providers/awwwards-parser.js.map",
+      "dist/discovery/providers/index.d.ts",
+      "dist/discovery/providers/index.js",
+      "dist/discovery/providers/index.js.map",
+      "dist/discovery/providers/parsers.d.ts",
+      "dist/discovery/providers/parsers.js",
+      "dist/discovery/providers/parsers.js.map",
+      "dist/discovery/providers/three-resources.d.ts",
+      "dist/discovery/providers/three-resources.js",
+      "dist/discovery/providers/three-resources.js.map",
+      "dist/discovery/ranking.d.ts",
+      "dist/discovery/ranking.js",
+      "dist/discovery/ranking.js.map",
+      "dist/discovery/types.d.ts",
+      "dist/discovery/types.js",
+      "dist/discovery/types.js.map",
+      "dist/presentation.d.ts",
+      "dist/presentation.js",
+      "dist/presentation.js.map",
+      "dist/security/fetch.d.ts",
+      "dist/security/fetch.js",
+      "dist/security/fetch.js.map",
+      "dist/security/network.d.ts",
+      "dist/security/network.js",
+      "dist/security/network.js.map",
+      "dist/security/robots.d.ts",
+      "dist/security/robots.js",
+      "dist/security/robots.js.map",
+      "dist/semantic.d.ts",
+      "dist/semantic.js",
+      "dist/semantic.js.map",
+      "dist/server.d.ts",
+      "dist/server.js",
+      "dist/server.js.map",
+      "dist/types.d.ts",
+      "dist/types.js",
+      "dist/types.js.map",
+      "dist/util.d.ts",
+      "dist/util.js",
+      "dist/util.js.map",
+      "dist/version.d.ts",
+      "dist/version.js",
+      "dist/version.js.map",
+      "docs/AGENT_QUALITY_EVALUATION.md",
+      "docs/BROWSER_RELIABILITY.md",
+      "docs/CONFIGURATION.md",
+      "docs/DEFAULT_BROWSER_BACKEND.md",
+      "docs/FINAL_ENGINEERING_AUDIT.md",
+      "docs/FINAL_LIMITATIONS.md",
+      "docs/FINAL_PRODUCT_HARDENING_AUDIT.md",
+      "docs/INSTALLATION_AND_RELEASE.md",
+      "docs/MIGRATION.md",
+      "docs/QUALITY_AND_SECURITY_TEST_RESULTS.md",
+      "docs/RETRIEVAL_EVALUATION.md",
+      "docs/SECURITY.md",
+      "docs/SOURCE_INTEGRATION_MATRIX.md",
+      "docs/VISUAL_DISCOVERY_EVALUATION.md",
+      "docs/VISUAL_WORKFLOW_EVALUATION.md",
+      "package.json"
+    ]
+  },
+  "archive": {
+    "path": ".release/install-2026-10-20T10-22-18-033Z/mcp-mimicus-0.4.0-beta.1.tgz",
+    "sha256": "48ccad67c38c61222bba8f2e4206536c6513433b90e9b60a94de9274f5747299"
+  },
+  "installedRuntime": {
+    "javascriptFiles": 35,
+    "javascriptSha256": "89f14537130def249d4f20a3533520c202699e7285f880725b4f0c061f27afff",
+    "entrySha256": "55dd25a3d06d9b66951ecfc0e36035ea898363ba5f6e341342a10bbff861eb64",
+    "sourceKind": "Explicit source checkout"
+  },
+  "finalResources": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  },
+  "finishedAt": "2026-10-20T10:24:06.590Z"
+}

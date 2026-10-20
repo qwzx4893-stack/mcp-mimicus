@@ -11,6 +11,11 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const suppliedArchive = process.argv.find((x) => x.startsWith('--archive='))?.slice(10);
 const source = resolve(process.argv.find((x) => x.startsWith('--source='))?.slice(9) ?? root);
+const reportDestination = resolve(
+  root,
+  process.argv.find((x) => x.startsWith('--report='))?.slice(9) ??
+    'artifacts/product-hardening/install-acceptance.json',
+);
 const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const runRoot = join(root, '.release', `install-${runId}`);
 const prefix = join(runRoot, 'consumer');
@@ -120,6 +125,67 @@ function summarizeBrowser(browser = {}) {
 
 let client;
 try {
+  if (process.argv.includes('--verify-source')) {
+    assert.notEqual(
+      source,
+      root,
+      'Source verification requires the explicitly selected fresh checkout',
+    );
+    const git = (args) => {
+      const result = spawnSync('git', args, {
+        cwd: source,
+        env,
+        encoding: 'utf8',
+        windowsHide: true,
+      });
+      assert.equal(result.status, 0, safeError(result.stderr));
+      return result.stdout.trim();
+    };
+    const commit = git(['rev-parse', 'HEAD']);
+    const expectedCommit = process.argv
+      .find((x) => x.startsWith('--expected-source-commit='))
+      ?.slice(25);
+    if (expectedCommit) assert.equal(commit, expectedCommit);
+    const origin = git(['remote', 'get-url', 'origin']);
+    assert.match(origin, /^https:\/\/github\.com\/qwzx4893-stack\/mcp-mimicus(?:\.git)?$/);
+    assert.equal(git(['status', '--porcelain']), '', 'Fresh source checkout must start clean');
+    report.sourceVerification = { commit, origin, cleanBefore: true, commands: [] };
+    for (const args of [
+      ['ci', '--ignore-scripts', '--no-fund', '--no-audit'],
+      ['run', 'build'],
+      ['run', 'lint'],
+      ['run', 'check'],
+    ]) {
+      const started = performance.now();
+      const stdout = checked([npmCli, ...args], source);
+      report.sourceVerification.commands.push({
+        command: `npm ${args.join(' ')}`,
+        passed: true,
+        durationMs: Math.round(performance.now() - started),
+        stdoutSha256: createHash('sha256').update(stdout).digest('hex'),
+      });
+    }
+    const sourceCli = join(source, 'dist', 'cli.js');
+    const version = checked([sourceCli, '--version'], source).trim();
+    const doctor = JSON.parse(checked([sourceCli, 'doctor'], source));
+    const selfTest = JSON.parse(checked([sourceCli, 'self-test'], source));
+    assert.equal(doctor.browser.resolved, true);
+    assert.equal(selfTest.passed, true);
+    report.sourceVerification.cli = {
+      version,
+      doctorBrowserResolved: true,
+      doctorModelState: doctor.model.state,
+      selfTestPassed: true,
+      browser: summarizeBrowser(selfTest.browser),
+      checks: selfTest.checks,
+    };
+    assert.equal(
+      git(['status', '--porcelain']),
+      '',
+      'Public source build must not change tracked files',
+    );
+    report.sourceVerification.cleanAfter = true;
+  }
   const expected = JSON.parse(readFileSync(join(source, 'package.json'), 'utf8'));
   let archive = suppliedArchive && resolve(suppliedArchive);
   if (!archive) {
@@ -194,6 +260,24 @@ try {
   assert.ok(existsSync(join(prefix, 'node_modules', '.bin', 'mimicus.cmd')));
   assert.ok(!existsSync(join(installed, 'scripts')), 'Developer helpers must not enter package');
   assert.ok(!existsSync(join(installed, 'test')), 'Test harnesses must not enter package');
+  const packagedMarkdown = [
+    join(installed, 'README.md'),
+    ...readdirSync(join(installed, 'docs'))
+      .filter((file) => file.endsWith('.md'))
+      .map((file) => join(installed, 'docs', file)),
+  ];
+  let relativeDocumentationLinks = 0;
+  for (const file of packagedMarkdown) {
+    for (const match of readFileSync(file, 'utf8').matchAll(/\]\(([^)]+)\)/g)) {
+      const target = match[1].split(/[?#]/)[0];
+      if (!target || /^[a-z][a-z\d+.-]*:/i.test(target)) continue;
+      relativeDocumentationLinks += 1;
+      assert.ok(
+        existsSync(resolve(dirname(file), target)),
+        `Missing packaged relative documentation target: ${relative(installed, file)} -> ${target}`,
+      );
+    }
+  }
   report.checks.push({
     name: 'Actual archive installed into fresh consumer directory',
     passed: true,
@@ -203,6 +287,8 @@ try {
     engines: packageJson.engines,
     private: packageJson.private,
     developerScriptsPresent: false,
+    packagedMarkdownFiles: packagedMarkdown.length,
+    verifiedRelativeDocumentationLinks: relativeDocumentationLinks,
   });
   const version = checked([cli, '--version']).trim();
   assert.equal(version, expected.version);
@@ -359,7 +445,7 @@ try {
 } finally {
   await client?.close();
   report.finishedAt = new Date().toISOString();
-  const destination = join(root, 'artifacts', 'product-hardening', 'install-acceptance.json');
+  const destination = reportDestination;
   mkdirSync(dirname(destination), { recursive: true });
   writeFileSync(destination, `${JSON.stringify(report, null, 2)}\n`);
   console.log(

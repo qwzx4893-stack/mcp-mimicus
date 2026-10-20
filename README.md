@@ -71,7 +71,7 @@ flowchart LR
 6. **Build and verify.** Use original markup, code, content and authorized assets. Review desktop/mobile images, keyboard/touch and reduced motion. Verify selected relationships and intended differences separately from visual judgment.
 7. **Release resources.** Close sessions and end discovery operations when done.
 
-The owned [coffee storefront](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/coffee.html) and [interactive sculpture](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/immersive.html) are inspectable original implementations from earlier SDK-driven trials. They are examples, not a bundled site library or mirrored gallery content. New hardening trials and negative cases are recorded in the [agent quality evaluation](docs/AGENT_QUALITY_EVALUATION.md).
+The owned [coffee storefront](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/examples/workflow/coffee.html) and [interactive sculpture](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/examples/workflow/immersive.html) are inspectable original implementations from earlier SDK-driven trials. They are examples, not a bundled site library or mirrored gallery content. New hardening trials and negative cases are recorded in the [agent quality evaluation](docs/AGENT_QUALITY_EVALUATION.md).
 
 ### Search, preview, compare
 

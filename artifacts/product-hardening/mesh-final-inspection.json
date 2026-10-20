@@ -1,0 +1,111 @@
+{
+  "at": "2026-10-20T15:08:51.693Z",
+  "pages": [
+    {
+      "kind": "listing",
+      "status": 200,
+      "bytes": 287992,
+      "hash": "c9f37d8c7f5489090b588a14a31bcf0e8f5a45b6d4320f64de89a17ae7babb6f",
+      "filters": [],
+      "nativeAnchors": []
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 251486,
+      "hash": "98f6f1dbecba80c2cca5ec13d2fea7489e623bb1beafcee79ced4a8b89133ca4",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 247915,
+      "hash": "27525e0994fb57085bbfe0d9738fdefa5f15ca1e198c3f0ffc32b538a3bba574",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 251591,
+      "hash": "4d72f49f3f2729af45e1c43b78d56074873258a777aca4f241971a739c02559f",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 246315,
+      "hash": "4bfa57d21fd8bcbf6a3c3ee81f85a1c9d50df8501ab1759f96e0cb62343b712d",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 262774,
+      "hash": "d489bb4a33bb9e20066ff5c592d5dce920bdfb18140f81bd1d3ea76b35cb3e8b",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    },
+    {
+      "kind": "detail",
+      "status": 200,
+      "bytes": 262907,
+      "hash": "cfa6c2097ed1863af0b5996606864b1175884071491232ab79cc670867825bd8",
+      "filters": [],
+      "nativeAnchors": [],
+      "parsedNative": {
+        "categories": [
+          "Websites"
+        ],
+        "tags": [],
+        "technologies": [],
+        "awards": []
+      }
+    }
+  ],
+  "listingPaths": 12,
+  "requests": 8
+}

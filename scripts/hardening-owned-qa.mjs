@@ -38,7 +38,7 @@ try {
   const page = await context.newPage();
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  for (const kind of ['coffee', 'saas']) {
+  for (const kind of ['coffee', 'saas-interrupted']) {
     await page.goto(`http://127.0.0.1:45812/hardening-${kind}.html`);
     assert.equal(await page.locator('h1').count(), 1);
     if (kind === 'coffee') {

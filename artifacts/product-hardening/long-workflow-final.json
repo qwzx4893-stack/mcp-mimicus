@@ -1,0 +1,245 @@
+{
+  "scope": "Actual SDK workflow on final browser-lifecycle implementation; source parser compiled later without changing browser module",
+  "startedAt": "2026-10-20T14:55:57.858Z",
+  "finishedAt": "2026-10-20T15:21:15.937Z",
+  "elapsedSeconds": 1518.079,
+  "conditions": {
+    "defaultSessions": 3,
+    "idleMinutes": 10,
+    "absoluteMinutes": 30,
+    "images": 80,
+    "operations": 200,
+    "browser": "Installed Windows default Brave",
+    "personalProfileAccess": false,
+    "artificialSleep": false
+  },
+  "observations": [
+    "First original reference captured successfully at 15:20:30 UTC, more than 24 minutes after opening; selected analysis at 15:13 counted as activity.",
+    "Second original reference expired after its 15:08 renewal and expected ten-minute inactivity; capture correctly refused, then explicit original-URL reopen returned a real viewed image.",
+    "Three concurrently owned sessions (retained reference, reopened reference, original target) closed successfully in one bounded batch. Source/discovery/browser/analysis counters were zero afterwards.",
+    "Interleaved real work included original target desktop/mobile menu and Escape QA, selected responsive reference analysis/spec, source defect repair and independent matched-trial review. No account-outage interval is counted.",
+    "This does not claim two continuously active reference sessions at the final revisit; the earlier round-one two-reference retention passed but exposed a delayed-close defect retained separately."
+  ],
+  "events": [
+    {
+      "at": "2026-10-20T14:56:24.024Z",
+      "action": "open-reference",
+      "url": "https://ibrewmyown.coffee/",
+      "sessionId": "368a028c-f348-4ec5-a6ad-8944850a83f7",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:06:22.289Z",
+        "absoluteExpiresAt": "2026-10-20T15:26:22.123Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      },
+      "browser": "Brave",
+      "selection": "windows-default"
+    },
+    {
+      "at": "2026-10-20T14:56:31.919Z",
+      "action": "open-reference",
+      "url": "https://www.tchibo.de/",
+      "sessionId": "9324f321-471a-4cd1-8b3f-a75f8dadc919",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:06:29.074Z",
+        "absoluteExpiresAt": "2026-10-20T15:26:28.919Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      },
+      "browser": "Brave",
+      "selection": "windows-default"
+    },
+    {
+      "at": "2026-10-20T15:03:05.705Z",
+      "action": "compare-and-view-two-references",
+      "count": 2
+    },
+    {
+      "at": "2026-10-20T15:06:41.619Z",
+      "action": "open-original-target-desktop",
+      "sessionId": "821b5665-7b41-48b9-a0de-cc476884befc",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:16:40.450Z",
+        "absoluteExpiresAt": "2026-10-20T15:36:40.289Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T15:08:01.750Z",
+      "action": "renew",
+      "id": "368a028c-f348-4ec5-a6ad-8944850a83f7",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:18:01.099Z",
+        "absoluteExpiresAt": "2026-10-20T15:26:22.123Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 5,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T15:08:06.578Z",
+      "action": "renew",
+      "id": "9324f321-471a-4cd1-8b3f-a75f8dadc919",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:18:06.002Z",
+        "absoluteExpiresAt": "2026-10-20T15:26:28.919Z",
+        "idleWindowMs": 600000,
+        "images": 2,
+        "imageLimit": 80,
+        "operations": 5,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T15:13:40.559Z",
+      "action": "mimicus_analyze_element",
+      "analysisId": "b6907483-18aa-40d2-aa82-d514600f1a16"
+    },
+    {
+      "at": "2026-10-20T15:13:45.365Z",
+      "action": "mimicus_interact",
+      "interaction": {
+        "action": "resize",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "reducedMotion": true
+      }
+    },
+    {
+      "at": "2026-10-20T15:13:50.644Z",
+      "action": "mimicus_interact",
+      "interaction": {
+        "action": "click",
+        "selector": ".menu"
+      }
+    },
+    {
+      "at": "2026-10-20T15:13:54.849Z",
+      "action": "mimicus_interact",
+      "interaction": {
+        "action": "key",
+        "key": "Escape"
+      }
+    },
+    {
+      "at": "2026-10-20T15:16:26.195Z",
+      "action": "retrieve-selected-implementation-spec",
+      "analysisId": "b6907483-18aa-40d2-aa82-d514600f1a16"
+    },
+    {
+      "at": "2026-10-20T15:20:30.930Z",
+      "action": "revisit-after-20-minutes",
+      "sessionId": "368a028c-f348-4ec5-a6ad-8944850a83f7",
+      "success": true,
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:26:22.123Z",
+        "absoluteExpiresAt": "2026-10-20T15:26:22.123Z",
+        "idleWindowMs": 600000,
+        "images": 3,
+        "imageLimit": 80,
+        "operations": 7,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T15:20:34.239Z",
+      "action": "revisit-after-20-minutes",
+      "sessionId": "9324f321-471a-4cd1-8b3f-a75f8dadc919",
+      "success": false,
+      "error": [
+        {
+          "type": "text",
+          "text": "{\"error\":\"Browser session closed or unknown\"}"
+        }
+      ]
+    },
+    {
+      "at": "2026-10-20T15:20:59.024Z",
+      "action": "reopen-expired-original-url",
+      "url": "https://www.tchibo.de/",
+      "sessionId": "6cfa907c-b3c3-404f-9ae5-3bfe181374b2",
+      "lease": {
+        "idleExpiresAt": "2026-10-20T15:30:56.069Z",
+        "absoluteExpiresAt": "2026-10-20T15:50:55.911Z",
+        "idleWindowMs": 600000,
+        "images": 0,
+        "imageLimit": 80,
+        "operations": 1,
+        "operationLimit": 200,
+        "renewal": "Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry."
+      }
+    },
+    {
+      "at": "2026-10-20T15:21:12.385Z",
+      "action": "mimicus_close_session",
+      "elapsedMs": 3851,
+      "result": {
+        "data": {
+          "sessions": [
+            {
+              "sessionId": "368a028c-f348-4ec5-a6ad-8944850a83f7",
+              "closed": true,
+              "released": "Browser context, proxy, analysis and temporary page state"
+            },
+            {
+              "sessionId": "6cfa907c-b3c3-404f-9ae5-3bfe181374b2",
+              "closed": true,
+              "released": "Browser context, proxy, analysis and temporary page state"
+            },
+            {
+              "sessionId": "821b5665-7b41-48b9-a0de-cc476884befc",
+              "closed": true,
+              "released": "Browser context, proxy, analysis and temporary page state"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "at": "2026-10-20T15:21:15.937Z",
+      "action": "mimicus_list_sources",
+      "elapsedMs": 3552,
+      "federation": {
+        "activeOperations": 0,
+        "retainedReferences": 0,
+        "pendingRankedCandidates": 0,
+        "pendingSemanticCandidates": 0,
+        "persistentCatalog": false
+      },
+      "browser": {
+        "activeSessions": 0,
+        "closingSessions": 0,
+        "opening": 0,
+        "temporaryAnalyses": 0,
+        "sessionLimit": 3,
+        "sessions": [],
+        "persistentContent": false
+      },
+      "semantic": {
+        "state": "not-loaded",
+        "pending": 0,
+        "siteVectorsPersisted": false
+      }
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "at": "2026-10-20T09:51:28.579Z",
+  "at": "2026-10-20T10:22:18.037Z",
   "node": "v24.19.0",
   "platform": "win32",
   "architecture": "x64",
@@ -22,6 +22,10 @@
       "bin": {
         "mimicus": "dist/cli.js"
       },
+      "license": "MIT",
+      "engines": {
+        "node": ">=24.0.0"
+      },
       "private": true,
       "developerScriptsPresent": false
     },
@@ -29,10 +33,13 @@
       "name": "Installed CLI version, help and doctor",
       "passed": true,
       "version": "0.4.0-beta.1",
+      "npmGeneratedBinShimVersion": "0.4.0-beta.1",
       "helpMentionsNoDownload": true,
       "browser": {
         "selection": "windows-default",
-        "engine": "chromium"
+        "browser": "Brave",
+        "engine": "chromium",
+        "productName": "Brave Browser"
       },
       "model": {
         "state": "not-loaded",
@@ -45,7 +52,9 @@
       "passed": true,
       "browser": {
         "selection": "windows-default",
+        "browser": "Brave",
         "engine": "chromium",
+        "productName": "Brave Browser",
         "version": "155.0.8059.85",
         "headless": true
       },
@@ -131,26 +140,96 @@
           "url": "https://www.tchibo.de/",
           "passed": true,
           "imageBlocks": 1,
-          "jpegBytes": 77341,
-          "jpegSha256": "5cd1b0fcbdf097e7549be3d1a450a3f5d67dfb1d45369b8cfd371b3e4a21d604",
+          "jpegBytes": 79026,
+          "jpegSha256": "b113ea19522c145d3c55d3c22aa085f75d7f825f015f74a2e903d98f693fddf9",
           "browser": {
             "selection": "windows-default",
+            "browser": "Brave",
             "engine": "chromium",
+            "productName": "Brave Browser",
             "version": "155.0.8059.85",
             "headless": true
-          }
+          },
+          "interpretation": "Actual selected original viewport captured; first-frame availability does not establish complete rendering or design quality"
         }
       ]
     }
   ],
+  "sourceVerification": {
+    "commit": "db04abc52a979ca162c01d35f4cfca43601da2e8",
+    "origin": "https://github.com/qwzx4893-stack/mcp-mimicus.git",
+    "cleanBefore": true,
+    "commands": [
+      {
+        "command": "npm ci --ignore-scripts --no-fund --no-audit",
+        "passed": true,
+        "durationMs": 38325,
+        "stdoutSha256": "52cf01fd5f9ba7ffd450fae0d5f86f4295c39a0ab1b882f97a0b68059d802726"
+      },
+      {
+        "command": "npm run build",
+        "passed": true,
+        "durationMs": 2573,
+        "stdoutSha256": "68609ae6f561d6c738940df2e81cef7df0854dae2d67ee13041d8ff8c2f5ce70"
+      },
+      {
+        "command": "npm run lint",
+        "passed": true,
+        "durationMs": 2574,
+        "stdoutSha256": "0dd7556ef4ebdb99e7f88c4526a08ddb8be15b7a4220f2444d4155cab6bec2e0"
+      },
+      {
+        "command": "npm run check",
+        "passed": true,
+        "durationMs": 1044,
+        "stdoutSha256": "30695170dd88a419e0ce4396214eb58de5fb453d22e57c0e649b7c4f8a67edf9"
+      }
+    ],
+    "cli": {
+      "version": "0.4.0-beta.1",
+      "doctorBrowserResolved": true,
+      "doctorModelState": "not-loaded",
+      "selfTestPassed": true,
+      "browser": {
+        "selection": "windows-default",
+        "browser": "Brave",
+        "engine": "chromium",
+        "productName": "Brave Browser",
+        "version": "155.0.8059.85",
+        "headless": true
+      },
+      "checks": {
+        "actualDefaultBinary": true,
+        "explicitOverride": false,
+        "jpeg": true,
+        "regions": 5,
+        "navigation": true,
+        "mobileViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "cleanup": {
+          "activeSessions": 0,
+          "closingSessions": 0,
+          "opening": 0,
+          "temporaryAnalyses": 0,
+          "sessionLimit": 3,
+          "sessions": [],
+          "persistentContent": false
+        }
+      }
+    },
+    "cleanAfter": true
+  },
   "package": {
     "name": "mcp-mimicus",
     "version": "0.4.0-beta.1",
-    "fileCount": 128,
-    "compressedBytes": 251790,
-    "unpackedBytes": 890219,
-    "integrity": "sha512-Wg9DXZKERASez6Vc+8U7sjuhQ89ixHsuI6qrIGBWduQZBM4f2zuSq858zP5Ta+v2JYl9+7n51gT2MCvdqsgCtA==",
+    "fileCount": 129,
+    "compressedBytes": 258144,
+    "unpackedBytes": 910260,
+    "integrity": "sha512-279fFbpYQnvVBED7twXpdlzcowR9sI0Z+jqndRqfvla3p4olD3MURlr4MJJlh6ANWEjmNucIC8Km7FKpA3D7UQ==",
     "files": [
+      "CHANGELOG.md",
       "CONTRIBUTING.md",
       "LICENSE",
       "README.md",
@@ -282,8 +361,14 @@
     ]
   },
   "archive": {
-    "path": ".release/install-2026-10-20T09-51-28-575Z/mcp-mimicus-0.4.0-beta.1.tgz",
-    "sha256": "1a710d20b950d20cac9616d3024c110def024a0afae3d3a1fbdf4b71b2fd236a"
+    "path": ".release/install-2026-10-20T10-22-18-033Z/mcp-mimicus-0.4.0-beta.1.tgz",
+    "sha256": "48ccad67c38c61222bba8f2e4206536c6513433b90e9b60a94de9274f5747299"
+  },
+  "installedRuntime": {
+    "javascriptFiles": 35,
+    "javascriptSha256": "89f14537130def249d4f20a3533520c202699e7285f880725b4f0c061f27afff",
+    "entrySha256": "55dd25a3d06d9b66951ecfc0e36035ea898363ba5f6e341342a10bbff861eb64",
+    "sourceKind": "Explicit source checkout"
   },
   "finalResources": {
     "browser": {
@@ -303,5 +388,5 @@
       "persistentCatalog": false
     }
   },
-  "finishedAt": "2026-10-20T09:52:40.271Z"
+  "finishedAt": "2026-10-20T10:24:06.590Z"
 }

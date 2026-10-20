@@ -1,6 +1,6 @@
 # Relay assisted agent exercise
 
-Original output: [hardening-saas.html](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/examples/workflow/hardening-saas.html).
+Interrupted original output: [hardening-saas-interrupted.html](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/examples/workflow/hardening-saas-interrupted.html). A later fresh matched assisted run is reported separately; this file preserves the interrupted trial rather than replacing its history.
 
 The matched brief covers an async decision log for small distributed teams, local14-day trial, hero/log/features/two plans/monthly–annual/FAQ, three category filters, mobile navigation/Escape/focus, reduced motion, system fonts and white/slate/cobalt original CSS with no external assets.
 
@@ -8,7 +8,7 @@ The first assisted segment began19 October2026 at20:04:03UTC. Fresh Astro/Nuxt d
 
 Automatic approval review then failed because of the account usage limit before desktop QA. The nominal15-minute uninterrupted experiment could not finish. On20 October, recovery QA viewed actual1440×900/390×844 MCP images and exercised category filtering, annual billing, trial open/Escape, menu/Escape and reduced-motion layout. An idle target expired while other work ran; it was explicitly reopened. New UserJot h1 analysis/verification at1440/390 returned withinMeasuredTolerances:false, correctly exposing original66/46px650-weight versus reference60/40px400-weight and intended spacing differences. This is not a visual-identity success.
 
-Supplemental isolated Playwright assertions tested local trial confirmation, all filters/billing values, FAQ keyboard activation, Escape/focus return,390px overflow and reduced motion. [Owned functional QA](https://github.com/qwzx4893-stack/mcp-mimicus/blob/main/artifacts/product-hardening/owned-functional-qa.json) is separate from MCP; form submission intentionally remains outside Mimicus safe click.
+Supplemental isolated Playwright assertions tested local trial confirmation, all filters/billing values, FAQ keyboard activation, Escape/focus return,390px overflow and reduced motion. [Owned functional QA](https://github.com/qwzx4893-stack/mcp-mimicus/blob/v0.4.0-beta.1/artifacts/product-hardening/owned-functional-qa.json) is separate from MCP; form submission intentionally remains outside Mimicus safe click.
 
 At least21 actual Mimicus calls occurred across the interrupted segment and recovery, excluding the separate four-reference batch and cleanup. This is a manually reconstructed lower bound. Third-party images stayed in RAM. Cleanup and masked comparative review appear in the main evaluation.
 
