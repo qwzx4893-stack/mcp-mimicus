@@ -36,6 +36,7 @@ export async function previewReferences(
       inputIndex,
       key: reference.key,
       url: reference.url ?? null,
+      requestedUrl: reference.url ?? null,
       title: reference.title ?? null,
       attribution: reference.attribution ?? null,
       alternatives: reference.alternatives ?? [],
@@ -106,6 +107,8 @@ export async function previewReferences(
       results.push({
         ...base,
         imageIndex: images.length,
+        url: capture.data.url,
+        actualUrl: capture.data.url,
         status: reasons.length ? 'partial-render' : 'captured',
         kind: 'fresh-original-site-screenshot',
         capturedAt: capture.data.capturedAt,

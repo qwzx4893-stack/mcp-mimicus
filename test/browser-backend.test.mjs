@@ -211,6 +211,32 @@ test('Real default browser supports progressive sections, safe touch/drag and re
   }
 });
 
+test('Owned browser teardown does not wait on an unresponsive context-close RPC', {
+  timeout: 30000,
+}, async () => {
+  const f = await fixture(),
+    runtime = new BrowserSessions(config(null, f.origin));
+  try {
+    const opened = await runtime.open({ url: f.url, authorized: true });
+    const owned = runtime.sessions.get(opened.sessionId),
+      profile = opened.diagnostics.browser.profile.path;
+    owned.context.close = () => new Promise(() => {});
+    const closed = await Promise.race([
+      runtime.close(opened.sessionId),
+      delay(10000).then(() => {
+        throw Error('Owned browser cleanup waited on an unresponsive context RPC');
+      }),
+    ]);
+    assert.equal(closed.closed, true);
+    assert.equal(owned.browser.isConnected(), false);
+    assert.equal(existsSync(profile), false);
+    assert.equal(runtime.status().closingSessions, 0);
+  } finally {
+    await runtime.closeAll();
+    await f.close();
+  }
+});
+
 test('Owned browser crash and operation timeout close only owned processes, proxies and temporary profiles', async () => {
   const f = await fixture(),
     runtime = new BrowserSessions(config(null, f.origin));

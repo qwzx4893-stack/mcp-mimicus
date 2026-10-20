@@ -19,6 +19,11 @@ test('Actual stdio multi-preview preserves distinct image/source order, diagnose
       res.end();
       return;
     }
+    if (req.url === '/redirect') {
+      res.writeHead(302, { location: '/p2' });
+      res.end();
+      return;
+    }
     const n = Number(req.url?.match(/\d/)?.[0] ?? 0),
       color = ['#294fc7', '#a43d29', '#197455', '#7637a2'][n % 4];
     res.setHeader('content-type', 'text/html');
@@ -64,6 +69,15 @@ test('Actual stdio multi-preview preserves distinct image/source order, diagnose
       assert.equal(r.attribution.referenceUrl, 'https://owned-test.example/source/' + i);
       assert.equal(r.status, 'captured');
     });
+    const redirected = await call('mimicus_preview_references', {
+      references: [{ url: origin + '/redirect', authorized: true }],
+    });
+    const redirectedRef = redirected.structuredContent.data.references[0];
+    assert.equal(redirectedRef.requestedUrl, origin + '/redirect');
+    assert.equal(redirectedRef.actualUrl, origin + '/p2');
+    assert.equal(redirectedRef.url, origin + '/p2');
+    assert.equal(redirectedRef.imageIndex, 0);
+    assert.equal(redirected.content.filter((x) => x.type === 'image').length, 1);
     const negative = await call('mimicus_preview_references', {
       references: ['blocked', 'loader', 'key', 'asset'].map((path) => ({
         url: origin + '/' + path,

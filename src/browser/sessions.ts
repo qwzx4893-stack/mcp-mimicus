@@ -907,7 +907,9 @@ export class BrowserSessions {
     this.sessions.delete(id);
     s.analyses.clear();
     s.robots.clear();
-    await s.context.close().catch(() => {});
+    // Each session owns its entire browser. Close that owner directly: a serial
+    // context-close RPC can remain pending after a long-lived renderer disconnects,
+    // preventing process/proxy/home teardown from being reached.
     await s.browser.close().catch(() => {});
     try {
       await s.proxy.close();
