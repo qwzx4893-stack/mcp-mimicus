@@ -1,0 +1,1026 @@
+{
+  "at": "2026-10-20T21:31:06.813Z",
+  "method": "Owned HTTP source and page, real SDK stdio and installed browsers; no public services load-tested",
+  "sourceSearches": 120,
+  "sourceHttpHits": 120,
+  "waves": [
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    },
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    },
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    },
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    },
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    },
+    {
+      "requests": 6,
+      "images": 3,
+      "outcomes": [
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "captured",
+          "failureCode": null
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        },
+        {
+          "status": "unavailable",
+          "failureCode": "resource-limit"
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 0,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 2,
+      "closing": 1
+    },
+    {
+      "active": 2,
+      "opening": 2,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 2,
+      "closing": 1
+    },
+    {
+      "active": 2,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 3
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 1,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 3,
+      "opening": 3,
+      "closing": 0
+    },
+    {
+      "active": 2,
+      "opening": 1,
+      "closing": 1
+    },
+    {
+      "active": 1,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 2
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 0
+    },
+    {
+      "active": 0,
+      "opening": 1,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    },
+    {
+      "active": 0,
+      "opening": 0,
+      "closing": 1
+    }
+  ],
+  "status": "PASS",
+  "server": {
+    "name": "mcp-mimicus",
+    "version": "1.1.0"
+  },
+  "transportCancellationObserved": true,
+  "final": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "maintenanceErrors": [],
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  },
+  "finishedAt": "2026-10-20T21:31:25.081Z"
+}

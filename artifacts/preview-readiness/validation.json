@@ -1,0 +1,519 @@
+{
+  "at": "2026-10-20T21:40:51.892Z",
+  "version": "1.1.0",
+  "status": "PASS",
+  "node": "v24.19.0",
+  "platform": "win32",
+  "suites": [
+    {
+      "browser": "brave",
+      "tests": 107,
+      "passed": 107,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 161478.7859
+    },
+    {
+      "browser": "edge",
+      "tests": 107,
+      "passed": 107,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 129600.6631
+    }
+  ],
+  "seededFaultCases": 500,
+  "baselineInitialContracts": {
+    "runtime": "1.0.0",
+    "passed": 1,
+    "failed": 7,
+    "meaning": "New feature contracts and corrected cancellation/cleanup behavior, not a retroactive failure of the old published suite"
+  },
+  "static": {
+    "files": 36,
+    "errors": 0,
+    "warnings": [
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/interactions.ts",
+        "line": 159,
+        "disposition": "Existing reviewed best-effort cleanup; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/sessions.ts",
+        "line": 294,
+        "disposition": "Existing reviewed best-effort cleanup; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/sessions.ts",
+        "line": 330,
+        "disposition": "Existing reviewed best-effort cleanup; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/server.ts",
+        "line": 276,
+        "disposition": "Existing reviewed best-effort cleanup; see STABILITY_AUDIT.md"
+      }
+    ]
+  },
+  "dependencies": {
+    "packages": 140,
+    "knownVulnerablePackages": 0
+  },
+  "mutation": {
+    "tool": "StrykerJS 10.0.0 command runner",
+    "scope": "Compiled preview orchestration only",
+    "total": 227,
+    "statuses": {
+      "Killed": 154,
+      "Survived": 73
+    },
+    "assertionKilledPercent": 67.84140969162996,
+    "survivors": [
+      {
+        "file": "dist/browser/previews.js",
+        "line": 1,
+        "mutator": "BooleanLiteral",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 11,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 15,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 17,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 17,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'origin-approval-required'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 17,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 17,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "LogicalOperator",
+        "replacement": "(code === 'robots-denied' || code === 'access-denied') && code === 'unsafe-url'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "LogicalOperator",
+        "replacement": "code === 'robots-denied' && code === 'access-denied'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'robots-denied'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'access-denied'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 19,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'unsafe-url'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 21,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 21,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 21,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'cleanup-failed'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 21,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 22,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 23,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 23,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 23,
+        "mutator": "EqualityOperator",
+        "replacement": "code !== 'resource-limit'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 23,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 43,
+        "mutator": "LogicalOperator",
+        "replacement": "reference.url && null"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 47,
+        "mutator": "ArrayDeclaration",
+        "replacement": "[\"Stryker was here\"]"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 53,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 54,
+        "mutator": "LogicalOperator",
+        "replacement": "reference.error && 'Missing selected original URL'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 54,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 56,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 60,
+        "mutator": "ArithmeticOperator",
+        "replacement": "performance.now() + started"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 61,
+        "mutator": "EqualityOperator",
+        "replacement": "remaining <= 1000"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 66,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 67,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 78,
+        "mutator": "MethodExpression",
+        "replacement": "Math.min(1, Math.floor(remaining))"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 79,
+        "mutator": "ArrayDeclaration",
+        "replacement": "[]"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 84,
+        "mutator": "ObjectLiteral",
+        "replacement": "{}"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 89,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 91,
+        "mutator": "LogicalOperator",
+        "replacement": "options.waitForReadyMs && 1500"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 98,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 99,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 123,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 128,
+        "mutator": "ObjectLiteral",
+        "replacement": "{}"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 138,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 145,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 146,
+        "mutator": "OptionalChaining",
+        "replacement": "signal.aborted"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 147,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 147,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 147,
+        "mutator": "EqualityOperator",
+        "replacement": "diagnostic.code !== 'cleanup-failed'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 147,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 148,
+        "mutator": "BooleanLiteral",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 155,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 170,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 170,
+        "mutator": "OptionalChaining",
+        "replacement": "result.inputIndex"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 175,
+        "mutator": "ConditionalExpression",
+        "replacement": "true"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 175,
+        "mutator": "OptionalChaining",
+        "replacement": "result.inputIndex"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 178,
+        "mutator": "MethodExpression",
+        "replacement": "error instanceof Error ? error.message : 'Owned cleanup failed'"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 178,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 182,
+        "mutator": "ConditionalExpression",
+        "replacement": "false"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 183,
+        "mutator": "ArithmeticOperator",
+        "replacement": "performance.now() + itemStarted"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 192,
+        "mutator": "ArithmeticOperator",
+        "replacement": "performance.now() + started"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 195,
+        "mutator": "MethodExpression",
+        "replacement": "results.every(r => r.status !== 'captured')"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 201,
+        "mutator": "LogicalOperator",
+        "replacement": "options.waitForReadyMs && 1500"
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 203,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 205,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 206,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      },
+      {
+        "file": "dist/browser/previews.js",
+        "line": 207,
+        "mutator": "StringLiteral",
+        "replacement": "\"\""
+      }
+    ],
+    "limitation": "Remaining survivors are not all classified equivalent; real rendering readiness is tested separately in installed browsers"
+  }
+}

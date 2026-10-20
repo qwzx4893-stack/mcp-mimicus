@@ -1,0 +1,211 @@
+{
+  "at": "2026-10-20T21:32:36.479Z",
+  "method": "Official SDK to production CLI; seven live sources; sustained owned-example workflow",
+  "live": [
+    {
+      "provider": "awwwards",
+      "ms": 4011,
+      "returned": 3,
+      "requests": 3,
+      "sources": [
+        {
+          "provider": "awwwards",
+          "status": "available",
+          "retrieved": 31,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/sites_of_the_day/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ]
+        }
+      ],
+      "taxonomyLabels": 86,
+      "identityHash": "88f55f453ec2501b52c6869c746f208ca3d4153e2afc227dab312f079c29cc84"
+    },
+    {
+      "provider": "webflow",
+      "ms": 5688,
+      "returned": 3,
+      "requests": 7,
+      "sources": [
+        {
+          "provider": "webflow",
+          "status": "partial",
+          "retrieved": 3,
+          "diagnostics": [
+            "Native tag taxonomy was not requested; the redundant landing-page fetch was omitted. Detail pages still validate every original URL."
+          ]
+        }
+      ],
+      "taxonomyLabels": 15,
+      "identityHash": "6ba40557b9489a3e48bb7a224ab80f64ba6b2c96c73d111071b632b054593f4a"
+    },
+    {
+      "provider": "astro",
+      "ms": 2053,
+      "returned": 3,
+      "requests": 6,
+      "sources": [
+        {
+          "provider": "astro",
+          "status": "partial",
+          "retrieved": 3,
+          "diagnostics": [
+            "All current official index titles and original URLs participate in lexical selection using query and brief facets. Each page reserves half its bounded candidates for source-order exploration; only selected revision-pinned YAML is enriched. Sparse native labels cannot permanently exclude a site, but this is not full-index semantic search.",
+            "The official index has no style, industry or mood taxonomy; absent labels are not invented. Independent explicit continuation progressively covers the index.",
+            "Published index and repository revision are independently current; deployment lag may produce a reported metadata mismatch."
+          ]
+        }
+      ],
+      "taxonomyLabels": 1,
+      "identityHash": "11e198dc1cfb2556b6a52f7bc0566d81966d368cd00e7f96b5847aea9078c8cd"
+    },
+    {
+      "provider": "nuxt",
+      "ms": 330,
+      "returned": 3,
+      "requests": 1,
+      "sources": [
+        {
+          "provider": "nuxt",
+          "status": "available",
+          "retrieved": 58,
+          "diagnostics": []
+        }
+      ],
+      "taxonomyLabels": 7,
+      "identityHash": "f88556efbca8bb6abfc0f5f10d1ef534204938237c3e73f8f761652bb972c3d4"
+    },
+    {
+      "provider": "codrops",
+      "ms": 1060,
+      "returned": 3,
+      "requests": 2,
+      "sources": [
+        {
+          "provider": "codrops",
+          "status": "partial",
+          "retrieved": 44,
+          "diagnostics": []
+        }
+      ],
+      "taxonomyLabels": 45,
+      "identityHash": "8a80a3479e13f1671e8d0eaa4ef6537c004ecb3b4bd235a30e3ef820d25f0231"
+    },
+    {
+      "provider": "mesh3d",
+      "ms": 2193,
+      "returned": 3,
+      "requests": 5,
+      "sources": [
+        {
+          "provider": "mesh3d",
+          "status": "partial",
+          "retrieved": 3,
+          "diagnostics": [
+            "The public client infinite-scroll endpoint /api/websites is disallowed by current robots /api/. It is not called; continuation covers exposed public listing/detail links only, not the full gallery."
+          ]
+        }
+      ],
+      "taxonomyLabels": 4,
+      "identityHash": "150294ad783ce3e1a848190ccfbdbe6c987b1395b01ade754e1ca2a5d6ea1e56"
+    },
+    {
+      "provider": "threejs-resources",
+      "ms": 3047,
+      "returned": 3,
+      "requests": 0,
+      "sources": [
+        {
+          "provider": "threejs-resources",
+          "status": "partial",
+          "retrieved": 3,
+          "diagnostics": [
+            "Tool-directory taxonomy returned separately; opaque showcase tag IDs are preserved without invented names.",
+            "Official MCP tools/list reviewed 2026-10-19: no showcase-specific taxonomy resolver or tag filter exists in the published interface. Native showcase text search/offsets remain usable; no unrelated tool tag is substituted."
+          ]
+        }
+      ],
+      "taxonomyLabels": 1,
+      "identityHash": "c04fe7c8269535db3ed60a2487c865ffa454c7bf7acb9c5f6c08bebe04918a4d"
+    }
+  ],
+  "calls": {
+    "mimicus_open_reference": 2,
+    "mimicus_search": 7,
+    "mimicus_browse_categories": 7,
+    "mimicus_get_reference": 7,
+    "mimicus_end_discovery": 7,
+    "mimicus_interact": 13,
+    "mimicus_preview_references": 1,
+    "mimicus_analyze_element": 1,
+    "mimicus_get_implementation_spec": 1,
+    "mimicus_get_design_insights": 1,
+    "mimicus_compare_references": 1,
+    "mimicus_verify_implementation": 1,
+    "mimicus_close_session": 2,
+    "mimicus_explore_page": 3,
+    "mimicus_capture_view": 3,
+    "mimicus_list_sources": 4,
+    "mimicus_capture_motion": 1
+  },
+  "images": 15,
+  "imageBytes": 398916,
+  "soak": [
+    {
+      "elapsedMs": 32845,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 78251,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 120404,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    }
+  ],
+  "status": "PASS",
+  "tools": 17,
+  "server": {
+    "name": "mcp-mimicus",
+    "version": "1.1.0"
+  },
+  "final": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "maintenanceErrors": [],
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    },
+    "semantic": {
+      "enabled": false,
+      "model": "Xenova/all-MiniLM-L6-v2@751bff37182d3f1213fa05d7196b954e230abad9:q8:mean:l2",
+      "state": "not-loaded",
+      "error": null,
+      "cpuThreads": 2,
+      "pending": 0,
+      "inferenceBatchSize": 16,
+      "siteVectorsPersisted": false,
+      "modelCacheDir": "operator-local-model-software-cache"
+    }
+  },
+  "elapsedMs": 120947
+}

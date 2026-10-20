@@ -280,7 +280,7 @@ export function createMcpServer(app: Mimicus) {
   );
   tool(
     'mimicus_preview_references',
-    'View a small explicitly selected, individually authorized batch as actual ordered MCP images before deep analysis. Sequential original-site captures close immediately; no gallery media fetch or persistent cache. Reports partial frames, gates, blocked paths and imageIndex attribution. Search itself never starts a browser.',
+    'View individually authorized originals as ordered actual MCP images before deep analysis. Bounded readiness waiting can let transient loaders finish without clicking consent or access controls. Inspect failureCode, nextAction, executionStatus and cleanup outcomes. Owned cleanup is awaited; failures stop further batch admission. No gallery media fetch or persistent cache.',
     z.object({
       references: z
         .array(
@@ -296,6 +296,9 @@ export function createMcpServer(app: Mimicus) {
         .min(1)
         .max(8),
       viewport: viewport.optional(),
+      waitForReadyMs: z.number().int().min(0).max(5000).default(1500),
+      perReferenceTimeoutMs: z.number().int().min(1000).max(20000).default(10000),
+      budgetMs: z.number().int().min(1000).max(60000).default(45000),
     }),
     async (input, signal) => {
       const selected: PreviewReference[] = input.references.map((item, index) => {
@@ -342,14 +345,27 @@ export function createMcpServer(app: Mimicus) {
           .filter((other) => other.url && other.url !== item.url)
           .slice(0, 2)
           .map((other) => ({ id: other.key, url: other.url!, title: other.title ?? other.url! }));
-      return previewReferences(app.browser, selected, { viewport: input.viewport, signal });
+      return previewReferences(app.browser, selected, {
+        viewport: input.viewport,
+        signal,
+        waitForReadyMs: input.waitForReadyMs,
+        perReferenceTimeoutMs: input.perReferenceTimeoutMs,
+        budgetMs: input.budgetMs,
+      });
     },
   );
   tool(
     'mimicus_capture_view',
-    'Return an actual current viewport or bounded selected-region screenshot directly as MCP image content; no persistent screenshot file is created.',
-    z.object({ sessionId: id, selector: selector.optional() }),
-    (input, signal) => app.browser.capture(input.sessionId, input.selector, signal),
+    'Return an actual viewport or bounded region as MCP image content. Optional waitForReadyMs observes transient loading for up to 5000ms without dismissing gates; readinessWait reports the measured outcome. No persistent screenshot file is created.',
+    z.object({
+      sessionId: id,
+      selector: selector.optional(),
+      waitForReadyMs: z.number().int().min(0).max(5000).default(0),
+    }),
+    (input, signal) =>
+      app.browser.capture(input.sessionId, input.selector, signal, {
+        waitForReadyMs: input.waitForReadyMs,
+      }),
   );
   tool(
     'mimicus_explore_page',

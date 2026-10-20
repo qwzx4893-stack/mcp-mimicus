@@ -1,6 +1,6 @@
 # Installation and release verification
 
-Mimicus `1.0.0` is a GitHub-distributed stable release. The package deliberately retains `private: true`; it has **not been published to npm**. The [stability audit](STABILITY_AUDIT.md) describes current verification. Earlier beta install evidence below remains historical; the matching release's external acceptance report and checksums identify the tested archive. See the final release acceptance rule below.
+Mimicus `1.1.0` is a GitHub-distributed stable release. The package deliberately retains `private: true`; it has **not been published to npm**. The [preview-readiness verification](PREVIEW_READINESS.md) describes the current improvement round. Earlier install evidence below remains historical; the matching release's external acceptance report and checksums identify the tested archive. See the final release acceptance rule below.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Use `node /absolute/path/to/mcp-mimicus/dist/cli.js serve` as the stdio MCP serv
 Download the `.tgz` attached to the corresponding verified GitHub release, then install it into a directory you own. Substitute the real downloaded file and consumer directory below; the registry name `mcp-mimicus` is not an npm installation claim.
 
 ```sh
-npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-1.0.0.tgz
+npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-1.1.0.tgz
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --version
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --help
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js doctor

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0
+
+- Observe transient preloaders, visible pending images and fonts within a bounded readiness wait before selected preview/capture. Report measured readiness outcomes; keep consent/password controls intact and recheck late access challenges.
+- Expose preview readiness, per-reference and batch budgets through the MCP schema. Preserve actual image/source ordering, provenance and byte limits.
+- Distinguish origin approval, access/robots refusal, timeouts, capacity and invalid references with structured failure codes and explicit next actions.
+- Preserve captured evidence when owned cleanup reports failure, stop admitting further batch references, and observe caller cancellation during the last close.
+- Add seeded fault testing, real-browser readiness and cancellation regressions, controlled concurrent SDK load, source freshness checks and focused mutation review. Public upstreams are contacted separately from the owned load campaign.
+
 ## 1.0.0
 
 - Establish the stable installed-browser MCP contract after independent static, dependency, mutation, real-browser and packed-install verification. Review tools remain isolated development tooling.

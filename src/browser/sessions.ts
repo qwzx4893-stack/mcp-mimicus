@@ -434,9 +434,17 @@ export class BrowserSessions {
       mimeType: 'image/jpeg',
     };
   }
-  async capture(id: string, selector?: string, signal?: AbortSignal) {
+  async capture(
+    id: string,
+    selector?: string,
+    signal?: AbortSignal,
+    options: { waitForReadyMs?: number } = {},
+  ) {
     return this.run(id, signal, async (s) => {
-      const readiness = await renderingReadiness(s.page);
+      const readiness = await renderingReadiness(s.page, options.waitForReadyMs ?? 0);
+      const gate = await inspectAccessGate(s.page);
+      if (gate.blocked)
+        throw new Error('Access challenge encountered; no bypass attempted: ' + gate.reason);
       const image = await this.image(s, selector);
       return {
         data: {

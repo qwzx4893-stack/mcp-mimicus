@@ -290,9 +290,15 @@ export async function verifyBrowserLaunch(browser: Browser, backend: BrowserBack
     await connection.detach();
   }
 }
-export async function renderingReadiness(page: Page) {
-  return page.evaluate(async () => {
-    await Promise.race([document.fonts.ready, new Promise((resolve) => setTimeout(resolve, 1200))]);
+export async function renderingReadiness(page: Page, waitForReadyMs = 0) {
+  if (!Number.isInteger(waitForReadyMs) || waitForReadyMs < 0 || waitForReadyMs > 5000)
+    throw new Error('Visual readiness wait must be an integer from 0 to 5000ms');
+  return page.evaluate(async (waitMs) => {
+    const started = performance.now();
+    await Promise.race([
+      document.fonts.ready,
+      new Promise((resolve) => setTimeout(resolve, Math.min(1200, waitMs || 1200))),
+    ]);
     const canvas = document.createElement('canvas');
     let webgl: { available: boolean; version?: string; renderer?: string } = {
       available: false,
@@ -326,25 +332,64 @@ export async function renderingReadiness(page: Page) {
       const r = el.getBoundingClientRect();
       return visible(el) && r.width * r.height > innerWidth * innerHeight * 0.2;
     };
-    const loadingOverlay = [
-      ...document.querySelectorAll(
-        '[aria-busy=true],[role=progressbar],[class*=preloader],[id*=preloader],.loader,#loader',
-      ),
-    ]
-      .slice(0, 40)
-      .some(substantial);
-    const consentOverlay = [
-      ...document.querySelectorAll('[role=dialog],[aria-modal=true],[id*=cookie],[class*=cookie]'),
-    ]
-      .slice(0, 40)
-      .some(
-        (el) =>
-          substantial(el) &&
-          /cookie|consent|privacy choices/i.test((el.textContent ?? '').slice(0, 1500)),
+    const loading = () =>
+      [
+        ...document.querySelectorAll(
+          '[aria-busy=true],[role=progressbar],[class*=preloader],[id*=preloader],.loader,#loader',
+        ),
+      ]
+        .slice(0, 40)
+        .some(substantial);
+    const consent = () =>
+      [...document.querySelectorAll('[role=dialog],[aria-modal=true],[id*=cookie],[class*=cookie]')]
+        .slice(0, 40)
+        .some(
+          (el) =>
+            substantial(el) &&
+            /cookie|consent|privacy choices/i.test((el.textContent ?? '').slice(0, 1500)),
+        );
+    const key = () => [...document.querySelectorAll('input[type=password]')].some(visible);
+    const pending = () =>
+      loading() ||
+      document.fonts.status !== 'loaded' ||
+      [...document.images].some(
+        (i) =>
+          visible(i) &&
+          i.getBoundingClientRect().top < innerHeight &&
+          i.getBoundingClientRect().bottom > 0 &&
+          !i.complete,
       );
-    const keyGate = [...document.querySelectorAll('input[type=password]')].some(visible);
+    let samples = 1;
+    while (
+      waitMs > 0 &&
+      performance.now() - started < waitMs &&
+      !consent() &&
+      !key() &&
+      pending()
+    ) {
+      await new Promise((resolve) =>
+        setTimeout(resolve, Math.min(100, Math.max(1, waitMs - (performance.now() - started)))),
+      );
+      samples++;
+    }
+    const loadingOverlay = loading(),
+      consentOverlay = consent(),
+      keyGate = key();
     return {
       readyState: document.readyState,
+      readinessWait: {
+        requestedMs: waitMs,
+        elapsedMs: Math.round(performance.now() - started),
+        samples,
+        outcome:
+          waitMs === 0
+            ? 'not-requested'
+            : consentOverlay || keyGate
+              ? 'gate-observed'
+              : pending()
+                ? 'budget-exhausted'
+                : 'ready-observed',
+      },
       visualState: {
         loadingOverlay,
         consentOverlay,
@@ -378,5 +423,5 @@ export async function renderingReadiness(page: Page) {
       limitations:
         'Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection.',
     };
-  });
+  }, waitForReadyMs);
 }

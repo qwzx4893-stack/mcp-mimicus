@@ -48,6 +48,28 @@ test('Actual stdio multi-preview preserves distinct image/source order, diagnose
       assert.notEqual(r.isError, true, JSON.stringify(r.content));
       return r;
     };
+    for (const invalid of [
+      { waitForReadyMs: -1 },
+      { waitForReadyMs: 5001 },
+      { budgetMs: 60001 },
+      { perReferenceTimeoutMs: 20001 },
+    ]) {
+      let rejected = false;
+      try {
+        const r = await client.callTool(
+          {
+            name: 'mimicus_preview_references',
+            arguments: { references: [{ url: origin + '/p0', authorized: true }], ...invalid },
+          },
+          { timeout: 10000 },
+        );
+        rejected = r.isError === true;
+      } catch (error) {
+        assert.match(String(error), /valid|input|schema|argument/i);
+        rejected = true;
+      }
+      assert.equal(rejected, true);
+    }
     const first = await call('mimicus_preview_references', {
       references: [0, 1, 2, 3].map((n) => ({
         url: origin + '/p' + n,

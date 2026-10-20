@@ -1,6 +1,6 @@
 # Final release limitations
 
-Mimicus `1.0.0` is the stable installed-browser MCP release for live reference discovery and selected visual analysis. Stability covers the documented bounded behavior and supported Windows browser configurations; it does not guarantee continuous upstream access, every browser/OS or hidden website behavior. The following boundaries remain actual behavior. Earlier beta evidence remains historical; see the [stability audit](STABILITY_AUDIT.md) for current checks.
+Mimicus `1.1.0` is the stable installed-browser MCP release for live reference discovery and selected visual analysis. Stability covers the documented bounded behavior and supported Windows browser configurations; it does not guarantee continuous upstream access, every browser/OS or hidden website behavior. See [preview readiness](PREVIEW_READINESS.md) for current improvements and checks; the [1.0.0 stability audit](STABILITY_AUDIT.md) remains historical foundation evidence.
 
 ## Source coverage and permissions
 
