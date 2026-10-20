@@ -39,6 +39,9 @@ type Session = {
   origin: string;
   created: number;
   expires: number;
+  absoluteExpires: number;
+  images: number;
+  operations: number;
   busy: boolean;
   closed: boolean;
   requests: number;
@@ -69,6 +72,7 @@ export type Interaction = {
     | 'navigate'
     | 'resize'
     | 'key'
+    | 'renew'
     | 'wait';
   waitMs?: number;
   selector?: string;
@@ -97,17 +101,20 @@ export class BrowserSessions {
   private async expire() {
     await Promise.all(
       [...this.sessions.values()]
-        .filter((s) => !s.busy && s.expires <= Date.now())
+        .filter((s) => !s.busy && Math.min(s.expires, s.absoluteExpires) <= Date.now())
         .map((s) => this.close(s.id)),
     );
   }
   private get(id: string) {
     const s = this.sessions.get(id);
     if (!s || s.closed) throw new Error('Browser session closed or unknown');
-    if (s.expires <= Date.now()) {
+    if (Math.min(s.expires, s.absoluteExpires) <= Date.now()) {
       void this.close(id);
-      throw new Error('Browser session expired');
+      throw new Error(
+        'Browser session expired; reopen the selected original URL with authorization. Prior analysis identifiers cannot be reused.',
+      );
     }
+    s.expires = Math.min(s.absoluteExpires, Date.now() + this.config.sessionTtlMs);
     return s;
   }
   private async access(s: Session, url: string, signal?: AbortSignal) {
@@ -160,10 +167,7 @@ export class BrowserSessions {
     canonicalUrl(options.url);
     reviewNavigation(options.url);
     const origin = new URL(options.url).origin;
-    if (
-      /(^|\.)awwwards\.com$/.test(new URL(origin).hostname) &&
-      !this.config.sourceAuthorizations.awwwards
-    )
+    if (/(^|\.)awwwards\.com$/.test(new URL(origin).hostname))
       throw new Error(
         'Awwwards gallery automation is restricted without reviewed authorization. Use the public reference link and open a separately selected original website.',
       );
@@ -229,7 +233,10 @@ export class BrowserSessions {
         policy,
         origin,
         created: Date.now(),
-        expires: Date.now() + config.sessionTtlMs,
+        expires: Date.now() + Math.min(config.sessionTtlMs, config.sessionAbsoluteTtlMs),
+        absoluteExpires: Date.now() + config.sessionAbsoluteTtlMs,
+        images: 0,
+        operations: 0,
         busy: false,
         closed: false,
         requests: 0,
@@ -302,6 +309,7 @@ export class BrowserSessions {
           title: safeLabel(await current.page.title()),
           viewport: current.page.viewportSize(),
           expiresAt: new Date(current.expires).toISOString(),
+          lease: this.lease(current),
           attribution: current.attribution,
           diagnostics: this.diagnostics(current),
           persistentContent: false,
@@ -327,10 +335,24 @@ export class BrowserSessions {
       browser: s.browserInfo,
       readinessAtOpen: s.readiness,
       requests: s.requests,
+      lease: this.lease(s),
       blocked: s.blocked,
       errors: s.errors,
       meaning:
         'Missing cross-origin resources are reported; additional resource origins require explicit approval. Session budgets are cumulative. Readiness is a bounded observation, not a claim of complete site rendering.',
+    };
+  }
+  private lease(s: Session) {
+    return {
+      idleExpiresAt: new Date(Math.min(s.expires, s.absoluteExpires)).toISOString(),
+      absoluteExpiresAt: new Date(s.absoluteExpires).toISOString(),
+      idleWindowMs: this.config.sessionTtlMs,
+      images: s.images,
+      imageLimit: this.config.maxSessionImages,
+      operations: s.operations,
+      operationLimit: this.config.maxSessionOperations,
+      renewal:
+        'Use interact action renew before idle expiry. Renewal cannot extend the absolute lifetime or reset cumulative budgets. Reopen the selected original URL after expiry.',
     };
   }
   private async run<T>(
@@ -340,9 +362,16 @@ export class BrowserSessions {
   ) {
     const s = this.get(id);
     if (s.busy) throw new Error('Session operation already running');
+    if (s.operations >= this.config.maxSessionOperations) {
+      await this.close(id);
+      throw new Error(
+        'Session operation budget exhausted; resources closed. Reopen the selected original URL deliberately.',
+      );
+    }
     const combined = AbortSignal.any([
         this.lifetime.signal,
         AbortSignal.timeout(this.config.timeoutMs),
+        AbortSignal.timeout(Math.max(1, s.absoluteExpires - Date.now())),
         ...(signal ? [signal] : []),
       ]),
       abort = () => {
@@ -350,6 +379,8 @@ export class BrowserSessions {
       };
     combined.throwIfAborted();
     s.busy = true;
+    s.operations++;
+    s.expires = Math.min(s.absoluteExpires, Date.now() + this.config.sessionTtlMs);
     combined.addEventListener('abort', abort, { once: true });
     try {
       const result = await fn(s, combined);
@@ -358,10 +389,14 @@ export class BrowserSessions {
     } finally {
       combined.removeEventListener('abort', abort);
       s.busy = false;
-      s.expires = Math.min(s.created + 900000, Date.now() + this.config.sessionTtlMs);
+      s.expires = Math.min(s.absoluteExpires, Date.now() + this.config.sessionTtlMs);
     }
   }
   private async image(s: Session, selector?: string): Promise<Image> {
+    if (s.images >= this.config.maxSessionImages)
+      throw new Error(
+        'Session image budget exhausted; close and deliberately reopen for additional images.',
+      );
     let buffer: Buffer;
     if (selector) {
       const target = s.page.locator(selector).first();
@@ -383,6 +418,7 @@ export class BrowserSessions {
         timeout: 5000,
       });
     if (buffer.length > 1500000) throw new Error('Screenshot exceeds image byte limit');
+    s.images++;
     return {
       type: 'image',
       data: buffer.toString('base64'),
@@ -390,19 +426,23 @@ export class BrowserSessions {
     };
   }
   async capture(id: string, selector?: string, signal?: AbortSignal) {
-    return this.run(id, signal, async (s) => ({
-      data: {
-        sessionId: id,
-        url: s.page.url(),
-        viewport: s.page.viewportSize(),
-        capturedAt: new Date().toISOString(),
-        readiness: await renderingReadiness(s.page),
-        selector: selector ?? null,
-        diagnostics: this.diagnostics(s),
-        untrustedEvidence: true,
-      },
-      images: [await this.image(s, selector)],
-    }));
+    return this.run(id, signal, async (s) => {
+      const readiness = await renderingReadiness(s.page);
+      const image = await this.image(s, selector);
+      return {
+        data: {
+          sessionId: id,
+          url: s.page.url(),
+          viewport: s.page.viewportSize(),
+          capturedAt: new Date().toISOString(),
+          readiness,
+          selector: selector ?? null,
+          diagnostics: this.diagnostics(s),
+          untrustedEvidence: true,
+        },
+        images: [image],
+      };
+    });
   }
   async explore(
     id: string,
@@ -573,8 +613,20 @@ export class BrowserSessions {
     if (settle) await s.page.waitForTimeout(this.config.settleMs);
   }
   async interact(id: string, input: Interaction, signal?: AbortSignal) {
+    if (input.action === 'renew')
+      return this.run(id, signal, async (s) => ({
+        data: {
+          sessionId: id,
+          action: 'renew',
+          url: s.page.url(),
+          lease: this.lease(s),
+          untrustedEvidence: true,
+        },
+        images: [] as Image[],
+      }));
     return this.run(id, signal, async (s, combined) => {
       await this.action(s, input, combined);
+      const image = await this.image(s);
       return {
         data: {
           sessionId: id,
@@ -584,7 +636,7 @@ export class BrowserSessions {
           diagnostics: this.diagnostics(s),
           untrustedEvidence: true,
         },
-        images: [await this.image(s)],
+        images: [image],
       };
     });
   }
@@ -752,6 +804,53 @@ export class BrowserSessions {
         url: s.page.url(),
         attribution: s.attribution,
         measured: {
+          viewport: s.page.viewportSize() ?? undefined,
+          typography: data.elements.filter((e) => /^h[1-6]$|^p$/.test(e.tag)).slice(0, 12),
+          sections: data.elements
+            .filter((e) => /^(header|nav|main|section|article|aside|footer)$/.test(e.tag))
+            .slice(0, 12),
+          selectedMotion: [...s.analyses.values()]
+            .flatMap((a) =>
+              a.observation.views.flatMap((v) =>
+                v.sequences.map((q) => ({
+                  ...q,
+                  analysisId: a.id,
+                  viewport: v.viewport,
+                  reducedMotion: v.reducedMotion,
+                })),
+              ),
+            )
+            .slice(0, 12),
+          responsiveViews: [
+            ...new Map(
+              [...s.analyses.values()].flatMap((a) =>
+                a.observation.views.map(
+                  (v) =>
+                    [
+                      v.viewport.width + 'x' + v.viewport.height,
+                      {
+                        viewport: v.viewport,
+                        layouts: v.elements
+                          .filter((e) => ['grid', 'flex'].includes(e.styles.display ?? ''))
+                          .slice(0, 8),
+                        typography: v.elements
+                          .filter((e) => /^h[1-6]$|^p$/.test(e.tag))
+                          .slice(0, 12),
+                        navigation: v.elements
+                          .filter(
+                            (e) => e.tag === 'nav' || e.signals?.componentRole === 'navigation',
+                          )
+                          .slice(0, 8),
+                      },
+                    ] as const,
+                ),
+              ),
+            ).values(),
+          ].slice(0, 3),
+          sampling: {
+            capturedElements: data.elements.length,
+            truncated: data.elements.length >= this.config.maxElements,
+          },
           styleProfile: styleProfile(data.elements),
           layouts: data.elements
             .filter((e) => ['grid', 'flex'].includes(e.styles.display ?? ''))
@@ -782,6 +881,13 @@ export class BrowserSessions {
       closingSessions: this.closing.size,
       opening: this.opening,
       temporaryAnalyses: [...this.sessions.values()].reduce((n, s) => n + s.analyses.size, 0),
+      sessionLimit: this.config.maxSessions,
+      sessions: [...this.sessions.values()].map((s) => ({
+        sessionId: s.id,
+        url: s.page.url(),
+        busy: s.busy,
+        ...this.lease(s),
+      })),
       persistentContent: false,
     };
   }

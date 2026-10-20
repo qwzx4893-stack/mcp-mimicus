@@ -1,6 +1,7 @@
 import { McpServer } from '@modelcontextprotocol/server';
 import { z } from 'zod';
 import { synthesizeDesignBrief } from './analysis/design-brief.js';
+import { type PreviewReference, previewReferences } from './browser/previews.js';
 import { BrowserSessions, type Image, type Interaction } from './browser/sessions.js';
 import type { Config } from './config.js';
 import { Federation } from './discovery/federation.js';
@@ -39,6 +40,7 @@ const interaction = z
       'resize',
       'key',
       'wait',
+      'renew',
       'touch',
       'drag',
     ]),
@@ -73,6 +75,11 @@ const brief = z.object({
   sections: z.array(z.string().min(1).max(160)).min(1).max(10),
   motion: z.enum(['none', 'subtle', 'expressive']).default('subtle'),
   anchorSessionId: id.optional(),
+  priorities: z
+    .array(z.enum(['conversion', 'reading', 'product-selection', 'exploration']))
+    .min(1)
+    .max(3)
+    .optional(),
 });
 const analysis = z.object({
   sessionId: id,
@@ -197,9 +204,23 @@ export function createMcpServer(app: Mimicus) {
   );
   tool(
     'mimicus_end_discovery',
-    'Release the selected temporary discovery operation and its candidates/cursors.',
-    z.object({ operationId: id }),
-    (input) => reply(app.federation.end(input.operationId)),
+    'Release selected temporary discovery operations and their candidates/cursors. Supply operationId or a bounded operationIds batch.',
+    z
+      .object({ operationId: id.optional(), operationIds: z.array(id).min(1).max(20).optional() })
+      .refine(
+        (i) => Boolean(i.operationId) !== Boolean(i.operationIds),
+        'Supply exactly one operationId or operationIds',
+      ),
+    (input) =>
+      reply(
+        input.operationIds
+          ? {
+              operations: [...new Set(input.operationIds)].map((operationId) =>
+                app.federation.end(operationId),
+              ),
+            }
+          : app.federation.end(input.operationId!),
+      ),
   );
   tool(
     'mimicus_open_reference',
@@ -248,6 +269,73 @@ export function createMcpServer(app: Mimicus) {
     },
   );
   tool(
+    'mimicus_preview_references',
+    'View a small explicitly selected, individually authorized batch as actual ordered MCP images before deep analysis. Sequential original-site captures close immediately; no gallery media fetch or persistent cache. Reports partial frames, gates, blocked paths and imageIndex attribution. Search itself never starts a browser.',
+    z.object({
+      references: z
+        .array(
+          z.object({
+            operationId: id.optional(),
+            referenceId: id.optional(),
+            url: z.string().url().max(2048).optional(),
+            referenceUrl: z.string().url().max(2048).optional(),
+            authorized: z.literal(true),
+            resourceOrigins: z.array(z.string().url()).max(8).default([]),
+          }),
+        )
+        .min(1)
+        .max(8),
+      viewport: viewport.optional(),
+    }),
+    async (input, signal) => {
+      const selected: PreviewReference[] = input.references.map((item, index) => {
+        const key = item.referenceId ?? 'selected-' + index;
+        try {
+          const reference =
+            item.operationId && item.referenceId
+              ? app.federation.getReference(item.operationId, item.referenceId)
+              : undefined;
+          if (!reference && !item.url)
+            throw new Error(
+              'Select an active operation/reference pair or an explicit original URL',
+            );
+          if (reference && item.url && reference.url !== item.url)
+            throw new Error('Original URL conflicts with selected reference');
+          return {
+            key,
+            url: reference?.url ?? item.url!,
+            title: reference?.title,
+            resourceOrigins: item.resourceOrigins,
+            attribution: reference
+              ? {
+                  kind: 'live-discovery-reference',
+                  operationId: item.operationId,
+                  referenceId: reference.id,
+                  relationships: reference.relationships,
+                  sourcePreviewLinksNotFetched: reference.previews,
+                }
+              : {
+                  kind: 'operator-supplied-original-url',
+                  referenceUrl: item.referenceUrl ?? null,
+                  catalogImported: false,
+                },
+          };
+        } catch (error) {
+          return {
+            key,
+            error: error instanceof Error ? error.message : 'Invalid selected reference',
+          };
+        }
+      });
+      for (const item of selected)
+        item.alternatives = selected
+          .filter((other) => other.url && other.url !== item.url)
+          .slice(0, 2)
+          .map((other) => ({ id: other.key, url: other.url!, title: other.title ?? other.url! }));
+      return previewReferences(app.browser, selected, { viewport: input.viewport, signal });
+    },
+  );
+  tool(
     'mimicus_capture_view',
     'Return an actual current viewport or bounded selected-region screenshot directly as MCP image content; no persistent screenshot file is created.',
     z.object({ sessionId: id, selector: selector.optional() }),
@@ -266,7 +354,7 @@ export function createMcpServer(app: Mimicus) {
   );
   tool(
     'mimicus_interact',
-    'Safely explore a selected page: hover, focus, non-destructive click, scroll, pointer, same-origin reviewed navigation, keyboard or viewport/reduced-motion change. Returns the resulting real image.',
+    'Safely explore a selected page: hover, focus, non-destructive click, scroll, pointer, same-origin reviewed navigation, keyboard or viewport/reduced-motion change. Returns a real image. Action renew refreshes only the bounded idle lease, returns compact resource state without a new image and cannot extend absolute lifetime.',
     z.object({ sessionId: id, interaction }),
     async (input, signal) =>
       app.browser.interact(input.sessionId, input.interaction as Interaction, signal),
@@ -295,9 +383,23 @@ export function createMcpServer(app: Mimicus) {
   );
   tool(
     'mimicus_close_session',
-    'Close the browser/context/proxy and release temporary page and analysis state.',
-    z.object({ sessionId: id }),
-    async (input) => reply(await app.browser.close(input.sessionId)),
+    'Close selected owned browser sessions and release contexts, proxies and analyses. Supply sessionId or a bounded sessionIds batch.',
+    z
+      .object({ sessionId: id.optional(), sessionIds: z.array(id).min(1).max(4).optional() })
+      .refine(
+        (i) => Boolean(i.sessionId) !== Boolean(i.sessionIds),
+        'Supply exactly one sessionId or sessionIds',
+      ),
+    async (input) =>
+      reply(
+        input.sessionIds
+          ? {
+              sessions: await Promise.all(
+                [...new Set(input.sessionIds)].map((sessionId) => app.browser.close(sessionId)),
+              ),
+            }
+          : await app.browser.close(input.sessionId!),
+      ),
   );
   tool(
     'mimicus_analyze_element',

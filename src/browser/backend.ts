@@ -311,13 +311,67 @@ export async function renderingReadiness(page: Page) {
         gl.getExtension('WEBGL_lose_context')?.loseContext();
       }
     } catch {}
+    const visible = (el: Element) => {
+      const r = el.getBoundingClientRect(),
+        style = getComputedStyle(el);
+      return (
+        r.width > 0 &&
+        r.height > 0 &&
+        style.display !== 'none' &&
+        style.visibility !== 'hidden' &&
+        Number(style.opacity) > 0.05
+      );
+    };
+    const substantial = (el: Element) => {
+      const r = el.getBoundingClientRect();
+      return visible(el) && r.width * r.height > innerWidth * innerHeight * 0.2;
+    };
+    const loadingOverlay = [
+      ...document.querySelectorAll(
+        '[aria-busy=true],[role=progressbar],[class*=preloader],[id*=preloader],.loader,#loader',
+      ),
+    ]
+      .slice(0, 40)
+      .some(substantial);
+    const consentOverlay = [
+      ...document.querySelectorAll('[role=dialog],[aria-modal=true],[id*=cookie],[class*=cookie]'),
+    ]
+      .slice(0, 40)
+      .some(
+        (el) =>
+          substantial(el) &&
+          /cookie|consent|privacy choices/i.test((el.textContent ?? '').slice(0, 1500)),
+      );
+    const keyGate = [...document.querySelectorAll('input[type=password]')].some(visible);
     return {
       readyState: document.readyState,
+      visualState: {
+        loadingOverlay,
+        consentOverlay,
+        keyGate,
+        bodyTextCharacters: (document.body?.innerText ?? '').length,
+        meaning:
+          'Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment.',
+      },
       fonts: document.fonts.status,
       images: {
         total: document.images.length,
         loaded: [...document.images].filter((i) => i.complete && i.naturalWidth > 0).length,
         incomplete: [...document.images].filter((i) => !i.complete).length,
+        visible: [...document.images].filter(
+          (i) =>
+            visible(i) &&
+            i.getBoundingClientRect().top < innerHeight &&
+            i.getBoundingClientRect().bottom > 0,
+        ).length,
+        visibleLoaded: [...document.images].filter(
+          (i) =>
+            visible(i) &&
+            i.getBoundingClientRect().top < innerHeight &&
+            i.getBoundingClientRect().bottom > 0 &&
+            i.complete &&
+            i.naturalWidth > 0,
+        ).length,
       },
       canvasCount: document.querySelectorAll('canvas').length,
       webgl,
