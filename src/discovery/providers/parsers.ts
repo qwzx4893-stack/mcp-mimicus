@@ -179,8 +179,11 @@ export function meshNativeFilters(html: string, root = 'https://mesh3d.gallery/w
       const u = new URL(href, root);
       if (u.origin !== base.origin || u.pathname !== '/websites' || u.username || u.password)
         return;
-      for (const kind of ['tech', 'tags']) {
-        const id = u.searchParams.get(kind);
+      // Public Mesh links changed from ?tech= to ?technology= in October 2026.
+      // Preserve the source URL and slug; both names represent its technology facet.
+      for (const parameter of ['tech', 'technology', 'tags']) {
+        const kind = parameter === 'technology' ? 'tech' : parameter;
+        const id = u.searchParams.get(parameter);
         if (id && !filters.some((t) => t.id === id && t.kind === kind))
           filters.push({ label, id, kind, url: u.href });
       }
@@ -199,12 +202,9 @@ export function meshDetail(html: string, path: string): RawItem {
   if (!outbound) throw new Error('mesh3d original URL missing');
   const title = $('h1').first().text().trim();
   if (!title) throw new Error('mesh3d title missing');
-  const tags = $('a[href*="/websites?tags="]')
-    .map((_, e) => $(e).text().trim())
-    .get();
-  const tech = $('a[href*="/websites?tech="]')
-    .map((_, e) => $(e).text().trim())
-    .get();
+  const filters = meshNativeFilters(html);
+  const tags = filters.filter((f) => f.kind === 'tags').map((f) => f.label);
+  const tech = filters.filter((f) => f.kind === 'tech').map((f) => f.label);
   return {
     itemId: path.split('/').at(-1)!,
     title,

@@ -238,3 +238,41 @@ test('mesh native listing filters avoid a redundant first detail lookup and neve
   );
   await assert.rejects(new Mesh3dAdapter().search(c), /outside expected stream/);
 });
+
+test('mesh follows the current public technology parameter and preserves its exact native URL', async () => {
+  // Observed public markup on 2026-10-20: the technology facet replaced tech.
+  const nativeUrl = 'https://mesh3d.gallery/websites?technology=three-js';
+  const detail =
+    '<h1>Fixture</h1><a href="https://fixture.example/?utm_source=mesh3d.gallery">Visit</a>' +
+    '<h2>How it\'s built</h2><div><a href="/websites?technology=three-js"><span>Three.js</span></a>' +
+    '<a href="/websites?technology=webgl2">WebGL2</a></div>' +
+    '<a href="https://other.example/websites?technology=untrusted">Untrusted</a>' +
+    '<a href="/api/websites?technology=private">Private</a>';
+  assert.deepEqual(meshNativeFilters(detail), [
+    { label: 'Three.js', id: 'three-js', kind: 'tech', url: nativeUrl },
+    {
+      label: 'WebGL2',
+      id: 'webgl2',
+      kind: 'tech',
+      url: 'https://mesh3d.gallery/websites?technology=webgl2',
+    },
+  ]);
+  const seen = [],
+    c = context({ providers: ['mesh3d'], technology: 'Three.js' }, (u) => {
+      seen.push(u);
+      if (u === 'https://mesh3d.gallery/websites')
+        return response(u, '<a href="/website/first">First</a>');
+      if (u === nativeUrl) return response(u, '<a href="/website/matching">Matching</a>');
+      return response(u, detail);
+    });
+  const [p] = await new Mesh3dAdapter().search(c);
+  assert.ok(seen.includes(nativeUrl));
+  assert.ok(
+    seen.every(
+      (u) =>
+        new URL(u).origin === 'https://mesh3d.gallery' && !new URL(u).pathname.startsWith('/api/'),
+    ),
+  );
+  assert.deepEqual(p.records[0].native.technologies, ['Three.js', 'WebGL2']);
+  assert.ok(!p.diagnostics.some((message) => message.includes('not exposed')));
+});
