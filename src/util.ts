@@ -10,7 +10,7 @@ export function canonicalUrl(raw: string) {
   for (const k of [...u.searchParams.keys()])
     if (/^(utm_|fbclid$|gclid$)/i.test(k)) u.searchParams.delete(k);
   u.searchParams.sort();
-  u.pathname = u.pathname.replace(/\/+$/, '') || '/';
+  // A terminal slash can select a different resource; do not merge those URLs.
   return u.href;
 }
 export const safeLabel = (s: string, max = 300) =>
@@ -26,20 +26,22 @@ export async function mapBounded<T, R>(
 ) {
   const out: R[] = new Array(items.length);
   let cursor = 0,
-    failure: unknown;
+    failure: unknown,
+    failed = false;
   await Promise.all(
     Array.from({ length: Math.min(concurrency, items.length) }, async () => {
-      while (cursor < items.length && !failure) {
+      while (cursor < items.length && !failed) {
         const i = cursor++;
         try {
           abortCheck(signal);
           out[i] = await fn(items[i]!, i);
         } catch (e) {
           failure = e;
+          failed = true;
         }
       }
     }),
   );
-  if (failure) throw failure;
+  if (failed) throw failure;
   return out;
 }

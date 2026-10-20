@@ -1,5 +1,7 @@
 # Quality and security verification
 
+This document retains earlier verification rounds. The [1.0.0 stability audit](STABILITY_AUDIT.md) and its matching release assets identify the current static, dependency, mutation, browser and installation checks.
+
 This report separates deterministic regressions, real browser/MCP execution, live source acceptance and coding-agent design trials. A parser fixture is not a live connection; a screenshot or GPU capability flag alone does not prove complete rendering or artistic quality.
 
 ## Hosted verification

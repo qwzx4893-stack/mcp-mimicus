@@ -94,8 +94,21 @@ export class BrowserSessions {
   private lifetime = new AbortController();
   private pendingOpens = new Set<Promise<unknown>>();
   private closing = new Set<Promise<unknown>>();
+  private closingById = new Map<string, ReturnType<BrowserSessions['closeInternal']>>();
+  private maintenanceErrors: string[] = [];
+  private observe(promise: Promise<unknown>) {
+    void promise.catch((error) => {
+      this.maintenanceErrors.push(
+        safeLabel(error instanceof Error ? error.message : String(error), 300),
+      );
+      if (this.maintenanceErrors.length > 8) this.maintenanceErrors.shift();
+    });
+  }
   constructor(readonly config: Config) {
-    this.timer = setInterval(() => void this.expire(), Math.min(10000, config.sessionTtlMs));
+    this.timer = setInterval(
+      () => this.observe(this.expire()),
+      Math.min(10000, config.sessionTtlMs),
+    );
     this.timer.unref();
   }
   private async expire() {
@@ -109,7 +122,7 @@ export class BrowserSessions {
     const s = this.sessions.get(id);
     if (!s || s.closed) throw new Error('Browser session closed or unknown');
     if (Math.min(s.expires, s.absoluteExpires) <= Date.now()) {
-      void this.close(id);
+      this.observe(this.close(id));
       throw new Error(
         'Browser session expired; reopen the selected original URL with authorization. Prior analysis identifiers cannot be reused.',
       );
@@ -247,12 +260,12 @@ export class BrowserSessions {
       };
       const session = s;
       browser.on('disconnected', () => {
-        void this.close(session.id);
+        this.observe(this.close(session.id));
       });
       context.on('page', (p) => {
-        if (session.page) void p.close();
-        p.on('download', (d) => void d.cancel());
-        p.on('dialog', (d) => void d.dismiss());
+        if (session.page) this.observe(p.close());
+        p.on('download', (d) => this.observe(d.cancel()));
+        p.on('dialog', (d) => this.observe(d.dismiss()));
       });
       await context.routeWebSocket('**/*', (ws) => ws.close());
       await context.route('**/*', async (route) => {
@@ -371,7 +384,7 @@ export class BrowserSessions {
         ...(signal ? [signal] : []),
       ]),
       abort = () => {
-        void this.close(id);
+        this.observe(this.close(id));
       };
     combined.throwIfAborted();
     s.busy = true;
@@ -875,6 +888,7 @@ export class BrowserSessions {
     return {
       activeSessions: this.sessions.size,
       closingSessions: this.closing.size,
+      maintenanceErrors: [...this.maintenanceErrors],
       opening: this.opening,
       temporaryAnalyses: [...this.sessions.values()].reduce((n, s) => n + s.analyses.size, 0),
       sessionLimit: this.config.maxSessions,
@@ -888,12 +902,16 @@ export class BrowserSessions {
     };
   }
   async close(id: string) {
+    const existing = this.closingById.get(id);
+    if (existing) return await existing;
     const task = this.closeInternal(id);
+    this.closingById.set(id, task);
     this.closing.add(task);
     try {
       return await task;
     } finally {
       this.closing.delete(task);
+      this.closingById.delete(id);
     }
   }
   private async closeInternal(id: string) {
@@ -906,12 +924,28 @@ export class BrowserSessions {
     // Each session owns its entire browser. Close that owner directly: a serial
     // context-close RPC can remain pending after a long-lived renderer disconnects,
     // preventing process/proxy/home teardown from being reached.
-    await s.browser.close().catch(() => {});
+    const failures: unknown[] = [];
+    try {
+      await s.browser.close();
+    } catch (error) {
+      if (s.browser.isConnected()) failures.push(error);
+    }
     try {
       await s.proxy.close();
-    } finally {
-      await s.browserEnvironment.close();
+    } catch (error) {
+      failures.push(error);
     }
+    try {
+      await s.browserEnvironment.close();
+    } catch (error) {
+      failures.push(error);
+    }
+    if (failures.length)
+      throw new AggregateError(
+        failures,
+        'Owned browser cleanup failed: ' +
+          failures.map((e) => (e instanceof Error ? e.message : String(e))).join('; '),
+      );
     return {
       sessionId: id,
       closed: true,
@@ -923,7 +957,17 @@ export class BrowserSessions {
     this.lifetime.abort();
     clearInterval(this.timer);
     await Promise.allSettled([...this.pendingOpens]);
-    await Promise.all([...this.sessions.keys()].map((id) => this.close(id)));
-    await Promise.allSettled([...this.closing]);
+    const remaining = await Promise.allSettled(
+      [...this.sessions.keys()].map((id) => this.close(id)),
+    );
+    const pending = await Promise.allSettled([...this.closing]);
+    const failures = [...remaining, ...pending].filter(
+      (r): r is PromiseRejectedResult => r.status === 'rejected',
+    );
+    if (failures.length)
+      throw new AggregateError(
+        failures.map((r) => r.reason),
+        'Owned browser shutdown cleanup failed',
+      );
   }
 }

@@ -1,0 +1,225 @@
+{
+  "assembledAt": "2026-10-20T20:17:28.248Z",
+  "version": "1.0.0",
+  "tools": {
+    "opengrep": "1.31.0",
+    "osvScanner": "2.7.0",
+    "stryker": "10.0.0",
+    "upstreamRules": "trailofbits/semgrep-rules@31390b3a99c04c81522d1b37c8d1900aa2dd4094"
+  },
+  "static": {
+    "projectRules": 7,
+    "localFiles": 36,
+    "errors": 0,
+    "warnings": [
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/interactions.ts",
+        "line": 159,
+        "disposition": "Reviewed best-effort cleanup; retained visibly; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/sessions.ts",
+        "line": 294,
+        "disposition": "Reviewed best-effort cleanup; retained visibly; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/browser/sessions.ts",
+        "line": 330,
+        "disposition": "Reviewed best-effort cleanup; retained visibly; see STABILITY_AUDIT.md"
+      },
+      {
+        "rule": "quality.mimicus-empty-cleanup-catch",
+        "file": "src/server.ts",
+        "line": 276,
+        "disposition": "Reviewed best-effort cleanup; retained visibly; see STABILITY_AUDIT.md"
+      }
+    ],
+    "upstreamTargets": 37,
+    "upstreamFindings": 0,
+    "upstreamErrors": 0
+  },
+  "dependencies": {
+    "packages": 140,
+    "packagesWithKnownVulnerabilities": 0,
+    "scope": "Exact lockfile, production and development; point-in-time OSV advisories"
+  },
+  "mutation": {
+    "total": 256,
+    "statuses": {
+      "Killed": 212,
+      "Survived": 32,
+      "Timeout": 12
+    },
+    "detectedPercent": 87.5,
+    "assertionKilledPercent": 82.8125,
+    "files": {
+      "dist/browser/interactions.js": {
+        "total": 39,
+        "statuses": {
+          "Killed": 32,
+          "Survived": 7
+        },
+        "survivors": [
+          {
+            "line": 6,
+            "replacement": "false"
+          },
+          {
+            "line": 6,
+            "replacement": "/%[0-9a-f]/i"
+          },
+          {
+            "line": 10,
+            "replacement": "false"
+          },
+          {
+            "line": 14,
+            "replacement": "{}"
+          },
+          {
+            "line": 18,
+            "replacement": "true"
+          },
+          {
+            "line": 18,
+            "replacement": "/%[0-9a-f]/i"
+          },
+          {
+            "line": 22,
+            "replacement": "/(?:[/_.-])(delete|remove|logout|signout|unsubscribe|checkout|purchase|payment|reset)(?:$|[/_.-])/i"
+          }
+        ]
+      },
+      "dist/security/robots.js": {
+        "total": 166,
+        "statuses": {
+          "Killed": 136,
+          "Survived": 22,
+          "Timeout": 8
+        },
+        "survivors": [
+          {
+            "line": 4,
+            "replacement": "\"Stryker was here!\""
+          },
+          {
+            "line": 7,
+            "replacement": "/%[0-9a-f]{2}$/i"
+          },
+          {
+            "line": 7,
+            "replacement": "/^%[0-9a-f]{2}/i"
+          },
+          {
+            "line": 9,
+            "replacement": "/[a-z0-9._~-]$/i"
+          },
+          {
+            "line": 9,
+            "replacement": "/^[a-z0-9._~-]/i"
+          },
+          {
+            "line": 15,
+            "replacement": "point >= 127"
+          },
+          {
+            "line": 17,
+            "replacement": "\"\""
+          },
+          {
+            "line": 27,
+            "replacement": "+1"
+          },
+          {
+            "line": 32,
+            "replacement": "p--"
+          },
+          {
+            "line": 41,
+            "replacement": "true"
+          },
+          {
+            "line": 41,
+            "replacement": "star > 0"
+          },
+          {
+            "line": 56,
+            "replacement": "raw.split('#')[0]"
+          },
+          {
+            "line": 59,
+            "replacement": "/^([\\w-]+)\\s*:\\s*(.*)/"
+          },
+          {
+            "line": 59,
+            "replacement": "/^([\\w-]+)\\s*:\\S*(.*)$/"
+          },
+          {
+            "line": 62,
+            "replacement": "match[2]"
+          },
+          {
+            "line": 65,
+            "replacement": "[\"Stryker was here\"]"
+          },
+          {
+            "line": 70,
+            "replacement": "true"
+          },
+          {
+            "line": 80,
+            "replacement": "+1"
+          },
+          {
+            "line": 84,
+            "replacement": "\"Stryker was here!\""
+          },
+          {
+            "line": 84,
+            "replacement": "\"Stryker was here!\""
+          },
+          {
+            "line": 84,
+            "replacement": "/\\$/"
+          },
+          {
+            "line": 85,
+            "replacement": "true"
+          }
+        ]
+      },
+      "dist/util.js": {
+        "total": 51,
+        "statuses": {
+          "Killed": 44,
+          "Survived": 3,
+          "Timeout": 4
+        },
+        "survivors": [
+          {
+            "line": 5,
+            "replacement": "\"\""
+          },
+          {
+            "line": 6,
+            "replacement": "\"\""
+          },
+          {
+            "line": 22,
+            "replacement": "new Array()"
+          }
+        ]
+      }
+    },
+    "limits": [
+      "Selected compiled runtime scope, not whole-project coverage",
+      "Timeouts are separate from assertion kills",
+      "Remaining survivors are not all classified equivalent",
+      "Native node:test TAP runner misclassification excluded; final command runner uses exit codes",
+      "Earlier baseline code/scope differs and is not a directly comparable percentage"
+    ]
+  }
+}

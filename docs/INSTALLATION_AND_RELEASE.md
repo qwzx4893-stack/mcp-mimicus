@@ -1,6 +1,6 @@
 # Installation and release verification
 
-Mimicus `0.4.0-beta.2` is a GitHub-distributed beta. The package deliberately retains `private: true`; it has **not been published to npm**. Earlier beta.1 install evidence below remains historical; the matching release's external acceptance report and checksums identify the tested archive. See the final release acceptance rule below.
+Mimicus `1.0.0` is a GitHub-distributed stable release. The package deliberately retains `private: true`; it has **not been published to npm**. The [stability audit](STABILITY_AUDIT.md) describes current verification. Earlier beta install evidence below remains historical; the matching release's external acceptance report and checksums identify the tested archive. See the final release acceptance rule below.
 
 ## Requirements
 
@@ -27,10 +27,10 @@ Use `node /absolute/path/to/mcp-mimicus/dist/cli.js serve` as the stdio MCP serv
 
 ## Install a release archive
 
-Download the `.tgz` attached to the corresponding verified GitHub prerelease, then install it into a directory you own. Substitute the real downloaded file and consumer directory below; the registry name `mcp-mimicus` is not an npm installation claim.
+Download the `.tgz` attached to the corresponding verified GitHub release, then install it into a directory you own. Substitute the real downloaded file and consumer directory below; the registry name `mcp-mimicus` is not an npm installation claim.
 
 ```sh
-npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-0.4.0-beta.2.tgz
+npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-1.0.0.tgz
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --version
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --help
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js doctor
@@ -76,6 +76,6 @@ The resulting real `.tgz` was then installed into another fresh consumer directo
 
 ## Release acceptance rule
 
-Accept a particular prerelease archive as verified only when its external release assets agree: `installation-final.json` must report successful acceptance from the exact released source commit, `SHA256SUMS` must match the downloaded `.tgz`, and the attached hosted CI evidence must identify that same commit with successful Linux and Windows jobs. These files are assembled in `release-assets/` and attached to the corresponding [GitHub prerelease](https://github.com/qwzx4893-stack/mcp-mimicus/releases); they are the authoritative final distribution evidence. An earlier report in the source repository, a package dry-run, or CI on another commit does not substitute for them.
+Accept a particular release archive as verified only when its external release assets agree: `installation-final.json` must report successful acceptance from the exact released source commit, `SHA256SUMS` must match the downloaded `.tgz`, and the attached hosted CI evidence must identify that same commit with successful Linux and Windows jobs. These files are attached to the corresponding [GitHub release](https://github.com/qwzx4893-stack/mcp-mimicus/releases); they are the authoritative final distribution evidence. An earlier report in the source repository, a package dry-run, or CI on another commit does not substitute for them.
 
 Keep the final archive digest and acceptance report outside the archive to avoid a self-referential checksum. This rule does not assert a final acceptance run before it occurs; consult the matching published release assets for its measured result, runtime digest and limitations. No npm publication is part of this work.

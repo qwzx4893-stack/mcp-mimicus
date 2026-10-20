@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.0
+
+- Establish the stable installed-browser MCP contract after independent static, dependency, mutation, real-browser and packed-install verification. Review tools remain isolated development tooling.
+- Review encoded state-changing navigation, including query actions, while preserving benign content links. Correct robots product groups, URI-octet matching, wildcard rules and allow-tie precedence without source-built regular expressions.
+- Preserve meaningful trailing URL slashes instead of merging distinct original references.
+- Join concurrent shutdowns, observe background maintenance failures and attempt all owned cleanup steps even if one reports failure.
+- Return queued inference cancellation promptly while preserving serialization and the eight-slot queue bound. Dispose the model once during concurrent close.
+- Propagate falsy work failures correctly and stop admitting new sibling tasks. Add focused contract, fault-injection and real-browser regressions to hosted verification.
+- Retain all seven live sources, all 17 MCP tools, optional pinned local reranking and bounded RAM-only discovery. External source availability and hidden interaction behavior remain outside the guarantee.
+
 ## 0.4.0-beta.2
 
 - Replace the blanket Awwwards restriction with live public collection discovery, native award/category/tag/technology/country/font taxonomy, source-linked pagination and selected original-link/detail verification.

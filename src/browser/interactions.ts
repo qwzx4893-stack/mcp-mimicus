@@ -1,14 +1,32 @@
 import type { Page } from 'playwright';
 export function reviewNavigation(url: string) {
   const u = new URL(url);
+  const decoded = (value: string) => {
+    let text = value;
+    for (let i = 0; i < 4; i++) {
+      if (!/%[0-9a-f]{2}/i.test(text)) return text;
+      try {
+        const next = decodeURIComponent(text);
+        if (next === text) return text;
+        text = next;
+      } catch {
+        throw new Error('Navigation URL has ambiguous encoded state-changing action');
+      }
+    }
+    if (/%[0-9a-f]{2}/i.test(text))
+      throw new Error('Navigation URL has excessive encoded state-changing action');
+    return text;
+  };
   if (
     /(?:^|[/_.-])(delete|remove|logout|signout|unsubscribe|checkout|purchase|payment|reset)(?:$|[/_.-])/i.test(
-      u.pathname,
+      decoded(u.pathname),
     ) ||
     [...u.searchParams].some(
       ([key, value]) =>
-        /^(action|do|cmd|operation)$/i.test(key) &&
-        /delete|remove|logout|unsubscribe|purchase|pay|reset/i.test(value),
+        /^(action|do|cmd|operation)$/i.test(decoded(key)) &&
+        /delete|remove|logout|signout|unsubscribe|checkout|purchase|payment|pay|reset/i.test(
+          decoded(value),
+        ),
     )
   )
     throw new Error('Navigation URL appears to invoke a state-changing action');

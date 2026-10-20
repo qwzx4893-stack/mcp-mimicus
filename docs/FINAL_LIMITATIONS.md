@@ -1,6 +1,6 @@
 # Final release limitations
 
-Mimicus `0.4.0-beta.2` is a beta for live reference discovery and selected visual analysis. The following boundaries are actual behavior, not deferred completion claims. Earlier0.3/0.4.0-beta.1 evidence remains historical.
+Mimicus `1.0.0` is the stable installed-browser MCP release for live reference discovery and selected visual analysis. Stability covers the documented bounded behavior and supported Windows browser configurations; it does not guarantee continuous upstream access, every browser/OS or hidden website behavior. The following boundaries remain actual behavior. Earlier beta evidence remains historical; see the [stability audit](STABILITY_AUDIT.md) for current checks.
 
 ## Source coverage and permissions
 
@@ -32,6 +32,7 @@ Mimicus `0.4.0-beta.2` is a beta for live reference discovery and selected visua
 
 - Optional MiniLM reranks current text, not screenshots. Diversified windows and progressive queues reduce early lexical exclusion, but bounded upstream admission/retention still cannot provide complete source recall. The default160 window improves the reported synthetic Recall@10 at material latency/RAM cost. Missing model software produces explicit lexical fallback; download is opt-in.
 - The pinned q8 CPU model has a software cache and a reusable runtime. Site texts and vectors are not persisted. Releasing application references is not cryptographic erasure of process memory; the runtime can retain allocated memory until shutdown. Model loading had a material memory cost in the measured environment, not a portable memory guarantee.
+- Queued inference cancellation returns before its predecessor finishes, but the reserved slot remains until that predecessor ends so repeated cancellation cannot create an unbounded queue. A running native microbatch is non-preemptible. Shutdown waits for owned work; it is not a hard real-time kill deadline.
 - No website database, persistent catalog, disk fallback corpus or background indexing worker exists. Browser software may create isolated OS temporary files during a session. Graceful cleanup is exercised, but abrupt process/OS termination can leave temporary files; they are not reused as a site catalog.
 - Current evidence includes actual SDK transport, live sources, four real previews, five varied original agent exercises and a descriptive SaaS control pair. It does not establish every MCP host, operating system/browser, real handheld or assistive-technology acceptance, or continuous upstream availability.
 - Synthetic relevance labels are agent-authored and independently adjudicated by another agent, not human/visual ground truth. The completed final masked AI SaaS review scored assisted22/24 versus control24/24; the control also finished faster (8m14s versus11m57s). Both completed the same brief within15 minutes. One pair establishes no typical aesthetic, conversion or efficiency benefit. An earlier interrupted pair tied20/24 and remains separately historical. The new immersive exercise viewed two usable live GPU scenes; older gated alternatives remain historical failures.

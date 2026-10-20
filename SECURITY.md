@@ -18,7 +18,7 @@ There is no promised response deadline or historical-version maintenance policy.
 - Source records, screenshots and page text are **untrusted evidence**. They must not become host-agent instructions, trigger arbitrary host execution or authorize additional origins/actions.
 - Discovery records, page analysis and candidate embeddings remain temporary memory. No persistent website database, corpus or vector store exists. Browser and PowerShell software create temporary files inside owned envelopes; graceful cleanup is tested. Forced termination or machine failure can interrupt cleanup and is not a guaranteed clean shutdown.
 
-Source terms, robots rules, publisher permissions and open-source licenses are separate constraints. Awwwards catalog access is restricted without reviewed authorization; an upstream MIT adapter does not license gallery content. Never add fabricated authorization, challenge bypasses or private API impersonation to make acceptance pass.
+Source terms, robots rules, publisher permissions and open-source licenses are separate constraints. Awwwards uses live public collection routes with current per-route access checks, pacing and bounded metadata/original-link verification; see [Awwwards integration](docs/AWWWARDS_INTEGRATION.md). An upstream MIT adapter does not license gallery artwork. Never add fabricated authorization, challenge bypasses or private API impersonation to make acceptance pass.
 
 ## Deployment guidance
 
@@ -26,4 +26,4 @@ Run the stdio server under the local account and permissions intended for the co
 
 Model downloads are opt-in, revision-pinned CPU inference software with integrity checks. They are separate from website data and do not train a generative model. Keep credentials in the host's credential management, never source, reports, logs or repository history.
 
-See [browser isolation](docs/DEFAULT_BROWSER_BACKEND.md) and [verification evidence](docs/QUALITY_AND_SECURITY_TEST_RESULTS.md) for tested behavior and limits. Regression coverage and independent release review do not constitute comprehensive external security certification.
+See [browser isolation](docs/DEFAULT_BROWSER_BACKEND.md) and the current [stability audit](docs/STABILITY_AUDIT.md) for tested behavior and limits. Regression coverage and tool-assisted release review do not constitute comprehensive external security certification.

@@ -1,0 +1,46 @@
+rules:
+  - id: mimicus-unobserved-async-timer
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: Review detached async maintenance for rejection containment and resource cleanup.
+    pattern: setInterval(() => void $OBJ.$F(...), ...)
+  - id: mimicus-empty-cleanup-catch
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: Review cleanup failure visibility and independently verify resource release.
+    pattern: $P.catch(() => {})
+  - id: mimicus-dynamic-regexp
+    languages: [typescript, javascript]
+    severity: WARNING
+    message: Review untrusted regex input, encoding, wildcard precedence and execution bounds.
+    patterns:
+      - pattern: new RegExp($SOURCE, ...)
+      - pattern-not: new RegExp("...", ...)
+  - id: mimicus-browser-safety-bypass
+    languages: [typescript, javascript]
+    severity: ERROR
+    pattern-either:
+      - pattern: '{ ..., ignoreHTTPSErrors: true, ... }'
+      - pattern: '{ ..., rejectUnauthorized: false, ... }'
+      - pattern: '{ ..., bypassCSP: true, ... }'
+    message: Browser/network safety override requires explicit architectural review.
+  - id: mimicus-shell-command-execution
+    languages: [typescript, javascript]
+    severity: WARNING
+    pattern-either:
+      - pattern: exec($COMMAND, ...)
+      - pattern: execSync($COMMAND, ...)
+      - pattern: '{ ..., shell: true, ... }'
+    message: Review shell execution with user-controlled arguments; prefer executable plus argv.
+  - id: mimicus-object-merge-untrusted
+    languages: [typescript, javascript]
+    severity: WARNING
+    pattern: Object.assign($TARGET, JSON.parse(...))
+    message: Parsed upstream data needs schema and property validation before merging.
+  - id: mimicus-dynamic-code-evaluation
+    languages: [typescript, javascript]
+    severity: ERROR
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: new Function(...)
+    message: Dynamic code evaluation is outside the read-only MCP contract.

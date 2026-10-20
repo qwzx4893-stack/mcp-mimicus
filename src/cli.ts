@@ -21,19 +21,35 @@ async function main() {
     config = loadConfig();
   if (command === 'model-fetch') config.semanticDownload = true;
   const app = new Mimicus(config);
-  let server: ReturnType<typeof createMcpServer> | undefined,
-    closing = false;
-  const close = async () => {
-    if (closing) return;
-    closing = true;
-    await app.close();
-    await server?.close();
+  let server: ReturnType<typeof createMcpServer> | undefined, closing: Promise<void> | undefined;
+  const close = () => {
+    closing ??= Promise.resolve().then(async () => {
+      const results = await Promise.allSettled([app.close(), server?.close()]);
+      const failed = results.filter((r): r is PromiseRejectedResult => r.status === 'rejected');
+      if (failed.length)
+        throw new AggregateError(
+          failed.map((r) => r.reason),
+          'CLI shutdown cleanup failed',
+        );
+    });
+    return closing;
+  };
+  const shutdown = () => {
+    void close().catch((error) => {
+      process.stderr.write(
+        JSON.stringify({
+          level: 'error',
+          message: error instanceof Error ? error.message : 'Shutdown failed',
+        }) + '\n',
+      );
+      process.exitCode = 1;
+    });
   };
   if (command === 'serve') {
     server = createMcpServer(app);
-    server.server.onclose = () => void close();
-    process.once('SIGINT', () => void close());
-    process.once('SIGTERM', () => void close());
+    server.server.onclose = shutdown;
+    process.once('SIGINT', shutdown);
+    process.once('SIGTERM', shutdown);
     await server.connect(new StdioServerTransport());
     return;
   }

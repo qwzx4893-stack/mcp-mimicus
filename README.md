@@ -11,7 +11,9 @@
 
 Search stays lightweight. The agent chooses which original sites to preview, open and investigate. Layout measurements, typography, responsive observations and interaction samples support its creative judgment; Mimicus does not assign an aesthetic winner or recover a site's hidden source code.
 
-**Release status: beta.** The [latest published release](https://github.com/qwzx4893-stack/mcp-mimicus/releases) and its evidence are versioned separately from changes on `main`. **Awwwards is a live discovery source:** native awards, categories, tags, technologies, countries and fonts, linked pagination and selected verified original links feed the same real-image, interaction, motion and guidance tools. Requests follow current per-route robots rules, paced access and rate-limit cooldown. See [Awwwards integration](docs/AWWWARDS_INTEGRATION.md). There is no npm publication.
+**Stable release line: 1.0.0.** The [latest published release](https://github.com/qwzx4893-stack/mcp-mimicus/releases) carries the exact tested archive and acceptance evidence. The supported contract is Node.js 24+ with an installed compatible browser: Windows-default Brave and explicitly selected Edge have full integration coverage; Linux CI covers browser-free behavior. See the [stability audit](docs/STABILITY_AUDIT.md) for fixes, independent open-source tooling and operational limits. There is no npm publication.
+
+**Awwwards is a live discovery source:** native awards, categories, tags, technologies, countries and fonts, linked pagination and selected verified original links feed the same real-image, interaction, motion and guidance tools. Requests follow current per-route robots rules, paced access and rate-limit cooldown. See [Awwwards integration](docs/AWWWARDS_INTEGRATION.md).
 
 [Get started](#get-started) · [Agent workflow](#a-design-workflow-with-evidence) · [Source coverage](#seven-sources-with-visible-boundaries) · [Evidence and limits](#verification-and-current-limits)
 
@@ -170,10 +172,11 @@ npm run check
 npm test
 ```
 
-Tests cover controlled fixtures, real SDK transport and installed-browser cases. Live-source acceptance is separate and depends on current upstream availability. A test pass does not establish aesthetic superiority or complete catalog coverage. The [hardening audit](docs/FINAL_PRODUCT_HARDENING_AUDIT.md) records versioned outcomes, remaining partial/blocked gates and exact-commit evidence.
+Tests cover controlled fixtures, real SDK transport and installed-browser cases. Live-source acceptance is separate and depends on current upstream availability. A test pass does not establish aesthetic superiority or complete catalog coverage. The [stability audit](docs/STABILITY_AUDIT.md) records current fixes and checks; the [earlier hardening audit](docs/FINAL_PRODUCT_HARDENING_AUDIT.md) retains historical outcomes and limitations.
 
 | Evidence | What it establishes |
 | --- | --- |
+| [Stability audit](docs/STABILITY_AUDIT.md) | Open-source review tools, confirmed fixes, fault handling and current release acceptance |
 | [Visual discovery evaluation](docs/VISUAL_DISCOVERY_EVALUATION.md) | Multi-image ordering, source attribution, successful previews and gates/partial rendering |
 | [Browser reliability](docs/BROWSER_RELIABILITY.md) | Installed browser identity, long workflows, lease limits, isolation and cleanup |
 | [Agent quality evaluation](docs/AGENT_QUALITY_EVALUATION.md) | Distinct briefs, original implementations, visual review and defects; sample limits are explicit |

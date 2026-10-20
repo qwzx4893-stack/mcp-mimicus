@@ -9,6 +9,7 @@ import { DiscoveryInput, Provider } from './discovery/types.js';
 import { searchCards } from './presentation.js';
 import { VERSION } from './version.js';
 export class Mimicus {
+  private closing?: Promise<void>;
   readonly federation: Federation;
   readonly browser: BrowserSessions;
   constructor(
@@ -18,8 +19,17 @@ export class Mimicus {
     this.federation = federation ?? new Federation(config);
     this.browser = new BrowserSessions(config);
   }
-  async close() {
-    await Promise.all([this.browser.closeAll(), this.federation.close()]);
+  close() {
+    this.closing ??= Promise.resolve().then(async () => {
+      const results = await Promise.allSettled([this.browser.closeAll(), this.federation.close()]);
+      const failures = results.filter((r): r is PromiseRejectedResult => r.status === 'rejected');
+      if (failures.length)
+        throw new AggregateError(
+          failures.map((r) => r.reason),
+          'Mimicus shutdown cleanup failed',
+        );
+    });
+    return this.closing;
   }
 }
 const id = z.string().min(1).max(100),

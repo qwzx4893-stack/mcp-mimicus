@@ -26,6 +26,7 @@ export class LocalSemantic {
   private pending = 0;
   private queue: Promise<void> = Promise.resolve();
   private closed = false;
+  private closing?: Promise<void>;
   constructor(readonly config: Config) {}
   status() {
     return {
@@ -102,9 +103,28 @@ export class LocalSemantic {
     this.pending++;
     const previous = this.queue;
     let release!: () => void;
-    this.queue = new Promise<void>((ok) => (release = ok));
+    const gate = new Promise<void>((ok) => (release = ok));
+    // Cancelled callers can return early, but later inference must still wait
+    // for their predecessor rather than overlapping the active native batch.
+    this.queue = previous.then(() => gate);
     try {
-      await previous;
+      if (!signal) await previous;
+      else
+        await new Promise<void>((resolve, reject) => {
+          const abort = () => {
+            signal.removeEventListener('abort', abort);
+            reject(signal.reason);
+          };
+          if (signal.aborted) {
+            abort();
+            return;
+          }
+          signal.addEventListener('abort', abort, { once: true });
+          void previous.then(() => {
+            signal.removeEventListener('abort', abort);
+            resolve();
+          });
+        });
       signal?.throwIfAborted();
       if (!(await this.init())) throw new Error(this.error ?? 'Semantic retrieval disabled');
       signal?.throwIfAborted();
@@ -132,16 +152,23 @@ export class LocalSemantic {
         return vector;
       });
     } finally {
-      this.pending--;
-      release();
+      // Reserve cancelled nodes until their turn: at most8 nodes can remain.
+      void previous.then(() => {
+        this.pending--;
+        release();
+      });
     }
   }
-  async close() {
+  close() {
     this.closed = true;
-    await this.queue;
-    await this.loading;
-    await this.extractor?.dispose?.();
-    this.extractor = undefined;
+    this.closing ??= Promise.resolve().then(async () => {
+      await this.queue;
+      await this.loading;
+      const extractor = this.extractor;
+      this.extractor = undefined;
+      await extractor?.dispose?.();
+    });
+    return this.closing;
   }
 }
 export const cosine = (a: Float32Array, b: Float32Array) => {

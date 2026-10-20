@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-20T20:14:14.345Z",
+  "method": "Actual pinned q8 CPU model, no download or injected extractor",
+  "status": "PASS",
+  "integrity": {
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "verifiedFiles": 4
+  },
+  "queuedCancellation": "cancelled",
+  "vectors": [
+    {
+      "dimensions": 384,
+      "finite": true,
+      "norm": 1
+    },
+    {
+      "dimensions": 384,
+      "finite": true,
+      "norm": 1
+    },
+    {
+      "dimensions": 384,
+      "finite": true,
+      "norm": 1
+    },
+    {
+      "dimensions": 384,
+      "finite": true,
+      "norm": 1
+    }
+  ],
+  "pending": 0
+}

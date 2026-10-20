@@ -1,0 +1,26 @@
+{
+  "assembledAt": "2026-10-20T20:17:28.251Z",
+  "version": "1.0.0",
+  "platform": "win32",
+  "node": "v24.19.0",
+  "suites": [
+    {
+      "browser": "brave",
+      "tests": 94,
+      "passed": 94,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 158777.8674
+    },
+    {
+      "browser": "edge",
+      "tests": 94,
+      "passed": 94,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 129228.0517
+    }
+  ]
+}
