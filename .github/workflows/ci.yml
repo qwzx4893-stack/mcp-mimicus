@@ -28,7 +28,7 @@ jobs:
       - name: Core regression tests
         run: |
           mkdir -p artifacts/ci
-          node --test --test-concurrency=1 --test-reporter=tap test/architecture.test.mjs test/design-brief.test.mjs test/federation.test.mjs test/federation-lifecycle.test.mjs test/open-failure.test.mjs test/security.test.mjs test/source-release.test.mjs test/hardening-guidance.test.mjs test/hardening-retrieval.test.mjs test/hardening-sources.test.mjs > artifacts/ci/linux-core.tap 2>&1
+          node --test --test-concurrency=1 --test-reporter=tap test/architecture.test.mjs test/design-brief.test.mjs test/federation.test.mjs test/federation-lifecycle.test.mjs test/open-failure.test.mjs test/security.test.mjs test/source-release.test.mjs test/hardening-guidance.test.mjs test/hardening-retrieval.test.mjs test/hardening-sources.test.mjs test/awwwards-live.test.mjs > artifacts/ci/linux-core.tap 2>&1
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:

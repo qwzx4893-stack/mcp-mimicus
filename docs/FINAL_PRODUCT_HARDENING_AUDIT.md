@@ -1,5 +1,7 @@
 # Product hardening audit
 
+This is the historical0.4.0-beta.1 hardening audit. The subsequent0.4.0-beta.2 [Awwwards implementation](AWWWARDS_INTEGRATION.md) replaces its former blanket catalog restriction with live public discovery. Earlier results and failed attempts below are preserved rather than relabeled as new acceptance.
+
 Mimicus0.4.0-beta.1 remains a beta. This audit distinguishes implemented code, observed execution and limits. Awwwards catalog permission is absent and the comparative design study is partial; this is not an eight-of-eight production-readiness claim.
 
 ## Verified starting point

@@ -1,6 +1,6 @@
 {
   "name": "mcp-mimicus",
-  "version": "0.4.0-beta.1",
+  "version": "0.4.0-beta.2",
   "description": "Mimicus — live federated visual design browser for agents",
   "type": "module",
   "private": true,
@@ -17,6 +17,7 @@
     "assets/mimicus-banner.png",
     "docs/DEFAULT_BROWSER_BACKEND.md",
     "docs/SOURCE_INTEGRATION_MATRIX.md",
+    "docs/AWWWARDS_INTEGRATION.md",
     "docs/FINAL_ENGINEERING_AUDIT.md",
     "docs/VISUAL_WORKFLOW_EVALUATION.md",
     "docs/QUALITY_AND_SECURITY_TEST_RESULTS.md",

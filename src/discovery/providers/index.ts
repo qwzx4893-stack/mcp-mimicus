@@ -4,6 +4,10 @@ import { guardedFetch, type HttpEvidence } from '../../security/fetch.js';
 import { robotsAllowed } from '../../security/robots.js';
 import { canonicalUrl, hash, mapBounded } from '../../util.js';
 import { type DiscoveryQuery, Provider, type SourcePage, type SourceRecord } from '../types.js';
+import { AwwwardsAdapter } from './awwwards.js';
+
+export { AwwwardsAdapter };
+
 import {
   astroRecord,
   codropsHub,
@@ -126,92 +130,6 @@ export function astroCandidateOrder<T extends { title: string; url: string; slug
   return result;
 }
 
-export class AwwwardsAdapter implements SourceAdapter {
-  readonly id = 'awwwards' as const;
-  async search(c: DiscoveryContext) {
-    // A configuration note is not a reviewed, scoped rights grant. There is no
-    // grant-verification mechanism in this release, so catalog access stays off.
-    {
-      const manual = c.query.originalReferences ?? [],
-        records = normalize(
-          this.id,
-          'operator-reference',
-          manual.map((r, i) => ({
-            itemId: 'operator-' + i,
-            title: r.title ?? new URL(r.url).hostname,
-            url: canonicalUrl(r.url),
-            listingUrl: r.listingUrl ?? canonicalUrl(r.url),
-            native: { categories: [], tags: [], technologies: [], awards: [] },
-            sourceMetadata: {
-              relationshipVerified: false,
-              operatorSupplied: true,
-              noAwwwardsListing: !r.listingUrl,
-            },
-          })),
-          'Operator-supplied Awwwards reference link and original URL; gallery relationship/title unverified; no gallery page fetched and no source license inferred',
-        );
-      return [
-        page(
-          this.id,
-          'websites',
-          records,
-          'Automated Awwwards catalog unavailable without authorization; operator-supplied original references are a separate usable handoff, never gallery search results',
-          {
-            status: 'blocked',
-            manualReferenceCount: records.length,
-            navigation: [
-              {
-                label: 'Browse public award references manually',
-                url: 'https://www.awwwards.com/websites/',
-                mode: 'manual-public-navigation',
-              },
-              {
-                label: 'Read current source terms',
-                url: 'https://www.awwwards.com/terms/',
-                mode: 'manual-public-navigation',
-              },
-            ],
-            capabilities: [
-              {
-                name: 'catalog-search/details/categories/awards/makers/technologies/elements',
-                status: 'restricted',
-                reason:
-                  'No special content authorization. Robots prohibits automated search routes and elements; MIT software does not license the source catalog.',
-              },
-              {
-                name: 'source-media-previews',
-                status: 'restricted',
-                reason:
-                  'No permission to fetch or republish source-owned screenshots/videos is assumed.',
-              },
-              {
-                name: 'operator-reference-handoff',
-                status: 'operator-supplied',
-                reason:
-                  'Pass up to eight original URLs using originalReferences; titles and exact Awwwards /sites/ links are optional. Relationships remain explicitly unverified.',
-              },
-              {
-                name: 'original-site-visual-browsing',
-                status: 'available',
-                reason:
-                  'Select the original URL, then authorized open_reference for separate robots-checked isolated browsing, screenshots, interactions and targeted analysis.',
-              },
-            ],
-            diagnostics: [
-              'No automated Awwwards catalog/search/detail/media requests were issued. Public navigation links are for the operator; they do not imply a live gallery connection.',
-              'Current upstream software reviewed at 1bc9c13557c8e8f6ea90e174d88eb1708696fca3; retained MIT parser and adapted the candidate-to-original-site visual study workflow without its catalog/media/preferences persistence.',
-              ...(c.config.sourceAuthorizations.awwwards
-                ? [
-                    'The configured authorization note is not verified proof of a scoped rights grant and does not enable gallery requests.',
-                  ]
-                : []),
-            ],
-          },
-        ),
-      ];
-    }
-  }
-}
 export class NuxtAdapter implements SourceAdapter {
   readonly id = 'nuxt' as const;
   async search(c: DiscoveryContext) {

@@ -1,0 +1,474 @@
+{
+  "at": "2026-10-20T16:14:08.313Z",
+  "method": "Actual production stdio SDK, fresh public metadata, original-site images, selected analysis and cleanup",
+  "cases": [
+    {
+      "name": "webgl-two-native-pages",
+      "input": {
+        "technology": "WebGL",
+        "query": "interactive"
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 7859,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/webgl/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "034357463f0d50ecedb88f942933925059e7b36c1b462c98a342f3dfb6b6009a"
+        },
+        {
+          "scope": "new-source-pages",
+          "elapsedMs": 6701,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/webgl/?page=2. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "af422365434f3bba096ad31dd48b7d4c5f7f702c830f2ebea0d623a2ba421dbd"
+        }
+      ],
+      "drains": 3,
+      "returned": 41,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "architecture-native-category",
+      "input": {
+        "category": "Architecture"
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 6897,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/architecture/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "95baf8a534ce2879fa539b0b8b81d9cafeddc61523b8e47f745672d9cb4806e1"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "site-of-the-month-native-award",
+      "input": {
+        "awwwards": {
+          "award": "Sites of the Month"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 6749,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/sites_of_the_month/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "4a57669d76a680bc9b2bb2493381fcdb9c336f76c67cce04f5463a9272779bc5"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "country-native-collection",
+      "input": {
+        "awwwards": {
+          "country": "United States"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 6929,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/United%20States/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "8b903160f0689aab1d12ef4f96e57f333f60ea521d0031825a279ec50a08630d"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "font-native-collection",
+      "input": {
+        "awwwards": {
+          "font": "Aeonik"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 8121,
+          "requests": 6,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/Aeonik/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "6529abf6a38923edcf336fb68367dc98c7c35fdc136202a3bb1b0ce600e9b182"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "root-public-listing-with-restricted-next",
+      "input": {
+        "awwwards": {
+          "listingUrl": "https://www.awwwards.com/websites/",
+          "details": false
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 4038,
+          "requests": 2,
+          "records": 31,
+          "status": "partial",
+          "taxonomyLabels": 395,
+          "hasMore": false,
+          "diagnostics": [
+            "Native next link is disallowed by current robots rules and was not fetched: https://www.awwwards.com/websites/?page=2",
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "39d7e39b35ae8b6748f1017a26a4016837e080eca0b6a50a255535790da02df4"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    }
+  ],
+  "previews": [
+    {
+      "inputIndex": 0,
+      "key": "e3ee357f4bfd8e68eecfd41d",
+      "url": "https://crazy.studio/",
+      "requestedUrl": "https://crazy.studio/",
+      "title": "Crazy Studio",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "f1832e8c-d578-4924-8a5f-60ecdc44ce4f",
+        "referenceId": "e3ee357f4bfd8e68eecfd41d",
+        "relationships": [
+          {
+            "provider": "awwwards",
+            "stream": "websites",
+            "itemId": "66611",
+            "title": "Crazy Studio",
+            "url": "https://crazy.studio/",
+            "listingUrl": "https://www.awwwards.com/sites/crazy-studio",
+            "native": {
+              "categories": [
+                "Design Agencies",
+                "Experimental",
+                "Web & Interactive"
+              ],
+              "tags": [
+                "Design Agencies",
+                "Web & Interactive",
+                "Animation",
+                "Video",
+                "WebGL",
+                "Experimental",
+                "Sound-Audio",
+                "Storytelling",
+                "Three.js",
+                "3D",
+                "Interaction Design",
+                "Vue.js"
+              ],
+              "technologies": [
+                "Three.js",
+                "Vue.js",
+                "WebGL"
+              ],
+              "awards": []
+            },
+            "makers": [
+              "crazy.studio"
+            ],
+            "publishedAt": "2026-10-20T09:53:21.000Z",
+            "kind": "website",
+            "provenance": "Live Awwwards public listing facts and selected detail/original-link verification; original artwork is not imported",
+            "retrievedAt": "2026-10-20T16:14:17.032Z",
+            "sourceMetadata": {
+              "relationshipVerified": true,
+              "operatorSupplied": false,
+              "nativeCollection": "WebGL",
+              "nativeCollectionKind": "technology",
+              "detailVerified": true
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "5aa02c9ef42b2125baf23cab",
+          "url": "https://apricode.agency/",
+          "title": "Apricode"
+        }
+      ],
+      "imageIndex": 0,
+      "actualUrl": "https://crazy.studio/",
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T16:15:01.145Z",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "readiness": {
+        "readyState": "interactive",
+        "visualState": {
+          "loadingOverlay": true,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 144,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 1,
+          "loaded": 0,
+          "incomplete": 0,
+          "visible": 0,
+          "visibleLoaded": 0
+        },
+        "canvasCount": 1,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Visible substantial loading overlay; the underlying scene is not verified"
+      ],
+      "diagnostics": {
+        "requests": 38,
+        "blocked": [],
+        "errors": []
+      },
+      "byteLength": 17449,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    },
+    {
+      "inputIndex": 1,
+      "key": "5aa02c9ef42b2125baf23cab",
+      "url": "https://apricode.agency/",
+      "requestedUrl": "https://apricode.agency/",
+      "title": "Apricode",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "f1832e8c-d578-4924-8a5f-60ecdc44ce4f",
+        "referenceId": "5aa02c9ef42b2125baf23cab",
+        "relationships": [
+          {
+            "provider": "awwwards",
+            "stream": "websites",
+            "itemId": "66613",
+            "title": "Apricode",
+            "url": "https://apricode.agency/",
+            "listingUrl": "https://www.awwwards.com/sites/apricode",
+            "native": {
+              "categories": [
+                "Design Agencies",
+                "Promotional",
+                "Web & Interactive"
+              ],
+              "tags": [
+                "Design Agencies",
+                "Promotional",
+                "Web & Interactive",
+                "Animation",
+                "Parallax",
+                "Scrolling",
+                "WebGL",
+                "Storytelling",
+                "GSAP",
+                "3D",
+                "Blender"
+              ],
+              "technologies": [
+                "Blender",
+                "GSAP",
+                "WebGL"
+              ],
+              "awards": []
+            },
+            "makers": [
+              "Apricode"
+            ],
+            "publishedAt": "2026-10-20T09:53:09.000Z",
+            "kind": "website",
+            "provenance": "Live Awwwards public listing facts and selected detail/original-link verification; original artwork is not imported",
+            "retrievedAt": "2026-10-20T16:14:17.034Z",
+            "sourceMetadata": {
+              "relationshipVerified": true,
+              "operatorSupplied": false,
+              "nativeCollection": "WebGL",
+              "nativeCollectionKind": "technology",
+              "detailVerified": true
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "e3ee357f4bfd8e68eecfd41d",
+          "url": "https://crazy.studio/",
+          "title": "Crazy Studio"
+        }
+      ],
+      "imageIndex": 1,
+      "actualUrl": "https://apricode.agency/",
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T16:15:04.333Z",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": true,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 3167,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 13,
+          "loaded": 1,
+          "incomplete": 11,
+          "visible": 0,
+          "visibleLoaded": 0
+        },
+        "canvasCount": 1,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Visible substantial loading overlay; the underlying scene is not verified"
+      ],
+      "diagnostics": {
+        "requests": 32,
+        "blocked": [],
+        "errors": []
+      },
+      "byteLength": 11982,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    }
+  ],
+  "status": "VERIFIED",
+  "tools": 17,
+  "taxonomyAvailable": [
+    {
+      "provider": "awwwards",
+      "labels": 395
+    }
+  ],
+  "imageEvidence": [
+    {
+      "index": 0,
+      "bytes": 17449,
+      "sha256": "4aa693efbc79324f7826e9ac992317210b70d38278d00c292128fa70ae3ea8d1"
+    },
+    {
+      "index": 1,
+      "bytes": 11982,
+      "sha256": "4b798d429a42a2ef1a6a86ab228e071ee2a7d78c9e62f708120fdb9971254581"
+    }
+  ],
+  "originalUnderstanding": {
+    "url": "https://crazy.studio/",
+    "analysisId": "24467a3d-2a6a-48a9-8589-fd3ef44637c6",
+    "specReturned": true,
+    "mobileImages": 1,
+    "meaning": "Selected original-site responsive/temporal measurements and implementation guidance; not recovered author source or aesthetic validation"
+  },
+  "finalResources": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  },
+  "cwdFiles": [],
+  "finishedAt": "2026-10-20T16:15:12.573Z"
+}

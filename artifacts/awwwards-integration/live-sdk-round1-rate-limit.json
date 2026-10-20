@@ -1,0 +1,206 @@
+{
+  "at": "2026-10-20T16:01:48.036Z",
+  "method": "Actual production stdio SDK, fresh public metadata, original-site images, selected analysis and cleanup",
+  "cases": [
+    {
+      "name": "webgl-two-native-pages",
+      "input": {
+        "technology": "WebGL",
+        "query": "interactive"
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 6610,
+          "requests": 11,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/webgl/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "034357463f0d50ecedb88f942933925059e7b36c1b462c98a342f3dfb6b6009a"
+        },
+        {
+          "scope": "new-source-pages",
+          "elapsedMs": 4629,
+          "requests": 11,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/webgl/?page=2. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "af422365434f3bba096ad31dd48b7d4c5f7f702c830f2ebea0d623a2ba421dbd"
+        }
+      ],
+      "drains": 3,
+      "returned": 41,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "architecture-native-category",
+      "input": {
+        "category": "Architecture"
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 4498,
+          "requests": 11,
+          "records": 31,
+          "status": "available",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/architecture/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate."
+          ],
+          "referenceIdentitySha256": "95baf8a534ce2879fa539b0b8b81d9cafeddc61523b8e47f745672d9cb4806e1"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "site-of-the-month-native-award",
+      "input": {
+        "awwwards": {
+          "award": "Sites of the Month"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 3232,
+          "requests": 11,
+          "records": 31,
+          "status": "partial",
+          "taxonomyLabels": 395,
+          "hasMore": true,
+          "diagnostics": [
+            "Text/semantic search ranks current live title/tag/fact candidates in RAM; no /search-websites endpoint is called.",
+            "Native collection: https://www.awwwards.com/websites/sites_of_the_month/. Source artwork/media are not fetched by this adapter; visual previews visit selected original websites.",
+            "No catalog synchronization, disk cache, voting, login, private endpoints or permission-note gate.",
+            "Selected detail 63385: Error: Awwwards source HTTP 429: https://www.awwwards.com/sites/the-renaissance-edition"
+          ],
+          "referenceIdentitySha256": "4a57669d76a680bc9b2bb2493381fcdb9c336f76c67cce04f5463a9272779bc5"
+        }
+      ],
+      "drains": 0,
+      "returned": 10,
+      "duplicateIds": 0,
+      "passed": true
+    },
+    {
+      "name": "country-native-collection",
+      "input": {
+        "awwwards": {
+          "country": "United States"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 285,
+          "requests": 2,
+          "status": "unavailable",
+          "diagnostics": [
+            "Error: Awwwards source HTTP 429: https://www.awwwards.com/websites/"
+          ],
+          "referenceIdentitySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "drains": 0,
+      "returned": 0,
+      "duplicateIds": 0,
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(item.returned > 0)\n"
+    },
+    {
+      "name": "font-native-collection",
+      "input": {
+        "awwwards": {
+          "font": "Aeonik"
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 263,
+          "requests": 2,
+          "status": "unavailable",
+          "diagnostics": [
+            "Error: Awwwards source HTTP 429: https://www.awwwards.com/websites/"
+          ],
+          "referenceIdentitySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "drains": 0,
+      "returned": 0,
+      "duplicateIds": 0,
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(item.returned > 0)\n"
+    },
+    {
+      "name": "root-public-listing-with-restricted-next",
+      "input": {
+        "awwwards": {
+          "listingUrl": "https://www.awwwards.com/websites/",
+          "details": false
+        }
+      },
+      "nativePages": [
+        {
+          "scope": "initial-source-pages",
+          "elapsedMs": 133,
+          "requests": 1,
+          "status": "unavailable",
+          "diagnostics": [
+            "Error: robots access HTTP 429"
+          ],
+          "referenceIdentitySha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "drains": 0,
+      "returned": 0,
+      "duplicateIds": 0,
+      "passed": false,
+      "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(item.returned > 0)\n"
+    }
+  ],
+  "previews": [],
+  "status": "FAILED",
+  "tools": 17,
+  "error": "AssertionError [ERR_ASSERTION]: One or more live discovery cases failed",
+  "finalResources": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  },
+  "cwdFiles": [],
+  "finishedAt": "2026-10-20T16:02:10.424Z"
+}

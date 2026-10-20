@@ -1,0 +1,275 @@
+{
+  "at": "2026-10-20T16:06:21.861Z",
+  "finishedAt": "2026-10-20T16:07:20.101Z",
+  "method": "First successful paced SDK round; actual images viewed by coordinating agent. Later final SDK rerun recorded separately.",
+  "imageEvidence": [
+    {
+      "index": 0,
+      "bytes": 17625,
+      "sha256": "44fa2bede2990a0e5d6f55c76d10ca7e6d1ca7496a233f7049bb7ad56ce01ccc"
+    },
+    {
+      "index": 1,
+      "bytes": 12334,
+      "sha256": "d61daa6e67474f22cf42f37725eb47d9d76d45db9fed684e4116c28708f82d32"
+    }
+  ],
+  "previews": [
+    {
+      "inputIndex": 0,
+      "key": "e3ee357f4bfd8e68eecfd41d",
+      "url": "https://crazy.studio/",
+      "requestedUrl": "https://crazy.studio/",
+      "title": "Crazy Studio",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "4be65fda-91b1-462b-b2dd-8a039ca3c612",
+        "referenceId": "e3ee357f4bfd8e68eecfd41d",
+        "relationships": [
+          {
+            "provider": "awwwards",
+            "stream": "websites",
+            "itemId": "66611",
+            "title": "Crazy Studio",
+            "url": "https://crazy.studio/",
+            "listingUrl": "https://www.awwwards.com/sites/crazy-studio",
+            "native": {
+              "categories": [
+                "Design Agencies",
+                "Experimental",
+                "Web & Interactive"
+              ],
+              "tags": [
+                "Design Agencies",
+                "Web & Interactive",
+                "Animation",
+                "Video",
+                "WebGL",
+                "Experimental",
+                "Sound-Audio",
+                "Storytelling",
+                "Three.js",
+                "3D",
+                "Interaction Design",
+                "Vue.js"
+              ],
+              "technologies": [
+                "Three.js",
+                "Vue.js",
+                "WebGL"
+              ],
+              "awards": []
+            },
+            "makers": [
+              "crazy.studio"
+            ],
+            "publishedAt": "2026-10-20T09:53:21.000Z",
+            "kind": "website",
+            "provenance": "Live Awwwards public listing facts and selected detail/original-link verification; original artwork is not imported",
+            "retrievedAt": "2026-10-20T16:06:29.149Z",
+            "sourceMetadata": {
+              "relationshipVerified": true,
+              "operatorSupplied": false,
+              "nativeCollection": "WebGL",
+              "nativeCollectionKind": "technology",
+              "detailVerified": true
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "5aa02c9ef42b2125baf23cab",
+          "url": "https://apricode.agency/",
+          "title": "Apricode"
+        }
+      ],
+      "imageIndex": 0,
+      "actualUrl": "https://crazy.studio/",
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T16:07:07.201Z",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "readiness": {
+        "readyState": "interactive",
+        "visualState": {
+          "loadingOverlay": true,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 144,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 1,
+          "loaded": 0,
+          "incomplete": 0,
+          "visible": 0,
+          "visibleLoaded": 0
+        },
+        "canvasCount": 1,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Visible substantial loading overlay; the underlying scene is not verified"
+      ],
+      "diagnostics": {
+        "requests": 38,
+        "blocked": [],
+        "errors": []
+      },
+      "byteLength": 17625,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    },
+    {
+      "inputIndex": 1,
+      "key": "5aa02c9ef42b2125baf23cab",
+      "url": "https://apricode.agency/",
+      "requestedUrl": "https://apricode.agency/",
+      "title": "Apricode",
+      "attribution": {
+        "kind": "live-discovery-reference",
+        "operationId": "4be65fda-91b1-462b-b2dd-8a039ca3c612",
+        "referenceId": "5aa02c9ef42b2125baf23cab",
+        "relationships": [
+          {
+            "provider": "awwwards",
+            "stream": "websites",
+            "itemId": "66613",
+            "title": "Apricode",
+            "url": "https://apricode.agency/",
+            "listingUrl": "https://www.awwwards.com/sites/apricode",
+            "native": {
+              "categories": [
+                "Design Agencies",
+                "Promotional",
+                "Web & Interactive"
+              ],
+              "tags": [
+                "Design Agencies",
+                "Promotional",
+                "Web & Interactive",
+                "Animation",
+                "Parallax",
+                "Scrolling",
+                "WebGL",
+                "Storytelling",
+                "GSAP",
+                "3D",
+                "Blender"
+              ],
+              "technologies": [
+                "Blender",
+                "GSAP",
+                "WebGL"
+              ],
+              "awards": []
+            },
+            "makers": [
+              "Apricode"
+            ],
+            "publishedAt": "2026-10-20T09:53:09.000Z",
+            "kind": "website",
+            "provenance": "Live Awwwards public listing facts and selected detail/original-link verification; original artwork is not imported",
+            "retrievedAt": "2026-10-20T16:06:29.151Z",
+            "sourceMetadata": {
+              "relationshipVerified": true,
+              "operatorSupplied": false,
+              "nativeCollection": "WebGL",
+              "nativeCollectionKind": "technology",
+              "detailVerified": true
+            }
+          }
+        ],
+        "sourcePreviewLinksNotFetched": []
+      },
+      "alternatives": [
+        {
+          "id": "e3ee357f4bfd8e68eecfd41d",
+          "url": "https://crazy.studio/",
+          "title": "Crazy Studio"
+        }
+      ],
+      "imageIndex": 1,
+      "actualUrl": "https://apricode.agency/",
+      "status": "partial-render",
+      "kind": "fresh-original-site-screenshot",
+      "capturedAt": "2026-10-20T16:07:10.587Z",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      },
+      "readiness": {
+        "readyState": "complete",
+        "visualState": {
+          "loadingOverlay": true,
+          "consentOverlay": false,
+          "keyGate": false,
+          "bodyTextCharacters": 3167,
+          "meaning": "Visible overlay/password observations are heuristics, not evidence that a hidden scene was inspected. A clear frame still needs visual judgment."
+        },
+        "fonts": "loaded",
+        "images": {
+          "total": 13,
+          "loaded": 1,
+          "incomplete": 11,
+          "visible": 0,
+          "visibleLoaded": 0
+        },
+        "canvasCount": 1,
+        "webgl": {
+          "available": true,
+          "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+          "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)"
+        },
+        "limitations": "Font wait is bounded; lazy media, preloaders, remote assets and site-specific WebGL rendering still require visual inspection."
+      },
+      "reasons": [
+        "Visible substantial loading overlay; the underlying scene is not verified"
+      ],
+      "diagnostics": {
+        "requests": 40,
+        "blocked": [],
+        "errors": []
+      },
+      "byteLength": 12334,
+      "processSelection": "windows-default",
+      "observedBrowser": "Brave"
+    }
+  ],
+  "originalUnderstanding": {
+    "url": "https://crazy.studio/",
+    "analysisId": "34183cb1-3f95-4d0f-8b9b-c10c750e2915",
+    "specReturned": true,
+    "mobileImages": 1,
+    "meaning": "Selected original-site responsive/temporal measurements and implementation guidance; not recovered author source or aesthetic validation"
+  },
+  "finalResources": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  }
+}

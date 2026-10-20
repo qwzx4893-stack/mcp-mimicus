@@ -167,10 +167,6 @@ export class BrowserSessions {
     canonicalUrl(options.url);
     reviewNavigation(options.url);
     const origin = new URL(options.url).origin;
-    if (/(^|\.)awwwards\.com$/.test(new URL(origin).hostname))
-      throw new Error(
-        'Awwwards gallery automation is restricted without reviewed authorization. Use the public reference link and open a separately selected original website.',
-      );
     this.opening++;
     let browser: Browser | undefined,
       proxy: GuardedProxy | undefined,

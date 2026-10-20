@@ -81,14 +81,14 @@ test('Exhausted operation budget closes its owned session instead of being reset
   }
 });
 
-test('A bare source authorization string never enables Awwwards gallery browser automation', async () => {
+test('Awwwards authorized browser navigation reaches normal executable validation without a source-wide ban', async () => {
   const runtime = new BrowserSessions(
-    ConfigSchema.parse({ sourceAuthorizations: { awwwards: 'a bare string is no grant' } }),
+    ConfigSchema.parse({ browserExecutable: 'C:/mimicus-nonexistent-test-browser/chrome.exe' }),
   );
   try {
     await assert.rejects(
       runtime.open({ url: 'https://www.awwwards.com/websites/', authorized: true }),
-      /restricted|authorization/i,
+      /ENOENT|not found|executable|not exist|missing|unsupported/i,
     );
     assert.equal(runtime.status().activeSessions, 0);
   } finally {

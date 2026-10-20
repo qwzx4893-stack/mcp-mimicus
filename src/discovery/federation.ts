@@ -182,7 +182,7 @@ export class Federation {
               (a) =>
                 (!op.input.providers || op.input.providers.includes(a.id)) &&
                 SOURCE_INFO[a.id].streams
-                  .filter((s) => s !== 'operator-reference')
+                  .filter((s) => s !== 'operator-reference' || op.input.stream === s)
                   .filter((s) => !op.input.stream || s === op.input.stream)
                   .some((s) => op.cursors.get(a.id + ':' + s) !== '$done'),
             );

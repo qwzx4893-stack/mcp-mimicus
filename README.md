@@ -11,7 +11,7 @@
 
 Search stays lightweight. The agent chooses which original sites to preview, open and investigate. Layout measurements, typography, responsive observations and interaction samples support its creative judgment; Mimicus does not assign an aesthetic winner or recover a site's hidden source code.
 
-**Release status: beta.** The [latest published release](https://github.com/qwzx4893-stack/mcp-mimicus/releases) and its evidence are versioned separately from changes on `main`. Current hardening adds multi-reference previews, longer bounded sessions and more specific design guidance. **Awwwards's automated catalog remains blocked without a valid reviewed grant.** Its adapter and permitted original-site handoff remain available. There is no npm publication.
+**Release status: beta.** The [latest published release](https://github.com/qwzx4893-stack/mcp-mimicus/releases) and its evidence are versioned separately from changes on `main`. **Awwwards is a live discovery source:** native awards, categories, tags, technologies, countries and fonts, linked pagination and selected verified original links feed the same real-image, interaction, motion and guidance tools. Requests follow current per-route robots rules, paced access and rate-limit cooldown. See [Awwwards integration](docs/AWWWARDS_INTEGRATION.md). There is no npm publication.
 
 [Get started](#get-started) · [Agent workflow](#a-design-workflow-with-evidence) · [Source coverage](#seven-sources-with-visible-boundaries) · [Evidence and limits](#verification-and-current-limits)
 
@@ -139,7 +139,7 @@ Discovery operations have a separate five-minute default lifetime. Start a searc
 
 | Source | Available interface and limits |
 | --- | --- |
-| **Awwwards** | **Automated catalog access is blocked without reviewed authorization.** The MIT adapter, public navigation and operator-supplied original-site handoff remain. A configuration note is not a rights grant; source-owned images, details and catalog reuse are not assumed permitted. |
+| **Awwwards** | Live public native award/category/tag/technology/country/font collections, source-linked pages, selected detail/maker/original-link verification, and bounded text/semantic ranking. Original-site previews and analysis use the common MCP workflow. Current robots restrictions and HTTP429 remain visible; no catalog synchronization or source-media warehouse. |
 | **Codrops** | Separate Creative Hub, Webzibition and official organization-repository streams, progressive pages and native provenance. A repository homepage may be an article rather than a runnable demo. |
 | **Astro Showcase** | Current official title/URL index, bounded lexical/semantic candidate selection and revision-pinned selected YAML enrichment. Missing native style labels are not invented. |
 | **Made in Webflow** | Public native full-text discovery, source tags/sorts and progressive feed/detail resolution. Catalog results and successful original-site rendering are measured separately. |
@@ -180,7 +180,7 @@ Tests cover controlled fixtures, real SDK transport and installed-browser cases.
 | [Retrieval evaluation](docs/RETRIEVAL_EVALUATION.md) | Candidate recall/relevance, hard negatives, model fallback and measured resource costs |
 | [Installation and release](docs/INSTALLATION_AND_RELEASE.md) | Packaged contents, clean installation, supported host scope and tested release SHA |
 
-Known boundaries include Awwwards permission, incomplete upstream pagination/taxonomy, browser/CDN access failures, bounded DOM samples and inconclusive canvas readback. A single viewport cannot establish responsive behavior. Hidden onboarding, access challenges and authenticated scenes are not bypassed. Full-site reconstruction and “pixel-perfect” proof are outside the evidence supplied.
+Known boundaries include per-route access restrictions, incomplete upstream pagination/taxonomy, browser/CDN access failures, bounded DOM samples and inconclusive canvas readback. A single viewport cannot establish responsive behavior. Hidden onboarding, access challenges and authenticated scenes are not bypassed. Full-site reconstruction and “pixel-perfect” proof are outside the evidence supplied.
 
 ## Troubleshooting and contribution
 

@@ -297,12 +297,12 @@ if (!process.argv.includes('--measure-only')) {
         stderr: 'pipe',
       }),
     );
-    await run('awwwards-bare-note-remains-blocked', { providers: ['awwwards'] }, 1, true);
+    await run('awwwards-live-native-webgl', { providers: ['awwwards'], technology: 'WebGL' }, 2);
     await run(
       'awwwards-url-only-actual-original',
       { providers: ['awwwards'], originalReferences: [{ url: 'https://threejs.org/' }] },
       1,
-      true,
+      false,
     );
     for (const stream of ['creative-hub', 'webzibition', 'repositories'])
       await run('codrops-' + stream, { providers: ['codrops'], stream });
@@ -335,7 +335,7 @@ report.acceptance = {
   permittedCasesPassed: report.cases.filter((x) => !x.expectedRestriction).every((x) => x.passed),
   restrictionTestsPassed: report.cases.filter((x) => x.expectedRestriction).every((x) => x.passed),
   awwwardsCatalog:
-    'BLOCKED: no verified scoped grant; passing restriction test is not gallery integration success',
+    'Live public source discovery; actual per-route robots restrictions remain separate from original-site analysis',
   failedCases: report.cases.filter((x) => !x.passed).map((x) => x.name),
   noWebsiteCatalogFiles: report.isolatedCwdFilesAfterExit?.length === 0,
 };

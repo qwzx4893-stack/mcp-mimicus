@@ -1,11 +1,11 @@
 # Final release limitations
 
-Mimicus `0.4.0-beta.1` is a beta for live reference discovery and selected visual analysis. The following boundaries are actual behavior, not deferred completion claims. Earlier0.3 evidence remains historical.
+Mimicus `0.4.0-beta.2` is a beta for live reference discovery and selected visual analysis. The following boundaries are actual behavior, not deferred completion claims. Earlier0.3/0.4.0-beta.1 evidence remains historical.
 
 ## Source coverage and permissions
 
-- Seven adapters do not mean seven unrestricted catalog connections. Awwwards automated search, gallery details and source-owned media remain restricted without reviewed authorization. Operator-provided original URLs are a separately labeled handoff, not verified Awwwards search results. No special license is assumed.
-- Six other sources returned actual live candidates in release acceptance. Public interfaces and upstream availability can change. Partial coverage and per-source failures are reported; no disk corpus silently replaces an unavailable source.
+- Awwwards now supplies actual public native discovery, taxonomy, linked pages and bounded selected detail/original-link verification. Its former source-wide license-note gate was removed. Global search and root query pagination paths currently disallowed by robots are not substituted for public collection paths. Text/semantic search ranks bounded current candidates; it is not full-catalog recall. Country/font collection selection is supported; unsupported compound country/font requests fail explicitly.
+- Seven sources have live discovery implementations; their public interfaces and upstream availability can change. HTTP429 starts a paced adapter cooldown honoring Retry-After; no endpoint/origin rotation or automatic retry loop hides a refusal. Partial coverage and per-source failures are reported; no disk corpus silently replaces an unavailable source.
 - Astro uses the complete current official title/URL index for lexical selection, then enriches bounded selected YAML records. It does not provide complete semantic/style recall across every entry, and the published index can lag repository metadata.
 - Webflow uses source-provided full-text search and native feed/tag/sort interfaces, then resolves selected details. A listing's original URL is not proof that its destination is reachable. A full feed page indicates possible continuation, not a known platform total.
 - mesh3d's public listing/detail traversal is bounded. Its robots-disallowed infinite-scroll API is not called, so this is not full-gallery pagination.

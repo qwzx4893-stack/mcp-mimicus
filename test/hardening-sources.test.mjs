@@ -30,7 +30,7 @@ const context = (query, handler) => ({
 const nextData = (p) =>
   `<script id="__NEXT_DATA__">${JSON.stringify({ props: { pageProps: p } })}</script>`;
 
-test('unverified Awwwards authorization notes cannot enable automated catalog access; URL-only handoff stays attributed', async () => {
+test('Awwwards explicit URL-only handoff stays unverified and does not fetch the gallery', async () => {
   const c = context(
     {
       providers: ['awwwards'],
@@ -44,14 +44,14 @@ test('unverified Awwwards authorization notes cannot enable automated catalog ac
     awwwards: 'I have permission but this is not a verified grant',
   };
   const [p] = await new AwwwardsAdapter().search(c);
-  assert.equal(p.status, 'blocked');
+  assert.equal(p.status, 'available');
   assert.equal(p.sourceRetrievedRecords, 0);
   assert.equal(p.manualReferenceCount, 1);
   assert.equal(p.records[0].title, 'original.example');
   assert.equal(p.records[0].listingUrl, 'https://original.example/');
   assert.equal(p.records[0].sourceMetadata.noAwwwardsListing, true);
   assert.equal(p.records[0].sourceMetadata.relationshipVerified, false);
-  assert.ok(p.diagnostics.some((s) => s.includes('not verified proof')));
+  assert.equal(p.hasMore, false);
 });
 
 test('Astro niche brief facets influence candidates while progressive exploration eventually includes every unlabeled original', () => {

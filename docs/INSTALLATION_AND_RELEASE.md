@@ -1,6 +1,6 @@
 # Installation and release verification
 
-Mimicus `0.4.0-beta.1` is a GitHub-distributed beta. The package deliberately retains `private: true`; it has **not been published to npm**. An actual `.tgz` has been installed and exercised from a fresh isolated consumer directory, and the same workflow passed from a fresh public HTTPS checkout. Final release verification remains a separate gate.
+Mimicus `0.4.0-beta.2` is a GitHub-distributed beta. The package deliberately retains `private: true`; it has **not been published to npm**. Earlier beta.1 install evidence below remains historical; the matching release's external acceptance report and checksums identify the tested archive. See the final release acceptance rule below.
 
 ## Requirements
 
@@ -30,7 +30,7 @@ Use `node /absolute/path/to/mcp-mimicus/dist/cli.js serve` as the stdio MCP serv
 Download the `.tgz` attached to the corresponding verified GitHub prerelease, then install it into a directory you own. Substitute the real downloaded file and consumer directory below; the registry name `mcp-mimicus` is not an npm installation claim.
 
 ```sh
-npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-0.4.0-beta.1.tgz
+npm install --prefix ./mimicus-consumer --ignore-scripts --no-fund --no-audit ./mcp-mimicus-0.4.0-beta.2.tgz
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --version
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js --help
 node ./mimicus-consumer/node_modules/mcp-mimicus/dist/cli.js doctor

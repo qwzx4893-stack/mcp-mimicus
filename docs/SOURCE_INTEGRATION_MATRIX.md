@@ -1,6 +1,6 @@
 # Live sources, scope and acceptance
 
-Six adapters retrieve current candidates through permitted public source interfaces. **Awwwards automated catalog integration remains BLOCKED**: the owner has no special content grant. The useful original-site handoff is not successful Awwwards catalog discovery. RAM processing, robots allowance and an upstream MIT software license do not create content rights.
+Seven adapters implement live discovery through current public source interfaces. Awwwards now fetches real native public collections, taxonomy, linked pages and selected details rather than returning a blanket blocked descriptor. Access checks apply to each actual route; source rights and original-site analysis remain separate from technical connectivity.
 
 After building, run `node scripts/source-hardening-acceptance.mjs`. It measures fresh production adapters, then uses the official MCP stdio SDK against `dist/cli.js serve` in a temporary working directory. `--measure-only` and `--sdk-only` run the phases separately. Reports export counts, timestamps, coverage, diagnostics and identity hashes only; no website record dump, HTML, media, embedding or catalog. Current upstream counts can change.
 
@@ -8,7 +8,7 @@ After building, run `node scripts/source-hardening-acceptance.mjs`. It measures 
 
 | Source | Current interface / scope | Native metadata and honest limit |
 | --- | --- | --- |
-| Awwwards | Manual public navigation; operator original-URL handoff with optional exact `/sites/` attribution; independent original-site browser | **BLOCKED catalog/details/taxonomy/media** without a reviewed scoped grant. Supplied relationship/title stay unverified. No invented awards, makers or source previews. |
+| Awwwards | Live source-native award/category/tag/technology/country/font collections, linked pagination and selected public detail/original-link verification | Actual labels, awards, makers, dates and original attribution; current robots/HTTP limits, bounded text/semantic recall and original-site visuals. No persistent gallery or media corpus. |
 | Codrops Creative Hub | Live `/codrops/hub/all/`, actual next links, published demo/repository URLs | Source tags, authors and dates when present; page coverage only. Attributed source preview links are not automatic image downloads or redistribution rights. |
 | Codrops Webzibition | Live `/codrops/webzibition/` and native pagination | Actual original and separate source article. Empty native taxonomy/makers remain empty; malformed originals are rejected. |
 | Codrops repositories | Official GitHub organization API, updated order, 30 public repository entries/page | Actual topics, language, repository, pushed timestamp and SPDX label. Homepage may be a tutorial/project rather than an interactive demo; website/art rights are separate from code license. |
@@ -18,25 +18,11 @@ After building, run `node scripts/source-hardening-acceptance.mjs`. It measures 
 | Nuxt | Fresh official complete showcase YAML and declared industry vocabulary | Six actual industry labels, Nuxt technology, ETag/content revision. Complete maintained collection is not every Nuxt website; YAML assets/executable capture options excluded. |
 | mesh3d.gallery | Public listing, native filter links, detail links and exposed next links | Actual tags, technologies, makers and dates. **Partial public HTML coverage**: robots-disallowed infinite-scroll `/api/` is never called. |
 
-## Awwwards policy and useful operator flow
+## Awwwards live public discovery
 
-Reviewed on 2026-10-19:
+The previous source-wide block was replaced in0.4.0-beta.2 with current public collection discovery, native taxonomy, validated linked pages and bounded selected details. The production SDK acceptance passed six cases/seven native pages with395 source-native labels, followed by actual original-site images and selected responsive/temporal analysis. See [implementation, examples, evidence and precise route limits](AWWWARDS_INTEGRATION.md). The earlier beta.1 restriction checks below are historical, not current source behavior.
 
-- [Official terms](https://www.awwwards.com/terms/) reserve content rights and require express authorization for commercial content use. Featured originals remain their creators' intellectual property. Technically observing an original is a separate operation with its own access constraints.
-- [Current robots](https://www.awwwards.com/robots.txt) blocks `/feed`, `/search-websites`, `/websites/?`, `/elements/*` and other restricted paths. Robots is an access signal, not a content license. No restricted catalog route is probed.
-- [Official FAQ](https://www.awwwards.com/faqs/) and the reviewed terms supplied no verified public catalog/API license or scoped Mimicus grant. This describes the reviewed avenues, not proof that a private commercial arrangement cannot exist.
-- The robots-advertised [sitemap](https://www.awwwards.com/sitemap.xml) returned HTTP 404. No source records were extracted. Feeds/search/elements are not alternate loopholes.
-- [INSANE0777/Awwwards-mcp at `1bc9c13557c8e8f6ea90e174d88eb1708696fca3`](https://github.com/INSANE0777/Awwwards-mcp/tree/1bc9c13557c8e8f6ea90e174d88eb1708696fca3) was reviewed: current client, parsers and visual/inspiration workflow. Its MIT license covers software. Its SQLite catalog, media cache, preferences and watches are excluded. The retained parser adaptation remains attributed to `9bc82857894007da4b27e806cecfde8befe68a81`; no new upstream code was copied this pass.
-
-| Capability | Status and behavior |
-| --- | --- |
-| Catalog search/details/categories/awards/makers/elements | **BLOCKED.** Zero automated gallery/media requests. Even a truthy `sourceAuthorizations.awwwards` string cannot enable access: the release has no reviewed-grant verification mechanism. |
-| Gallery screenshots/videos/inline remote previews | **BLOCKED.** No special media grant; no automatic source-owned image download or mirror. |
-| Manual public navigation | Available as attributed public gallery and terms links; no connected gallery-search claim. |
-| Known original handoff | Available as `originalReferences: [{"url":"https://original.example/"}]`, maximum eight. Optional `title` and exact HTTPS `www.awwwards.com/sites/...` `listingUrl`; default title is hostname. Missing source link is explicit `noAwwwardsListing:true`; original URL supplies the reference identity field. Always `relationshipVerified:false`. |
-| Independent original-site visual workflow | Available after `authorized:true`, subject to public-IP/robots/resource/browser guards. Actual screenshot, targeted observations, motion and comparison do not establish Awwwards awards or gallery membership. |
-
-Workflow: manually choose an original → supply just its original URL and optional known attribution → receive a clearly operator-supplied reference → open it in an isolated browser → inspect actual images/interactions → compare observations → implement independently → close session and operation. No title or gallery metadata must be fabricated. No source owner was contacted on the user's behalf.
+Only current per-route robots refusals, HTTP responses, unsupported compound filters and bounded coverage remain. The first burst rate-limit failure is retained alongside the paced successful rerun; no catalog/media synchronization or automatic retry loop is introduced.
 
 ## Concrete source hardening
 

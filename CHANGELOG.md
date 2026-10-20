@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0-beta.2
+
+- Replace the blanket Awwwards restriction with live public collection discovery, native award/category/tag/technology/country/font taxonomy, source-linked pagination and selected original-link/detail verification.
+- Integrate current Awwwards facts with existing bounded semantic search, real original-site images, interaction, responsive/motion analysis, comparison and implementation guidance.
+- Preserve explicit operator-reference provenance separately. Remove the gallery-specific browser ban; normal robots, origin, network and interaction policy remains.
+- Pace Awwwards requests, limit selected detail enrichment, honor HTTP429/Retry-After and expose actual route restrictions instead of treating the entire source as unavailable.
+- Add focused regression and actual official-SDK source-to-original acceptance, retaining the initial rate-limit failure as evidence. No npm publication or persistent site/media corpus.
+
 ## 0.4.0-beta.1
 
 - Add selected multi-reference previews with ordered MCP images, attribution, partial-render diagnostics and immediate cleanup.

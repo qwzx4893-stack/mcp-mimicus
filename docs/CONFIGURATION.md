@@ -24,10 +24,10 @@ Configuration is environment based. No database path exists.
 | MIMICUS_MODEL_DOWNLOAD |0;1 explicitly permits software model download |
 | MIMICUS_MODEL_CACHE_DIR |User home/.cache/mimicus/models, model software only |
 | MIMICUS_SEMANTIC_THREADS |2 intra-op CPU threads; inter-op1 |
-| MIMICUS_SOURCE_AUTHORIZATIONS |Reserved JSON provider→authorization-reference metadata; arbitrary strings never enable the shipped Awwwards catalog or gallery browser |
+| MIMICUS_SOURCE_AUTHORIZATIONS |Reserved provider→authorization-reference metadata; not needed for live public Awwwards routes and never overrides robots, HTTP access responses or content rights |
 | MIMICUS_DEV_MODE / MIMICUS_DEV_ORIGINS |Explicit test-only opt-in and exact loopback origins |
 
-Browser open accepts up to eight additional public resourceOrigins. Rejected resources report their origin/type. This is a per-session approval scope, not automatic approval of every linked third party. The shipped Awwwards catalog remains blocked pending a genuine reviewed grant and an explicitly reviewed implementation; setting an authorization string cannot enable it. Operator-supplied original-site URLs remain available, with their unverified source relationship labeled.
+Browser open accepts up to eight additional public resourceOrigins. Rejected resources report their origin/type. This is a per-session approval scope, not automatic approval of every linked third party. Awwwards uses live public metadata and normal browser policy rather than a source-wide license-note gate. Optional operator-supplied originals remain explicitly unverified; actual source-discovered relationships are labeled separately. [Awwwards options and examples](AWWWARDS_INTEGRATION.md).
 
 Each search retains at most320 references by default (retentionLimit10–600). Continuation drains scored delivery and deferred semantic queues before fetching new source pages. Eviction IDs are explicit. A separate bounded ledger remembers at most2400 delivered IDs; reaching it stops continuation and requires a new search. References, scores, vectors, cursors and this ledger stay in RAM and are released on expiry/end. Search expiration is independent of browser-session renewal.
 

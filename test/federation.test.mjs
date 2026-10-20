@@ -136,20 +136,26 @@ test('Canonical dedup keeps independent native categories and makers without inv
   assert.ok(merged[0].relationships[1].native.categories.includes('Portfolio'));
   assert.equal(merged[0].inspection, 'requires-authorized-open');
 });
-test('No-license Awwwards mode retains source integration but performs zero catalog fetches', async () => {
+test('Awwwards explicit operator-reference stream requires no gallery request or license-note gate', async () => {
   let fetched = 0;
   const result = await new AwwwardsAdapter().search({
     config: config('.'),
-    query: { query: '', limit: 5 },
+    query: {
+      query: '',
+      limit: 5,
+      stream: 'operator-reference',
+      originalReferences: [{ url: 'https://original.example/' }],
+    },
     publicPage: async () => {
       fetched++;
       throw new Error('Should not fetch');
     },
   });
   assert.equal(result[0].provider, 'awwwards');
-  assert.equal(result[0].status, 'blocked');
+  assert.equal(result[0].status, 'available');
   assert.equal(fetched, 0);
-  assert.deepEqual(result[0].records, []);
+  assert.equal(result[0].records[0].url, 'https://original.example/');
+  assert.equal(result[0].records[0].sourceMetadata.relationshipVerified, false);
 });
 test('Temporary semantic batches use the same model interface without retaining a text/vector cache', async () => {
   const model = new LocalSemantic({ ...config('.'), semanticEnabled: true });

@@ -94,6 +94,16 @@ export const DiscoveryQuery = z.object({
   mood: z.string().max(120).optional(),
   navigation: z.string().max(120).optional(),
   sourceSort: z.enum(['popular', 'recent', 'likes']).optional(),
+  awwwards: z
+    .object({
+      listingUrl: z.string().url().max(2048).optional(),
+      award: z.string().max(120).optional(),
+      tag: z.string().max(120).optional(),
+      country: z.string().max(120).optional(),
+      font: z.string().max(120).optional(),
+      details: z.boolean().optional(),
+    })
+    .optional(),
   originalReferences: z.array(operatorReference).max(8).optional(),
   retrieval: z.enum(['lexical', 'hybrid', 'semantic']).default('hybrid'),
   limit: z.number().int().min(1).max(30).default(10),
@@ -151,7 +161,7 @@ export const SOURCE_INFO: Record<
     url: 'https://www.awwwards.com/websites/',
     streams: ['websites', 'operator-reference'],
     interface:
-      'Reviewed MIT parser; public manual reference navigation and operator-supplied original-site handoff, restricted automated catalog without authorization',
+      'Live robots-checked public award/category/tag/technology/country/font navigation, linked pagination, bounded selected details and original-site visual workflow; query text ranks live metadata in RAM',
   },
   codrops: {
     name: 'Codrops',

@@ -140,7 +140,7 @@ async function run(name, input, pages = 1) {
     console.log(JSON.stringify({ name, error: String(e) }));
   } finally {
     if (op) await call('mimicus_end_discovery', { operationId: op }).catch(() => {});
-    evidence.expectedRestriction = name === 'awwwards-no-special-authorization';
+    evidence.expectedRestriction = false;
     evidence.gatePassed =
       !evidence.error &&
       evidence.pages.length > 0 &&
@@ -174,7 +174,7 @@ try {
     }),
   );
   report.tools = (await client.listTools()).tools.map((t) => t.name);
-  await run('awwwards-no-special-authorization', {
+  await run('awwwards-live-public-native-collection', {
     providers: ['awwwards'],
     limit: 3,
     retrieval: 'lexical',

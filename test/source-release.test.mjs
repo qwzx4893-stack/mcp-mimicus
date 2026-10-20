@@ -38,7 +38,7 @@ test('MCP discovery input preserves omitted continuation fields while internal q
   assert.equal(parsed.retrieval, 'hybrid');
 });
 
-test('Awwwards operator handoff is usable, unverified and isolated from restricted catalog extraction', async () => {
+test('Awwwards explicit operator handoff stays usable and separate from live source discovery', async () => {
   let calls = 0;
   const input = {
       providers: ['awwwards'],
@@ -57,7 +57,7 @@ test('Awwwards operator handoff is usable, unverified and isolated from restrict
       }),
     );
   assert.equal(calls, 0);
-  assert.equal(pages[0].status, 'blocked');
+  assert.equal(pages[0].status, 'available');
   assert.equal(pages[0].manualReferenceCount, 1);
   assert.equal(pages[0].records[0].stream, 'operator-reference');
   assert.equal(pages[0].records[0].url, 'https://original.example/');
