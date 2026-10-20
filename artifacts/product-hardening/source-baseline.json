@@ -1,0 +1,27 @@
+{
+  "baselineCommit": "2e64dd5c661720fe9c88cb70b4796741310462d2",
+  "measuredOn": "2026-10-19",
+  "method": "Three fresh independent direct production-adapter calls per provider before source edits; no semantic model or browser; current public network and upstream content. RAM-only. First sample may include connection setup. Counts are observations, not target constants.",
+  "query": { "webflow": "coffee", "astro": "coffee", "nuxt": "Retail & Food (whole current collection before federation filtering)", "codrops": "creative-hub", "mesh3d": "public first listing", "threejs-resources": "official MCP unfiltered showcase" },
+  "samples": [
+    { "provider": "webflow", "ms": 7064, "requests": 8, "records": 3 },
+    { "provider": "webflow", "ms": 5442, "requests": 8, "records": 3 },
+    { "provider": "webflow", "ms": 3928, "requests": 8, "records": 3 },
+    { "provider": "astro", "ms": 1872, "requests": 6, "records": 3 },
+    { "provider": "astro", "ms": 408, "requests": 6, "records": 3 },
+    { "provider": "astro", "ms": 398, "requests": 6, "records": 3 },
+    { "provider": "nuxt", "ms": 384, "requests": 1, "records": 58 },
+    { "provider": "nuxt", "ms": 124, "requests": 1, "records": 58 },
+    { "provider": "nuxt", "ms": 94, "requests": 1, "records": 58 },
+    { "provider": "codrops", "ms": 1273, "requests": 2, "records": 44 },
+    { "provider": "codrops", "ms": 471, "requests": 2, "records": 44 },
+    { "provider": "codrops", "ms": 360, "requests": 2, "records": 44 },
+    { "provider": "mesh3d", "ms": 2033, "requests": 5, "records": 3 },
+    { "provider": "mesh3d", "ms": 983, "requests": 5, "records": 3 },
+    { "provider": "mesh3d", "ms": 837, "requests": 5, "records": 3 },
+    { "provider": "threejs-resources", "ms": 3728, "requests": 0, "records": 3 },
+    { "provider": "threejs-resources", "ms": 3187, "requests": 0, "records": 3 },
+    { "provider": "threejs-resources", "ms": 1213, "requests": 0, "records": 3 }
+  ],
+  "requestCounterCaveat": "The guarded metadata HTTP counter excludes the official Three Resources MCP handshake and tool calls; zero is not zero network traffic."
+}

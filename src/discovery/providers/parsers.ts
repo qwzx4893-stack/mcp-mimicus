@@ -58,11 +58,22 @@ export function astroRecord(text: string, path: string, blob: string): RawItem {
     },
     publishedAt: d.dateAdded ? String(d.dateAdded) : undefined,
     revision: blob,
+    description: typeof d.description === 'string' ? d.description.slice(0, 800) : undefined,
     sourceMetadata: {
       highlight: d.highlight === true,
       featured: typeof d.featured === 'number' ? d.featured : 0,
     },
   };
+}
+export function nuxtTaxonomy(text: string): string[] {
+  const d = yamlData(text);
+  if (!Array.isArray(d.wall?.filters)) throw new Error('Nuxt industry taxonomy schema drift');
+  const filters: unknown[] = d.wall.filters;
+  return [
+    ...new Set(
+      filters.filter((v): v is string => typeof v === 'string' && v.length > 0 && v.length <= 160),
+    ),
+  ];
 }
 export function nuxtRecords(text: string): RawItem[] {
   const d = yamlData(text);
@@ -156,6 +167,29 @@ export function meshListing(html: string) {
     advertisedCount: html.match(/All websites.{0,100}?(\d{2,5})/s)?.[1] ?? null,
   };
 }
+export function meshNativeFilters(html: string, root = 'https://mesh3d.gallery/websites') {
+  const $ = load(html),
+    base = new URL(root);
+  const filters: { label: string; id: string; kind: string; url: string }[] = [];
+  $('a[href]').each((_, el) => {
+    const href = $(el).attr('href'),
+      label = $(el).text().trim().slice(0, 160);
+    if (!href || !label) return;
+    try {
+      const u = new URL(href, root);
+      if (u.origin !== base.origin || u.pathname !== '/websites' || u.username || u.password)
+        return;
+      for (const kind of ['tech', 'tags']) {
+        const id = u.searchParams.get(kind);
+        if (id && !filters.some((t) => t.id === id && t.kind === kind))
+          filters.push({ label, id, kind, url: u.href });
+      }
+    } catch {
+      /* One malformed link does not erase the source's valid filters. */
+    }
+  });
+  return filters;
+}
 export function meshDetail(html: string, path: string): RawItem {
   const $ = load(html);
   const outbound = $('a[href^="http"]')
@@ -205,8 +239,19 @@ export function codropsHub(
     $('article.demo-card,article').each((_, el) => {
       const e = $(el),
         title = e.find('h2,h3').first().text().trim(),
-        url = e.find('a.demo-card__thumb-img').first().attr('href');
-      if (!title || !url) return;
+        href = e.find('a.demo-card__thumb-img').first().attr('href');
+      if (!title || !href) return;
+      let url: string;
+      try {
+        url = canonicalUrl(new URL(href, pageUrl).href);
+      } catch {
+        rejected.push({
+          identity: e.attr('id') ?? title.slice(0, 160),
+          reason:
+            'Malformed or credential-bearing Creative Hub demo URL excluded without guessing a replacement',
+        });
+        return;
+      }
       const repo = e.find('a.icon--code').attr('href'),
         image = e.find('img').first().attr('src') ?? e.find('img').first().attr('data-src');
       const preview =
@@ -242,6 +287,10 @@ export function codropsHub(
           .get(),
         publishedAt: e.find('time').first().text().trim() || undefined,
         kind: 'demo',
+        sourceMetadata: {
+          linkRole: 'published-interactive-demo',
+          repositoryRelationship: Boolean(repo?.startsWith('https://github.com/')),
+        },
       });
     });
     if (!records.length) throw new Error('Codrops Creative Hub card schema drift');
@@ -268,6 +317,8 @@ export function codropsHub(
           !['https:', 'http:'].includes(listingUrl.protocol)
         )
           throw new Error('Unsupported URL scheme');
+        canonicalUrl(original.href);
+        canonicalUrl(listingUrl.href);
       } catch {
         rejected.push({
           identity: e.attr('id') ?? title.slice(0, 160),
@@ -279,7 +330,7 @@ export function codropsHub(
       records.push({
         itemId: e.attr('id') ?? listing,
         title,
-        url,
+        url: original.href,
         listingUrl: listingUrl.origin === 'https://tympanus.net' ? listingUrl.href : pageUrl,
         native: {
           categories: e
@@ -299,6 +350,7 @@ export function codropsHub(
           .get(),
         publishedAt: e.find('time[datetime]').first().attr('datetime'),
         kind: 'website',
+        sourceMetadata: { linkRole: 'original-website', sourceArticleDistinct: true },
       });
     }
   });

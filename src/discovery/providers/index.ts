@@ -2,16 +2,17 @@ import { load } from 'cheerio';
 import type { Config } from '../../config.js';
 import { guardedFetch, type HttpEvidence } from '../../security/fetch.js';
 import { robotsAllowed } from '../../security/robots.js';
-import { canonicalUrl, mapBounded } from '../../util.js';
+import { canonicalUrl, hash, mapBounded } from '../../util.js';
 import { type DiscoveryQuery, Provider, type SourcePage, type SourceRecord } from '../types.js';
-import { awwwardsListing } from './awwwards-parser.js';
 import {
   astroRecord,
   codropsHub,
   meshDetail,
   meshListing,
+  meshNativeFilters,
   normalize,
   nuxtRecords,
+  nuxtTaxonomy,
   threeResourcesRecords,
   webflowDetail,
   webflowListing,
@@ -61,26 +62,91 @@ const fail = (provider: Provider, stream: string, e: unknown) =>
 const safeCursor = (value: string | undefined, base: string) => {
   const u = new URL(value ?? base),
     b = new URL(base);
-  if (u.origin !== b.origin || !u.pathname.startsWith(b.pathname))
+  const path = b.pathname.replace(/\/+$/, '');
+  if (
+    u.origin !== b.origin ||
+    (u.pathname !== path && !u.pathname.startsWith(path + '/')) ||
+    u.username ||
+    u.password
+  )
     throw new Error('Source pagination outside expected stream');
   return u.href;
 };
+/** Lexical priority plus progressive exploration; sparse labels cannot erase an
+ * original from every future page. No synthetic native taxonomy is introduced. */
+export function astroCandidateOrder<T extends { title: string; url: string; slug: string }>(
+  index: T[],
+  query: DiscoveryQuery,
+  pageSize: number,
+): T[] {
+  const terms = [
+    ...new Set(
+      [
+        query.query,
+        query.industry,
+        query.purpose,
+        query.style,
+        query.mood,
+        query.interaction,
+        query.navigation,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+        .match(/[\p{L}\p{N}]{2,}/gu) ?? [],
+    ),
+  ];
+  const score = (i: T) =>
+    terms.reduce(
+      (n, t) => n + Number((i.title + ' ' + i.url + ' ' + i.slug).toLowerCase().includes(t)),
+      0,
+    );
+  const lexical = [...index].sort((a, b) => score(b) - score(a));
+  const result: T[] = [],
+    seen = new Set<T>();
+  let a = 0,
+    b = 0;
+  const take = (items: T[], position: 'lexical' | 'native') => {
+    let p = position === 'lexical' ? a : b;
+    while (p < items.length && seen.has(items[p]!)) p++;
+    const item = items[p++];
+    if (position === 'lexical') a = p;
+    else b = p;
+    if (item) {
+      seen.add(item);
+      result.push(item);
+    }
+  };
+  while (result.length < index.length) {
+    for (let i = 0; i < Math.ceil(pageSize / 2) && result.length < index.length; i++)
+      take(lexical, 'lexical');
+    for (let i = Math.ceil(pageSize / 2); i < pageSize && result.length < index.length; i++)
+      take(index, 'native');
+  }
+  return result;
+}
 
 export class AwwwardsAdapter implements SourceAdapter {
   readonly id = 'awwwards' as const;
   async search(c: DiscoveryContext) {
-    if (!c.config.sourceAuthorizations.awwwards) {
+    // A configuration note is not a reviewed, scoped rights grant. There is no
+    // grant-verification mechanism in this release, so catalog access stays off.
+    {
       const manual = c.query.originalReferences ?? [],
         records = normalize(
           this.id,
           'operator-reference',
           manual.map((r, i) => ({
             itemId: 'operator-' + i,
-            title: r.title,
+            title: r.title ?? new URL(r.url).hostname,
             url: canonicalUrl(r.url),
-            listingUrl: r.listingUrl,
+            listingUrl: r.listingUrl ?? canonicalUrl(r.url),
             native: { categories: [], tags: [], technologies: [], awards: [] },
-            sourceMetadata: { relationshipVerified: false, operatorSupplied: true },
+            sourceMetadata: {
+              relationshipVerified: false,
+              operatorSupplied: true,
+              noAwwwardsListing: !r.listingUrl,
+            },
           })),
           'Operator-supplied Awwwards reference link and original URL; gallery relationship/title unverified; no gallery page fetched and no source license inferred',
         );
@@ -122,7 +188,7 @@ export class AwwwardsAdapter implements SourceAdapter {
                 name: 'operator-reference-handoff',
                 status: 'operator-supplied',
                 reason:
-                  'Pass up to eight known original URLs and exact Awwwards /sites/ links using originalReferences. Relationships remain explicitly unverified.',
+                  'Pass up to eight original URLs using originalReferences; titles and exact Awwwards /sites/ links are optional. Relationships remain explicitly unverified.',
               },
               {
                 name: 'original-site-visual-browsing',
@@ -133,27 +199,17 @@ export class AwwwardsAdapter implements SourceAdapter {
             ],
             diagnostics: [
               'No automated Awwwards catalog/search/detail/media requests were issued. Public navigation links are for the operator; they do not imply a live gallery connection.',
-              'Current upstream software reviewed at ef6b5631206524942ff1cc3ecb17f5218e70c60d; retained MIT parser, independent visual evidence workflow and guarded original-site handoff.',
+              'Current upstream software reviewed at 1bc9c13557c8e8f6ea90e174d88eb1708696fca3; retained MIT parser and adapted the candidate-to-original-site visual study workflow without its catalog/media/preferences persistence.',
+              ...(c.config.sourceAuthorizations.awwwards
+                ? [
+                    'The configured authorization note is not verified proof of a scoped rights grant and does not enable gallery requests.',
+                  ]
+                : []),
             ],
           },
         ),
       ];
     }
-    const url = 'https://www.awwwards.com/websites/',
-      r = good(await c.publicPage(url));
-    return [
-      page(
-        this.id,
-        'websites',
-        normalize(
-          this.id,
-          'websites',
-          awwwardsListing(r.body).slice(0, c.pageSize),
-          c.config.sourceAuthorizations.awwwards,
-        ),
-        'Explicitly authorized first source page; no bulk catalog or permanent cache',
-      ),
-    ];
   }
 }
 export class NuxtAdapter implements SourceAdapter {
@@ -176,8 +232,8 @@ export class NuxtAdapter implements SourceAdapter {
         'Complete current source-maintained YAML collection, read anew; count may change',
         {
           status: 'available',
-          revision: r.headers.etag ?? undefined,
-          taxonomy: [...new Set(records.flatMap((r) => r.native.categories))].map((label) => ({
+          revision: r.headers.etag ?? hash(r.body),
+          taxonomy: nuxtTaxonomy(r.body).map((label) => ({
             label,
             kind: 'industry',
           })),
@@ -207,16 +263,13 @@ export class AstroAdapter implements SourceAdapter {
       revision = branch.commit?.sha;
     if (typeof revision !== 'string' || !/^[a-f0-9]{40}$/.test(revision))
       throw new Error('Astro repository revision unavailable');
-    const tokens = [...c.query.query.toLowerCase().matchAll(/[\p{L}\p{N}]{2,}/gu)].map((m) => m[0]),
-      score = (i: any) =>
-        tokens.filter((t) => (i.title + ' ' + i.url + ' ' + i.slug).toLowerCase().includes(t))
-          .length,
-      ordered = [...index].sort((a, b) => score(b) - score(a));
+    const ordered = astroCandidateOrder(index, c.query, c.pageSize);
     const offset = Number(c.cursors.get('astro:showcase') ?? 0);
     if (!Number.isSafeInteger(offset) || offset < 0) throw new Error('Invalid Astro offset');
     const batch = ordered.slice(offset, offset + c.pageSize),
       diagnostics = [
-        'All current official index titles and original URLs participate in lexical selection, then only bounded selected YAML entries are enriched. The index has no style, industry or mood taxonomy; absent labels are not invented.',
+        'All current official index titles and original URLs participate in lexical selection using query and brief facets. Each page reserves half its bounded candidates for source-order exploration; only selected revision-pinned YAML is enriched. Sparse native labels cannot permanently exclude a site, but this is not full-index semantic search.',
+        'The official index has no style, industry or mood taxonomy; absent labels are not invented. Independent explicit continuation progressively covers the index.',
         'Published index and repository revision are independently current; deployment lag may produce a reported metadata mismatch.',
       ];
     const records = await mapBounded(
@@ -330,25 +383,41 @@ export class CodropsAdapter implements SourceAdapter {
         );
         if (!Array.isArray(repos)) throw new Error('Codrops repository schema drift');
         const records = repos
-          .filter((r: any) => r.homepage && /^https?:/.test(r.homepage))
-          .map((r: any) => ({
-            itemId: String(r.id),
-            title: r.name,
-            url: r.homepage,
-            listingUrl: r.html_url,
-            repository: r.html_url,
-            license: r.license?.spdx_id ?? undefined,
-            kind: 'demo' as const,
-            native: {
-              categories: ['Open-source demos'],
-              tags: r.topics ?? [],
-              technologies: r.language ? [r.language] : [],
-              awards: [],
-            },
-            revision: r.pushed_at,
-            description:
-              typeof r.description === 'string' ? r.description.slice(0, 800) : undefined,
-          }));
+          .filter((r: any) => {
+            try {
+              return Boolean(r.homepage && canonicalUrl(r.homepage));
+            } catch {
+              return false;
+            }
+          })
+          .map((r: any) => {
+            const homepage = canonicalUrl(r.homepage);
+            const tutorial =
+              new URL(homepage).hostname === 'tympanus.net' &&
+              /^\/codrops\/\d{4}\//.test(new URL(homepage).pathname);
+            return {
+              itemId: String(r.id),
+              title: r.name,
+              url: homepage,
+              listingUrl: r.html_url,
+              repository: r.html_url,
+              license: r.license?.spdx_id ?? undefined,
+              kind: tutorial ? ('website' as const) : ('demo' as const),
+              native: {
+                categories: [],
+                tags: r.topics ?? [],
+                technologies: r.language ? [r.language] : [],
+                awards: [],
+              },
+              revision: r.pushed_at,
+              sourceMetadata: {
+                homepageRole: tutorial ? 'tutorial' : 'published-demo-or-project',
+                relationshipVerified: true,
+              },
+              description:
+                typeof r.description === 'string' ? r.description.slice(0, 800) : undefined,
+            };
+          });
         out.push(
           page(
             this.id,
@@ -359,7 +428,7 @@ export class CodropsAdapter implements SourceAdapter {
               records,
               'Live official Codrops organization repository metadata; individual license labels only',
             ),
-            `Page ${n} of public organization repositories with published homepages; a homepage can be a tutorial rather than a demo`,
+            `Page ${n} of public organization repositories with published homepages; tutorial/article homepages are explicitly identified and not mislabeled as interactive demos; source topics and licenses remain independent`,
             { next: repos.length === 30 ? String(n + 1) : null },
           ),
         );
@@ -374,12 +443,16 @@ export class WebflowAdapter implements SourceAdapter {
   readonly id = 'webflow' as const;
   async search(c: DiscoveryContext) {
     const root = 'https://webflow.com/made-in-webflow',
-      first = good(await c.publicPage(root)),
-      listing = webflowListing(first.body),
       requested =
         c.query.category ??
         (c.query.technology?.toLowerCase() === 'webflow' ? undefined : c.query.technology) ??
-        c.query.interaction;
+        c.query.interaction,
+      // The listing is needed for real native tag resolution only. Its bundled
+      // fallback cards cannot replace a query result and its HTML is otherwise
+      // a redundant network roundtrip on every independent text/feed search.
+      listing = requested
+        ? webflowListing(good(await c.publicPage(root)).body)
+        : { items: [], taxonomy: [] };
     // Exact public GET feed used by the shipped Webflow browser client. Current robots
     // explicitly allows /api/v1/marketplace/made-in-webflow/; no private or mutation API.
     const textQuery = c.query.query.trim(),
@@ -395,6 +468,10 @@ export class WebflowAdapter implements SourceAdapter {
     if (!Number.isSafeInteger(offset) || offset < (textQuery ? 1 : 0) || offset > 10000)
       throw new Error('Invalid or exhausted Webflow bounded native offset/page');
     const diagnostics: string[] = [];
+    if (!requested)
+      diagnostics.push(
+        'Native tag taxonomy was not requested; the redundant landing-page fetch was omitted. Detail pages still validate every original URL.',
+      );
     let summaries: Record<string, any>[], next: string | null, coverage: string;
     if (textQuery) {
       // Public, read-only Engine Key intentionally published in Webflow's browser
@@ -492,7 +569,7 @@ export class WebflowAdapter implements SourceAdapter {
     }
     const records = await mapBounded(
       summaries,
-      2,
+      3,
       async (item) => {
         try {
           const raw = webflowDetail(
@@ -530,11 +607,12 @@ export class WebflowAdapter implements SourceAdapter {
               : {}),
           };
         } catch (e) {
-          if (!String(e).includes('original website URL missing')) throw e;
+          c.signal?.throwIfAborted();
           diagnostics.push(
             'Listing ' +
               String(item.id) +
-              ' lacks an original live-site URL; excluded without invention',
+              ' detail unavailable or original URL missing; excluded without inventing a substitute: ' +
+              String(e).slice(0, 180),
           );
           return null;
         }
@@ -554,6 +632,8 @@ export class WebflowAdapter implements SourceAdapter {
         coverage +
           '; original URLs checked on detail pages, not proof the original site remains reachable',
         {
+          status:
+            summaries.length > 0 && records.every((r) => r === null) ? 'unavailable' : 'partial',
           taxonomy: listing.taxonomy
             .filter((t) => t.id)
             .map((t) => ({ label: t.label, id: t.id, kind: 'tag' })),
@@ -574,30 +654,27 @@ export class Mesh3dAdapter implements SourceAdapter {
       : { url: root, offset: 0 };
     if (!Number.isSafeInteger(state.offset) || state.offset < 0)
       throw new Error('Invalid mesh3d detail offset');
-    let url = safeCursor(state.url, root),
-      listing = meshListing(good(await c.publicPage(url)).body);
+    let url = safeCursor(state.url, root);
+    const initial = good(await c.publicPage(url));
+    let listing = meshListing(initial.body);
     const diagnostics: string[] = [],
-      taxonomy: { label: string; id: string; kind: string; url: string }[] = [];
+      taxonomy = meshNativeFilters(initial.body, root);
     const detail = async (path: string) => {
-      const r = good(await c.publicPage(new URL(path, root).href)),
-        $ = load(r.body);
-      $('a[href]').each((_, el) => {
-        const href = $(el).attr('href'),
-          label = $(el).text().trim().slice(0, 160);
-        if (!href || !label) return;
-        const u = new URL(href, root);
-        if (u.origin !== new URL(root).origin || u.pathname !== '/websites') return;
-        for (const kind of ['tech', 'tags']) {
-          const id = u.searchParams.get(kind);
-          if (id && !taxonomy.some((t) => t.id === id && t.kind === kind))
-            taxonomy.push({ label, id, kind, url: u.href });
-        }
-      });
+      const r = good(await c.publicPage(new URL(path, root).href));
+      for (const t of meshNativeFilters(r.body, root))
+        if (!taxonomy.some((prior) => prior.id === t.id && prior.kind === t.kind)) taxonomy.push(t);
       return meshDetail(r.body, path);
     };
     const requested = c.query.technology ?? c.query.category;
     if (!cursor && requested && listing.paths[0]) {
-      await detail(listing.paths[0]);
+      if (
+        !taxonomy.some(
+          (t) =>
+            t.label.toLowerCase() === requested.toLowerCase() &&
+            t.kind === (c.query.technology ? 'tech' : 'tags'),
+        )
+      )
+        await detail(listing.paths[0]);
       const native = taxonomy.find(
         (t) =>
           t.label.toLowerCase() === requested.toLowerCase() &&
@@ -646,18 +723,18 @@ export class ThreeResourcesAdapter implements SourceAdapter {
     return withThreeResources(
       c.config,
       async (client) => {
-        const taxonomy = toolData(
-            await client.callTool({ name: 'threejs_list_taxonomy', arguments: { kind: 'both' } }),
-          ),
-          offset = Number(c.cursors.get('threejs-resources:showcase') ?? 0);
+        const offset = Number(c.cursors.get('threejs-resources:showcase') ?? 0);
         if (!Number.isSafeInteger(offset) || offset < 0)
           throw new Error('Invalid official MCP offset');
-        const payload = toolData(
-          await client.callTool({
+        const [taxonomyResult, payloadResult] = await Promise.all([
+          client.callTool({ name: 'threejs_list_taxonomy', arguments: { kind: 'both' } }),
+          client.callTool({
             name: 'threejs_search_showcase',
             arguments: { query: c.query.query || undefined, limit: c.pageSize, offset },
           }),
-        );
+        ]);
+        const taxonomy = toolData(taxonomyResult),
+          payload = toolData(payloadResult);
         let records: SourceRecord[] = [];
         if (
           typeof payload.text === 'string' &&
@@ -688,6 +765,7 @@ export class ThreeResourcesAdapter implements SourceAdapter {
               directoryTaxonomy: taxonomy,
               diagnostics: [
                 'Tool-directory taxonomy returned separately; opaque showcase tag IDs are preserved without invented names.',
+                'Official MCP tools/list reviewed 2026-10-19: no showcase-specific taxonomy resolver or tag filter exists in the published interface. Native showcase text search/offsets remain usable; no unrelated tool tag is substituted.',
               ],
             },
           ),

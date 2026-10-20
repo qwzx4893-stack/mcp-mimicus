@@ -1,6 +1,6 @@
 /** Adapted from INSANE0777/Awwwards-mcp src/parsers.ts at
  * 9bc82857894007da4b27e806cecfde8befe68a81 (MIT). See THIRD_PARTY_NOTICES.
- * Re-reviewed against current upstream ef6b5631206524942ff1cc3ecb17f5218e70c60d.
+ * Re-reviewed against current upstream 1bc9c13557c8e8f6ea90e174d88eb1708696fca3.
  * The upstream split/card parser is retained, bounded and stripped of media.
  * Parsing software does not grant permission to harvest the target catalog. */
 import type { RawItem } from './parsers.js';
