@@ -1,10 +1,10 @@
 {
-  "at": "2026-10-20T20:11:21.024Z",
+  "at": "2026-10-20T20:13:01.604Z",
   "method": "Official SDK to production CLI; seven live sources; sustained owned-example workflow",
   "live": [
     {
       "provider": "awwwards",
-      "ms": 4444,
+      "ms": 5153,
       "returned": 3,
       "requests": 3,
       "sources": [
@@ -24,7 +24,7 @@
     },
     {
       "provider": "webflow",
-      "ms": 4204,
+      "ms": 3993,
       "returned": 3,
       "requests": 7,
       "sources": [
@@ -42,7 +42,7 @@
     },
     {
       "provider": "astro",
-      "ms": 1418,
+      "ms": 1785,
       "returned": 3,
       "requests": 6,
       "sources": [
@@ -62,7 +62,7 @@
     },
     {
       "provider": "nuxt",
-      "ms": 347,
+      "ms": 237,
       "returned": 3,
       "requests": 1,
       "sources": [
@@ -78,7 +78,7 @@
     },
     {
       "provider": "codrops",
-      "ms": 1031,
+      "ms": 1289,
       "returned": 3,
       "requests": 2,
       "sources": [
@@ -94,7 +94,7 @@
     },
     {
       "provider": "mesh3d",
-      "ms": 1919,
+      "ms": 2766,
       "returned": 3,
       "requests": 5,
       "sources": [
@@ -112,7 +112,7 @@
     },
     {
       "provider": "threejs-resources",
-      "ms": 2204,
+      "ms": 1222,
       "returned": 3,
       "requests": 0,
       "sources": [
@@ -136,7 +136,7 @@
     "mimicus_browse_categories": 7,
     "mimicus_get_reference": 7,
     "mimicus_end_discovery": 7,
-    "mimicus_interact": 9,
+    "mimicus_interact": 65,
     "mimicus_preview_references": 1,
     "mimicus_analyze_element": 1,
     "mimicus_get_implementation_spec": 1,
@@ -144,16 +144,184 @@
     "mimicus_compare_references": 1,
     "mimicus_verify_implementation": 1,
     "mimicus_close_session": 2,
-    "mimicus_explore_page": 1,
-    "mimicus_capture_view": 1,
-    "mimicus_list_sources": 2,
+    "mimicus_explore_page": 29,
+    "mimicus_capture_view": 29,
+    "mimicus_list_sources": 30,
     "mimicus_capture_motion": 1
   },
-  "images": 11,
-  "imageBytes": 276376,
+  "images": 67,
+  "imageBytes": 1995926,
   "soak": [
     {
-      "elapsedMs": 30435,
+      "elapsedMs": 31220,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 76693,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 122148,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 167624,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 213117,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 258602,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 304059,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 349530,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 395011,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 440546,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 486019,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 531469,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 576908,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 622379,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 667901,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 713357,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 758889,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 804382,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 849877,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 895371,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 940872,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 986323,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1031777,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1077220,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1122941,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1168391,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1213832,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1259325,
+      "activeSessions": 1,
+      "closingSessions": 0,
+      "operations": 0
+    },
+    {
+      "elapsedMs": 1260474,
       "activeSessions": 1,
       "closingSessions": 0,
       "operations": 0
@@ -195,5 +363,5 @@
       "modelCacheDir": "operator-local-model-software-cache"
     }
   },
-  "elapsedMs": 31157
+  "elapsedMs": 1261360
 }

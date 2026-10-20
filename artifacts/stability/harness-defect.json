@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-20T20:06:36.836Z",
+  "status": "HARNESS_ASSERTION_FAILURE",
+  "cause": "The initial sustained-run harness asserted nonexistent pendingLexicalCandidates instead of the actual pendingRankedCandidates counter after application shutdown.",
+  "initialRuntime": "Stabilized code before the version metadata bump; the initial harness did not capture the server version.",
+  "observedSoak": {
+    "cycles": 28,
+    "elapsedMs": 1260518,
+    "maintenanceErrors": []
+  },
+  "actualFinalCounters": {
+    "browser": {
+      "activeSessions": 0,
+      "closingSessions": 0,
+      "maintenanceErrors": [],
+      "opening": 0,
+      "temporaryAnalyses": 0,
+      "sessionLimit": 3,
+      "sessions": [],
+      "persistentContent": false
+    },
+    "federation": {
+      "activeOperations": 0,
+      "retainedReferences": 0,
+      "pendingRankedCandidates": 0,
+      "pendingSemanticCandidates": 0,
+      "persistentCatalog": false
+    }
+  },
+  "correction": "Use the actual counter name, capture server version, and redact the operator model-cache path. The corrected full 1.0.0 run is separately reported in live-sdk.json.",
+  "supersededBy": "live-sdk.json"
+}
